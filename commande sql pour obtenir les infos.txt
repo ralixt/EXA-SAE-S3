@@ -3,3 +3,4 @@ le nombre de like d'un commentaire :  "Select Count(user) from likeproject where
 les projets avec tels tag : "Select * from projet JOIN tag ON projet.tag = tag.id where tag.title = ?;"
 le rôle d'un utilisateur : "Select role from user where id = ?;"
 le status d'un projet : "Select status from projet where id  = ?;" 
+l'auteur d'un commentaire : "Select Pseudo from user JOIN comment ON user.id = comment.author;"
