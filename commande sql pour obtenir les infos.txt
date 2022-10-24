@@ -13,3 +13,4 @@
 13. Ajouter un commentaire : "Insert into comments(titre, content, status, coverUrl) Values(?, ?, Reviewing, ?);"
 14. Supprimer un commentaire : "Delete from comments where id=?;"
 15. Changer le status d'un projet : "Update projet SET status = ?;"
+16. Moyenne des commentaires : "SELECT AVG(rating) FROM comment WHERE projet = ?;"
