@@ -14,3 +14,4 @@
 14. Supprimer un commentaire : "Delete from comments where id=?;"
 15. Changer le status d'un projet : "Update projet SET status = ?;"
 16. Moyenne des commentaires : "SELECT AVG(rating) FROM comment WHERE projet = ?;"
+17. recherche mot : SELECT * From projet where titre Like "%'.?.'%"
