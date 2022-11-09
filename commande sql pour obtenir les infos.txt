@@ -1,6 +1,6 @@
 GET  Nombre de like d'un projet : "Select Count(user) from likeproject where project = ?;"
 GET  Nombre de like d'un commentaire :  "Select Count(user) from likeproject where comment = ?;"
-GET  Projets avec tels tag : "SELECT * FROM PROJET p INNER JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ('?', '?')) GROUP BY p.id HAVING count(distinct t.id) = nombreDeTag LIMIT 10;"
+GET  Projets avec tels tag : "SELECT * FROM PROJET p INNER JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ('?', '?')) GROUP BY p.id HAVING count(distinct t.id) = nombreDeTagNecessaireD'avoirAuMoins LIMIT 10;"
 GET  Rôle d'un utilisateur : "Select role from user where id = ?;"
 GET  Status d'un projet : "Select status from projet where id  = ?;" 
 GET  Auteur d'un commentaire : "Select Pseudo from user JOIN comment ON user.id = comment.author;"
