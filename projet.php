@@ -5,6 +5,7 @@ include_once("variables.php");
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +16,7 @@ include_once("variables.php");
     <title>Ajout d'un projet</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+   
    
 </head>
 <header>
@@ -71,6 +73,7 @@ include_once("variables.php");
        
         <br>
         <div>
+            
             <label for="file">ressources: </label><br>
             <input type="file" name="file" id="ressources">
         </div>

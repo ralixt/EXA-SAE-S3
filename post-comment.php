@@ -7,6 +7,7 @@ include_once('login.php');
 $commentaire=$_POST['commentaire'];
 $idprojet=$_POST['idprojets'];
 $iduser=$_SESSION['ids'];
+$note=$_POST['note'];
 
 
 
@@ -15,14 +16,16 @@ $commentprojet->execute([
 
 
 'commentaire'=> $commentaire,
-'note'=>5,
+'note'=>$note,
 'user'=>$iduser,
 'projet'=>$idprojet
 
 
 ]);
 
-header('location:accueil.php')
+
+
+header('location:accueil.php');
 
 
 ?>

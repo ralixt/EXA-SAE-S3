@@ -3,7 +3,7 @@ include_once("config.php");
 session_start();
 //$pseudo=$_POST["Pseudo"];
 $email=$_POST["adr_email"];
-$createmdp=md5($_POST["mp"]);
+$createmdp=hash('sha256', $_POST["mp"]);
 //$id=$_POST['id'];
 
 

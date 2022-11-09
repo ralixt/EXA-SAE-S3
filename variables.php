@@ -21,10 +21,9 @@ $projets = $projectStatement->fetchAll();
 
 $commentStatement =$pdo->prepare('SELECT  Pseudo, titre from comment JOIN user ON comment.author = user.id JOIN projet ON projet.id = comment.projet ');
 $commentStatement-> execute();
-
-
-
 $comments=$commentStatement->fetchAll();
+
+
 $tagStatement =$pdo->prepare('SELECT * FROM tag ');
 $tagStatement-> execute();
 $tags=$tagStatement->fetchAll();

@@ -3,8 +3,8 @@ include_once("config.php");
 
 $pseudo=$_POST["Pseudo"];
 $email=$_POST["adr_email"];
-$createmdp=md5($_POST["creation_mp"]);
-$confirmationmdp=md5($_POST["confirmation_mp"]);
+$createmdp=hash('sha256', $_POST["creation_mp"]);
+$confirmationmdp=hash('sha256', $_POST["confirmation_mp"]);
 //$date=dateTime();
 echo($pseudo);
 echo($email);

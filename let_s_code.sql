@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 28 Octobre 2022 à 07:52
+-- Généré le :  Mer 09 Novembre 2022 à 14:16
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.3
 
@@ -40,7 +40,23 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `createdAt`, `content`, `rating`, `author`, `projet`) VALUES
-(1, '2022-10-28 09:44:10', 'Je sais enfin faire une table en sql Merci!!!!!!!', 5, 11, 1);
+(1, '2022-10-28 09:44:10', 'Je sais enfin faire une table en sql Merci!!!!!!!', 5, 11, 1),
+(2, '2022-11-09 14:32:53', 'ouah le niveau est tellement eleve j\'ai galere a comprendre', 5, 18, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `nom` text NOT NULL,
+  `prenom` text NOT NULL,
+  `mail` text NOT NULL,
+  `message` text NOT NULL,
+  `statut` enum('non-traite','traite') NOT NULL DEFAULT 'non-traite'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -49,19 +65,17 @@ INSERT INTO `comment` (`id`, `createdAt`, `content`, `rating`, `author`, `projet
 --
 
 CREATE TABLE `likecomment` (
-  `user` int(11) NOT NULL,
-  `comment` int(11) NOT NULL
+  `id_comment` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `likecomment`
 --
 
-INSERT INTO `likecomment` (`user`, `comment`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1);
+INSERT INTO `likecomment` (`id_comment`, `id_user`) VALUES
+(1, 2),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -83,7 +97,7 @@ CREATE TABLE `likeproject` (
 CREATE TABLE `projet` (
   `id` int(11) NOT NULL,
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `titre` mediumtext NOT NULL,
+  `titre` varchar(256) NOT NULL,
   `content` longtext NOT NULL,
   `author` int(11) NOT NULL,
   `status` enum('Published','Reviewing','Refused') NOT NULL,
@@ -97,7 +111,11 @@ CREATE TABLE `projet` (
 --
 
 INSERT INTO `projet` (`id`, `createdAt`, `titre`, `content`, `author`, `status`, `coverUrl`, `isPremium`, `URL_Image`) VALUES
-(1, '2022-10-28 09:15:30', 'sql table', 'il suffit de faire create table', 14, 'Reviewing', 'text.com/sql', 1, 'truc.png');
+(1, '2022-10-28 09:15:30', 'sql table', 'il suffit de faire create table', 14, 'Reviewing', 'text.com/sql', 1, 'truc.png'),
+(2, '2022-11-07 13:45:11', 'création site web', 'debrouille toi google est ton ami', 2, 'Published', 'tagueule.com', 1, 'truc.zip'),
+(3, '2022-11-08 09:07:00', 'sandwitch', 'prendre du pain, Ã©taler le beurre, mettre du jambon et puis du fromage refermez le pain et vosu avez votre sandwitch ', 18, 'Published', 'url', 0, ''),
+(4, '2022-11-08 10:21:17', 'asandie', 'je crois qu\'il s\'agit d\'un projet incomprÃ©hensible', 18, 'Published', 'url', 0, ''),
+(5, '2022-11-09 13:16:28', 'faire une boucle niveau hard', 'for(int i = 0; i <nbDeTour; i++){\r\n   truc a repeter\r\n}', 18, 'Published', 'url', 0, '');
 
 -- --------------------------------------------------------
 
@@ -115,8 +133,22 @@ CREATE TABLE `projet_tag` (
 --
 
 INSERT INTO `projet_tag` (`id_projet`, `id_tag`) VALUES
+(5, 1),
+(5, 2),
+(5, 5),
+(5, 6),
+(5, 7),
 (1, 8),
-(1, 38);
+(3, 8),
+(4, 10),
+(5, 10),
+(2, 29),
+(3, 29),
+(4, 29),
+(5, 29),
+(5, 33),
+(1, 38),
+(2, 38);
 
 -- --------------------------------------------------------
 
@@ -167,7 +199,7 @@ CREATE TABLE `user` (
   `email` text NOT NULL,
   `password` text NOT NULL,
   `role` enum('User','Premium_User','Admin') NOT NULL,
-  `createdAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `subscriptionId` text NOT NULL,
   `hasActiveSubscription` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -185,7 +217,10 @@ INSERT INTO `user` (`id`, `Pseudo`, `email`, `password`, `role`, `createdAt`, `s
 (12, 'Dan1ellou123', 'daniellou@bing.ch', 'Hbds0/0', 'User', '2022-10-24 00:00:00', 'fsfsd25', 0),
 (13, 'Marce1', 'marcel@family.com', 'M@rcel', 'User', '2022-10-24 00:00:00', 'fee-42', 0),
 (14, 'BigFan', 'bigfan@fan.com', 'F@nOp', 'Premium_User', '2022-10-24 00:00:00', 'dzsdfsd25', 1),
-(15, 'Pr3ms', 'prems@first.hj', 'sdimds', 'Premium_User', '2022-10-24 00:00:00', 'fgdhgf051', 1);
+(15, 'Pr3ms', 'prems@first.hj', 'sdimds', 'Premium_User', '2022-10-24 00:00:00', 'fgdhgf051', 1),
+(16, 'Batos1er', 'batos.benoist@gmail.com', 'b3e8b25399a4908e8347382e65a1ecd0', 'User', '2022-11-08 09:20:31', 'null', 0),
+(17, 'Batos1er', 'batos.benoist@gmail.com', 'b3e8b25399a4908e8347382e65a1ecd0', 'User', '2022-11-08 09:20:47', 'null', 0),
+(18, 'Batos1er', 'bap.menet@gmail.com', 'b42324fe7d0b5d42325ed37788c466d5eba20aa9ab49a366d669e45b522ad5f4', 'User', '2022-11-08 10:00:53', 'null', 0);
 
 --
 -- Index pour les tables exportées
@@ -201,13 +236,17 @@ ALTER TABLE `comment`
   ADD KEY `projet` (`projet`);
 
 --
+-- Index pour la table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `likecomment`
 --
 ALTER TABLE `likecomment`
-  ADD PRIMARY KEY (`user`,`comment`),
-  ADD UNIQUE KEY `user_2` (`user`),
-  ADD KEY `user` (`user`),
-  ADD KEY `comment` (`comment`);
+  ADD PRIMARY KEY (`id_comment`,`id_user`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Index pour la table `likeproject`
@@ -222,6 +261,7 @@ ALTER TABLE `likeproject`
 ALTER TABLE `projet`
   ADD PRIMARY KEY (`id`),
   ADD KEY `author` (`author`);
+ALTER TABLE `projet` ADD FULLTEXT KEY `titre` (`titre`,`content`);
 
 --
 -- Index pour la table `projet_tag`
@@ -250,12 +290,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT pour la table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `projet`
 --
 ALTER TABLE `projet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `tag`
 --
@@ -265,7 +310,7 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- Contraintes pour les tables exportées
 --
@@ -281,8 +326,8 @@ ALTER TABLE `comment`
 -- Contraintes pour la table `likecomment`
 --
 ALTER TABLE `likecomment`
-  ADD CONSTRAINT `likecomment_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `likecomment_ibfk_2` FOREIGN KEY (`comment`) REFERENCES `comment` (`id`);
+  ADD CONSTRAINT `likecomment_ibfk_1` FOREIGN KEY (`id_comment`) REFERENCES `comment` (`id`),
+  ADD CONSTRAINT `likecomment_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
 -- Contraintes pour la table `likeproject`

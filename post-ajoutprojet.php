@@ -35,9 +35,6 @@ if(isset($_SESSION['ids'])){
 $iduser=$_SESSION['ids'];
 }
 
-
-
-
     // Allow certain file formats
     $allowTypes = array('zip,png');
     
