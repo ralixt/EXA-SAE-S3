@@ -16,3 +16,4 @@ PATCH Changer le status d'un projet : "Update projet SET status = ?;"
 GET Moyenne des commentaires : "SELECT AVG(rating) FROM comment WHERE projet = ?;"
 GET recherche mot : SELECT * From projet where titre Like "%'.?.'%"SELECT * FROM projet WHERE MATCH(titre, content) AGAINST ('?*' IN BOOLEAN MODE);
 GET recherche avancé : SELECT * FROM projet WHERE MATCH(titre, content) AGAINST ('?*' IN BOOLEAN MODE);
+GET recherche avec tag : SELECT * from projet where (titre LIKE "%e%" OR content LIKE "%e%") AND projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ('facile', 'français')) GROUP BY p.id HAVING count(distinct t.id) = 2) LIMIT 30
