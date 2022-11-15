@@ -16,7 +16,7 @@
 
 </header>
 <body>
-    <div class="login" align="center">
+    <div class="login">
         <div>
             <h1><span>Connexion</span></h1>
         </div>
@@ -34,12 +34,6 @@
             </span>
         </h2>
         <form action="post-login.php" method="post">
-            <!--
-            <div>
-                <label for="id"></label>
-                <input type="hidden" name="id" values='<?php echo($GET['id'])?>'>
-            </div>
-            -->
             <div>
                 
                 <input id="adr_email" name="adr_email" type="email" placeholder="Email" required>
@@ -52,7 +46,7 @@
             <button type="submit" class="button-27">Valider</button>
         </form>
         <p>
-         <span>Vous n'avez pas encore de compte? <a href="inscription.php">Inscrivez-vous gratuitement</a></span>
+         <span>Vous n'avez pas encore de compte ? <a href="inscription.php">Inscrivez-vous gratuitement</a></span>
         </p>
     </div>
    

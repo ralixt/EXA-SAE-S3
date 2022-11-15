@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 09 Novembre 2022 à 14:16
+-- Généré le :  Mar 15 Novembre 2022 à 10:13
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.3
 
@@ -41,7 +41,11 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`id`, `createdAt`, `content`, `rating`, `author`, `projet`) VALUES
 (1, '2022-10-28 09:44:10', 'Je sais enfin faire une table en sql Merci!!!!!!!', 5, 11, 1),
-(2, '2022-11-09 14:32:53', 'ouah le niveau est tellement eleve j\'ai galere a comprendre', 5, 18, 5);
+(2, '2022-11-09 14:32:53', 'ouah le niveau est tellement eleve j\'ai galere a comprendre', 5, 18, 5),
+(3, '2022-11-15 10:47:16', 'incroyable je ne pensais pas cela si simple', 5, 18, 1),
+(4, '2022-11-15 10:48:07', 'miam', 5, 18, 3),
+(5, '2022-11-15 10:48:18', 'j\'ai faim maintenant', 5, 18, 3),
+(6, '2022-11-15 10:48:29', 'quelqu\'un a une autre recette?', 5, 18, 3);
 
 -- --------------------------------------------------------
 
@@ -101,6 +105,7 @@ CREATE TABLE `projet` (
   `content` longtext NOT NULL,
   `author` int(11) NOT NULL,
   `status` enum('Published','Reviewing','Refused') NOT NULL,
+  `difficulte` enum('Debutant','Intermediaire','Avance') NOT NULL,
   `coverUrl` text NOT NULL,
   `isPremium` tinyint(1) NOT NULL,
   `URL_Image` varchar(256) NOT NULL
@@ -110,12 +115,12 @@ CREATE TABLE `projet` (
 -- Contenu de la table `projet`
 --
 
-INSERT INTO `projet` (`id`, `createdAt`, `titre`, `content`, `author`, `status`, `coverUrl`, `isPremium`, `URL_Image`) VALUES
-(1, '2022-10-28 09:15:30', 'sql table', 'il suffit de faire create table', 14, 'Reviewing', 'text.com/sql', 1, 'truc.png'),
-(2, '2022-11-07 13:45:11', 'création site web', 'debrouille toi google est ton ami', 2, 'Published', 'tagueule.com', 1, 'truc.zip'),
-(3, '2022-11-08 09:07:00', 'sandwitch', 'prendre du pain, Ã©taler le beurre, mettre du jambon et puis du fromage refermez le pain et vosu avez votre sandwitch ', 18, 'Published', 'url', 0, ''),
-(4, '2022-11-08 10:21:17', 'asandie', 'je crois qu\'il s\'agit d\'un projet incomprÃ©hensible', 18, 'Published', 'url', 0, ''),
-(5, '2022-11-09 13:16:28', 'faire une boucle niveau hard', 'for(int i = 0; i <nbDeTour; i++){\r\n   truc a repeter\r\n}', 18, 'Published', 'url', 0, '');
+INSERT INTO `projet` (`id`, `createdAt`, `titre`, `content`, `author`, `status`, `difficulte`, `coverUrl`, `isPremium`, `URL_Image`) VALUES
+(1, '2022-10-28 09:15:30', 'sql table', 'il suffit de faire create table', 14, 'Reviewing', 'Debutant', 'text.com/sql', 1, 'truc.png'),
+(2, '2022-11-07 13:45:11', 'création site web', 'debrouille toi google est ton ami', 2, 'Published', 'Intermediaire', 'tagueule.com', 1, 'truc.zip'),
+(3, '2022-11-08 09:07:00', 'sandwitch', 'prendre du pain, Ã©taler le beurre, mettre du jambon et puis du fromage refermez le pain et vosu avez votre sandwitch ', 18, 'Published', 'Debutant', 'url', 0, ''),
+(4, '2022-11-08 10:21:17', 'asandie', 'je crois qu\'il s\'agit d\'un projet incomprÃ©hensible', 18, 'Published', 'Avance', 'url', 0, ''),
+(5, '2022-11-09 13:16:28', 'faire une boucle niveau hard', 'for(int i = 0; i <nbDeTour; i++){\r\n   truc a repeter\r\n}', 18, 'Published', 'Avance', 'url', 0, '');
 
 -- --------------------------------------------------------
 
@@ -140,6 +145,7 @@ INSERT INTO `projet_tag` (`id_projet`, `id_tag`) VALUES
 (5, 7),
 (1, 8),
 (3, 8),
+(2, 9),
 (4, 10),
 (5, 10),
 (2, 29),
@@ -173,9 +179,9 @@ INSERT INTO `tag` (`id`, `title`) VALUES
 (5, 'C#'),
 (6, 'Java'),
 (7, 'Javascript'),
-(8, 'facile'),
-(9, 'moyen'),
-(10, 'difficile'),
+(8, 'debutant'),
+(9, 'intermediaire'),
+(10, 'avance'),
 (29, 'Français'),
 (30, 'English'),
 (31, 'Espanol'),
@@ -290,7 +296,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `contact`
 --
