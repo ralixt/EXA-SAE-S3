@@ -62,7 +62,15 @@ $affichagecommentaire->execute([
 ]);
 $commentaires=$affichagecommentaire->fetchall();
 
-//$affichagelike=$pdo->prepare('SELECT likecomment.id from likecomment where  ')
+$affichagelike_projet=$pdo->prepare('SELECT * from likeproject where user=:iduser and project=:idprojet');
+$affichagelike_projet->execute([
+    'iduser'=>$_SESSION['ids'],
+    'idprojet'=>$_GET["id"],
+]);
+
+$likes_projet=$affichagelike_projet->fetchall();
+
+
 
 ?>
 <header>
@@ -74,7 +82,13 @@ $commentaires=$affichagecommentaire->fetchall();
     <?php foreach($resulttag as $tag){
     echo('<button>'.$tag[0].'</button>');
     }?>
-  
+    <?php if($affichagelike_projet->rowCount()==1):?>
+    <a style="text-decoration:none;" href="like_projet.php?idprojett=<?php echo($_GET["id"])?>&idusersss=<?php echo($_SESSION['ids'])?>"><span class="material-symbols-outlined filled">favorite</span></a>
+    <?php endif ?>
+    <?php if($affichagelike_projet->rowCount()==0):?>
+    <a style="text-decoration:none;" href="like_projet.php?idprojett=<?php echo($_GET["id"])?>&idusersss=<?php echo($_SESSION['ids'])?>"><span class="material-symbols-outlined">favorite</span></a>
+    <?php endif ?>
+    
 </header>
 <body>
     <div>
@@ -152,9 +166,28 @@ $commentaires=$affichagecommentaire->fetchall();
    
         <div id='comment_contenair'>
             <?php foreach($commentaires as $commentaire):?>
+                <?php
+                if(isset($_SESSION["ids"])){
+                $affichagelike=$pdo->prepare('SELECT * from likecomment where id_user=:iduser and id_comment=:idcomment');
+                $affichagelike->execute([
+                    'iduser'=>$_SESSION['ids'],
+                    'idcomment'=>$commentaire[4],
+                ]);
+            
+                $likes=$affichagelike->fetchall();
+            }
+            
+                ?>
+                
             <div class='comment'>
-            <h2><?php echo($commentaire[1])?></h2>  <a href="like.php?idcommentsss=<?php echo($commentaire[4])?>&idusersss=<?php echo($_SESSION['ids'])?>"><span class="material-symbols-outlined">favorite</span></a>
-               
+            <h2><?php echo($commentaire[1])?></h2>  
+            <?php if($affichagelike->rowCount()==1):?>
+            <a style="text-decoration:none;" href="like.php?idcommentsss=<?php echo($commentaire[4])?>&idusersss=<?php echo($_SESSION['ids'])?>"><span class="material-symbols-outlined filled">favorite</span></a>
+            <?php endif ?>
+            <?php if($affichagelike->rowCount()==0):?>
+                <a style="text-decoration:none;" href="like.php?idcommentsss=<?php echo($commentaire[4])?>&idusersss=<?php echo($_SESSION['ids'])?>"><span class="material-symbols-outlined">favorite</span></a>
+            <?php endif?>
+
            
 
             <h3> notes: <?php echo($commentaire[3].'/5')?></h3>
