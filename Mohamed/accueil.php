@@ -52,9 +52,9 @@
             Javascript: <input type="checkbox" name="tag[]" value="Javascript" /><br><br>
 
             difficulté <br/>
-            Facile: <input type="checkbox" name="tag[]" value="facile" /><br/>
-            Moyen: <input type="checkbox" name="tag[]" value="moyen" /><br/>
-            Difficile: <input type="checkbox" name="tag[]" value="difficile" /><br/><br>
+            Facile: <input type="checkbox" name="tag[]" value="debutant" /><br/>
+            Moyen: <input type="checkbox" name="tag[]" value="intermediaire" /><br/>
+            Difficile: <input type="checkbox" name="tag[]" value="avance" /><br/><br>
 
             support <br/>
             Windows: <input type="checkbox" name="tag[]" value="Windows" /><br/>
@@ -67,6 +67,13 @@
             Espanol: <input type="checkbox" name="tag[]" value="espanol" /><br/>
             Deutsch: <input type="checkbox" name="tag[]" value="deutsch" /> <br/>
         </p>
+        <p>Order by</p>
+        <select name="orderby" size="5">  
+            <option value="nom"> nom </option>  
+            <option value="difficulte"> difficulte </option>  
+            <option value="like"> like </option>  
+            <option value="commentaire"> commentaire </option>  
+        </select>  
         <input type="submit" name="valider" value="valider">   
     </form>
     
@@ -103,21 +110,25 @@
             $valider=$_GET["valider"];
            }
            if(isset($_GET['tag'])){
-                var_dump($_GET['tag']);
-                if(sizeof($_GET['tag']) > 1){
-                    $tag = implode($_GET['tag'], " AND ");
-                    var_dump($tag);
+                $tailleTag = sizeof($_GET['tag']);
+                $tags = "";
+                foreach($_GET['tag'] as $tag){
+                    if($tags == ""){
+                        $tags = $tags . "'$tag'";
+                    }
+                    else{
+                        $tags = $tags . ", '$tag'";
+                    }
                 }
-                else{
-                    $tag = implode($_GET['tag']);
-                    var_dump($tag);
-                }
+           }
+           if(isset($_GET['orderby'])){
+                $order = $_GET['orderby'];
            }
            // echo('rechereche :: '.$recherche);    
             // Attempt select query execution
                 if(isset($valider) && !empty(trim($recherche)) && isset($_GET['tag'])){
                 //comment avoir plusieurs tags?
-                $sql = 'Select * from projet where titre LIKE "%' . $recherche .  '%" OR content LIKE "%' . $recherche .  '%"';
+                $sql = "SELECT * from projet where (titre LIKE '%$recherche%' OR content LIKE '%$recherche%') AND projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ($tags)) GROUP BY p.id HAVING count(distinct t.id) = $tailleTag) LIMIT 30";
                 //$sql='SELECT * From projet where titre Like "%'.$recherche.'%"';
                 if($result = $pdo->query($sql)){
                     $row=$result->fetchall();
@@ -162,8 +173,8 @@
                      unset($result);
  
                 }
-                elseif(empty($recherche)){
-                    $sql = "SELECT * FROM projet where status = 'Published';";
+                elseif(empty($recherche) && isset($_GET['tag'])){
+                    $sql = "SELECT * from projet where (titre LIKE '%e%' OR content LIKE '%e%') AND projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ($tags)) GROUP BY p.id HAVING count(distinct t.id) = $tailleTag) LIMIT 30";
                     if($result = $pdo->query($sql)){
                         $row=$result->fetchall();
                         
@@ -216,7 +227,8 @@
                          unset($result);
      
                 }
-                elseif (!isset($_GET['tag'])) {
+                elseif (!isset($_GET['tag']) && isset($recherche) && !empty(trim($recherche))) {
+                    $tailleTag = 0;
                     $sql = 'SELECT * FROM projet WHERE titre LIKE "%' . $recherche . '%" OR content LIKE "%' . $recherche . '%";';
                         if($result = $pdo->query($sql)){
                             $row=$result->fetchall();
@@ -234,6 +246,26 @@
                             echo("</div>");
                             echo("</div>");
                         }
+                    unset($result);
+                }
+                else{
+                    $sql = 'SELECT * FROM projet;';
+                    if($result = $pdo->query($sql)){
+                        $row=$result->fetchall();
+                        echo("<div class='imageenligne'>");
+                        for($i=0;$i<count($row);$i++){
+                            if($i%3==0){
+                                echo("</div>");
+                                echo("<div class='imagecontenair'>");
+                            }
+                            echo("<div class='imagetexte'>");
+                            echo('<a href="affichageprojet.php?id='. $row[$i][0] .'"><img class="imageprojet" src="image/projet.jpg" title='.$row[$i][2].'  /></a>');
+                            echo('<p>'. $row[$i][2] .'</p> <br>');
+                            echo("</div>");
+                        }
+                        echo("</div>");
+                        echo("</div>");
+                    }
                     unset($result);
                 }
                 
