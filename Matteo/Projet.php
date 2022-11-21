@@ -1,8 +1,3 @@
-<?php
-    include_once('config.php');
-    include_once('variables.php');
-    
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +7,6 @@
     <title>Contenu</title>
     <link rel="stylesheet" type="text/css" href="css/stylesss.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
-    
-
 </head>
 <?php
 
@@ -21,7 +14,7 @@ include_once("config.php");
 
 //$pseudo=$_POST["Pseudo"];
 if(isset($_GET['id'])){
-$id=$_GET['id'];
+    $id=$_GET['id'];
 }
 //$id=$_POST['id'];
 
@@ -29,14 +22,7 @@ $id=$_GET['id'];
 $ajoutinfo=$pdo->prepare('SELECT * FROM projet where id=:id');
 
 $ajoutinfo->execute([
-'id'=>$id,
-
-
-
-
-
-
-
+    'id'=>$id,
 ]);
 
 $result=$ajoutinfo->fetchall();
@@ -45,10 +31,10 @@ $result=$ajoutinfo->fetchall();
 $affichagetag=$pdo->prepare('SELECT tag.title from tag JOIN projet_tag on tag.id=projet_tag.id_tag JOIN projet on projet_tag.id_projet=projet.id where projet.id=:id');
 $affichagetag->execute([
     'id'=>$id,
-    
-    
+
+
 ]);
-$resulttag=$affichagetag->fetchall();   
+$resulttag=$affichagetag->fetchall();
 
 $affichageressources=$pdo->prepare('Select URL_Image from projet where id=:id');
 $affichageressources->execute([
@@ -72,51 +58,18 @@ $likes_projet=$affichagelike_projet->fetchall();
 
 
 
-?>
+?>s
 <header>
  
     <input type="hidden" name="comments" id="comments" value="<?php if(isset($commentaire[0][0])){ echo($commentaires[0][0]);}?>">
-    
+
     <h2><?php echo($result[0][2])?></h2>
     <p><?php echo($result[0][1])?></p>
     <?php foreach($resulttag as $tag){
     echo('<button>'.$tag[0].'</button>');
     }?>
     <?php if($affichagelike_projet->rowCount()==1):?>
-    <a style="text-decoration:none;" href="like_projet.php?idprojett=<?php echo($_GET["id"])?>&idusersss=<?php echo($_SESSION['ids'])?>"><span class="material-symbols-outlined filled">favorite</span></a>
-    <?php endif ?>
-    <?php if($affichagelike_projet->rowCount()==0):?>
-    <a style="text-decoration:none;" href="like_projet.php?idprojett=<?php echo($_GET["id"])?>&idusersss=<?php echo($_SESSION['ids'])?>"><span class="material-symbols-outlined">favorite</span></a>
-    <?php endif ?>
-    
-</header>
-<body>
-    <div>
-        <h2>Ressources</h2>
-        <?php echo('<a href= image/'.$resultressource[0][0].'  title="mon fichier (zip, 255K)" >'. $resultressource[0][0].'</a>');?>
-    </div>
-    
-        
-    
-   
-    <div>
-        <h2>Projet</h2>
-        <?php
-        require_once'libs/Parsedown.php';
-        $parsedown=new Parsedown();
-        $text=$result[0][3];
-
-        ?>
-        <p><?php echo($parsedown->text($text));?></p>
-    </div>
-    <div>
-        <h2>Commentaires</h2>
-        <form action="post-comment.php" method="post">
-           
-            <div>
-                <?php foreach($users as $user):?>                       
-                        <label for="idusers"></label>                
-                        <input type="hidden" id="idusers" name="idusers" value="<?php echo ($user["id"])?>"/>                    
+    <a style="text-decoration:none;" href="like_projet.php?idprojett=<?php echo($_GET["/>
                 <?php endforeach?>
             </div>
             <div>
