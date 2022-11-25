@@ -9,7 +9,7 @@
     </head>
     <body>
         <main>
-            <form action="contact_submit.php" method="post">
+            <form action="Controllers/ContactController" method="post">
                 <div>
                     <div>
                         <label for="nom">Nom<span class="obligatoire">*</span> : </label>

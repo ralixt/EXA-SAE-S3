@@ -8,7 +8,7 @@ class DatabaseContactService implements ContactServiceInterface
      * @var contact[]
      */
     private array $data;
-    private Database $database;
+    private PDO $database;
 
     protected function __construct() {
         $this->database = Database::getInstance();
@@ -75,7 +75,7 @@ class DatabaseContactService implements ContactServiceInterface
             "INSERT INTO contact (nom, prenom, mail, message) VALUES (:nom, :prenom, :mail, :message);"
 
         );
-        $lines=$statementAddcontact->execute([
+        $statementAddcontact->execute([
             'nom' => $Contact->getNom(), 'prenom' => $Contact->getPrenom(), 'mail' => $Contact->getMail(), 'message' => $Contact->getMessage()
         ]);
         return $Contact;
