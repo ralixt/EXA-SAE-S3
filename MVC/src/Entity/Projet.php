@@ -2,6 +2,7 @@
 
 class Projet
 {
+
     private int $id;
     private String $titre;
     private String $content;
@@ -9,6 +10,65 @@ class Projet
     private String $author;
     private bool $premium;
     private String $URLImage;
+    private String $Status;
+    private String $CoverURL;
+    private String $Difficulte;
+
+    /**
+     * @return String
+     */
+    public function getDifficulte(): string
+    {
+        return $this->Difficulte;
+    }
+
+    /**
+     * @param String $Difficulte
+     * @return Projet
+     */
+    public function setDifficulte(string $Difficulte): Projet
+    {
+        $this->Difficulte = $Difficulte;
+        return $this;
+    }
+
+
+
+    /**
+     * @return String
+     */
+    public function getStatus(): string
+    {
+        return $this->Status;
+    }
+
+    /**
+     * @param String $Status
+     * @return Projet
+     */
+    public function setStatus(string $Status): Projet
+    {
+        $this->Status = $Status;
+        return $this;
+    }
+
+    /**
+     * @return String
+     */
+    public function getCoverURL(): string
+    {
+        return $this->CoverURL;
+    }
+
+    /**
+     * @param String $CoverURL
+     * @return Projet;
+     */
+    public function setCoverURL(string $CoverURL): Projet
+    {
+        $this->CoverURL = $CoverURL;
+        return $this;
+    }
 
     /**
      * @return int
