@@ -35,7 +35,7 @@ class DeconnexionService
         else{
             header('location:login.php');
         }
-        
+
     }
 
 
