@@ -1,6 +1,6 @@
 <?php
 
-class DatabaseProjectService implements ProjectServiceInterface
+class DatabaseProjectService implements AllService
 {
     use SingletonTrait;
 
@@ -8,10 +8,10 @@ class DatabaseProjectService implements ProjectServiceInterface
      * @var projet[]
      */
     private array $data;
-    private Database $database;
+    private PDO $database;
 
     protected function __construct() {
-        $this->database = Database::getInstance();
+        $this->database = Database::get();
         $this->init();
     }
 
@@ -21,7 +21,7 @@ class DatabaseProjectService implements ProjectServiceInterface
      * @return void
      */
     private function init() : void {
-        $sentence = $this->database->get()-> prepare("SELECT projet.id,projet.createdAt,projet.titre,projet.content,user.pseudo,projet.status,projet.difficulte,projet.coverURL,projet.isPremium,projet.URL_Image FROM projet JOIN user ON projet.author=user.id;");
+        $sentence = $this->database-> prepare("SELECT projet.id,projet.createdAt,projet.titre,projet.content,user.pseudo,projet.status,projet.difficulte,projet.coverURL,projet.isPremium,projet.URL_Image FROM projet JOIN user ON projet.author=user.id;");
         $sentence -> execute();
         $projects = $sentence->fetchAll();
         $this->data = [];
@@ -40,57 +40,21 @@ class DatabaseProjectService implements ProjectServiceInterface
         }
     }
 
-    public function get(int $id): ?Projet
+    public function get($entity): ?Projet
     {
-        return $this->data[$id] ?? null;
+        return $this->data[$entity] ?? null;
     }
 
-    public function list(array $args = []): array
+    public function getlist(array $args = []): array
     {
-        $results = [];
-
-        // Filters results : we exclude unwanted tasks from output
-        foreach ( $this->data as $projet ) :
-            // Search filter
-            if ( isset( $args['search'] ) && ! strpos( $projet->getTitre(), $args['search'] ) )
-                continue;
-            $results[] = $projet;
-        endforeach;
-
-        // Order by handling
-        usort( $results, function ( Projet $a, Projet $b ) use ( $args ) {
-            switch ( $args['orderBy'] ?? null ) :
-                case "title":
-                    return strnatcmp($a->getTitre(), $b->getTitre());
-                default:
-                    $aTime = strtotime( $a->getCreatedAt() );
-                    $bTime = strtotime( $b->getCreatedAt() );
-
-                    if ( $aTime === $bTime )
-                        return 0;
-
-                    return $aTime > $bTime
-                        ? -1
-                        : 1;
-            endswitch;
-        } );
-        $page = $args['page'] ?? 1;
-        $perPage = $args['perPage'] ?? 10;
-
-        return array(
-            'page' => $page,
-            'perPage' => $perPage,
-            'total' => count($results),
-            'tasks' => array_slice($results, ($page-1)*$perPage, 10, true)
-        );
     }
 
-    public function create(Projet $project): Projet
+    public function create($entity)
     {
-        // TODO: Implement create() method.
+        $sentence = $this->database->prepare("INSERT INTO projet (titre,content,author,)");
     }
 
-    public function update(Projet $project): Projet
+    public function update($entity)
     {
         // TODO: Implement update() method.
     }

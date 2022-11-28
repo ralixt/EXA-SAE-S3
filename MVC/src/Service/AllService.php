@@ -10,7 +10,7 @@ interface AllService
 
     public function create($entity);
 
-    public function update();
+    public function update($entity);
 
 
 }

@@ -2,7 +2,6 @@
 
 class Projet
 {
-
     private int $id;
     private String $titre;
     private String $content;
@@ -13,6 +12,8 @@ class Projet
     private String $Status;
     private String $CoverURL;
     private String $Difficulte;
+    /** @var tag[] */
+    private array $tags;
 
     /**
      * @return String
@@ -30,6 +31,33 @@ class Projet
     {
         $this->Difficulte = $Difficulte;
         return $this;
+    }
+
+    /**
+     * @return tag[]
+     */
+    public function getTags(): array
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param tag[] $tags
+     * @return Projet
+     */
+    public function setTags(array $tags): Projet
+    {
+        $this->tags = $tags;
+        return $this;
+    }
+
+    /**
+     * @param int $id
+     * @return tag
+     */
+    public function setTags(int $id): tag
+    {
+        return $this->tags[$id];
     }
 
 
