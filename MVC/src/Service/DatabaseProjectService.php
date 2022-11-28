@@ -21,7 +21,7 @@ class DatabaseProjectService implements AllService
      * @return void
      */
     private function init() : void {
-        $sentence = $this->database-> prepare("SELECT projet.id,projet.createdAt,projet.titre,projet.content,user.pseudo,projet.status,projet.difficulte,projet.coverURL,projet.isPremium,projet.URL_Image FROM projet JOIN user ON projet.author=user.id;");
+        $sentence = $this->database-> prepare("");
         $sentence -> execute();
         $projects = $sentence->fetchAll();
         $this->data = [];
@@ -51,7 +51,6 @@ class DatabaseProjectService implements AllService
 
     public function create($entity)
     {
-        $sentence = $this->database->prepare("INSERT INTO projet (titre,content,author,)");
     }
 
     public function update($entity)
@@ -59,7 +58,7 @@ class DatabaseProjectService implements AllService
         // TODO: Implement update() method.
     }
 
-    public function delete(int $id): void
+    public function delete($entity): void
     {
         // TODO: Implement delete() method.
     }

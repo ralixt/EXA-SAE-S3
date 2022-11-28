@@ -6,95 +6,32 @@ class Projet
     private String $titre;
     private String $content;
     private String $CreatedAt;
+    private int $authorID;
     private String $author;
     private bool $premium;
-    private String $URLImage;
+    /** @var string[] */
+    private array $URLImage;
+    private String $URLZIP;
     private String $Status;
-    private String $CoverURL;
     private String $Difficulte;
     /** @var tag[] */
     private array $tags;
+    private int $likes;
 
     /**
-     * @return String
+     * @return int
      */
-    public function getDifficulte(): string
+    public function getLikes(): int
     {
-        return $this->Difficulte;
+        return $this->likes;
     }
 
     /**
-     * @param String $Difficulte
-     * @return Projet
+     * @param int $likes
      */
-    public function setDifficulte(string $Difficulte): Projet
+    public function setLikes(int $likes): Projet
     {
-        $this->Difficulte = $Difficulte;
-        return $this;
-    }
-
-    /**
-     * @return tag[]
-     */
-    public function getTags(): array
-    {
-        return $this->tags;
-    }
-
-    /**
-     * @param tag[] $tags
-     * @return Projet
-     */
-    public function setTags(array $tags): Projet
-    {
-        $this->tags = $tags;
-        return $this;
-    }
-
-    /**
-     * @param int $id
-     * @return tag
-     */
-    public function setTags(int $id): tag
-    {
-        return $this->tags[$id];
-    }
-
-
-
-    /**
-     * @return String
-     */
-    public function getStatus(): string
-    {
-        return $this->Status;
-    }
-
-    /**
-     * @param String $Status
-     * @return Projet
-     */
-    public function setStatus(string $Status): Projet
-    {
-        $this->Status = $Status;
-        return $this;
-    }
-
-    /**
-     * @return String
-     */
-    public function getCoverURL(): string
-    {
-        return $this->CoverURL;
-    }
-
-    /**
-     * @param String $CoverURL
-     * @return Projet;
-     */
-    public function setCoverURL(string $CoverURL): Projet
-    {
-        $this->CoverURL = $CoverURL;
+        $this->likes = $likes;
         return $this;
     }
 
@@ -108,7 +45,6 @@ class Projet
 
     /**
      * @param int $id
-     * @return Projet
      */
     public function setId(int $id): Projet
     {
@@ -126,7 +62,6 @@ class Projet
 
     /**
      * @param String $titre
-     * @return Projet
      */
     public function setTitre(string $titre): Projet
     {
@@ -144,7 +79,6 @@ class Projet
 
     /**
      * @param String $content
-     * @return Projet
      */
     public function setContent(string $content): Projet
     {
@@ -162,11 +96,27 @@ class Projet
 
     /**
      * @param String $CreatedAt
-     * @return Projet
      */
     public function setCreatedAt(string $CreatedAt): Projet
     {
         $this->CreatedAt = $CreatedAt;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAuthorID(): int
+    {
+        return $this->authorID;
+    }
+
+    /**
+     * @param int $authorID
+     */
+    public function setAuthorID(int $authorID): Projet
+    {
+        $this->authorID = $authorID;
         return $this;
     }
 
@@ -180,7 +130,6 @@ class Projet
 
     /**
      * @param String $author
-     * @return Projet
      */
     public function setAuthor(string $author): Projet
     {
@@ -198,7 +147,6 @@ class Projet
 
     /**
      * @param bool $premium
-     * @return Projet
      */
     public function setPremium(bool $premium): Projet
     {
@@ -207,23 +155,87 @@ class Projet
     }
 
     /**
-     * @return String
+     * @return string[]
      */
-    public function getURLImage(): string
+    public function getURLImage(): array
     {
         return $this->URLImage;
     }
 
     /**
-     * @param String $URLImage
-     * @return Projet
+     * @param string[] $URLImage
      */
-    public function setURLImage(string $URLImage): Projet
+    public function setURLImage(array $URLImage): Projet
     {
         $this->URLImage = $URLImage;
         return $this;
     }
 
+    /**
+     * @return String
+     */
+    public function getURLZIP(): string
+    {
+        return $this->URLZIP;
+    }
 
+    /**
+     * @param String $URLZIP
+     */
+    public function setURLZIP(string $URLZIP): Projet
+    {
+        $this->URLZIP = $URLZIP;
+        return $this;
+    }
 
+    /**
+     * @return String
+     */
+    public function getStatus(): string
+    {
+        return $this->Status;
+    }
+
+    /**
+     * @param String $Status
+     */
+    public function setStatus(string $Status): Projet
+    {
+        $this->Status = $Status;
+        return $this;
+    }
+
+    /**
+     * @return String
+     */
+    public function getDifficulte(): string
+    {
+        return $this->Difficulte;
+    }
+
+    /**
+     * @param String $Difficulte
+     */
+    public function setDifficulte(string $Difficulte): Projet
+    {
+        $this->Difficulte = $Difficulte;
+        return $this;
+    }
+
+    /**
+     * @return tag[]
+     */
+    public function getTags(): array
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param tag[] $tags
+     */
+    public function setTags(array $tags): Projet
+    {
+        $this->tags = $tags;
+        return $this;
+    }
 }
