@@ -15,6 +15,8 @@ class DatabaseContactService implements ContactServiceInterface
         $this->init();
     }
 
+
+
     /**
      * Generate sample projet
      *
@@ -68,7 +70,7 @@ class DatabaseContactService implements ContactServiceInterface
         return $contact;
     }
 
-    public function create(contact $Contact): contact
+    public function create($Contact): contact
     {
         // TODO: Implement create() method.
         $statementAddcontact=$this->database->get()-> prepare(
