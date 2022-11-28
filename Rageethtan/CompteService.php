@@ -25,10 +25,14 @@ class CompteService implements AllService
         $ligne=$statementDeleteUser->fetchAll();
     }
 
-    public function create($Pseudo, $email, $mdp)
+    public function create($user)
     {
         $statementCreateUser=$this->database->get()-> prepare("INSERT INTO user(Pseudo, email, password) VALUES (:pseudo, :email, :mdp)");
-        $statementCreateUser->execute(['id'=>$entity]);
+        $statementCreateUser->execute([
+            'pseudo'=>$user[1],
+            'email'=>$user[2],
+            'password'=>$user[3]
+            ]);
         // TODO: Implement create() method.
 
     }
@@ -45,17 +49,16 @@ class CompteService implements AllService
         return null;
     }
 
-    public function connexion(){
 
+
+    public function connexion(){
 
         $email=$_POST["adr_email"];
         $createmdp=hash('sha256', $_POST["mp"]);
 
 
-
         $statementConnexionUser=$this->database->get()-> prepare("SELECT * FROM user WHERE email=:email AND password=:mp");
         $statementConnexionUser->execute([ 'email'=>$email, 'mp'=>$createmdp]);
-
 
         if($statementConnexionUser->rowCount() > 0){
             $result=$statementConnexionUser->fetchall();
@@ -63,9 +66,7 @@ class CompteService implements AllService
             $_SESSION["Pseudo"]=$result[0][1];
             $_SESSION["email"]=$result[0][2];
             $_SESSION["roles"]=strval($result[0][4]);
-
-
         }
-
     }
+
 }

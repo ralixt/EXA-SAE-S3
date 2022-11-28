@@ -8,7 +8,7 @@ interface AllService
 
     public function getlist() : ?array;
 
-    public function create();
+    public function create($entity);
 
     public function update();
 
