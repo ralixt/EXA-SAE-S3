@@ -9,6 +9,7 @@ class User
     private string $password;
     private string $role;
     private int $subscription;
+    private int $isPremium;
 
 
     public function User($id, $pseudo, $email, $password, $role, $subscription){
@@ -18,6 +19,7 @@ class User
         $this->password = $password;
         $this->role = $role;
         $this->subscription = $subscription;
+        $this->isPremium = 0;
     }
     /**
      * @return int
@@ -113,6 +115,22 @@ class User
     public function setSubscription(int $subscription): void
     {
         $this->subscription = $subscription;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPremium(): int
+    {
+        return $this->isPremium;
+    }
+
+    /**
+     * @param int $premium
+     */
+    public function setPremium(int $premium): void
+    {
+        $this->isPremium = $premium;
     }
 
 
