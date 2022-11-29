@@ -3,22 +3,29 @@
 class CompteService implements AllService
 {
     private PDO $database;
+    private User $user;
 
     protected function __construct()
     {
         $this->database = Database::get();
     }
 
+    /**
+     * @param int $entity
+     */
     public function get($entity): ?User
     {
         $statementGetUser = $this->database->get()->prepare("SELECT  id, Pseudo, email, password, role, subscription FROM user WHERE id=:id");
         $statementGetUser->execute(['id' => $entity]);
         $ligne = $statementGetUser->fetchAll();
-        $user = new User($ligne[0][0], $ligne[0][1], $ligne[0][2], $ligne[0][3], $ligne[0][4], $ligne[0][5]);
+        $this->user = new User($ligne[0][0], $ligne[0][1], $ligne[0][2], $ligne[0][3], $ligne[0][4], $ligne[0][5]);
 
-        return $user;
+        return $this->user;
     }
 
+    /**
+     * @param int $entity
+     */
     public function delete($entity)
     {
         $statementDeleteUser = $this->database->get()->prepare("DELETE FROM user WHERE id=:id");
@@ -26,23 +33,39 @@ class CompteService implements AllService
         $ligne = $statementDeleteUser->fetchAll();
     }
 
+    /**
+     * @param User $user
+     */
     public function create($user)
     {
-        $statementCreateUser = $this->database->get()->prepare("INSERT INTO user(Pseudo, email, password) VALUES (:pseudo, :email, :mdp)");
+        $statementCreateUser = $this->database->get()->prepare("INSERT INTO user(Pseudo, email, password, role, subscriptionId, hasActiveSubscription) VALUES (:pseudo, :email, :mdp, :role, :subscriptionId, :isPremium)");
         $statementCreateUser->execute([
-            'pseudo' => $user[1],
-            'email' => $user[2],
-            'password' => hash('sha256', $user[3])
+            'pseudo' => $user->getPseudo(),
+            'email' => $user->getEmail(),
+            'password' => hash('sha256', $user->getPassword()),
+            'role' => 'User',
+            'subscriptionId' => null,
+            'isPremium' => 0
         ]);
         // TODO: Implement create() method.
 
     }
 
+    /**
+     * @param User $user
+     */
     public function update($user)
     {
-        //probleme actuel = resoudre l'obtention du mot de passe de l'utilisateur connecté
-        if (hash('sha256', $user[3] == true)) {
-            //code a mettre et changer le == true
+        if (hash('sha256', $user->getPassword()) == $this->user->getPassword()) {
+            $statementUpdateUser = $this->database->get()->prepare("UPDATE user SET password = :mdp, Pseudo = :pseudo, email = :mail, role = :role, subscriptionId = :subId, isPremium = :isPremium where id  = :id");
+            $statementUpdateUser->execute([
+                'pseudo' => $user->getPseudo(),
+                'email' => $user->getEmail(),
+                'password' => hash('sha256', $user->getPassword()),
+                'role' => $user->getRole(),
+                'subId' => $user->getSubscription(),
+                'isPremium' => $user->getPremium()
+            ]);
         }
         // TODO: Implement update() method.
     }
@@ -54,16 +77,10 @@ class CompteService implements AllService
         return null;
     }
 
-    public function connexion()
+    public function connexion($email, $mdp)
     {
-
-
-        $email = $_POST["adr_email"];
-        $createmdp = hash('sha256', $_POST["mp"]);
-
-
         $statementConnexionUser = $this->database->get()->prepare("SELECT * FROM user WHERE email=:email AND password=:mp");
-        $statementConnexionUser->execute(['email' => $email, 'mp' => $createmdp]);
+        $statementConnexionUser->execute(['email' => $email, 'mp' => $mdp]);
 
         if ($statementConnexionUser->rowCount() > 0) {
             $result = $statementConnexionUser->fetchall();
@@ -71,8 +88,6 @@ class CompteService implements AllService
             $_SESSION["Pseudo"] = $result[0][1];
             $_SESSION["email"] = $result[0][2];
             $_SESSION["roles"] = strval($result[0][4]);
-
         }
-
     }
 }

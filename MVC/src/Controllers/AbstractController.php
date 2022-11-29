@@ -2,10 +2,10 @@
 
 abstract class AbstractController {
   
-  protected ProjectServiceInterface $taskService;
+  protected ProjectServiceInterface $Service;
   
-  public function __construct(ProjectServiceInterface $taskService ) {
-    $this->taskService = $taskService;
+  public function __construct(ProjectServiceInterface $Service) {
+    $this->Service = $Service;
   }
   
   abstract public function render() : void;
