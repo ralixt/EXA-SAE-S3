@@ -66,6 +66,7 @@ class AjoutProjetController extends AbstractController
             ->setTitre($titre)
             ->setAuthor($author)
             ->setURLImage($fileName)
+            
         ;
 
         $serviceProjet->create($projet);

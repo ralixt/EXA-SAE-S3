@@ -7,7 +7,6 @@ class ContactController extends AbstractController
     {
       $serviceContact= DatabaseContactService::getInstance() ;
       $contact=new contact();
-
         // TODO: Implement render() method.
         $nom=null;
         $prenom=null;

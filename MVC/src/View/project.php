@@ -25,7 +25,7 @@
         <section>
             <h2>Commentaires</h2>
             <article>
-                <form action="post-comment.php" method="post">
+                <form action="../Controllers/ProjetController.php" method="post">
                     <div>
                         <!-- input id user-->
                     </div>
