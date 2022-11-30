@@ -16,15 +16,20 @@ class DatabaseProjectService implements AllService
     }
 
     private function init() : void {
-        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, URL_Image FROM projet JOIN user ON author = user.id");
+        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, URL_Image, COUNT(project) FROM projet JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project GROUP BY projet.id");
         $sentence -> execute();
         $projects = $sentence->fetchAll();
-        $sentence = $this->database->prepare("SELECT project, COUNT(project) FROM likeproject GROUP BY project");
-        $sentence -> execute();
-        $likeProject = $sentence->fetchAll();
-        $sentence = $this->database->prepare("SELECT tag.id, projet_tag.id_projet, tag.title FROM tag JOIN projet_tag ON projet_tag.id_tag = tag.id");
+        $sentence = $this->database->prepare("SELECT tag.id, projet_tag.id_projet, tag.title FROM tag JOIN projet_tag ON projet_tag.id_tag = tag.id ORDER BY projet_tag.id_projet");
         $sentence ->execute();
         $tags = $sentence->fetchAll();
+
+        $Orderedtags = array();
+
+        foreach ($tags as $tag){
+            $Orderedtags[$tag[1]][]= (new Tag())
+                ->setId($tag[0])
+                ->setName($tag[2]);
+        }
 
         $this->data = [];
         foreach ($projects as $p){
@@ -38,10 +43,9 @@ class DatabaseProjectService implements AllService
                 ->setStatus($p[6])
                 ->setDifficulte($p[7])
                 ->setPremium($p[8])
-                ->setURLImage($p[9]);
-        }
-        foreach ($likeProject as $lp){
-            $this->data[$lp[0]]->setLikes($lp[1]);
+                ->setURLImage($p[9])
+                ->setLikes($p[10])
+                ->setTags($Orderedtags[$p[0]]);
         }
     }
 
