@@ -90,4 +90,10 @@ class CompteService implements AllService
             $_SESSION["roles"] = strval($result[0][4]);
         }
     }
+
+    public function NbrUserProjet(){
+        $projetUserStatement =$this->database->get()->prepare('SELECT Count(*) FROM projet where author = :id');
+        $projetUserStatement-> execute(['id'=>$_SESSION['ids']]);
+        $projetPub=$projetUserStatement->fetchAll();
+    }
 }

@@ -1,18 +1,14 @@
-<?php 
-
-    $projetUserStatement =$pdo->prepare('SELECT Count(*) FROM projet where author = :id');
-    $projetUserStatement-> execute(['id'=>$_SESSION['ids']]);
-    $projetPub=$projetUserStatement->fetchAll();
-?>
-
 <header>
-    <?php if(isset($_SESSION['ids']) && $_SESSION['ids']!=null){
+    <?php
+    NbrUserProjet();
+    if(isset($_SESSION['ids']) && $_SESSION['ids']!=null){
         echo('<a href="login.php">Changer de compte</a>');
     }
     ?>
     <a href="Accueil.php">Accueil</a>
-        <!-- récupérer le header du groupe et changer l'image -->
 </header>
+
+
 <body>
     <div class="rectangle">
         <div>
@@ -51,7 +47,7 @@
                 <li>Accès aux ressources de projets</li>
                 <li>Accès à des projets premium</li>
             </ul>
-            <Button id="premium" class="button salope">Selectionner</Button>
+            <Button id="premium" class="buttonSelectedProject">Selectionner</Button>
         </div>
         <div class="rectangle blanc">
             <p>A droite<br>les trois meilleurs projets premium</p>
