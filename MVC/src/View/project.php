@@ -1,4 +1,10 @@
+<?php
+/**
+* @var Commentaire[] $comments
+*/
+?>
 <!doctype html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -66,7 +72,15 @@
                 </form>
             </article>
             <article>
-                <!-- Affichage des commentaires -->
+
+                <?php foreach ($comments as $comment):?>
+                    <div>
+                        <h2><?php $comment["Pseudo"] ?></h2>
+                        <h3>Note: <?php $comment["rating"]?></h3>
+                        <p><?php $comment["content"]?></p>
+                    </div>
+                <?php endforeach;?>
+
             </article>
         </section>
 

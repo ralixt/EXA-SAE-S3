@@ -65,7 +65,7 @@ class CommentaireService implements AllService
     public function create($entity)
     {
         // TODO: Implement create() method.
-        $commentAddprojet=$this->database->get()->prepare('INSERT INTO comment (  content,rating , author,projet) VALUES( :commentaire,:note,:user,:projet)');
+        $commentAddprojet=$this->database->get()->prepare('INSERT INTO comment (  content,rating , author,Pseudo ,projet) VALUES( :commentaire,:note,:user,:Pseudo,:projet)');
 
         $commentAddprojet->execute([
 
@@ -73,7 +73,8 @@ class CommentaireService implements AllService
             'commentaire'=> $entity->getContent() ,
             'note'=>$entity->getRating(),
             'user'=>$entity->getAuthor(),
-            'projet'=>$entity->getProjet()
+            'projet'=>$entity->getProjet(),
+            'Pseudo'=>$entity->setPseudo()
 
 
         ]);

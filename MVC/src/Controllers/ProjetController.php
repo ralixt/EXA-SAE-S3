@@ -10,8 +10,9 @@ class ProjetController extends AbstractController
 
         $contenu=null;
         $rating=null;
-        $Pseudo=null;
+        $iduser=null;
         $projet=null;
+        $Pseudo=null;
 
         if(isset($_POST["commentaire"])){
             $contenu=$_POST["commentaire"];
@@ -20,8 +21,24 @@ class ProjetController extends AbstractController
             $rating=$_POST["note"];
         }
         if(isset($_SESSION["ids"])){
-            $Pseudo=$_SESSION["ids"];
+            $iduser=$_SESSION["ids"];
         }
+        if(isset($_POST["projet"])){
+            $rating=$_POST["projet"];
+        }
+        if(isset($_SESSION["Pseudo"])){
+            $Pseudo=$_SESSION["Pseudo"];
+        }
+
+        $commentaire->setContent($contenu);
+        $commentaire->setRating($rating);
+        $commentaire->setAuthor($iduser);
+        $commentaire->setProjet($projet);
+        $commentaire->setPseudo($Pseudo);
+
+
+        $serviceCommmentaire->create($commentaire);
+
 
 
 

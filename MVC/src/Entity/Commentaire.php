@@ -6,9 +6,26 @@ class Commentaire
     private string $content;
     private int $rating;
     private int $author;
+
     private int $projet;
     private string $createdAt;
+    private string $Pseudo;
 
+    /**
+     * @return string
+     */
+    public function getPseudo(): string
+    {
+        return $this->Pseudo;
+    }
+
+    /**
+     * @param string $Pseudo
+     */
+    public function setPseudo(string $Pseudo): void
+    {
+        $this->Pseudo = $Pseudo;
+    }
     /**
      * @return string
      */

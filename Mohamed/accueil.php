@@ -259,7 +259,7 @@
                                 echo("<div class='imagecontenair'>");
                             }
                             echo("<div class='imagetexte'>");
-                            echo('<a href="affichageprojet.php?id='. $row[$i][0] .'"><img class="imageprojet" src="image/projet.jpg" title='.$row[$i][2].'  /></a>');
+                            echo('<a href="../Controllers/AjoutProjetController.php?id_projet='. $row[$i][0] .'"><img class="imageprojet" src="image/projet.jpg" title='.$row[$i][2].'  /></a>');
                             echo('<p>'. $row[$i][2] .'</p> <br>');
                             echo("</div>");
                         }
