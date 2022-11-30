@@ -2,9 +2,9 @@
 
 abstract class AbstractController {
   
-  protected ProjectServiceInterface $Service;
+  protected AllService $Service;
   
-  public function __construct(ProjectServiceInterface $Service) {
+  public function __construct(AllService $Service) {
     $this->Service = $Service;
   }
   
