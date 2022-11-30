@@ -1,6 +1,6 @@
 <?php
 
-class DatabaseContactService implements ContactServiceInterface
+class DatabaseContactService implements AllService
 {
     use SingletonTrait;
 
@@ -36,41 +36,41 @@ class DatabaseContactService implements ContactServiceInterface
                 ->setIdentifiant($contact["id"]);
 
 
-
-
-
-
-
-
-
-
-            //Configuration projet
-
         }
     }
 
-    public function get(int $id): ?contact
+
+
+    public function get($entity): ?contact
     {
-        $statementGetContact=$this->database->get()-> prepare(
-            "SELECT  contact.id,contact.nom,contact.mail,contact.prenom,contact.message From contact where id=:id"
-
-        );
-        $statementGetContact->execute([
-            'id'=>$id
-        ]);
-        $ligne=$statementGetContact->fetchAll();
-
-        $contact=new contacts();
-        $contact->setIdentifiant($ligne[0][0]);
-        $contact->setMail($ligne[0][2]);
-        $contact->setMessage($ligne[0][4]);
-        $contact->setPrenom($ligne[0][3]);
-        $contact->setNom($ligne[0][1]);
-
-        return $contact;
+        // TODO: Implement get() method.
+        return $this->data[$entity] ?? null;
     }
 
-    public function create($Contact): contact
+
+    public function delete($entity)
+    {
+        // TODO: Implement delete() method.
+        $statementDeletecontact=$this->database->get()-> prepare(
+            "Delete From contact where id=:id;"
+
+        );
+        $statementDeletecontact->execute([
+           'id'=>$entity
+        ]);
+
+    }
+
+    public function getlist(): ?array
+    {
+        // TODO: Implement getlist() method.
+    }
+
+    /***
+     * @var contact $entity
+     * @return void
+     */
+    public function create($entity)
     {
         // TODO: Implement create() method.
         $statementAddcontact=$this->database->get()-> prepare(
@@ -78,18 +78,26 @@ class DatabaseContactService implements ContactServiceInterface
 
         );
         $statementAddcontact->execute([
-            'nom' => $Contact->getNom(), 'prenom' => $Contact->getPrenom(), 'mail' => $Contact->getMail(), 'message' => $Contact->getMessage()
+            'nom' => $entity->getNom(), 'prenom' => $entity->getPrenom(), 'mail' => $entity->getMail(), 'message' => $entity->getMessage()
         ]);
-        return $Contact;
     }
 
-    public function delete(int $id): void
-    {
-        // TODO: Implement delete() method.
-    }
+    /***
+     * @param contact $entity
 
-    public function list(array $Contacts): array
+     */
+    public function update($entity)
     {
-        // TODO: Implement list() method.
+        // TODO: Implement update() method.
+        $sentence = $this->database->prepare("UPDATE contact SET nom = :nom, prenom = :prenom, mail = :mail, message = :message");
+        $sentence->execute(["titre"=> $entity->getTitre(),
+            "nom" => $entity->getNom(),
+            "prenom" => $entity ->getPrenom() ,
+            "mail" => $entity->getMail(),
+            "message" => $entity->getMessage()
+            ]);
+
+
+
     }
 }
