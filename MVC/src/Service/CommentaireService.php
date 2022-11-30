@@ -30,7 +30,7 @@ class CommentaireService implements AllService
 
 
 
-            //Configuration projet
+
 
         }
     }
@@ -56,6 +56,7 @@ class CommentaireService implements AllService
     public function getlist(): ?array
     {
         // TODO: Implement getlist() method.
+
     }
 
     /**
@@ -80,8 +81,20 @@ class CommentaireService implements AllService
         ]);
     }
 
+    /***
+     * @param Commentaire $entity
+
+     */
     public function update($entity)
     {
         // TODO: Implement update() method.
+        $sentence = $this->database->prepare("UPDATE comment SET content = :content, rating = :rating, author = :author, Pseudo = :Pseudo,projet=:project");
+        $sentence->execute(["titre"=> $entity->getTitre(),
+            "content" => $entity->getContent(),
+            "rating" => $entity ->getRating() ,
+            "author" => $entity->getAuthor(),
+            "Pseudo" => $entity->getPseudo(),
+            "project"=>$entity->getProjet()
+        ]);
     }
 }
