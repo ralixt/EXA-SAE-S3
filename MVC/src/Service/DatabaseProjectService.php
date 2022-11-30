@@ -56,6 +56,55 @@ class DatabaseProjectService implements AllService
 
     public function getlist(array $args = []): array
     {
+        $query = 'SELECT * from projet ';
+        if(count($args) <= 0){
+            return $this->data;
+        }
+        if(isset($args["recherche"])){
+            $query .= 'where (titre LIKE "%:recherche%" OR content LIKE "%:recherche%") ';
+            $recherche = $args["recherche"];
+            if (isset($args["tag"])) {
+                $query .= "AND projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN (:tags)) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
+                $tags = implode(", ", $args["tag"]);//précision il est nécessaire de donner un tableau avec les apostrophes comme guillemet entourant les tags
+                $nbTag = count($args["tag"]);
+            }
+            if(isset($args["orderBy"])){
+                //a finir
+                $query .= "ORDER BY titre ";
+            }
+        }
+        else {
+            if (isset($args["tag"])) {
+                $query .= "where projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN (:tags)) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
+                $tags = implode(", ", $args["tag"]);//précision il est nécessaire de donner un tableau avec les apostrophes comme guillemet entourant les tags
+                $nbTag = count($args["tag"]);
+                if(isset($args["orderBy"])){
+                    //a finir
+                    $query .= "ORDER BY titre ";
+                }
+            }
+        }
+        $query .= "LIMIT 30;";
+        $statementList = $this->database->prepare($query);
+        if(isset($recherche) && isset($tags)) {
+            $statementList->execute([
+                "recherche"=>$recherche,
+                "tags"=>$tags,
+                "nbTags"=>$nbTag
+            ]);
+        }
+        elseif (isset($recherche) && !isset($tags)){
+            $statementList->execute([
+                "recherche"=>$recherche,
+            ]);
+        }
+        elseif (!isset($recherche) && isset($tags)){
+            $statementList->execute([
+                "tags"=>$tags,
+                "nbTags"=>$nbTag
+            ]);
+        }
+        return $args;//pour l'instant
     }
     /** @var projet $entity */
     public function create($entity)
