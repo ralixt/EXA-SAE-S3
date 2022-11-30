@@ -1,22 +1,10 @@
 <?php 
-    include_once('config.php');
-    include_once('variables.php');
+
     $projetUserStatement =$pdo->prepare('SELECT Count(*) FROM projet where author = :id');
     $projetUserStatement-> execute(['id'=>$_SESSION['ids']]);
     $projetPub=$projetUserStatement->fetchAll();
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script language="javascript" type="text/javascript" src="script.js" defer></script> 
-    <title>Compte</title>
-    <link rel="stylesheet" href="CSS/stylescompte.css">
-    <link rel="icon" href="image/Let_s_Code.png">
-</head>
 <header>
     <?php if(isset($_SESSION['ids']) && $_SESSION['ids']!=null){
         echo('<a href="login.php">Changer de compte</a>');
@@ -45,7 +33,7 @@
                 <li>Publication de projets</li>
                 <li>Accès aux ressources de projets</li>
             </ul>
-            <Button class="button salope">Selectionné</Button>
+            <Button class="buttonSelectedProject">Selectionné</Button>
         </div>
         <div class="rectangle blanc">
             <p>A droite<br>les trois meilleurs projets gratuit</p>
@@ -76,7 +64,7 @@
     </div>
     <div class="rectangle">
         <div>
-            <form class="ModifierSesInfos" action="post-ComptePseudo.php" method="post">
+            <form class="ModifierSesInfos" action="../../../Rageethtan/post-ComptePseudo.php" method="post">
                 <div>
                     <input type="text" id="prenom" name="Pseudo" placeholder="Pseudo" maxlength="16" minlength="6" required>
                     <ul class="error-container static"></ul>
@@ -90,7 +78,7 @@
             </form>
         </div>
         <div>
-            <form class="ModifierSesInfos" action="post-CompteMail.php" method="post">
+            <form class="ModifierSesInfos" action="../../../Rageethtan/post-CompteMail.php" method="post">
                 <div>
                     <input id="adr_email" name="adr_email" type="email" placeholder="Email" required>
                     <ul class="error-container static"></ul>
@@ -104,7 +92,7 @@
             </form>
         </div>
         <div>
-            <form class="ModifierSesInfos" action="post-CompteMDP.php" method="post">
+            <form class="ModifierSesInfos" action="../../../Rageethtan/post-CompteMDP.php" method="post">
                 <div>
                     <input id="nouveau_mdp" name="nouveau_mdp" type="password" placeholder="Rentrer un nouveau mot de passe" minlength="8" required>
                 </div><br>
@@ -121,17 +109,3 @@
         </div>
     </div>
 </body>
-<footer>
-    <div>
-        <a href="document">Terms & Conditions</a>
-        <a href="contact.html">Contact</a>
-    </div>
-    <div>
-        <a href="#">haut de la page</a>
-    </div>
-    <div>
-        <a href="login.php">Connexion</a>
-        <a href="inscription.php">Inscription</a>
-    </div>
-</footer>
-</html>

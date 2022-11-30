@@ -18,8 +18,9 @@ class CompteController extends AbstractController
             $id = get($compte);
         }
 
+
         echo get_template(
-            __PROJECT_ROOT__."/Views/project.php"
+            __PROJECT_ROOT__."/Views/compte.php"
         );
 
 
