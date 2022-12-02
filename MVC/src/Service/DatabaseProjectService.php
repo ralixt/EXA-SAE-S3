@@ -80,7 +80,18 @@ class DatabaseProjectService implements AllService
                 $nbTag = count($args["tag"]);
                 if(isset($args["orderBy"])){
                     //a finir
-                    $query .= "ORDER BY titre ";
+                    if($args["orderBy"] == "nom"){
+                        $query .= "ORDER BY titre ";
+                    }
+                    elseif ($args["orderBy"] == "difficulté"){
+                        //checker avec le prof
+                    }
+                    elseif ($args["orderBy"] == "like"){
+                        //checker avec le prof
+                    }
+                    elseif ($args["orderBy"] == "commentaire") {
+                        //checker avec le prof
+                    }
                 }
             }
         }
@@ -104,7 +115,7 @@ class DatabaseProjectService implements AllService
                 "nbTags"=>$nbTag
             ]);
         }
-        return $args;//pour l'instant
+        return array($statementList->fetchAll());
     }
     /** @var projet $entity */
     public function create($entity)

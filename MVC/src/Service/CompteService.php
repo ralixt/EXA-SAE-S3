@@ -2,25 +2,52 @@
 
 class CompteService implements AllService
 {
-    private PDO $database;
-    private User $user;
 
+
+    use SingletonTrait;
+    /**
+     * @var User[]
+     * @var Projet[]
+     */
+    private array $data;
+    private PDO $database;
+
+    protected function __construct() {
+        $this->database = Database::getInstance();
+        $this->init();
+    }
+    private function init() : void
+    {
+        $sentence = $this->database->get()->prepare("SELECT user.id,user.Pseudo,user.email,user.password,user.role,user.subscription,user.hasActiveSucription FROM user;");
+        $sentence->execute();
+        $users = $sentence->fetchAll();
+        $this->data = [];
+        foreach ($users as $user) {
+            $this->data[$user[0]] = (new User())
+                ->setPremium($user[6])
+                ->setSubscription($user[5])
+
+                ->setRole($user[4])
+                ->setPassword($user[3])
+                ->setEmail($user[2])
+                ->setPseudo($user[1])
+                ->setId($user[0]);
+
+
+        }
+    }
+/*
     protected function __construct()
     {
         $this->database = Database::get();
     }
-
+*/
     /**
      * @param int $entity
      */
     public function get($entity): ?User
     {
-        $statementGetUser = $this->database->get()->prepare("SELECT  id, Pseudo, email, password, role, subscription FROM user WHERE id=:id");
-        $statementGetUser->execute(['id' => $entity]);
-        $ligne = $statementGetUser->fetchAll();
-        $this->user = new User($ligne[0][0], $ligne[0][1], $ligne[0][2], $ligne[0][3], $ligne[0][4], $ligne[0][5]);
-
-        return $this->user;
+        return $this->data[$entity] ?? null;
     }
 
     /**
@@ -30,7 +57,7 @@ class CompteService implements AllService
     {
         $statementDeleteUser = $this->database->get()->prepare("DELETE FROM user WHERE id=:id");
         $statementDeleteUser->execute(['id' => $entity]);
-        $ligne = $statementDeleteUser->fetchAll();
+        //$ligne = $statementDeleteUser->fetchAll();
     }
 
     /**
@@ -94,6 +121,6 @@ class CompteService implements AllService
     public function NbrUserProjet(){
         $projetUserStatement =$this->database->get()->prepare('SELECT Count(*) FROM projet where author = :id');
         $projetUserStatement-> execute(['id'=>$_SESSION['ids']]);
-        $projetPub=$projetUserStatement->fetchAll();
+        //$projetPub=$projetUserStatement->fetchAll();
     }
 }
