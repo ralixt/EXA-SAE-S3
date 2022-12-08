@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var Projet[] $project
+ */
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -9,7 +14,7 @@
 </head>
 <body>
     <header>
-        <a href>Accueil</a>
+        <a>Accueil</a>
 
         <!--pour les user connecté-->
         <a href="projet.php">Nouveau Projet</a>
@@ -19,7 +24,7 @@
         <a href="login.php">Nouveau projet</a>
         <a href="login.php">Connexion/Inscription</a>
 
-        <form method="GET" action="">
+        <form method="GET">
             <input type="search" name="recherche" id="recherche" value=''>
             <p>
                 langage de programmation
@@ -83,6 +88,12 @@
             </select>
         </form>
     </header>
-    <!--affichage projet-->
+    <?php
+    foreach ($project as $projet)
+        echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
+                "projet" => $projet
+        ])
+
+    ?>
 </body>
 </html>
