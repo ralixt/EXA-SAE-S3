@@ -1,6 +1,8 @@
-**/node_modules/
-**/vendor/
-**/docker/volumes/
-**/.idea/
+
+.idea/
+
+db/
+
+src-correction/
+
 .env
-src/**/images/
