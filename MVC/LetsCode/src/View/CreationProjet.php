@@ -16,7 +16,7 @@
 </header>
 <body>
 <h1>ajouter un projet</h1>
-<form action="Controllers/AjoutProjetController.php" method="post" id="formulaireadd" enctype="multipart/form-data">
+<form action="././.././Controllers/AjoutProjetController.php" method="post" id="formulaireadd" enctype="multipart/form-data">
 
     <div>
         <label for="titre">Le titre du projet: </label><br>

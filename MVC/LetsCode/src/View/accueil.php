@@ -21,7 +21,7 @@
         <a href="login.php">Mon compte</a>
 
         <!--pour les user non connecté-->
-        <a href="CreationProjet.php">Nouveau projet</a>
+        <a href="./CreationProjet.php">Nouveau projet</a>
         <a href="login.php">Connexion/Inscription</a>
 
         <form method="GET">

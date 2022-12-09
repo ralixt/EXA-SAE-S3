@@ -35,16 +35,12 @@ switch ($uri[1]) :
         (new AccueilContoller( DatabaseProjectService::getInstance() ))->render();
         break;
 
-    // Create/Edit/Delete view
-    case "projet":
-        var_dump($uri);
-        break;
     case "projet":
         // Extraction de l'id de la tâche depuis l'URI /task/{id}
         $projet_id = isset($uri[2])
             ? intval($uri[2])
             : null;
-        (new ProjetController( DatabaseProjectService::getInstance(), $projet_id ))->render();
+        (new AjoutProjetController(DatabaseProjectService::getInstance(), $projet_id ))->render();
         break;
 
     // Default 404

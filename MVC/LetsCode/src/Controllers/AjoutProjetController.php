@@ -1,15 +1,22 @@
 <?php
-const __PROJECT_ROOT__ = __DIR__;
 
-require_once __PROJECT_ROOT__ . "/AbstractController.php";
+
 
 class AjoutProjetController extends AbstractController
 {
-
+    public function __construct(AllService $Service, $projet_id) {
+        parent::__construct(($Service));
+        if($projet_id!=null){
+            $this->task = $this->Service->get($projet_id);
+        }
+        else{
+            header("location: localhost");
+        }
+    }
 
     public function render(): void
     {
-        $serviceProjet=DatabaseProjectProjectService::getInstance();
+        $serviceProjet=DatabaseProjectService::getInstance();
         $projet=new Projet();
         // TODO: Implement render() method.
 
