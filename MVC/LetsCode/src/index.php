@@ -27,11 +27,17 @@ require_once __PROJECT_ROOT__ . "/Controllers/AccueilContoller.php";
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
 
-switch ($uri[1]) :
 
+switch ($uri[1]) :
+    // List/Home view
     case "":
-    case "Accueil":
-        (new AccueilContoller(DatabaseProjectService::getInstance()))->render();
+    case "accueil":
+        (new AccueilContoller( DatabaseProjectService::getInstance() ))->render();
+        break;
+
+    // Create/Edit/Delete view
+    case "projet":
+        var_dump($uri);
         break;
     case "projet":
         // Extraction de l'id de la tâche depuis l'URI /task/{id}
@@ -41,7 +47,9 @@ switch ($uri[1]) :
         (new ProjetController( DatabaseProjectService::getInstance(), $projet_id ))->render();
         break;
 
+    // Default 404
     default:
-        echo "404";
+        var_dump($uri);
+        echo get_404();
         exit();
 endswitch;
