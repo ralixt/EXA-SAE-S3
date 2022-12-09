@@ -1,4 +1,7 @@
 <?php
+const __PROJECT_ROOT__ = __DIR__;
+
+require_once __PROJECT_ROOT__ . "/AbstractController.php";
 
 class AjoutProjetController extends AbstractController
 {

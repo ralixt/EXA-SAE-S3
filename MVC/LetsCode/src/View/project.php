@@ -73,13 +73,12 @@
             </article>
             <article>
 
-                <?php foreach ($comments as $comment):?>
-                    <div>
-                        <h2><?php $comment["Pseudo"] ?></h2>
-                        <h3>Note: <?php $comment["rating"]?></h3>
-                        <p><?php $comment["content"]?></p>
-                    </div>
-                <?php endforeach;?>
+                <?php foreach ($comments as $comment) {
+                    echo get_template(__PROJECT_ROOT__ . "/View/Fragments/projet-comment.php", [
+                        "comment" => $comment
+                    ]);
+                }
+                ?>
 
             </article>
         </section>

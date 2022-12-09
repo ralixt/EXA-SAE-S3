@@ -1,6 +1,17 @@
+<?php
+/***
+ * @var Commentaire $comment
+ */
+?>
 <div>
-    <h2><!--Username--></h2>
+    <h2><?php echo($comment->getPseudo())?></h2>
     <!-- likes projet -->
-    <h3>Note: <!-- Note du commentaire--></h3>
-    <p><!-- Contenu du commentaire--></p>
+    <h3>Note: <?php echo($comment->getRating())?></h3>
+    <p><?php echo ($comment->getContent())?></p>
 </div>
+
+
+
+
+
+
