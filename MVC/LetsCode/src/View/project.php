@@ -1,6 +1,7 @@
 <?php
 /**
 * @var Commentaire[] $comments
+ * @var Projet $project
 */
 ?>
 <!doctype html>
@@ -15,14 +16,14 @@
 </head>
     <body>
         <header>
-            <h2>Titre du projet</h2>
-            <p>Date De creation</p>
+            <h2><?= $project-> getTitre() ?></h2>
+            <p><?= $project-> getCreatedAt() ?></p>
             <!-- Tags ici -->
             <!-- likes du projet ici-->
         </header>
         <section>
             <h2>Projet</h2>
-            <p>Markdown ici</p>
+            <p><?= $project-> getContent() ?></p>
         </section>
         <section>
             <h2>Ressources</h2>
@@ -31,13 +32,15 @@
         <section>
             <h2>Commentaires</h2>
             <article>
-                <form action="../Controllers/ProjetController.php" method="post">
+                <form action="http://localhost/projet/<?php echo($project->getId())?>" method="post">
                     <div>
                         <!-- input id user-->
                     </div>
                     <div>
+                        <input type="hidden" name="id_project" value="<?php echo($project->getId())?>">
+
                         <!-- input idprojet-->
-                    </div>
+                    </>
                     <div>
                         <input type="radio" id="note0"
                                name="note" value="0" checked>
@@ -74,7 +77,7 @@
             <article>
 
                 <?php foreach ($comments as $comment) {
-                    echo get_template(__PROJECT_ROOT__ . "/View/Fragments/projet-comment.php", [
+                    echo get_template(__PROJECT_ROOT__ . "/View/Fragments/project-comment.php", [
                         "comment" => $comment
                     ]);
                 }

@@ -38,9 +38,13 @@ switch ($uri[1]) :
     case "projet":
         // Extraction de l'id de la tâche depuis l'URI /task/{id}
         $projet_id = isset($uri[2])
+
             ? intval($uri[2])
             : null;
-        (new AjoutProjetController(DatabaseProjectService::getInstance(), $projet_id ))->render();
+        (new ProjetController(DatabaseProjectService::getInstance(), $projet_id ))->render();
+        break;
+    case "commentaire":
+        (new CommentaireController( DatabaseProjectService::getInstance() ))->render();
         break;
 
     // Default 404

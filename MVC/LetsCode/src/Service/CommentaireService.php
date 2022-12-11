@@ -10,22 +10,25 @@ class CommentaireService implements AllService
     private PDO $database;
 
     protected function __construct() {
-        $this->database = Database::getInstance();
+        $this->database = Database::get();
         $this->init();
     }
     private function init() : void {
-        $sentence = $this->database->get()-> prepare("SELECT comment.id,comment.createdAt,comment.content,comment.rating,comment.author,comment.projet FROM comment;");
+        $sentence = $this->database-> prepare("SELECT comment.id,comment.createdAt,comment.content,comment.rating,comment.author,comment.projet,user.Pseudo FROM comment Join user on comment.author=user.id;");
         $sentence -> execute();
         $comments = $sentence->fetchAll();
         $this->data = [];
         foreach ($comments as $comment){
             $this->data[$comment[0]]= (new Commentaire())
+
                 ->setId($comment[0])
                 ->setCreatedAt($comment[1])
                 ->setContent($comment[2])
                 ->setRating($comment[3])
                 ->setAuthor($comment[4])
-                ->setProjet($comment[5]);
+                ->setProjet($comment[5])
+                ->setPseudo($comment[6]);
+
 
 
 
@@ -34,11 +37,19 @@ class CommentaireService implements AllService
 
         }
     }
-    public function get($entity): ?object
+
+    /***
+     * @param $entity
+     * @return Commentaire|null
+     */
+
+    public function get($entity): ?Commentaire
     {
 
         return $this->data[$entity] ?? null;
     }
+
+
 
     /**
      * @var Commentaire $entity
@@ -47,7 +58,7 @@ class CommentaireService implements AllService
     public function delete($entity)
     {
         // TODO: Implement delete() method.
-        $commentDeleteProjet=$this->database->get()->prepare('DELETE from comment where id:id');
+        $commentDeleteProjet=$this->database->prepare('DELETE from comment where id:id');
         $commentDeleteProjet->execute([
             'id'=>$entity->getId()
         ]);
@@ -66,7 +77,7 @@ class CommentaireService implements AllService
     public function create($entity)
     {
         // TODO: Implement create() method.
-        $commentAddprojet=$this->database->get()->prepare('INSERT INTO comment (  content,rating , author,Pseudo ,projet) VALUES( :commentaire,:note,:user,:Pseudo,:projet)');
+        $commentAddprojet=$this->database->prepare('INSERT INTO comment (  content,rating , author ,projet) VALUES( :commentaire,:note,:user,:projet)');
 
         $commentAddprojet->execute([
 
@@ -75,7 +86,7 @@ class CommentaireService implements AllService
             'note'=>$entity->getRating(),
             'user'=>$entity->getAuthor(),
             'projet'=>$entity->getProjet(),
-            'Pseudo'=>$entity->setPseudo()
+
 
 
         ]);

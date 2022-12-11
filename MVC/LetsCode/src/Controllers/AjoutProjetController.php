@@ -16,6 +16,7 @@ class AjoutProjetController extends AbstractController
 
     public function render(): void
     {
+
         $serviceProjet=DatabaseProjectService::getInstance();
         $projet=new Projet();
         // TODO: Implement render() method.
@@ -84,39 +85,6 @@ class AjoutProjetController extends AbstractController
 
         //commentaire
 
-        $serviceCommmentaire=CommentaireService::getInstance();
-        $commentaire=new Commentaire();
-
-        $contenu=null;
-        $rating=null;
-        $iduser=null;
-        $projet=null;
-        $Pseudo=null;
-
-        if(isset($_POST["commentaire"])){
-            $contenu=$_POST["commentaire"];
-        }
-        if(isset($_POST["note"])){
-            $rating=$_POST["note"];
-        }
-        if(isset($_SESSION["ids"])){
-            $iduser=$_SESSION["ids"];
-        }
-        if(isset($_GET["id"])){
-            $projet=$_GET["id"];
-        }
-        if(isset($_SESSION["Pseudo"])){
-            $Pseudo=$_SESSION["Pseudo"];
-        }
-
-        $commentaire->setContent($contenu);
-        $commentaire->setRating($rating);
-        $commentaire->setAuthor($iduser);
-        $commentaire->setProjet($projet);
-        $commentaire->setPseudo($Pseudo);
-
-
-        $serviceCommmentaire->create($commentaire);
 
 
 

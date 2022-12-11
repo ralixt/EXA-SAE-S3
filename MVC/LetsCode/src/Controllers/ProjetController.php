@@ -6,6 +6,7 @@ class ProjetController extends AbstractController
         parent::__construct(($Service));
         if($projet_id!=null){
             $this->task = $this->Service->get($projet_id);
+
         }
         else{
             header("location: localhost");
@@ -14,7 +15,23 @@ class ProjetController extends AbstractController
 
     public function render(): void
     {
+        //
+
+        $id=null;
+        if(isset($_GET['id_project'])) {
+            $id= $_GET['id_project'];
+
+        }
+        echo get_template(__PROJECT_ROOT__ . "/View/project.php", [
+            "project" => $this->task,
+            "comments"=>$this->task
+        ]);
+/*
         $serviceCommmentaire=CommentaireService::getInstance();
+
+
+
+
         $commentaire=new Commentaire();
 
         $contenu=null;
@@ -41,13 +58,18 @@ class ProjetController extends AbstractController
 
         $commentaire->setContent($contenu);
         $commentaire->setRating($rating);
-        $commentaire->setAuthor($iduser);
+        $commentaire->setAuthor(11);
         $commentaire->setProjet($projet);
         $commentaire->setPseudo($Pseudo);
 
 
-        $serviceCommmentaire->create($commentaire);
+        $success=$serviceCommmentaire->create($commentaire);
+        if (!$success) {
+            throw new Exception('Impossible d\'ajouter le commentaire !');
+        }
 
+
+*/
 
 
 
