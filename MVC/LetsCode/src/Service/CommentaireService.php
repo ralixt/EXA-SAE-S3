@@ -14,20 +14,18 @@ class CommentaireService implements AllService
         $this->init();
     }
     private function init() : void {
-        $sentence = $this->database-> prepare("SELECT comment.id,comment.createdAt,comment.content,comment.rating,comment.author,comment.projet,user.Pseudo FROM comment Join user on comment.author=user.id;");
+        $sentence = $this->database-> prepare("SELECT comment.id,comment.content,comment.rating,comment.author,comment.projet,user.Pseudo FROM comment Join user on comment.author=user.id;");
         $sentence -> execute();
         $comments = $sentence->fetchAll();
         $this->data = [];
         foreach ($comments as $comment){
             $this->data[$comment[0]]= (new Commentaire())
-
                 ->setId($comment[0])
-                ->setCreatedAt($comment[1])
-                ->setContent($comment[2])
-                ->setRating($comment[3])
-                ->setAuthor($comment[4])
-                ->setProjet($comment[5])
-                ->setPseudo($comment[6]);
+                ->setContent($comment[1])
+                ->setRating($comment[2])
+                ->setAuthor($comment[3])
+                ->setProjet($comment[4])
+                ->setPseudo($comment[5]);
 
 
 
@@ -47,6 +45,35 @@ class CommentaireService implements AllService
     {
 
         return $this->data[$entity] ?? null;
+    }
+
+    /***
+     * @param $projet
+     * @return array|null
+     */
+    public function getById($projet):?array
+    {
+        $sentence = $this->database->prepare("SELECT comment.id,comment.content,comment.rating,comment.author,comment.projet,user.Pseudo FROM comment Join user on comment.author=user.id WHERE comment.projet=:projet;");
+
+        $sentence->execute(["projet" => $projet]);
+        $comments = $sentence->fetchAll();
+    var_dump($comments);
+        $c = [];
+        foreach ($comments as $comment) {
+            $c[$comment[0]] = (new Commentaire())
+                ->setId($comment[0])
+                ->setContent($comment[1])
+                ->setRating($comment[2])
+                ->setAuthor($comment[3])
+                ->setProjet($comment[4])
+                ->setPseudo($comment[5]);
+
+
+        }
+    var_dump($c);
+            return $c;
+
+
     }
 
 

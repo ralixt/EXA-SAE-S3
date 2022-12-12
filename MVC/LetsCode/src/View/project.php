@@ -76,12 +76,16 @@
             </article>
             <article>
 
-                <?php foreach ($comments as $comment) {
-                    echo get_template(__PROJECT_ROOT__ . "/View/Fragments/project-comment.php", [
+                <?php foreach ($comments as $comment):?>
+
+                   /* echo get_template(__PROJECT_ROOT__ . "/View/Fragments/project-comment.php", [
                         "comment" => $comment
                     ]);
-                }
-                ?>
+                   */
+                    <h2><?= $comment->getPseudo()?></h2>
+                <?php endforeach;?>
+
+
 
             </article>
         </section>

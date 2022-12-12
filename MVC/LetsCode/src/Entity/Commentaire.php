@@ -54,9 +54,10 @@ class Commentaire
     /**
      * @param int $id
      */
-    public function setId(int $id): void
+    public function setId(int $id): Commentaire
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -70,9 +71,10 @@ class Commentaire
     /**
      * @param string $content
      */
-    public function setContent(string $content): void
+    public function setContent(string $content): Commentaire
     {
         $this->content = $content;
+        return $this;
     }
 
     /**
@@ -86,9 +88,10 @@ class Commentaire
     /**
      * @param int $rating
      */
-    public function setRating(int $rating): void
+    public function setRating(int $rating): Commentaire
     {
         $this->rating = $rating;
+        return $this;
     }
 
     /**
@@ -102,9 +105,10 @@ class Commentaire
     /**
      * @param int $author
      */
-    public function setAuthor(int $author): void
+    public function setAuthor(int $author): Commentaire
     {
         $this->author = $author;
+        return $this;
     }
 
     /**
@@ -118,9 +122,10 @@ class Commentaire
     /**
      * @param int $projet
      */
-    public function setProjet(int $projet): void
+    public function setProjet(int $projet): Commentaire
     {
         $this->projet = $projet;
+        return $this;
     }
 
 

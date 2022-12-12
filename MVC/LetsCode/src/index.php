@@ -52,7 +52,7 @@ switch ($uri[1]) :
 
     // Default 404
     default:
-        var_dump($uri);
+
         echo get_404();
         exit();
 endswitch;
