@@ -14,8 +14,8 @@
                     <label for="firstname">Prénom<span class="obligatoire">*</span> : </label>
                     <input id="firstname" name="fname" type="text" required>
                 </div>
-                <br>
 
+                <br>
                 <br>
 
                 <div>

@@ -32,7 +32,7 @@ switch ($uri[1]) :
     // List/Home view
     case "":
     case "accueil":
-        (new AccueilContoller( DatabaseProjectService::getInstance() ))->render();
+        (new AccueilContoller(DatabaseProjectService::getInstance() ))->render();
         break;
 
     case "projet":
@@ -45,10 +45,10 @@ switch ($uri[1]) :
         break;
     case "login":
         (new LoginController(CompteService::getInstance()))->render();
-
         break;
 
     case "inscription":
+        (new LoginController(CompteService::getInstance()))->render();
         break;
 
     case "create":
