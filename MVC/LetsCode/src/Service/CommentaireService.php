@@ -57,20 +57,21 @@ class CommentaireService implements AllService
 
         $sentence->execute(["projet" => $projet]);
         $comments = $sentence->fetchAll();
-    var_dump($comments);
+
         $c = [];
         foreach ($comments as $comment) {
-            $c[$comment[0]] = (new Commentaire())
-                ->setId($comment[0])
-                ->setContent($comment[1])
-                ->setRating($comment[2])
-                ->setAuthor($comment[3])
-                ->setProjet($comment[4])
-                ->setPseudo($comment[5]);
+
+            $c[] = (new Commentaire())
+                ->setId($comment["id"])
+                ->setContent($comment["content"])
+                ->setRating($comment["rating"])
+                ->setAuthor($comment["author"])
+                ->setProjet($comment["projet"])
+                ->setPseudo($comment["Pseudo"]);
 
 
         }
-    var_dump($c);
+
             return $c;
 
 

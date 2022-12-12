@@ -12,38 +12,6 @@ class Commentaire
     private string $Pseudo;
 
     /**
-     * @return string
-     */
-    public function getPseudo(): string
-    {
-        return $this->Pseudo;
-    }
-
-    /**
-     * @param string $Pseudo
-     */
-    public function setPseudo(string $Pseudo): void
-    {
-        $this->Pseudo = $Pseudo;
-    }
-    /**
-     * @return string
-     */
-    public function getCreatedAt(): string
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @param string $createdAt
-     */
-    public function setCreatedAt(string $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
-
-    /**
      * @return int
      */
     public function getId(): int
@@ -53,6 +21,7 @@ class Commentaire
 
     /**
      * @param int $id
+     * @return Commentaire
      */
     public function setId(int $id): Commentaire
     {
@@ -70,6 +39,7 @@ class Commentaire
 
     /**
      * @param string $content
+     * @return Commentaire
      */
     public function setContent(string $content): Commentaire
     {
@@ -87,6 +57,7 @@ class Commentaire
 
     /**
      * @param int $rating
+     * @return Commentaire
      */
     public function setRating(int $rating): Commentaire
     {
@@ -104,6 +75,7 @@ class Commentaire
 
     /**
      * @param int $author
+     * @return Commentaire
      */
     public function setAuthor(int $author): Commentaire
     {
@@ -121,6 +93,7 @@ class Commentaire
 
     /**
      * @param int $projet
+     * @return Commentaire
      */
     public function setProjet(int $projet): Commentaire
     {
@@ -128,8 +101,40 @@ class Commentaire
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
 
+    /**
+     * @param string $createdAt
+     * @return Commentaire
+     */
+    public function setCreatedAt(string $createdAt): Commentaire
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
 
+    /**
+     * @return string
+     */
+    public function getPseudo(): string
+    {
+        return $this->Pseudo;
+    }
 
+    /**
+     * @param string $Pseudo
+     * @return Commentaire
+     */
+    public function setPseudo(string $Pseudo): Commentaire
+    {
+        $this->Pseudo = $Pseudo;
+        return $this;
+    }
 
-}
+  }
