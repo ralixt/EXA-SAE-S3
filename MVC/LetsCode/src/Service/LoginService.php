@@ -48,9 +48,8 @@ class LoginService
             $_SESSION["email"] = $result[0][2];
             $_SESSION["roles"] = strval($result[0][4]);
             header('location:accueil.php');
-
-
         }
+
         else{
             header('location:login.php');
         }
@@ -76,7 +75,5 @@ class LoginService
         header('location:login.php');
 
     }
-
-
 
 }

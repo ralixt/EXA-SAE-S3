@@ -16,7 +16,7 @@
                 Inscrivez-vous avec votre adresse e-mail
             </span>
     </h2>
-    <form action="post-inscription.php" method="post">
+    <form action="http://localhost/acceuil" method="post">
         <div class="field-wrapper">
             <input type="text" id="prenom" name="Pseudo" placeholder="Pseudo" maxlength="16" minlength="6" required>
             <ul class="error-container static"></ul>
@@ -40,6 +40,7 @@
             <button id="valider" type="submit" class="button-27" name="submit">S'inscrire</button>
             <ul class="error-container static"></ul>
         </div>
+
     </form>
 </div>
 </body>

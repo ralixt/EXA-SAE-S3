@@ -17,7 +17,6 @@ class LoginController extends AbstractController
             $id = get($compte);
         }
 
-
         echo get_template(
             __PROJECT_ROOT__."/Views/accueil.php"
         );

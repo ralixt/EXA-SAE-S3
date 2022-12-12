@@ -44,8 +44,13 @@ switch ($uri[1]) :
         (new ProjetController(DatabaseProjectService::getInstance(), $projet_id ))->render();
         break;
     case "login":
+        (new LoginController(CompteService::getInstance()))->render();
 
         break;
+
+    case "inscription":
+        break;
+
     case "create":
         (new AjoutProjetController(DatabaseProjectService::getInstance()))->render();
         break;

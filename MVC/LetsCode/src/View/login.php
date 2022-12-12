@@ -1,4 +1,3 @@
-
 <body>
 <main>
     <form action="sendToLetsCode.php" method="post">
