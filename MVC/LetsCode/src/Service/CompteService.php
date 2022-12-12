@@ -104,19 +104,7 @@ class CompteService implements AllService
         return null;
     }
 
-    public function connexion($email, $mdp)
-    {
-        $statementConnexionUser = $this->database->get()->prepare("SELECT * FROM user WHERE email=:email AND password=:mp");
-        $statementConnexionUser->execute(['email' => $email, 'mp' => $mdp]);
 
-        if ($statementConnexionUser->rowCount() > 0) {
-            $result = $statementConnexionUser->fetchall();
-            $_SESSION["ids"] = strval($result[0][0]);
-            $_SESSION["Pseudo"] = $result[0][1];
-            $_SESSION["email"] = $result[0][2];
-            $_SESSION["roles"] = strval($result[0][4]);
-        }
-    }
 
     public function NbrUserProjet(){
         $projetUserStatement =$this->database->get()->prepare('SELECT Count(*) FROM projet where author = :id');
