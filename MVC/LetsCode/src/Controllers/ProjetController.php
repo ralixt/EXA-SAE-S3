@@ -11,6 +11,7 @@ class ProjetController extends AbstractController
         $this->CommentaireService = CommentaireService::getInstance();
         if($projet_id!=null){
             $this->task = $this->Service->get($projet_id);
+            $this->tasks = $this->CommentaireService->getById($projet_id);
             $this->id=$projet_id;
 
         }
@@ -23,10 +24,10 @@ class ProjetController extends AbstractController
     {
         
         $commentaire=new Commentaire();
-        $contenu=null;
-        $rating=null;
-        $iduser=null;
-        $projet=null;
+        $contenu='';
+        $rating=0;
+        $iduser=11;
+        $projet=$this->id;
 
         if(isset($_POST["commentaire"])){
             $contenu=$_POST["commentaire"];
@@ -47,7 +48,7 @@ class ProjetController extends AbstractController
 
         echo get_template(__PROJECT_ROOT__ . "/View/project.php", [
             "project" => $this->task,
-            "comments"=>$this->CommentaireService->getById($this->id)
+            "comments"=>$this->tasks
         ]);
 
 
