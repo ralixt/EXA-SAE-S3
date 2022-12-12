@@ -63,7 +63,7 @@ class DatabaseProjectService implements AllService
             return $this->data;
         }
         if(isset($args["recherche"])){
-            $query .= 'where (titre LIKE "%:recherche%" OR content LIKE "%:recherche%") ';
+            $query .= 'where (titre LIKE :recherche OR content LIKE :recherche) ';
             $recherche = $args["recherche"];
             if (isset($args["tag"])) {
                 $query .= "AND projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN (:tags)) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
@@ -107,9 +107,11 @@ class DatabaseProjectService implements AllService
             ]);
         }
         elseif (isset($recherche) && !isset($tags)){
+            $recherche = "%".$recherche."%";
             $statementList->execute([
                 "recherche"=>$recherche,
             ]);
+
         }
         elseif (!isset($recherche) && isset($tags)){
             $statementList->execute([
@@ -117,7 +119,22 @@ class DatabaseProjectService implements AllService
                 "nbTags"=>$nbTag
             ]);
         }
-        return array($statementList->fetchAll());
+        $response = $statementList->fetchAll();
+        $this->data = [];
+        foreach ($response as $p){
+            $this->data[$p[0]] = (new Projet())
+                ->setId($p[0])
+                ->setCreatedAt($p[1])
+                ->setTitre($p[2])
+                ->setContent($p[3])
+                ->setAuthorID($p[4])
+                ->setAuthor($p[5])
+                ->setStatus($p[6])
+                ->setDifficulte($p[7])
+                ->setPremium($p[8])
+                ->setURLImage([$p[9]]);
+        }
+        return $this->data;
     }
     /** @var projet $entity */
     public function create($entity)

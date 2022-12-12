@@ -43,8 +43,11 @@ switch ($uri[1]) :
             : null;
         (new ProjetController(DatabaseProjectService::getInstance(), $projet_id ))->render();
         break;
-    case "commentaire":
-        (new CommentaireController( DatabaseProjectService::getInstance() ))->render();
+    case "login":
+
+        break;
+    case "create":
+        (new AjoutProjetController(DatabaseProjectService::getInstance()))->render();
         break;
 
     // Default 404

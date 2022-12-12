@@ -4,20 +4,8 @@
 
 class AjoutProjetController extends AbstractController
 {
-    public function __construct(AllService $Service, $projet_id) {
-        parent::__construct(($Service));
-        if($projet_id!=null){
-            $this->task = $this->Service->get($projet_id);
-        }
-        else{
-            header("location: localhost");
-        }
-    }
-
     public function render(): void
     {
-
-        $serviceProjet=DatabaseProjectService::getInstance();
         $projet=new Projet();
         // TODO: Implement render() method.
 
@@ -71,26 +59,19 @@ class AjoutProjetController extends AbstractController
         if(isset($_SESSION["ids"])){
             $author=$_SESSION["nom"];
         }
-
-        $projet->setContent($content)
-            ->setPremium($ispremium)
-            ->setTitre($titre)
-            ->setAuthor($author)
-            ->setURLImage($fileName)
-            
-        ;
-
-        $serviceProjet->create($projet);
-
-
-        //commentaire
-
-
-
-
-
-
-
+        
+        if(isset($_POST["contenu"])){
+            $projet->setContent($content)
+                ->setPremium($ispremium)
+                ->setTitre($titre)
+                ->setAuthor($author)
+                ->setURLImage($fileName);
+            $this->Service->create($projet);
+            header("location:http://localhost/");
+        }
+        else{
+            echo get_template(__PROJECT_ROOT__ . "/View/CreationProjet.php", []);
+        }
 
     }
 }
