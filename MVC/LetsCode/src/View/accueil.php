@@ -21,11 +21,10 @@
         <a href="login.php">Mon compte</a>
 
         <!--pour les user non connecté-->
-        <a href="./CreationProjet.php">Nouveau projet</a>
+        <a href="http://localhost/create">Nouveau projet</a>
         <a href="login.php">Connexion/Inscription</a>
 
         <form method="GET">
-            <input type="search" name="recherche" id="recherche" value=''>
             <p>
                 langage de programmation
                 <br/>
@@ -49,16 +48,8 @@
                 <br/>
                 Javascript: <input type="checkbox" name="tag[]" value="Javascript" />
                 <br/>
-
-                difficulté
-                <br/>
-                Facile: <input type="checkbox" name="tag[]" value="debutant" />
-                <br/>
-                Moyen: <input type="checkbox" name="tag[]" value="intermediaire" />
-                <br/>
-                Difficile: <input type="checkbox" name="tag[]" value="avance" />
-                <br/>
-
+            </p>
+            <p>
                 support
                 <br/>
                 Windows: <input type="checkbox" name="tag[]" value="Windows" />
@@ -67,7 +58,8 @@
                 <br/>
                 Mac: <input type="checkbox" name="tag[]" value="Mac" />
                 <br/>
-
+            </p>
+            <p>
                 langue
                 <br/>
                 Français: <input type="checkbox" name="tag[]" value="francais" />
@@ -79,8 +71,15 @@
                 Deutsch: <input type="checkbox" name="tag[]" value="deutsch" />
                 <br/>
             </p>
+            <input type="search" name="recherche" id="recherche" placeholder="Quel projet voulez vous recherchez ?">
+            <p>difficulté</p>
+            <select name="tag[]">
+                <option value="debutant">Facile</option>
+                <option value="intermediaire">Moyen</option>
+                <option value="avance">Difficile</option>
+            </select>
             <p>Order by</p>
-            <select name="orderby" size="5">
+            <select name="orderby">
                 <option value="nom"> nom </option>
                 <option value="difficulte"> difficulte </option>
                 <option value="like"> like </option>
@@ -90,6 +89,7 @@
     </header>
     <?php
     foreach ($project as $projet)
+        var_dump($projet);
         echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
                 "projet" => $projet
         ])
