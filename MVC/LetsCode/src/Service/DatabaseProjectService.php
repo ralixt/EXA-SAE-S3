@@ -24,6 +24,7 @@ class DatabaseProjectService implements AllService
         $projects = $sentence->fetchAll();
 
 
+
         $this->data = [];
         foreach ($projects as $p){
             $tags = explode(" ", $p[11]);

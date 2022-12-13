@@ -22,7 +22,7 @@ class InscriptionController extends AbstractController
         if(isset($_POST["confirmation_mp"])&&isset($_POST["creation_mp"])&&isset($_POST["adr_email"])&&isset($_POST["Pseudo"])) {
             if (hash('sha256', $_POST["creation_mp"]) === hash('sha256', $_POST["confirmation_mp"])) {
                 $user = new User();
-                $user->setPassword(hash('sha256', $_POST["confirmation_mp"]))
+                $user->setPassword($_POST["confirmation_mp"])
                     ->setEmail($_POST["adr_email"])
                     ->setPseudo($_POST["Pseudo"])
                     ->setIsPremium(0)
@@ -31,6 +31,7 @@ class InscriptionController extends AbstractController
 
 
                 $this->c = $this->InscriptionService->create($user);
+                var_dump(hash('sha256', $_POST["creation_mp"]));
 
 
 

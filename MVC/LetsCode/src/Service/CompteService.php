@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 class CompteService implements AllService
 {
 
@@ -60,22 +60,28 @@ class CompteService implements AllService
         //$ligne = $statementDeleteUser->fetchAll();
     }
 
+    protected function hashPassword( string $password ) : string {
+        var_dump('appelé');
+        return hash('sha256', trim($password));
+    }
+
     /**
      * @param User $user
      */
     public function create($user):bool
     {
+
         $statementCreateUser = $this->database->prepare("INSERT INTO user(Pseudo, email, password, role, subscriptionId, hasActiveSubscription) VALUES (:pseudo, :email, :mdp, :role, :subscriptionId, :isPremium)");
         $statementCreateUser->execute([
             'pseudo' => $user->getPseudo(),
             'email' => $user->getEmail(),
-            'mdp' => hash('sha256', $user->getPassword()),
+            'mdp' => $this->hashPassword($user->getPassword()),
             'role' => 'User',
             'subscriptionId' => 0,
             'isPremium' => 0
 
         ]);
-        var_dump($statementCreateUser->rowCount());
+        //var_dump($statementCreateUser->rowCount());
         if($statementCreateUser->rowCount()>0){
             return true;
         }else{
@@ -93,12 +99,13 @@ class CompteService implements AllService
      */
     public function update($user)
     {
-        if (hash('sha256', $user->getPassword()) == $this->user->getPassword()) {
+        $hashed = $this->hashPassword($user);
+        if ($hashed === $this->user->getPassword()) {
             $statementUpdateUser = $this->database->prepare("UPDATE user SET password = :mdp, Pseudo = :pseudo, email = :mail, role = :role, subscriptionId = :subId, isPremium = :isPremium where id  = :id");
             $statementUpdateUser->execute([
                 'pseudo' => $user->getPseudo(),
                 'email' => $user->getEmail(),
-                'password' => hash('sha256', $user->getPassword()),
+                'mdp' => $hashed,
                 'role' => $user->getRole(),
                 'subId' => $user->getSubscription(),
                 'isPremium' => $user->getPremium()
@@ -122,20 +129,25 @@ class CompteService implements AllService
         //$projetPub=$projetUserStatement->fetchAll();
     }
 
-    public function connexion($idUser, $mdp)
+    public function connexion($idUser, $mdp):array
     {
-        $statementConnexionUser = $this->database->prepare("SELECT * FROM user WHERE (email=:email OR Pseudo = :pseudo) AND password=:mp");
-        $statementConnexionUser->execute(['email' => $idUser, 'pseudo' => $idUser, 'mp' => hash('sha256',$mdp)]);
+        $hashed = $this->hashPassword($mdp);
+        $statementConnexionUser = $this->database->prepare("SELECT * FROM user WHERE email=:email  AND password=:mp");
+        $statementConnexionUser->execute(['email' => $idUser, 'mp' => $hashed]);
         $result = $statementConnexionUser->fetchall();
+        return $result;
+        //var_dump($result);
 
+        if ($statementConnexionUser->rowCount() > 0) {
 
-        if (count($result) > 0) {
-            var_dump($result);
             $_SESSION["ids"] = strval($result[0][0]);
             $_SESSION["Pseudo"] = $result[0][1];
             $_SESSION["email"] = $result[0][2];
             $_SESSION["roles"] = strval($result[0][4]);
 
+            return true;
+        } else {
+            return false;
 
 
         }
