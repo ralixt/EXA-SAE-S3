@@ -13,7 +13,7 @@ class ProjetController extends AbstractController
             var_dump($this->tasks);
         }
         else{
-            header("location: localhost");
+            header("location: http://localhost/");
         }
     }
 
