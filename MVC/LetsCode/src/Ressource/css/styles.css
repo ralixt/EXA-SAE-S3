@@ -7,7 +7,9 @@ footer{
     text-align: center;
 }
 
-.footerNavigation{
+.footerNavigation p{
+
     display: inline-block;
     vertical-align: top;
+    margin: 1rem;
 }
