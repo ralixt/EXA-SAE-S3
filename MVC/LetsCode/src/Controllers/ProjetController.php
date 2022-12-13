@@ -16,7 +16,7 @@ class ProjetController extends AbstractController
 
         }
         else{
-            header("location: localhost");
+            header("location: http://localhost/");
         }
     }
 
