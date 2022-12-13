@@ -81,5 +81,6 @@
 <script>var simplemde = new SimpleMDE({ element: document.getElementById("contenu") });</script>
 
 </body>
+<?php include 'footer.php'?>
 
 </html>

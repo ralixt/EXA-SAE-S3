@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
@@ -50,4 +50,5 @@
             </form>
         </main>
     </body>
+    <?php include 'footer.php'?>
 </html>

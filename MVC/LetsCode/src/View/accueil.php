@@ -3,13 +3,14 @@
  * @var Projet[] $project
  */
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
     <title>Accueil</title>
 </head>
 <body>
@@ -23,7 +24,9 @@
         <!--pour les user non connecté-->
 
         <a href="http://localhost/login">Connexion/Inscription</a>
+    </header>
 
+    <main>
         <form method="GET">
 
             <p>
@@ -89,13 +92,17 @@
                 <option value="commentaire"> commentaire </option>
             </select>
         </form>
-    </header>
-    <?php
-    foreach ($project as $projet)
-        echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
-                "projet" => $projet
-        ])
 
-    ?>
+        <?php
+        foreach ($project as $projet)
+            echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
+                "projet" => $projet
+            ])
+
+        ?>
+    </main>
 </body>
+
+<?php include 'footer.php'?>
+
 </html>

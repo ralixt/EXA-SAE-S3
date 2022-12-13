@@ -4,8 +4,7 @@
  * @var Projet $project
 */
 ?>
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -93,4 +92,5 @@
 
 
     </body>
+<?php include 'footer.php'?>
 </html>

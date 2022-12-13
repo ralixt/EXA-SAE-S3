@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+
+<html lang="fr">
 <header>
     <?php
     NbrUserProjet();
@@ -7,7 +10,6 @@
     ?>
     <a href="Accueil.php">Accueil</a>
 </header>
-
 
 <body>
     <div class="rectangle">
@@ -105,3 +107,5 @@
         </div>
     </div>
 </body>
+<?php include 'footer.php'?>
+</html>

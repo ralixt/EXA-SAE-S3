@@ -1,0 +1,13 @@
+body{
+    text-decoration: none;
+    font-family: Poppins;
+}
+
+footer{
+    text-align: center;
+}
+
+.footerNavigation{
+    display: inline-block;
+    vertical-align: top;
+}
