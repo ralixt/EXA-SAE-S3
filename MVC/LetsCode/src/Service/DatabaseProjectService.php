@@ -18,23 +18,15 @@ class DatabaseProjectService implements AllService
     }
 
     private function init() : void {
-        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, URL_Image, COUNT(project) FROM projet JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project GROUP BY projet.id");
+        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, URL_Image, COUNT(project), listeTag(projet.id) FROM projet JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project GROUP BY projet.id;");
         $sentence -> execute();
         $projects = $sentence->fetchAll();
-        $sentence = $this->database->prepare("SELECT tag.id, projet_tag.id_projet, tag.title FROM tag JOIN projet_tag ON projet_tag.id_tag = tag.id ORDER BY projet_tag.id_projet");
-        $sentence ->execute();
-        $tags = $sentence->fetchAll();
 
-        $Orderedtags = array();
-
-        foreach ($tags as $tag){
-            $Orderedtags[$tag[1]][]= (new Tag())
-                ->setId($tag[0])
-                ->setName($tag[2]);
-        }
 
         $this->data = [];
         foreach ($projects as $p){
+            $tags = explode(" ", $p[11]);
+            array_pop($tags);
             $this->data[$p[0]] = (new Projet())
                 ->setId($p[0])
                 ->setCreatedAt($p[1])
@@ -47,7 +39,7 @@ class DatabaseProjectService implements AllService
                 ->setPremium($p[8])
                 ->setURLImage([$p[9]])
                 ->setLikes($p[10])
-                ->setTags($Orderedtags[$p[0]]);
+                ->setTags($tags);
         }
     }
 
@@ -58,7 +50,7 @@ class DatabaseProjectService implements AllService
 
     public function getlist(array $args = []): array
     {
-        $query = "SELECT * from projet INNER JOIN( SELECT COUNT(likeproject.project) nb_like, projet.id proID FROM projet LEFT JOIN likeproject ON projet.id = likeproject.project GROUP BY proID ) as likes on proID = projet.id left JOIN(
+        $query = "SELECT *, listeTag(projet.id) from projet INNER JOIN( SELECT COUNT(likeproject.project) nb_like, projet.id proID FROM projet LEFT JOIN likeproject ON projet.id = likeproject.project GROUP BY proID ) as likes on proID = projet.id left JOIN(
     SELECT
         COUNT(comment.id) nb_comment,
         projet.id proID
@@ -144,6 +136,8 @@ class DatabaseProjectService implements AllService
         $response = $statementList->fetchAll();
         $this->data = [];
         foreach ($response as $p){
+            $tags = explode(" ", $p[14]);
+            array_pop($tags);
             $this->data[$p[0]] = (new Projet())
                 ->setId($p[0])
                 ->setCreatedAt($p[1])
@@ -155,7 +149,7 @@ class DatabaseProjectService implements AllService
                 ->setDifficulte($p[7])
                 ->setPremium($p[8])
                 ->setLikes($p[9])
-                ->setTags($Orderedtags[$p[0]])
+                ->setTags($tags)
                 ->setURLImage([$p[10]]);
         }
         return $this->data;

@@ -1,6 +1,6 @@
 <?php
 
-class AccueilContoller extends AbstractController
+class AccueilController extends AbstractController
 {
 
 

@@ -23,7 +23,7 @@ require_once __PROJECT_ROOT__ . "/Controllers/AjoutProjetController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/CompteController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/ContactController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/ProjetController.php";
-require_once __PROJECT_ROOT__ . "/Controllers/AccueilContoller.php";
+require_once __PROJECT_ROOT__ . "/Controllers/AccueilController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/LoginController.php";
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -34,7 +34,7 @@ switch ($uri[1]) :
     // List/Home view
     case "":
     case "accueil":
-        (new AccueilContoller(DatabaseProjectService::getInstance() ))->render();
+        (new AccueilController(DatabaseProjectService::getInstance() ))->render();
         break;
 
     case "projet":
