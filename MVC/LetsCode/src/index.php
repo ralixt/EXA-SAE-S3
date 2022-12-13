@@ -16,6 +16,7 @@ require_once __PROJECT_ROOT__ . "/Service/DatabaseProjectService.php";
 require_once __PROJECT_ROOT__ . "/Service/DatabaseContactService.php";
 require_once __PROJECT_ROOT__ . "/Service/CommentaireService.php";
 require_once __PROJECT_ROOT__ . "/Service/CompteService.php";
+require_once __PROJECT_ROOT__ . "/Service/LoginService.php";
 
 require_once __PROJECT_ROOT__ . "/Controllers/AbstractController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/AjoutProjetController.php";
@@ -23,6 +24,7 @@ require_once __PROJECT_ROOT__ . "/Controllers/CompteController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/ContactController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/ProjetController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/AccueilContoller.php";
+require_once __PROJECT_ROOT__ . "/Controllers/LoginController.php";
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
@@ -32,7 +34,7 @@ switch ($uri[1]) :
     // List/Home view
     case "":
     case "accueil":
-        (new AccueilContoller( DatabaseProjectService::getInstance() ))->render();
+        (new AccueilContoller(DatabaseProjectService::getInstance() ))->render();
         break;
 
     case "projet":
@@ -44,10 +46,19 @@ switch ($uri[1]) :
         (new ProjetController(DatabaseProjectService::getInstance(), $projet_id ))->render();
         break;
     case "login":
-
+        (new LoginController(CompteService::getInstance()))->render();
         break;
+
+    case "inscription":
+        (new LoginController(CompteService::getInstance()))->render();
+        break;
+
     case "create":
         (new AjoutProjetController(DatabaseProjectService::getInstance()))->render();
+        break;
+
+    case "login":
+        (new LoginController(CompteService::getInstance()))->render();
         break;
 
     // Default 404

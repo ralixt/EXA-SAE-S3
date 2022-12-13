@@ -37,7 +37,7 @@
                         <!-- input id user-->
                     </div>
                     <div>
-                        <input type="hidden" name="id_project" value="<?php echo($project->getId())?>">
+
 
                         <!-- input idprojet-->
                     </>
@@ -76,14 +76,15 @@
             </article>
             <article>
 
-                <?php foreach ($comments as $comment):?>
 
-                   /* echo get_template(__PROJECT_ROOT__ . "/View/Fragments/project-comment.php", [
+            <?php foreach ($comments as $comment)
+                    echo get_template(__PROJECT_ROOT__ . "/View/Fragments/project-comment.php", [
                         "comment" => $comment
                     ]);
-                   */
-                    <h2><?= $comment->getPseudo()?></h2>
-                <?php endforeach;?>
+            ?>
+
+
+
 
 
 
