@@ -18,23 +18,28 @@ class AjoutProjetController extends AbstractController
             }
             $isPremium = isset($_POST["isPremium"]) && $_SESSION["roles"]=='Premium_User'? $_POST["isPremium"] : 0;
             $author = $_SESSION["nom"];
+            $imagesNames = [];
             if(isset($_FILES["images"])){
                 $path = __PROJECT_ROOT__ . "/Ressources/" . ($this->Service->getLastId()+1) . "/images";
                 is_dir($path)? "" : mkdir($path);
                 $countfiles = count($_FILES['images']['name']);
                 for($i=0;$i<$countfiles;$i++){
                     $filename = $_FILES['images']['name'][$i];
-
+                    $imagesNames[] = $filename;
                     // Upload file
                     move_uploaded_file($_FILES['images']['tmp_name'][$i],$path . "/" . $filename);
                 }
             }
+            $zipName = null;
             if(isset($_FILES["zip"])){
                 $path = __PROJECT_ROOT__ . "/Ressources/" . ($this->Service->getLastId()+1) . "/zip";
                 is_dir($path)? "" : mkdir($path);
+                $zipName = $_FILES['zip']['name'];
                 move_uploaded_file($_FILES['zip']['tmp_name'],$path . "/" . $_FILES['zip']['name']);
             }
             $status = "Reviewing";
+
+
 
             header("location:http://localhost/");
 

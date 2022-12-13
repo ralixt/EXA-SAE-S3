@@ -23,18 +23,7 @@ class DatabaseProjectService implements AllService
         $sentence -> execute();
         $projects = $sentence->fetchAll();
 
-<<<<<<< Updated upstream
 
-=======
-        $Orderedtags = array();
-
-        foreach ($tags as $tag){
-            $Orderedtags[$tag[1]][]= (new Tag())
-                ->setId($tag[0])
-                ->setName($tag[2]);
-        }
-        $this->lastId = count($projects);
->>>>>>> Stashed changes
         $this->data = [];
         foreach ($projects as $p){
             $tags = explode(" ", $p[11]);
@@ -160,7 +149,7 @@ class DatabaseProjectService implements AllService
                 ->setStatus($p[6])
                 ->setDifficulte($p[7])
                 ->setPremium($p[8])
-                ->setLikes($p[9])
+                ->setLikes(intval($p[9]))
                 ->setTags($tags)
                 ->setURLImage([$p[10]]);
         }

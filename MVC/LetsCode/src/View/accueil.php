@@ -76,16 +76,9 @@
                 <br/>
             </p>
             <input type="search" name="recherche" id="recherche" placeholder="Quel projet voulez vous recherchez ?">
-            <p>difficulté</p>
-            <select name="tag[]">
-                <option value=""></option>
-                <option value="debutant">Facile</option>
-                <option value="intermediaire">Moyen</option>
-                <option value="avance">Difficile</option>
-            </select>
+
             <p>Order by</p>
             <select name="orderby">
-                <option value=""></option>
                 <option value="nom"> nom </option>
                 <option value="difficulte"> difficulte </option>
                 <option value="like"> like </option>
