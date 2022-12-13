@@ -33,7 +33,7 @@
                     Connectez-vous avec votre adresse e-mail
                 </span>
         </h2>
-        <form action="post-login.php" method="post">
+        <form action="http://localhost/login" method="post">
             <!--
                 <div>
                     <label for="id"></label>
@@ -52,7 +52,7 @@
             <button type="submit" class="button-27">Valider</button>
         </form>
         <p>
-            <span>Vous n'avez pas encore de compte? <a href="inscription.php">Inscrivez-vous gratuitement</a></span>
+            <span>Vous n'avez pas encore de compte? <a href="http://localhost/inscription">Inscrivez-vous gratuitement</a></span>
         </p>
     </div>
 

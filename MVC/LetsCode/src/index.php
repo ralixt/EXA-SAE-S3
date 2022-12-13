@@ -25,6 +25,7 @@ require_once __PROJECT_ROOT__ . "/Controllers/ContactController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/ProjetController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/AccueilController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/LoginController.php";
+require_once __PROJECT_ROOT__ . "/Controllers/InscriptionController.php";
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
@@ -50,16 +51,14 @@ switch ($uri[1]) :
         break;
 
     case "inscription":
-        (new LoginController(CompteService::getInstance()))->render();
+        (new InscriptionController(CompteService::getInstance()))->render();
         break;
 
     case "create":
         (new AjoutProjetController(DatabaseProjectService::getInstance()))->render();
         break;
 
-    case "login":
-        (new LoginController(CompteService::getInstance()))->render();
-        break;
+
 
     // Default 404
     default:

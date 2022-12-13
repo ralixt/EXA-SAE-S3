@@ -1,5 +1,6 @@
 <?php
 
+
 class CommentaireService implements AllService
 {
     use SingletonTrait;
@@ -57,6 +58,7 @@ class CommentaireService implements AllService
 
         $sentence->execute(["projet" => $projet]);
         $comments = $sentence->fetchAll();
+        var_dump($comments);
 
         $c = [];
         foreach ($comments as $comment) {

@@ -46,6 +46,7 @@ class LoginService implements AllService
             $_SESSION["Pseudo"] = $result[0][1];
             $_SESSION["email"] = $result[0][2];
             $_SESSION["roles"] = strval($result[0][4]);
+
             header('location:accueil.php');
         }
 
@@ -98,5 +99,14 @@ class LoginService implements AllService
     public function update($entity)
     {
         // TODO: Implement update() method.
+    }
+
+    public function deconnexion(){
+        session_start();
+        session_unset();
+        session_destroy();
+
+        header("location:accueil.php");
+
     }
 }

@@ -18,7 +18,7 @@
             Inscrivez-vous avec votre adresse e-mail
         </span>
     </h2>
-    <form action="http://localhost/acceuil" method="post">
+    <form action="http://localhost/inscription" method="post">
         <div class="field-wrapper">
             <input type="text" id="prenom" name="Pseudo" placeholder="Pseudo" maxlength="16" minlength="6" required>
             <ul class="error-container static"></ul>
