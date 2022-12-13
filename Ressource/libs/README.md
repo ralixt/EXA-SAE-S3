@@ -41,8 +41,9 @@ More examples in [the wiki](https://github.com/erusev/parsedown/wiki/) and in [t
 Parsedown is capable of escaping user-input within the HTML that it generates. Additionally Parsedown will apply sanitisation to additional scripting vectors (such as scripting link destinations) that are introduced by the markdown syntax itself.
 
 To tell Parsedown that it is processing untrusted user-input, use the following:
+
 ```php
-$parsedown = new Parsedown;
+use Ressource\libs\Parsedown;$parsedown = new Parsedown;
 $parsedown->setSafeMode(true);
 ```
 
@@ -58,8 +59,9 @@ Safe mode does not necessarily yield safe results when using extensions to Parse
 > ⚠️  **WARNING:** This method isn't safe from XSS!
 
 If you wish to escape HTML **in trusted input**, you can use the following:
+
 ```php
-$parsedown = new Parsedown;
+use Ressource\libs\Parsedown;$parsedown = new Parsedown;
 $parsedown->setMarkupEscaped(true);
 ```
 

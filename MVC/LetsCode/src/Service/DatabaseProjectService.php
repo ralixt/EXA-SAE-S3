@@ -11,6 +11,7 @@ class DatabaseProjectService implements AllService
      */
     private array $data;
     private PDO $database;
+    private int $lastId;
 
     protected function __construct() {
         $this->database = Database::get();
@@ -22,7 +23,18 @@ class DatabaseProjectService implements AllService
         $sentence -> execute();
         $projects = $sentence->fetchAll();
 
+<<<<<<< Updated upstream
 
+=======
+        $Orderedtags = array();
+
+        foreach ($tags as $tag){
+            $Orderedtags[$tag[1]][]= (new Tag())
+                ->setId($tag[0])
+                ->setName($tag[2]);
+        }
+        $this->lastId = count($projects);
+>>>>>>> Stashed changes
         $this->data = [];
         foreach ($projects as $p){
             $tags = explode(" ", $p[11]);
@@ -179,6 +191,7 @@ class DatabaseProjectService implements AllService
                             "isPremium" => $entity->isPremium()? 1:0,
                             "URL_Image" => $entity->getURLImage(),
                             "id" => $entity ->getId()]);
+        $this->lastId = $this->lastId + 1;
     }
 
     /** @var projet $entity */
@@ -186,5 +199,31 @@ class DatabaseProjectService implements AllService
     {
         $sentence = $this->database->prepare("DELETE FROM projet WHERE id = :id ");
         $sentence -> execute(["id" => $entity->getId()]);
+        $this->lastId = $this->lastId - 1;
+    }
+
+    /**
+     * @return tag[]
+     */
+    public function getTags(): array
+    {
+        $sentence = $this->database->prepare("SELECT * FROM tag");
+        $sentence -> execute();
+        $tags = $sentence->fetchAll();
+        $newTags = [];
+        foreach($tags as $tag){
+            $newTags[$tag[0]]= (new tag())
+                ->setId($tag[0])
+                ->setName($tag[1]);
+        }
+        return $newTags;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLastId(): int
+    {
+        return $this->lastId;
     }
 }

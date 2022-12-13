@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var tag[] $tags
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +21,7 @@
 </header>
 <body>
 <h1>ajouter un projet</h1>
-<form action="././.././Controllers/AjoutProjetController.php" method="post" id="formulaireadd" enctype="multipart/form-data">
+<form method="post" id="formulaireadd" enctype="multipart/form-data">
 
     <div>
         <label for="titre">Le titre du projet: </label><br>
@@ -26,15 +31,14 @@
     <br>
 
     <br>
-    <?php
 
-    if($_SESSION["roles"]=='Premium_User'):?>
+<!--premium-->
         <div>
             <h2>premium?</h2>
         </div>
         <div>
 
-            <input type="radio" id="oui" name="oui" value="oui"
+            <input type="radio" id="oui" name="isPremium" value="oui"
 
             <label for="oui">Oui</label>
         </div>
@@ -42,21 +46,21 @@
 
 
         <div>
-            <input type="radio" id="non" name="oui" value="non"
+            <input type="radio" id="non" name="isPremium" value="non"
                    checked>
             <label for="non">Non</label>
         </div>
 
         <br>
-    <?php endif ?>
+<!--fin premium-->
 
     <div>
         <label for="support"><strong>choisissez le support:</strong></label><br>
 
-        <select  id="support" name="secteur[]" multiple >
+        <select  id="support" name="tags[]" multiple >
             <?php foreach($tags as $tag):?>
 
-                <option  value='<?php echo($tag[0])?>'><?php echo($tag[1])?></option>
+                <option  value='<?php echo($tag->getId())?>'><?php echo($tag->getName())?></option>
 
             <?php endforeach?>
         </select>
@@ -65,9 +69,13 @@
 
     <br>
     <div>
-
-        <label for="file">ressources: </label><br>
-        <input type="file" name="file" id="ressources">
+        <label for="images">Images: </label><br>
+        <input type="file" name="images[]" id="images" accept="image/png, image/jpeg" multiple>
+    </div>
+    <br>
+    <div>
+        <label for="zip">ressources: </label><br>
+        <input type="file" name="zip" id="ressources" accept=".zip,.rar,.7zip">
     </div>
     <br>
     <div>
@@ -75,8 +83,7 @@
         <textarea name="contenu" id="contenu"></textarea>
     </div>
     <br>
-    <button id="ajouterr" type="submit" >Ajouter</button>
-    <!--<button id="ajouterr" type="submit" onclick=window.location.href='accueil.html';>Ajouter</button>-->
+    <button id="ajouter" type="submit" >Ajouter</button>
 </form>
 <script>var simplemde = new SimpleMDE({ element: document.getElementById("contenu") });</script>
 
