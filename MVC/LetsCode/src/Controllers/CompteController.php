@@ -19,10 +19,5 @@ class CompteController extends AbstractController
         if(isset($compte)){
             $id = get($compte);
         }
-
-
-
-
-
     }
 }
