@@ -81,8 +81,13 @@ class DatabaseProjectService implements AllService
                 $nbTag = count($args["tag"]);
             }
             if(isset($args["orderBy"])){
-                //a finir
                 $query .= "ORDER BY titre ";
+            }
+            elseif ($args["orderBy"] == "like"){
+                $query .= "Order BY nb_like DESC";
+            }
+            elseif ($args["orderBy"] == "commentaire") {
+                $query .= "Order BY nb_comment DESC";
             }
         }
         else {
@@ -94,9 +99,6 @@ class DatabaseProjectService implements AllService
                     //a finir
                     if($args["orderBy"] == "nom"){
                         $query .= "ORDER BY titre ";
-                    }
-                    elseif ($args["orderBy"] == "difficulté"){
-                        //checker avec le prof
                     }
                     elseif ($args["orderBy"] == "like"){
                         $query .= "Order BY nb_like DESC";
@@ -129,6 +131,16 @@ class DatabaseProjectService implements AllService
                 "nbTags"=>$nbTag
             ]);
         }
+        $sentence = $this->database->prepare("SELECT tag.id, projet_tag.id_projet, tag.title FROM tag JOIN projet_tag ON projet_tag.id_tag = tag.id ORDER BY projet_tag.id_projet");
+        $sentence ->execute();
+        $tags = $sentence->fetchAll();
+
+        foreach ($tags as $tag){
+            $Orderedtags[$tag[1]][]= (new Tag())
+                ->setId($tag[0])
+                ->setName($tag[2]);
+        }
+
         $response = $statementList->fetchAll();
         $this->data = [];
         foreach ($response as $p){
@@ -143,8 +155,8 @@ class DatabaseProjectService implements AllService
                 ->setDifficulte($p[7])
                 ->setPremium($p[8])
                 ->setLikes($p[9])
-                ->setTags($p[10])
-                ->setURLImage([$p[11]]);
+                ->setTags($Orderedtags[$p[0]])
+                ->setURLImage([$p[10]]);
         }
         return $this->data;
     }
