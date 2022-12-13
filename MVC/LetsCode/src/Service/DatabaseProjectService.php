@@ -58,10 +58,20 @@ class DatabaseProjectService implements AllService
 
     public function getlist(array $args = []): array
     {
-        $query = 'SELECT * from projet ';
+        $query = "SELECT * from projet INNER JOIN( SELECT COUNT(likeproject.project) nb_like, projet.id proID FROM projet LEFT JOIN likeproject ON projet.id = likeproject.project GROUP BY proID ) as likes on proID = projet.id left JOIN(
+    SELECT
+        COUNT(comment.id) nb_comment,
+        projet.id proID
+    FROM
+        comment
+    LEFT JOIN projet ON projet.id = comment.projet
+    GROUP BY
+        proID
+) as comments on comments.proID = projet.id ";
         if(count($args) <= 0){
             return $this->data;
         }
+
         if(isset($args["recherche"])){
             $query .= 'where (titre LIKE :recherche OR content LIKE :recherche) ';
             $recherche = $args["recherche"];
@@ -89,10 +99,10 @@ class DatabaseProjectService implements AllService
                         //checker avec le prof
                     }
                     elseif ($args["orderBy"] == "like"){
-                        //checker avec le prof
+                        $query .= "Order BY nb_like DESC";
                     }
                     elseif ($args["orderBy"] == "commentaire") {
-                        //checker avec le prof
+                        $query .= "Order BY nb_comment DESC";
                     }
                 }
             }
@@ -132,7 +142,9 @@ class DatabaseProjectService implements AllService
                 ->setStatus($p[6])
                 ->setDifficulte($p[7])
                 ->setPremium($p[8])
-                ->setURLImage([$p[9]]);
+                ->setLikes($p[9])
+                ->setTags($p[10])
+                ->setURLImage([$p[11]]);
         }
         return $this->data;
     }

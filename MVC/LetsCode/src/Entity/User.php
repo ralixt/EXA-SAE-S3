@@ -11,16 +11,6 @@ class User
     private int $subscription;
     private int $isPremium;
 
-
-    public function User($id, $pseudo, $email, $password, $role, $subscription){
-        $this->id = $id;
-        $this->pseudo = $pseudo;
-        $this->email = $email;
-        $this->password = $password;
-        $this->role = $role;
-        $this->subscription = $subscription;
-        $this->isPremium = 0;
-    }
     /**
      * @return int
      */
@@ -31,10 +21,12 @@ class User
 
     /**
      * @param int $id
+     * @return User
      */
-    public function setId(int $id): void
+    public function setId(int $id): User
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -47,10 +39,12 @@ class User
 
     /**
      * @param string $pseudo
+     * @return User
      */
-    public function setPseudo(string $pseudo): void
+    public function setPseudo(string $pseudo): User
     {
         $this->pseudo = $pseudo;
+        return $this;
     }
 
     /**
@@ -63,10 +57,12 @@ class User
 
     /**
      * @param string $email
+     * @return User
      */
-    public function setEmail(string $email): void
+    public function setEmail(string $email): User
     {
         $this->email = $email;
+        return $this;
     }
 
     /**
@@ -79,10 +75,12 @@ class User
 
     /**
      * @param string $password
+     * @return User
      */
-    public function setPassword(string $password): void
+    public function setPassword(string $password): User
     {
         $this->password = $password;
+        return $this;
     }
 
     /**
@@ -95,10 +93,12 @@ class User
 
     /**
      * @param string $role
+     * @return User
      */
-    public function setRole(string $role): void
+    public function setRole(string $role): User
     {
         $this->role = $role;
+        return $this;
     }
 
     /**
@@ -111,27 +111,34 @@ class User
 
     /**
      * @param int $subscription
+     * @return User
      */
-    public function setSubscription(int $subscription): void
+    public function setSubscription(int $subscription): User
     {
         $this->subscription = $subscription;
+        return $this;
     }
 
     /**
      * @return int
      */
-    public function getPremium(): int
+    public function getIsPremium(): int
     {
         return $this->isPremium;
     }
 
     /**
-     * @param int $premium
+     * @param int $isPremium
+     * @return User
      */
-    public function setPremium(int $premium): void
+    public function setIsPremium(int $isPremium): User
     {
-        $this->isPremium = $premium;
+        $this->isPremium = $isPremium;
+        return $this;
     }
+
+
+
 
 
 }

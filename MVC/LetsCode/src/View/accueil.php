@@ -21,7 +21,7 @@
         <a href="http://localhost/compte">Mon compte</a>
 
         <!--pour les user non connecté-->
-        <a href="http://localhost/login">Nouveau projet</a>
+
         <a href="http://localhost/login">Connexion/Inscription</a>
 
         <form method="GET">

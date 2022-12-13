@@ -13,25 +13,26 @@ class CompteService implements AllService
     private PDO $database;
 
     protected function __construct() {
-        $this->database = Database::getInstance();
+        $this->database = Database::get();
         $this->init();
     }
     private function init() : void
     {
-        $sentence = $this->database->get()->prepare("SELECT user.id,user.Pseudo,user.email,user.password,user.role,user.subscription,user.hasActiveSucription FROM user;");
+        $sentence = $this->database->prepare("SELECT user.id,user.Pseudo,user.email,user.password,user.role,user.subscriptionId,user.hasActiveSubscription FROM user;");
         $sentence->execute();
         $users = $sentence->fetchAll();
         $this->data = [];
         foreach ($users as $user) {
             $this->data[$user[0]] = (new User())
-                ->setPremium($user[6])
-                ->setSubscription($user[5])
-
-                ->setRole($user[4])
+            ->setId($user[0])
+            ->setPseudo($user[1])
+            ->setEmail($user[2])
                 ->setPassword($user[3])
-                ->setEmail($user[2])
-                ->setPseudo($user[1])
-                ->setId($user[0]);
+            ->setRole($user[4])
+            ->setSubscription(2)
+            ->setIsPremium($user[6])
+            ;
+
 
 
         }
@@ -55,7 +56,7 @@ class CompteService implements AllService
      */
     public function delete($entity)
     {
-        $statementDeleteUser = $this->database->get()->prepare("DELETE FROM user WHERE id=:id");
+        $statementDeleteUser = $this->database->prepare("DELETE FROM user WHERE id=:id");
         $statementDeleteUser->execute(['id' => $entity]);
         //$ligne = $statementDeleteUser->fetchAll();
     }
@@ -65,7 +66,7 @@ class CompteService implements AllService
      */
     public function create($user)
     {
-        $statementCreateUser = $this->database->get()->prepare("INSERT INTO user(Pseudo, email, password, role, subscriptionId, hasActiveSubscription) VALUES (:pseudo, :email, :mdp, :role, :subscriptionId, :isPremium)");
+        $statementCreateUser = $this->database->prepare("INSERT INTO user(Pseudo, email, password, role, subscriptionId, hasActiveSubscription) VALUES (:pseudo, :email, :mdp, :role, :subscriptionId, :isPremium)");
         $statementCreateUser->execute([
             'pseudo' => $user->getPseudo(),
             'email' => $user->getEmail(),
@@ -107,7 +108,7 @@ class CompteService implements AllService
 
 
     public function NbrUserProjet(){
-        $projetUserStatement =$this->database->get()->prepare('SELECT Count(*) FROM projet where author = :id');
+        $projetUserStatement =$this->database->prepare('SELECT Count(*) FROM projet where author = :id');
         $projetUserStatement-> execute(['id'=>$_SESSION['ids']]);
         //$projetPub=$projetUserStatement->fetchAll();
     }

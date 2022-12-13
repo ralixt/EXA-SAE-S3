@@ -1,6 +1,6 @@
 <?php
 
-class LoginService
+class LoginService implements AllService
 {
 
     use SingletonTrait;
@@ -23,14 +23,13 @@ class LoginService
         $this->data = [];
         foreach ($users as $user) {
             $this->data[$user[0]] = (new User())
-                ->setPremium($user[6])
-                ->setSubscription($user[5])
-
-                ->setRole($user[4])
-                ->setPassword($user[3])
-                ->setEmail($user[2])
+            ->setId($user[0])
                 ->setPseudo($user[1])
-                ->setId($user[0]);
+                ->setEmail($user[2])
+                ->setPassword($user[3])
+                ->setRole($user[4])
+                ->setSubscription($user[6])
+                ->setPremium($user[5]);
 
 
         }
@@ -76,4 +75,28 @@ class LoginService
 
     }
 
+    public function get($entity): ?object
+    {
+        // TODO: Implement get() method.
+    }
+
+    public function delete($entity)
+    {
+        // TODO: Implement delete() method.
+    }
+
+    public function getlist(): ?array
+    {
+        // TODO: Implement getlist() method.
+    }
+
+    public function create($entity)
+    {
+        // TODO: Implement create() method.
+    }
+
+    public function update($entity)
+    {
+        // TODO: Implement update() method.
+    }
 }
