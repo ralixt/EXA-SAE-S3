@@ -27,8 +27,14 @@ class DatabaseProjectService implements AllService
 
         $this->data = [];
         foreach ($projects as $p){
-            $tags = explode(" ", $p[10]);
+            $tags = explode(",", $p[10]);
             array_pop($tags);
+            for($i = 0; $i<count($tags); $i++){
+                $tags[$i] = explode(":", $tags[$i]);
+                $tags[$i] = (new tag)
+                    ->setId($tags[$i][0])
+                    ->setName($tags[$i][1]);
+            }
             $this->data[$p[0]] = (new Projet())
                 ->setId($p[0])
                 ->setCreatedAt($p[1])
@@ -51,7 +57,7 @@ class DatabaseProjectService implements AllService
 
     public function getlist(array $args = []): array
     {
-        $query = "SELECT projet.id, projet.createdAt, projet.titre, projet.content, projet.author, user.Pseudo, projet.status, projet.difficulte, projet.isPremium, COUNT listeTag(projet.id) from projet INNER JOIN( SELECT COUNT(likeproject.project) nb_like, projet.id proID FROM projet LEFT JOIN likeproject ON projet.id = likeproject.project GROUP BY proID ) as likes on proID = projet.id left JOIN(
+        $query = "SELECT projet.id, projet.createdAt, projet.titre, projet.content, projet.author, user.Pseudo, projet.status, projet.difficulte, projet.isPremium, COUNT(likeproject.project), listeTag(projet.id), listeImage(projet.id) from projet INNER JOIN( SELECT COUNT(likeproject.project) nb_like, projet.id proID FROM projet LEFT JOIN likeproject ON projet.id = likeproject.project GROUP BY proID ) as likes on proID = projet.id left JOIN(
     SELECT
         COUNT(comment.id) nb_comment,
         projet.id proID
@@ -61,7 +67,8 @@ class DatabaseProjectService implements AllService
     GROUP BY
         proID
 ) as comments on comments.proID = projet.id 
-    JOIN user on projet.author = user.id";
+    JOIN user on projet.author = user.id
+    LEFT JOIN likeproject ON projet.id = likeproject.project";
         if(count($args) <= 0){
             return $this->data;
         }
@@ -130,8 +137,16 @@ class DatabaseProjectService implements AllService
         $response = $statementList->fetchAll();
         $this->data = [];
         foreach ($response as $p){
-            $tags = explode(" ", $p[14]);
+            $tags = explode(",", $p[10]);
             array_pop($tags);
+            for($i = 0; $i<count($tags); $i++){
+                $tags[$i] = explode(":", $tags[$i]);
+                $tags[$i] = (new tag)
+                    ->setId($tags[$i][0])
+                    ->setName($tags[$i][1]);
+            }
+            $image = explode(" ", $p[11]);
+            array_pop($image);
             $this->data[$p[0]] = (new Projet())
                 ->setId($p[0])
                 ->setCreatedAt($p[1])
@@ -144,7 +159,7 @@ class DatabaseProjectService implements AllService
                 ->setPremium($p[8])
                 ->setLikes(intval($p[9]))
                 ->setTags($tags)
-                ->setURLImage([$p[10]]);
+                ->setURLImage($image);
         }
         return $this->data;
     }
