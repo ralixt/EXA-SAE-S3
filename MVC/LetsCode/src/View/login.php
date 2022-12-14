@@ -39,7 +39,7 @@
             <!--
                 <div>
                     <label for="id"></label>
-                    <input type="hidden" name="id" values='<?php echo($GET['id'])?>'>
+                    <input type="hidden" name="id" values='<?php //echo($GET['id'])?>'>
                 </div>
                 -->
             <div>

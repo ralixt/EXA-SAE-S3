@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 /**
  * @var Projet[] $project
  */
@@ -17,7 +17,7 @@ session_start();
 <body>
     <header>
 
-        <!--<p> Bienvenue dans votre compte <?php //echo($_SESSION["Pseudo"])?></p>-->
+        <p> Bienvenue dans votre compte <?php echo($_SESSION["Pseudo"])?></p>
 
 
         <img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code">
