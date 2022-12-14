@@ -19,6 +19,7 @@ class DatabaseProjectService implements AllService
     }
 
     private function init() : void {
+        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip FROM projet JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project GROUP BY projet.id;");
         $sentence -> execute();
         $projects = $sentence->fetchAll();
         $this->lastId = count($projects);
@@ -33,6 +34,9 @@ class DatabaseProjectService implements AllService
                 $tags[$i] = (new tag)
                     ->setId($tags[$i][0])
                     ->setName($tags[$i][1]);
+
+            $images = explode(" ", $p[11]);
+            array_pop($images);
             }
             $this->data[$p[0]] = (new Projet())
                 ->setId($p[0])
@@ -45,7 +49,9 @@ class DatabaseProjectService implements AllService
                 ->setDifficulte($p[7])
                 ->setPremium($p[8])
                 ->setLikes($p[9])
-                ->setTags($tags);
+                ->setTags($tags)
+                ->setURLImage($images)
+                ->setURLZIP($p[12]);
         }
     }
 
@@ -165,13 +171,45 @@ class DatabaseProjectService implements AllService
     /** @var projet $entity */
     public function create($entity)
     {
-        $sentence = $this->database->prepare("INSERT INTO projet(titre,content,author,status,difficulte,isPremium) VALUES(:titre, :content, :author, :status, :difficulte, :isPremium)");
+        $sentence = $this->database->prepare("INSERT INTO projet(titre,content,author,status,difficulte,isPremium, URL_Zip) VALUES(:titre, :content, :author, :status, :difficulte, :isPremium, :URL_Zip)");
         $sentence->execute(["titre"=> $entity->getTitre(),
                             "content" => $entity->getContent(),
                             "author" => $entity -> getAuthorID(),
                             "status" => $entity -> getStatus() ,
                             "difficulte" => $entity->getDifficulte(),
-                            "isPremium" => $entity->isPremium()? 1:0]);
+                            "isPremium" => $entity->isPremium()? 1:0,
+                            "URL_Zip" => $entity->getURLZIP()]);
+
+        $query = "INSERT INTO projet_tag(id_projet, id_tag) VALUES";
+        $tags = $entity->getTags();
+        for($i=0; $i<count($tags); $i++){
+            if($i+1< count($tags)){
+                $query.= "(" . $entity->getId() . "," . $tags[$i]->getId() . "),";
+            }
+            else{
+                $query.= "(" . $entity->getId() . "," . $tags[$i]->getId() . ");";
+            }
+
+        }
+
+        $sentence = $this->database->prepare($query);
+        $sentence->execute();
+
+        $query = "INSERT INTO url_images(projet_id, nameImage) VALUES";
+        $images = $entity->getURLImage();
+        for($i=0; $i<count($images); $i++){
+            if($i+1< count($images)){
+                $query.= "(" . $entity->getId() . "," . $images[$i] . "),";
+            }
+            else{
+                $query.= "(" . $entity->getId() . "," . $images[$i] . ");";
+            }
+
+        }
+
+        $sentence = $this->database->prepare($query);
+        $sentence->execute();
+
 
     }
 
