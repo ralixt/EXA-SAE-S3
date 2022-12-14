@@ -145,9 +145,10 @@ class CommentaireService implements AllService
             'iduser'=>$user,
             'idcomment'=>$comment,
         ]);
-        if($affichagelike->rowCount()==1){
+        if($affichagelike->rowCount()>0){
             return true;
-        }else{
+        }else {
+
             return false;
         }
     }
@@ -171,6 +172,16 @@ class CommentaireService implements AllService
             'idcomment'=>$comment,
             'iduser'=>$user,
         ]);
+    }
+
+    public function getCommentLike2($comment,$user):int
+    {
+        $affichagelike=$this->database->prepare('SELECT * from likecomment where id_user=:iduser and id_comment=:idcomment' );
+        $affichagelike->execute([
+            'iduser'=>$user,
+            'idcomment'=>$comment,
+        ]);
+       return $affichagelike->rowCount();
     }
 
 }

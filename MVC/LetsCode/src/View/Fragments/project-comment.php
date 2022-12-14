@@ -2,19 +2,18 @@
 /***
  * @var Commentaire $comment
  * @var Projet $projet
- * @var bool $id
+ * @var int $id
  */
 ?>
 
 <div>
-
-    <?php if(!$id):?>
-
+    <?php var_dump($id);?>
+    <?php if($id==0):?>
     <a href="http://localhost/projet/<?php echo($projet->getId())?>?idcomment= <?php echo($comment->getId()) ?>"><span  class="material-symbols-outlined ">favorite</span></a>
     <?php endif; ?>
-    <?php if($id): ?>
+    <?php if($id==1): ?>
     <a href="http://localhost/projet/<?php echo($projet->getId())?>?idcomment= <?php echo($comment->getId()) ?>"><span  class="material-symbols-outlined filled ">favorite</span></a>
-    <?php endif; ?>
+    <?php endif;?>
     <h2><?= ($comment->getPseudo())?></h2>
   
     <!-- likes projet -->

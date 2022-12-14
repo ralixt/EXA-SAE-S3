@@ -41,17 +41,22 @@ class ProjetController extends AbstractController
                     $this->commentProject=$this->CommentaireService->getCommentLike($_GET["idcomment"], $_SESSION["ids"]);
                     if ( $this->commentProject== false) {
                         $this->CommentaireService->createCommentLike($_GET["idcomment"], $_SESSION['ids']);
-                        header("location: http://localhost/ " );
+                       // $this->commentProject=true;
+
+                        header("location: http://localhost/projet/$this->id" );
+
                     } else {
                         $this->CommentaireService->deleteCommentLike($_GET["idcomment"], $_SESSION['ids']);
-                        header("location: http://localhost/ " );
+                       //$this->commentProject=false;
+                        header("location: http://localhost/projet/$this->id" );
+
                     }
 
                 }
         echo get_template(__PROJECT_ROOT__ . "/View/project.php", [
             "project" => $this->Service->get($this->id),
             "comments"=>$this->CommentaireService->getById($this->id),
-            "id"=>$this->commentProject
+            "id"=>$this->CommentaireService->getCommentLike2(22,$_SESSION['ids'])
         ]);
 
 

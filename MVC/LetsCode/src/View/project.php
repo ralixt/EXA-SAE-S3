@@ -2,7 +2,7 @@
 /**
 * @var Commentaire[] $comments
  * @var Projet $project
- * @var bool $id
+ * @var int $id
 */
 ?>
 <!DOCTYPE html>
