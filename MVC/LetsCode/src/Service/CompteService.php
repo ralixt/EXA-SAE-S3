@@ -44,6 +44,7 @@ class CompteService implements AllService
     */
     /**
      * @param int $entity
+     * @return User
      */
     public function get($entity): ?User
     {
@@ -60,7 +61,7 @@ class CompteService implements AllService
         //$ligne = $statementDeleteUser->fetchAll();
     }
 
-    protected function hashPassword( string $password ) : string {
+    public function hashPassword( string $password ) : string {
        // var_dump('appelé');
         return hash('sha256', trim($password));
     }
@@ -99,19 +100,18 @@ class CompteService implements AllService
      */
     public function update($user)
     {
-        $hashed = $this->hashPassword($user);
-        if ($hashed === $this->user->getPassword()) {
-            $statementUpdateUser = $this->database->prepare("UPDATE user SET password = :mdp, Pseudo = :pseudo, email = :mail, role = :role, subscriptionId = :subId, isPremium = :isPremium where id  = :id");
-            $statementUpdateUser->execute([
-                'pseudo' => $user->getPseudo(),
-                'email' => $user->getEmail(),
-                'mdp' => $hashed,
-                'role' => $user->getRole(),
-                'subId' => $user->getSubscription(),
-                'isPremium' => $user->getPremium()
-            ]);
-        }
-        // TODO: Implement update() method.
+        $hashed = $this->hashPassword($user->getPassword());
+        $statementUpdateUser = $this->database->prepare("UPDATE user SET password = :mdp, Pseudo = :pseudo, email = :mail, role = :role, subscriptionId = :subId, hasActiveSubscription = :isPremium where id  = :id");
+        $statementUpdateUser->execute([
+            'pseudo' => $user->getPseudo(),
+            'mail' => $user->getEmail(),
+            'mdp' => $hashed,
+            'role' => $user->getRole(),
+            'subId' => $user->getSubscription(),
+            'isPremium' => $user->getPremium(),
+            'id' => $user->getId()
+        ]);
+        $this->data[$user->getId()] = $user;
     }
 
 
@@ -123,10 +123,12 @@ class CompteService implements AllService
 
 
 
-    public function NbrUserProjet(){
-        $projetUserStatement =$this->database->prepare('SELECT Count(*) FROM projet where author = :id');
+    public function NbrUserProjet(): int
+    {
+        $projetUserStatement =$this->database->prepare('SELECT Count(id) FROM projet where author = :id');
         $projetUserStatement-> execute(['id'=>$_SESSION['ids']]);
-        //$projetPub=$projetUserStatement->fetchAll();
+        $projetPub=$projetUserStatement->fetchAll();
+        return $projetPub[0][0];
     }
 
     public function connexion($idUser, $mdp):bool

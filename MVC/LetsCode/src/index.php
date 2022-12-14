@@ -58,6 +58,10 @@ switch ($uri[1]) :
         (new AjoutProjetController(DatabaseProjectService::getInstance()))->render();
         break;
 
+    case "compte":
+        (new CompteController(CompteService::getInstance()))->render();
+        break;
+
 
 
     // Default 404

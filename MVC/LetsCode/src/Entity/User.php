@@ -122,7 +122,7 @@ class User
     /**
      * @return int
      */
-    public function getIsPremium(): int
+    public function getPremium(): int
     {
         return $this->isPremium;
     }
