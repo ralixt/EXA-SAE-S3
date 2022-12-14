@@ -223,7 +223,7 @@ class Projet
     }
 
     /**
-     * @return String[]
+     * @return tag[]
      */
     public function getTags(): array
     {
@@ -231,7 +231,7 @@ class Projet
     }
 
     /**
-     * @param String[] $tags
+     * @param tag[] $tags
      */
     public function setTags(array $tags): Projet
     {
