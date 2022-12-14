@@ -61,7 +61,7 @@ class CompteService implements AllService
     }
 
     protected function hashPassword( string $password ) : string {
-        var_dump('appelé');
+       // var_dump('appelé');
         return hash('sha256', trim($password));
     }
 
@@ -129,18 +129,21 @@ class CompteService implements AllService
         //$projetPub=$projetUserStatement->fetchAll();
     }
 
-    public function connexion($idUser, $mdp):array
+    public function connexion($idUser, $mdp):bool
     {
         $hashed = $this->hashPassword($mdp);
+
         $statementConnexionUser = $this->database->prepare("SELECT * FROM user WHERE email=:email  AND password=:mp");
         $statementConnexionUser->execute(['email' => $idUser, 'mp' => $hashed]);
         $result = $statementConnexionUser->fetchall();
-        return $result;
         //var_dump($result);
+        //var_dump($statementConnexionUser->rowCount());
+       // return $result;
 
-        if ($statementConnexionUser->rowCount() > 0) {
 
-            $_SESSION["ids"] = strval($result[0][0]);
+        if ($statementConnexionUser->rowCount() == 1) {
+
+           $_SESSION["ids"] = strval($result[0][0]);
             $_SESSION["Pseudo"] = $result[0][1];
             $_SESSION["email"] = $result[0][2];
             $_SESSION["roles"] = strval($result[0][4]);

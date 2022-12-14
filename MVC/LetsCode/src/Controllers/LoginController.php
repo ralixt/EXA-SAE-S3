@@ -20,13 +20,13 @@ class LoginController extends AbstractController
         $c=[];
     if(isset($_POST["adr_email"])&&isset($_POST["mp"])) {
 
-         $c=$this->loginService->connexion($_POST["adr_email"], $_POST["mp"]);
+         $this->compte=$this->loginService->connexion($_POST["adr_email"], $_POST["mp"]);
+
 
     }
         if($this->compte==true) {
-            echo get_template(__PROJECT_ROOT__ . "/View/inscription.php", [
-                "p"=>null
-            ]);
+            header("location: http://localhost/ ");
+//            var_dump($_SESSION["roles"]);
         }
         else {
 

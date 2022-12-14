@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1
--- http://www.phpmyadmin.net
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Client :  localhost
--- Généré le :  Mar 15 Novembre 2022 à 10:13
--- Version du serveur :  5.7.11
--- Version de PHP :  7.0.3
+-- Hôte : db_letscode:3306
+-- Généré le : mer. 14 déc. 2022 à 08:25
+-- Version du serveur : 10.9.3-MariaDB-1:10.9.3+maria~ubu2204
+-- Version de PHP : 8.0.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,8 +18,64 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `let's code`
+-- Base de données : `letscode`
 --
+
+DELIMITER $$
+--
+-- Fonctions
+--
+CREATE DEFINER=`root`@`%` FUNCTION `listeImage` (`projetID` INT) RETURNS TEXT CHARSET utf8mb4  BEGIN
+DECLARE fini INTEGER DEFAULT 0;
+DECLARE liste LONGTEXT;
+DECLARE nomImage VARCHAR(2000);
+DECLARE monCurseur CURSOR FOR
+
+
+SELECT nameImage FROM url_images JOIN projet ON projet.id = url_images.projet_id where projet.id = projetID ORDER BY projet.id;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET fini = 1;
+
+SET liste = "";
+
+OPEN monCurseur;
+maBoucle: LOOP
+FETCH monCurseur INTO nomImage;
+IF fini = 1 THEN
+LEAVE maBoucle;
+END IF;
+SET liste = CONCAT(liste, nomImage, " ");
+END LOOP maBoucle;
+CLOSE monCurseur;
+
+RETURN liste;
+END$$
+
+CREATE DEFINER=`root`@`%` FUNCTION `listeTag` (`idProjet` INT) RETURNS TEXT CHARSET utf8mb4  BEGIN
+DECLARE fini INTEGER DEFAULT 0;
+DECLARE liste LONGTEXT;
+DECLARE titleTag VARCHAR(2000);
+DECLARE monCurseur CURSOR FOR
+
+
+SELECT tag.title FROM tag JOIN projet_tag ON projet_tag.id_tag = tag.id where projet_tag.id_projet = idProjet ORDER BY projet_tag.id_projet;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET fini = 1;
+
+SET liste = "";
+
+OPEN monCurseur;
+maBoucle: LOOP
+FETCH monCurseur INTO titleTag;
+IF fini = 1 THEN
+LEAVE maBoucle;
+END IF;
+SET liste = CONCAT(liste, titleTag, " ");
+END LOOP maBoucle;
+CLOSE monCurseur;
+
+RETURN liste;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -28,7 +85,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `content` longtext NOT NULL,
   `rating` int(11) NOT NULL,
   `author` int(11) NOT NULL,
@@ -36,7 +93,7 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `comment`
+-- Déchargement des données de la table `comment`
 --
 
 INSERT INTO `comment` (`id`, `createdAt`, `content`, `rating`, `author`, `projet`) VALUES
@@ -74,7 +131,7 @@ CREATE TABLE `likecomment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `likecomment`
+-- Déchargement des données de la table `likecomment`
 --
 
 INSERT INTO `likecomment` (`id_comment`, `id_user`) VALUES
@@ -92,6 +149,14 @@ CREATE TABLE `likeproject` (
   `project` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `likeproject`
+--
+
+INSERT INTO `likeproject` (`user`, `project`) VALUES
+(16, 1),
+(17, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -100,7 +165,7 @@ CREATE TABLE `likeproject` (
 
 CREATE TABLE `projet` (
   `id` int(11) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `titre` varchar(256) NOT NULL,
   `content` longtext NOT NULL,
   `author` int(11) NOT NULL,
@@ -108,19 +173,20 @@ CREATE TABLE `projet` (
   `difficulte` enum('Debutant','Intermediaire','Avance') NOT NULL,
   `coverUrl` text NOT NULL,
   `isPremium` tinyint(1) NOT NULL,
-  `URL_Image` varchar(256) NOT NULL
+  `URL_Image` varchar(256) NOT NULL,
+  `URL_Zip` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `projet`
+-- Déchargement des données de la table `projet`
 --
 
-INSERT INTO `projet` (`id`, `createdAt`, `titre`, `content`, `author`, `status`, `difficulte`, `coverUrl`, `isPremium`, `URL_Image`) VALUES
-(1, '2022-10-28 09:15:30', 'sql table', 'il suffit de faire create table', 14, 'Reviewing', 'Debutant', 'text.com/sql', 1, 'truc.png'),
-(2, '2022-11-07 13:45:11', 'création site web', 'debrouille toi google est ton ami', 2, 'Published', 'Intermediaire', 'tagueule.com', 1, 'truc.zip'),
-(3, '2022-11-08 09:07:00', 'sandwitch', 'prendre du pain, Ã©taler le beurre, mettre du jambon et puis du fromage refermez le pain et vosu avez votre sandwitch ', 18, 'Published', 'Debutant', 'url', 0, ''),
-(4, '2022-11-08 10:21:17', 'asandie', 'je crois qu\'il s\'agit d\'un projet incomprÃ©hensible', 18, 'Published', 'Avance', 'url', 0, ''),
-(5, '2022-11-09 13:16:28', 'faire une boucle niveau hard', 'for(int i = 0; i <nbDeTour; i++){\r\n   truc a repeter\r\n}', 18, 'Published', 'Avance', 'url', 0, '');
+INSERT INTO `projet` (`id`, `createdAt`, `titre`, `content`, `author`, `status`, `difficulte`, `coverUrl`, `isPremium`, `URL_Image`, `URL_Zip`) VALUES
+(1, '2022-10-28 09:15:30', 'sql table', 'il suffit de faire create table', 14, 'Reviewing', 'Debutant', 'text.com/sql', 1, 'truc.png', ''),
+(2, '2022-11-07 13:45:11', 'création site web', 'debrouille toi google est ton ami', 2, 'Published', 'Intermediaire', 'gege.com', 1, 'truc.zip', ''),
+(3, '2022-11-08 09:07:00', 'sandwitch', 'prendre du pain, Ã©taler le beurre, mettre du jambon et puis du fromage refermez le pain et vosu avez votre sandwitch ', 18, 'Published', 'Debutant', 'url', 0, '', ''),
+(4, '2022-11-08 10:21:17', 'asandie', 'je crois qu\'il s\'agit d\'un projet incomprÃ©hensible', 18, 'Published', 'Avance', 'url', 0, '', ''),
+(5, '2022-11-09 13:16:28', 'faire une boucle niveau hard', 'for(int i = 0; i <nbDeTour; i++){\r\n   truc a repeter\r\n}', 18, 'Published', 'Avance', 'url', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -134,27 +200,27 @@ CREATE TABLE `projet_tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `projet_tag`
+-- Déchargement des données de la table `projet_tag`
 --
 
 INSERT INTO `projet_tag` (`id_projet`, `id_tag`) VALUES
+(1, 8),
+(1, 38),
+(2, 9),
+(2, 29),
+(2, 38),
+(3, 8),
+(3, 29),
+(4, 10),
+(4, 29),
 (5, 1),
 (5, 2),
 (5, 5),
 (5, 6),
 (5, 7),
-(1, 8),
-(3, 8),
-(2, 9),
-(4, 10),
 (5, 10),
-(2, 29),
-(3, 29),
-(4, 29),
 (5, 29),
-(5, 33),
-(1, 38),
-(2, 38);
+(5, 33);
 
 -- --------------------------------------------------------
 
@@ -168,7 +234,7 @@ CREATE TABLE `tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `tag`
+-- Déchargement des données de la table `tag`
 --
 
 INSERT INTO `tag` (`id`, `title`) VALUES
@@ -196,6 +262,26 @@ INSERT INTO `tag` (`id`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `url_images`
+--
+
+CREATE TABLE `url_images` (
+  `id` int(11) NOT NULL,
+  `projet_id` int(11) NOT NULL,
+  `nameImage` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `url_images`
+--
+
+INSERT INTO `url_images` (`id`, `projet_id`, `nameImage`) VALUES
+(1, 4, 'Bg_du_58'),
+(2, 4, 'matteo_du_58.png');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `user`
 --
 
@@ -205,13 +291,13 @@ CREATE TABLE `user` (
   `email` text NOT NULL,
   `password` text NOT NULL,
   `role` enum('User','Premium_User','Admin') NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `subscriptionId` text NOT NULL,
-  `hasActiveSubscription` tinyint(1) NOT NULL DEFAULT '0'
+  `hasActiveSubscription` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `user`
+-- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `Pseudo`, `email`, `password`, `role`, `createdAt`, `subscriptionId`, `hasActiveSubscription`) VALUES
@@ -229,7 +315,7 @@ INSERT INTO `user` (`id`, `Pseudo`, `email`, `password`, `role`, `createdAt`, `s
 (18, 'Batos1er', 'bap.menet@gmail.com', 'b42324fe7d0b5d42325ed37788c466d5eba20aa9ab49a366d669e45b522ad5f4', 'User', '2022-11-08 10:00:53', 'null', 0);
 
 --
--- Index pour les tables exportées
+-- Index pour les tables déchargées
 --
 
 --
@@ -283,13 +369,20 @@ ALTER TABLE `tag`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `url_images`
+--
+ALTER TABLE `url_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_Id_Projet` (`projet_id`);
+
+--
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
@@ -297,28 +390,39 @@ ALTER TABLE `user`
 --
 ALTER TABLE `comment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT pour la table `contact`
 --
 ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT pour la table `projet`
 --
 ALTER TABLE `projet`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT pour la table `tag`
 --
 ALTER TABLE `tag`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT pour la table `url_images`
+--
+ALTER TABLE `url_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables déchargées
 --
 
 --
@@ -354,6 +458,13 @@ ALTER TABLE `projet`
 ALTER TABLE `projet_tag`
   ADD CONSTRAINT `projet_tag_ibfk_1` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`),
   ADD CONSTRAINT `projet_tag_ibfk_2` FOREIGN KEY (`id_projet`) REFERENCES `projet` (`id`);
+
+--
+-- Contraintes pour la table `url_images`
+--
+ALTER TABLE `url_images`
+  ADD CONSTRAINT `FK_Id_Projet` FOREIGN KEY (`projet_id`) REFERENCES `projet` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
