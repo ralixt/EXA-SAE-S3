@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * @var Projet[] $project
  */
@@ -15,6 +16,7 @@
 </head>
 <body>
     <header>
+        <p> Bienvenu dans votre compte <?php echo($_SESSION["Pseudo"])?></p>
         <a>Accueil</a>
 
         <!--pour les user connecté-->
