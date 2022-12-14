@@ -136,28 +136,16 @@ session_start();
                         <input type="checkbox" id="tag[]" name="tag[]" value="Deutsch">
                         <label for="tag[]">Deutsch</label>
                     </div>
-
                 </fieldset>
 
-                <fieldset>
-                    <legend>Difficulté</legend>
 
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="Facile">
-                        <label for="tag[]">Facile</label>
-                    </div>
+                <label for="difficulte">Difficulté :</label>
+                <select name="difficulte" id="difficulte">
+                    <option value="facile">Facile</option>
+                    <option value="moyen">Moyen</option>
+                    <option value="difficile">Difficile</option>
+                </select>
 
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="Moyen">
-                        <label for="tag[]">Moyen</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="Difficile">
-                        <label for="tag[]">Difficile</label>
-                    </div>
-
-                </fieldset>
 
                 <label for="orderby">Trier par :</label>
                 <select name="orderby" id="orderby">
