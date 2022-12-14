@@ -28,8 +28,8 @@ $suppressionlike=$pdo->prepare('Delete from likeproject where user=:iduser and p
 $suppressionlike->execute([
     'idprojet'=>$like,
     'iduser'=>$userss,
-]);
-header('location:accueil.php');
+]);ion:accueil.php')
+header('locat;
 }
 
 

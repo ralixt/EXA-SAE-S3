@@ -1,13 +1,14 @@
 <?php
 /***
  * @var Commentaire $comment
+ * @var Projet $projet
  */
 ?>
 
 <div>
-    <span class="material-symbols-outlined ">favorite</span>
+    <a href="http://localhost/projet/<?php echo($projet->getId())?>?idcomment= <?php echo($comment->getId()) ?>"><span  class="material-symbols-outlined ">favorite</span></a>
     <h2><?= ($comment->getPseudo())?></h2>
-    <span class="material-symbols-outlined">favorites</span>
+  
     <!-- likes projet -->
     <h3>Note: <?= ($comment->getRating())?></h3>
     <p><?= ($comment->getContent())?></p>

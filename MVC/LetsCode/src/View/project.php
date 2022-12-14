@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel='stylesheet' href='/./Ressource/css/styles.css'  type='text/css' media='screen'>
+    <script type="text/javascript" src="./.././Ressource/JS/likecomment.js" defer></script>
 </head>
     <body>
         <header>
@@ -81,11 +82,14 @@
             <article>
 
 
-            <?php foreach ($comments as $comment)
-                    echo get_template(__PROJECT_ROOT__ . "/View/Fragments/project-comment.php", [
-                        "comment" => $comment
-                    ]);
-            ?>
+            <?php foreach ($comments as $comment):?>
+                    <?php echo get_template(__PROJECT_ROOT__ . "/View/Fragments/project-comment.php", [
+                        "comment" => $comment,
+                       "projet"=>$project
+                    ]); ?>
+
+            <?php endforeach;?>
+
 
 
 

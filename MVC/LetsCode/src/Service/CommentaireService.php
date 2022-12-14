@@ -138,17 +138,38 @@ class CommentaireService implements AllService
             "project"=>$entity->getProjet()
         ]);
     }
+    public function getCommentLike($comment,$user):bool
+    {
+        $affichagelike=$this->database->prepare('SELECT * from likecomment where id_user=:iduser and id_comment=:idcomment' );
+        $affichagelike->execute([
+            'iduser'=>$user,
+            'idcomment'=>$comment,
+        ]);
+        if($affichagelike->rowCount()==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public function createCommentLike($comment,$user )
     {
         $likecomment=$this->database->prepare('INSERT INTO likecomment (id_comment,id_user) VALUES(:idcomment, :iduser)');
         $likecomment->execute([
             'idcomment'=>$comment,
-            'iduser'=>$user
+            'iduser'=>$user,
 
 
         ]);
 
 
+    }
+    public function deleteCommentLike($comment,$user)
+    {
+        $suppressionlike=$this->database->prepare('Delete from likecomment where id_user=:iduser and id_comment=:idcomment');
+        $suppressionlike->execute([
+            'idcomment'=>$comment,
+            'iduser'=>$user,
+        ]);
     }
 }
