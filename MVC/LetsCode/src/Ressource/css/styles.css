@@ -1,12 +1,11 @@
 *{
     text-decoration: none;
     font-family: Poppins;
+
     color: black;
 }
 
-body{
-    background-color: aquamarine;
-}
+
 
 footer{
     text-align: center;
@@ -26,6 +25,7 @@ header a{
     vertical-align: top;
     margin: 1rem;
 }
+
 
 .logoLetsCode{
     position: absolute;
@@ -64,6 +64,7 @@ header a{
 .searchDiv{
 
 }
+
 
 
 

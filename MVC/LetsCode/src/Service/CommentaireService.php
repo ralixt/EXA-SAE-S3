@@ -58,7 +58,7 @@ class CommentaireService implements AllService
 
         $sentence->execute(["projet" => $projet]);
         $comments = $sentence->fetchAll();
-        var_dump($comments);
+
 
         $c = [];
         foreach ($comments as $comment) {
@@ -137,5 +137,18 @@ class CommentaireService implements AllService
             "Pseudo" => $entity->getPseudo(),
             "project"=>$entity->getProjet()
         ]);
+    }
+
+    public function createCommentLike($comment,$user )
+    {
+        $likecomment=$this->database->prepare('INSERT INTO likecomment (id_comment,id_user) VALUES(:idcomment, :iduser)');
+        $likecomment->execute([
+            'idcomment'=>$comment,
+            'iduser'=>$user
+
+
+        ]);
+
+
     }
 }
