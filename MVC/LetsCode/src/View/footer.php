@@ -1,6 +1,6 @@
 <footer>
 
-    <h3>Copyright © Let's Code - 2021</h3>
+    <h3>Copyright © 2022 Let's Code - Tous Droits Réservés</h3>
     <div class="footerNavigation">
         <p>Confidentialité</p>
         <p>Conditions</p>

@@ -158,14 +158,16 @@
             </form>
         </div>
 
+        <div id="projectCards">
+            <?php
+            foreach ($project as $projet)
+                echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
+                    "projet" => $projet
+                ])
 
-        <?php
-        foreach ($project as $projet)
-            echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
-                "projet" => $projet
-            ])
+            ?>
+        </div>
 
-        ?>
     </main>
 </body>
 

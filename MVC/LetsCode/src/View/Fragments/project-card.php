@@ -4,8 +4,11 @@
  */
 ?>
 <a href="http://localhost/projet/<?php echo($projet->getId())?>">
-    <div>
-        <p><?php echo($projet->getTitre()) ?></p>
-        <p>de <?php echo($projet->getAuthor())?> </p>
+    <div class="projectCard">
+        <div>
+            <p><?php echo($projet->getTitre()) ?></p>
+            <p>de <?php echo($projet->getAuthor())?> </p>
+        </div>
+
     </div>
 </a>

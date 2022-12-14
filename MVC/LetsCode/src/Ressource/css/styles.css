@@ -2,13 +2,21 @@
     text-decoration: none;
     font-family: Poppins;
 
-    color: black;
+
+
+
+}
+
+body{
+
 
 }
 
 
 footer{
     text-align: center;
+    color: black;
+
 }
 
 
@@ -38,21 +46,11 @@ header a{
 
 .loginButton{
     color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 5px 10px;
-    gap: 10px;
-
-    position: absolute;
-    width: 12.25rem;
-    height: 34px;
-    left: 1002px;
-    top: 15px;
 
 
     background-color: #5C5C5C;
     border-radius: 0.5rem;
+    padding: 1rem;
 
 }
 
@@ -71,6 +69,7 @@ header a{
 
      */
 
+    color: white;
     margin: 2rem;
     padding: 2rem;
 
@@ -79,12 +78,8 @@ header a{
     border-radius: 20px;
 
 
+
 }
-
-
-
-
-
 
 
 
@@ -101,4 +96,25 @@ header a{
             'wght' 400,
             'GRAD' 0,
             'opsz' 48 !important
+}
+
+
+#projectCards{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.projectCard {
+
+    background-color: #007EA7;
+    border-radius: 1rem;
+    padding: 1em;
+    margin: 1em 0;
+    box-sizing: border-box;
+    color: white;
+    border: solid;
+    border-color: black;
+    width: 100%;
+
 }
