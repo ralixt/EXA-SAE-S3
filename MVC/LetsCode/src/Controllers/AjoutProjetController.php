@@ -6,7 +6,6 @@ class AjoutProjetController extends AbstractController
 //        if(!isset($_SESSION["nom"])){
 //            header("location: http://localhost/");
 //        }
-        var_dump($_POST);
         if(isset($_POST["titre"]) && isset($_POST["contenu"])){
             $projet = new Projet();
 
@@ -39,7 +38,7 @@ class AjoutProjetController extends AbstractController
 
 
             $imagesNames = [];
-            if(isset($_FILES["images"]) && empty($_FILES["images"])){
+            if(isset($_FILES["images"]) && !empty($_FILES["images"])){
                 !is_dir(__PROJECT_ROOT__ . "/RessourcesProject") ? mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
                 !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1)) ? mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1)): null;
                 $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1) . "/images";
@@ -56,7 +55,7 @@ class AjoutProjetController extends AbstractController
 
 
             $zipName = null;
-            if(isset($_FILES["zip"]) && empty($_FILES["images"])){
+            if(isset($_FILES["zip"]) && !empty($_FILES["images"])){
                 !is_dir(__PROJECT_ROOT__ . "/RessourcesProject") ? mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
                 !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1)) ? mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1)): null;
                 $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1) . "/zip";

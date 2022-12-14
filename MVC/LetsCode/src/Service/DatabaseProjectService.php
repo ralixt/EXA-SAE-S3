@@ -19,7 +19,7 @@ class DatabaseProjectService implements AllService
     }
 
     private function init() : void {
-        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, URL_Image, COUNT(project), listeTag(projet.id) FROM projet JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project GROUP BY projet.id;");
+        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id) FROM projet JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project GROUP BY projet.id;");
         $sentence -> execute();
         $projects = $sentence->fetchAll();
         $this->lastId = count($projects);
@@ -27,7 +27,7 @@ class DatabaseProjectService implements AllService
 
         $this->data = [];
         foreach ($projects as $p){
-            $tags = explode(" ", $p[11]);
+            $tags = explode(" ", $p[10]);
             array_pop($tags);
             $this->data[$p[0]] = (new Projet())
                 ->setId($p[0])
@@ -39,8 +39,7 @@ class DatabaseProjectService implements AllService
                 ->setStatus($p[6])
                 ->setDifficulte($p[7])
                 ->setPremium($p[8])
-                ->setURLImage([$p[9]])
-                ->setLikes($p[10])
+                ->setLikes($p[9])
                 ->setTags($tags);
         }
     }
