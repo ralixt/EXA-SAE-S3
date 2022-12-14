@@ -22,7 +22,7 @@ class DatabaseProjectService implements AllService
         $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, URL_Image, COUNT(project), listeTag(projet.id) FROM projet JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project GROUP BY projet.id;");
         $sentence -> execute();
         $projects = $sentence->fetchAll();
-
+        $this->lastId = count($projects);
 
 
         $this->data = [];
@@ -159,14 +159,13 @@ class DatabaseProjectService implements AllService
     /** @var projet $entity */
     public function create($entity)
     {
-        $sentence = $this->database->prepare("INSERT INTO projet(titre,content,author,status,difficulte,isPremium,URL_Image) VALUES(:titre, :content, :author, :status, :difficulte, :isPremium, :URL_Image)");
+        $sentence = $this->database->prepare("INSERT INTO projet(titre,content,author,status,difficulte,isPremium) VALUES(:titre, :content, :author, :status, :difficulte, :isPremium)");
         $sentence->execute(["titre"=> $entity->getTitre(),
                             "content" => $entity->getContent(),
                             "author" => $entity -> getAuthorID(),
                             "status" => $entity -> getStatus() ,
                             "difficulte" => $entity->getDifficulte(),
-                            "isPremium" => $entity->isPremium()? 1:0,
-                            "URL_Image" => $entity->getURLImage()]);
+                            "isPremium" => $entity->isPremium()? 1:0]);
 
     }
 
@@ -192,22 +191,7 @@ class DatabaseProjectService implements AllService
         $this->lastId = $this->lastId - 1;
     }
 
-    /**
-     * @return tag[]
-     */
-    public function getTags(): array
-    {
-        $sentence = $this->database->prepare("SELECT * FROM tag");
-        $sentence -> execute();
-        $tags = $sentence->fetchAll();
-        $newTags = [];
-        foreach($tags as $tag){
-            $newTags[$tag[0]]= (new tag())
-                ->setId($tag[0])
-                ->setName($tag[1]);
-        }
-        return $newTags;
-    }
+
 
     /**
      * @return int

@@ -55,14 +55,57 @@
 <!--fin premium-->
 
     <div>
-        <label for="support"><strong>choisissez le support:</strong></label><br>
+        <p>
+            langage de programmation
+            <br/>
+            HTML: <input type="checkbox" name="tag[]" value="HTML" />
+            <br/>
+            Java: <input type="checkbox" name="tag[]" value="Java" />
+            <br/>
+            Python: <input type="checkbox" name="tag[]" value="Python" />
+            <br/>
+            C++: <input type="checkbox" name="tag[]" value="C++" />
+            <br/>
+            C: <input type="checkbox" name="tag[]" value="C" />
+            <br/>
+            C#: <input type="checkbox" name="tag[]" value="C#" />
+            <br/>
+            PHP: <input type="checkbox" name="tag[]" value="PHP" />
+            <br/>
+            CSS: <input type="checkbox" name="tag[]" value="CSS" />
+            <br/>
+            SQL: <input type="checkbox" name="tag[]" value="SQL" />
+            <br/>
+            Javascript: <input type="checkbox" name="tag[]" value="Javascript" />
+            <br/>
+        </p>
+        <p>
+            support
+            <br/>
+            Windows: <input type="checkbox" name="tag[]" value="Windows" />
+            <br/>
+            Linux: <input type="checkbox" name="tag[]" value="Linux" />
+            <br/>
+            Mac: <input type="checkbox" name="tag[]" value="Mac" />
+            <br/>
+        </p>
+        <p>
+            langue
+            <br/>
+            Français: <input type="checkbox" name="tag[]" value="francais" />
+            <br/>
+            English: <input type="checkbox" name="tag[]" value="english" />
+            <br/>
+            Espanol: <input type="checkbox" name="tag[]" value="espanol" />
+            <br/>
+            Deutsch: <input type="checkbox" name="tag[]" value="deutsch" />
+            <br/>
+        </p>
 
-        <select  id="support" name="tags[]" multiple >
-            <?php foreach($tags as $tag):?>
-
-                <option  value='<?php echo($tag->getId())?>'><?php echo($tag->getName())?></option>
-
-            <?php endforeach?>
+        <select name="difficulte">
+            <option value="debutant">Facile</option>
+            <option value="intermediaire">Moyen</option>
+            <option value="avance">Difficile</option>
         </select>
     </div>
     <br>
@@ -85,7 +128,7 @@
     <br>
     <button id="ajouter" type="submit" >Ajouter</button>
 </form>
-<script>var simplemde = new SimpleMDE({ element: document.getElementById("contenu") });</script>
+<script>var simplemde = new SimpleMDE({ element: document.querySelector("#contenu") });</script>
 
 </body>
 <?php include 'footer.php'?>
