@@ -14,7 +14,7 @@ class Projet
     private String $URLZIP;
     private String $Status;
     private String $Difficulte;
-    /** @var tag[] */
+    /** @var String[] */
     private array $tags;
     private int $likes;
 
@@ -223,7 +223,7 @@ class Projet
     }
 
     /**
-     * @return tag[]
+     * @return String[]
      */
     public function getTags(): array
     {
@@ -231,7 +231,7 @@ class Projet
     }
 
     /**
-     * @param tag[] $tags
+     * @param String[] $tags
      */
     public function setTags(array $tags): Projet
     {

@@ -51,7 +51,7 @@ class DatabaseProjectService implements AllService
 
     public function getlist(array $args = []): array
     {
-        $query = "SELECT *, listeTag(projet.id) from projet INNER JOIN( SELECT COUNT(likeproject.project) nb_like, projet.id proID FROM projet LEFT JOIN likeproject ON projet.id = likeproject.project GROUP BY proID ) as likes on proID = projet.id left JOIN(
+        $query = "SELECT projet.id, projet.createdAt, projet.titre, projet.content, projet.author, user.Pseudo, projet.status, projet.difficulte, projet.isPremium, COUNT listeTag(projet.id) from projet INNER JOIN( SELECT COUNT(likeproject.project) nb_like, projet.id proID FROM projet LEFT JOIN likeproject ON projet.id = likeproject.project GROUP BY proID ) as likes on proID = projet.id left JOIN(
     SELECT
         COUNT(comment.id) nb_comment,
         projet.id proID
@@ -60,7 +60,8 @@ class DatabaseProjectService implements AllService
     LEFT JOIN projet ON projet.id = comment.projet
     GROUP BY
         proID
-) as comments on comments.proID = projet.id ";
+) as comments on comments.proID = projet.id 
+    JOIN user on projet.author = user.id";
         if(count($args) <= 0){
             return $this->data;
         }
@@ -124,15 +125,7 @@ class DatabaseProjectService implements AllService
                 "nbTags"=>$nbTag
             ]);
         }
-        $sentence = $this->database->prepare("SELECT tag.id, projet_tag.id_projet, tag.title FROM tag JOIN projet_tag ON projet_tag.id_tag = tag.id ORDER BY projet_tag.id_projet");
-        $sentence ->execute();
-        $tags = $sentence->fetchAll();
 
-        foreach ($tags as $tag){
-            $Orderedtags[$tag[1]][]= (new Tag())
-                ->setId($tag[0])
-                ->setName($tag[2]);
-        }
 
         $response = $statementList->fetchAll();
         $this->data = [];
