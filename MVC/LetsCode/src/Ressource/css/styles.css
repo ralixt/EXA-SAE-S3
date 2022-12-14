@@ -6,7 +6,6 @@
 }
 
 
-
 footer{
     text-align: center;
 }
@@ -62,6 +61,22 @@ header a{
 }
 
 .searchDiv{
+    /*
+    position: absolute;
+    width: 1168px;
+    height: 422px;
+    left: 56px;
+    top: 78px;
+
+     */
+
+    margin: 2rem;
+    padding: 2rem;
+
+    background: url(../images/mountains.jpg);
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 20px;
+
 
 }
 

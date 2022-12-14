@@ -16,11 +16,9 @@ session_start();
 </head>
 <body>
     <header>
-<<<<<<< Updated upstream
-        <p> Bienvenu dans votre compte <?php echo($_SESSION["Pseudo"])?></p>
-        <a>Accueil</a>
-=======
->>>>>>> Stashed changes
+
+        <!--<p> Bienvenue dans votre compte <?php //echo($_SESSION["Pseudo"])?></p>-->
+
 
         <img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code">
 
@@ -38,61 +36,137 @@ session_start();
         <div class="searchDiv">
             <form method="GET">
 
-                <p>
-                    langage de programmation
-                    <br/>
-                    HTML: <input type="checkbox" name="tag[]" value="HTML" />
-                    <br/>
-                    Java: <input type="checkbox" name="tag[]" value="Java" />
-                    <br/>
-                    Python: <input type="checkbox" name="tag[]" value="Python" />
-                    <br/>
-                    C++: <input type="checkbox" name="tag[]" value="C++" />
-                    <br/>
-                    C: <input type="checkbox" name="tag[]" value="C" />
-                    <br/>
-                    C#: <input type="checkbox" name="tag[]" value="C#" />
-                    <br/>
-                    PHP: <input type="checkbox" name="tag[]" value="PHP" />
-                    <br/>
-                    CSS: <input type="checkbox" name="tag[]" value="CSS" />
-                    <br/>
-                    SQL: <input type="checkbox" name="tag[]" value="SQL" />
-                    <br/>
-                    Javascript: <input type="checkbox" name="tag[]" value="Javascript" />
-                    <br/>
-                </p>
-                <p>
-                    support
-                    <br/>
-                    Windows: <input type="checkbox" name="tag[]" value="Windows" />
-                    <br/>
-                    Linux: <input type="checkbox" name="tag[]" value="Linux" />
-                    <br/>
-                    Mac: <input type="checkbox" name="tag[]" value="Mac" />
-                    <br/>
-                </p>
-                <p>
-                    langue
-                    <br/>
-                    Français: <input type="checkbox" name="tag[]" value="francais" />
-                    <br/>
-                    English: <input type="checkbox" name="tag[]" value="english" />
-                    <br/>
-                    Espanol: <input type="checkbox" name="tag[]" value="espanol" />
-                    <br/>
-                    Deutsch: <input type="checkbox" name="tag[]" value="deutsch" />
-                    <br/>
-                </p>
-                <input type="search" name="recherche" id="recherche" placeholder="Quel projet voulez vous recherchez ?">
+                <input type="search" name="recherche" id="recherche" placeholder="Quel projet recherchez vous ?">
 
-                <p>Order by</p>
-                <select name="orderby">
+
+                <fieldset>
+                    <legend>Langage de programmation</legend>
+
+                    <div>
+                        <input type="checkbox" id="tag[]"" name="tag[]" value="HTML">
+                        <label for="tag[]">HTML</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Java">
+                        <label for="tag[]">Java</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Python">
+                        <label for="tag[]">Python</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="C++">
+                        <label for="tag[]">C++</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="C">
+                        <label for="tag[]">C</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="C#">
+                        <label for="tag[]">C#</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="PHP">
+                        <label for="tag[]">PHP</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="CSS">
+                        <label for="tag[]">CSS</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="SQL">
+                        <label for="tag[]">SQL</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Javascript">
+                        <label for="tag[]">Javascript</label>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Support</legend>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Windows">
+                        <label for="tag[]">Windows</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Linux">
+                        <label for="tag[]">Linux</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Mac">
+                        <label for="tag[]">Mac</label>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Langue</legend>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Francais">
+                        <label for="tag[]">Français</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="English">
+                        <label for="tag[]">English</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Espanol">
+                        <label for="tag[]">Español</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Deutsch">
+                        <label for="tag[]">Deutsch</label>
+                    </div>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Difficulté</legend>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Facile">
+                        <label for="tag[]">Facile</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Moyen">
+                        <label for="tag[]">Moyen</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="tag[]" name="tag[]" value="Difficile">
+                        <label for="tag[]">Difficile</label>
+                    </div>
+
+                </fieldset>
+
+                <label for="orderby">Trier par :</label>
+                <select name="orderby" id="orderby">
                     <option value="nom"> nom </option>
                     <option value="difficulte"> difficulte </option>
                     <option value="like"> like </option>
                     <option value="commentaire"> commentaire </option>
                 </select>
+
             </form>
         </div>
 
