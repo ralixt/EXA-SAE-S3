@@ -56,7 +56,7 @@ class ProjetController extends AbstractController
         echo get_template(__PROJECT_ROOT__ . "/View/project.php", [
             "project" => $this->Service->get($this->id),
             "comments"=>$this->CommentaireService->getById($this->id),
-            "id"=>$this->CommentaireService->getCommentLike2(22,$_SESSION['ids'])
+
         ]);
 
 

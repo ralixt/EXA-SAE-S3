@@ -2,7 +2,7 @@
 /**
 * @var Commentaire[] $comments
  * @var Projet $project
- * @var int $id
+
 */
 ?>
 <!DOCTYPE html>
@@ -87,7 +87,7 @@
                     <?php echo get_template(__PROJECT_ROOT__ . "/View/Fragments/project-comment.php", [
                         "comment" => $comment,
                        "projet"=>$project,
-                        "id"=>$id
+
                     ]); ?>
 
             <?php endforeach;?>

@@ -1,0 +1,214 @@
+*{
+    text-align: center;
+}
+
+header body{
+    position: relative;
+    width: 80rem;
+    height:  57.8125rem;
+    background: #FFFFFF;
+}
+
+.imagess{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 40px;
+}
+
+.connexion{
+    position: absolute;
+    left: 40%;
+    top: 22%;
+
+}
+
+.connexion button{
+    justify-content: center;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    align-items: center;
+    margin-bottom: 0;
+    margin-top: 3%;
+    color: #121212;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    width: 320px;
+    height: 72px;
+}
+
+
+.firebase{
+    display: flex;
+    justify-content: center;
+}
+/* facebook */
+
+.facebook img{
+    position: relative;
+    left: 5%;
+    bottom: 2%;
+    height: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.facebook button{
+    background: rgba(24, 119, 242, 0.6);
+    width: 23rem;
+    border-radius: 7px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.facebook span{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+
+/*github*/
+
+.github img{
+    position: relative;
+    left: 5%;
+    bottom: 2%;
+    height: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.github button{
+    background: rgba(18, 18, 18, 0.6);
+    width: 23rem;
+    border-radius: 7px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.github {
+    padding-left: 1%;
+}
+
+.github span{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+/* google */
+
+.google img{
+    position: relative;
+    left: 5%;
+    bottom: 2%;
+    height: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.google button{
+    background: rgba(255, 255, 255, 0.6);
+    width: 23rem;
+    border-radius: 7px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.google {
+    padding-right: 1%;
+}
+
+.google span{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 20px;
+    color: #121212;
+}
+
+input{
+    border: 2px solid #5C5C5C;
+    border-radius: 15px;
+    width: 34.75rem;
+    height: 1.75rem;
+    text-align: justify;
+}
+.connecter{
+    padding-right: 1%;
+
+}
+.connecter button {
+    background: #5C5C5C;
+    border-radius: 8px;
+    color: #FFFFFF;
+    width: 126px;
+    height: 34px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+}
+
+.modo{
+    padding-left: 1%;
+}
+
+.modo button{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    background: #5C5C5C;
+    border-radius: 8px;
+    color: #FFFFFF;
+    width: 126px;
+    height: 34px;
+
+}
+
+.phraseAvantInscription{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #5C5C5C;
+}
+
+
+.lienInscription a{
+    text-decoration: none;
+    color: #888888;
+}
+
+.lienInscription{
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #888888;
+}
+.inscription button{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    background: #5C5C5C;
+    border-radius: 8px;
+    color: #FFFFFF;
+    width: 126px;
+    height: 34px;
+}

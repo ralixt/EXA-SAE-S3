@@ -17,7 +17,9 @@
 <body>
     <header>
 
-        <p> Bienvenue dans votre compte <?php echo($_SESSION["Pseudo"])?></p>
+        <?php if(isset($_SESSION["Pseudo"])):?>
+            <p> Bienvenue dans votre compte <?php echo($_SESSION["Pseudo"])?></p>
+        <?php endif; ?>
 
 
         <img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code">
