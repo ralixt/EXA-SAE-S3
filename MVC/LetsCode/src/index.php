@@ -61,7 +61,9 @@ switch ($uri[1]) :
     case "compte":
         (new CompteController(CompteService::getInstance()))->render();
         break;
-
+    case "contact":
+        (new ContactController(DatabaseContactService::getInstance()))->render();
+        break;
 
 
     // Default 404

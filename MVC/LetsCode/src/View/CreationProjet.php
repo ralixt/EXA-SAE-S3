@@ -34,7 +34,7 @@
 
     <br>
 
-<!--premium-->
+<?php if(isset($_SESSION['roles']) && $_SESSION['roles'] ==  'Premium_User') : ?>
         <div>
             <h2>premium?</h2>
         </div>
@@ -54,59 +54,59 @@
         </div>
 
         <br>
-<!--fin premium-->
+<?php endif; ?>
 
     <div>
         <fieldset>
             <legend>Langage de programmation</legend>
 
             <div>
-                <input type="checkbox" id="tag[]"" name="tag[]" value="HTML">
+                <input type="checkbox" id="tag[]" name="tag[]" value=1>
                 <label for="tag[]">HTML</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="Java">
+                <input type="checkbox" id="tag[]" name="tag[]" value=2>
                 <label for="tag[]">Java</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="Python">
+                <input type="checkbox" id="tag[]" name="tag[]" value=3>
                 <label for="tag[]">Python</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="C++">
+                <input type="checkbox" id="tag[]" name="tag[]" value=4>
                 <label for="tag[]">C++</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="C">
+                <input type="checkbox" id="tag[]" name="tag[]" value=5>
                 <label for="tag[]">C</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="C#">
+                <input type="checkbox" id="tag[]" name="tag[]" value=6>
                 <label for="tag[]">C#</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="PHP">
+                <input type="checkbox" id="tag[]" name="tag[]" value=7>
                 <label for="tag[]">PHP</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="CSS">
+                <input type="checkbox" id="tag[]" name="tag[]" value=8>
                 <label for="tag[]">CSS</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="SQL">
+                <input type="checkbox" id="tag[]" name="tag[]" value=9>
                 <label for="tag[]">SQL</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="Javascript">
+                <input type="checkbox" id="tag[]" name="tag[]" value=10>
                 <label for="tag[]">Javascript</label>
             </div>
 
@@ -117,17 +117,17 @@
             <legend>Support</legend>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="Windows">
+                <input type="checkbox" id="tag[]" name="tag[]" value=11>
                 <label for="tag[]">Windows</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="Linux">
+                <input type="checkbox" id="tag[]" name="tag[]" value=12>
                 <label for="tag[]">Linux</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="Mac">
+                <input type="checkbox" id="tag[]" name="tag[]" value=13>
                 <label for="tag[]">Mac</label>
             </div>
         </fieldset>
@@ -138,22 +138,22 @@
         <fieldset>
             <legend>Langue</legend>
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="Francais">
+                <input type="checkbox" id="tag[]" name="tag[]" value=14>
                 <label for="tag[]">Français</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="English">
+                <input type="checkbox" id="tag[]" name="tag[]" value=15>
                 <label for="tag[]">English</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="Espanol">
+                <input type="checkbox" id="tag[]" name="tag[]" value=16>
                 <label for="tag[]">Español</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value="Deutsch">
+                <input type="checkbox" id="tag[]" name="tag[]" value=17>
                 <label for="tag[]">Deutsch</label>
             </div>
         </fieldset>

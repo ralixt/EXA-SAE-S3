@@ -10,7 +10,7 @@
     </head>
     <body>
         <main>
-            <form action="Controllers/ContactController" method="post">
+            <form method="post">
                 <div>
                     <div>
                         <label for="nom">Nom<span class="obligatoire">*</span> : </label>

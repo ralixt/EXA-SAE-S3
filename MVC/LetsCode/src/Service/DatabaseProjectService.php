@@ -22,10 +22,13 @@ class DatabaseProjectService implements AllService
         $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip FROM projet JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project GROUP BY projet.id;");
         $sentence -> execute();
         $projects = $sentence->fetchAll();
-        $this->lastId = count($projects);
 
-
+        $sentence = $this->database-> prepare("SELECT MAX(id) FROM projet");
+        $sentence -> execute();
+        $this ->lastId = $sentence->fetchAll()[0][0];
         $this->data = [];
+
+
         foreach ($projects as $p){
             $tags = explode(",", $p[10]);
             array_pop($tags);
@@ -34,10 +37,9 @@ class DatabaseProjectService implements AllService
                 $tags[$i] = (new tag)
                     ->setId($tags[$i][0])
                     ->setName($tags[$i][1]);
-
+            }
             $images = explode(" ", $p[11]);
             array_pop($images);
-            }
             $this->data[$p[0]] = (new Projet())
                 ->setId($p[0])
                 ->setCreatedAt($p[1])
@@ -174,20 +176,20 @@ class DatabaseProjectService implements AllService
         $sentence = $this->database->prepare("INSERT INTO projet(titre,content,author,status,difficulte,isPremium, URL_Zip) VALUES(:titre, :content, :author, :status, :difficulte, :isPremium, :URL_Zip)");
         $sentence->execute(["titre"=> $entity->getTitre(),
                             "content" => $entity->getContent(),
-                            "author" => $entity -> getAuthorID(),
+                            "author" => $entity->getAuthorID(),
                             "status" => $entity -> getStatus() ,
                             "difficulte" => $entity->getDifficulte(),
-                            "isPremium" => $entity->isPremium()? 1:0,
+                            "isPremium" => $entity->isPremium() ? 1:0,
                             "URL_Zip" => $entity->getURLZIP()]);
 
-        $query = "INSERT INTO projet_tag(id_projet, id_tag) VALUES";
+        $query = "INSERT INTO projet_tag(id_projet, id_tag) VALUES ";
         $tags = $entity->getTags();
         for($i=0; $i<count($tags); $i++){
             if($i+1< count($tags)){
-                $query.= "(" . $entity->getId() . "," . $tags[$i]->getId() . "),";
+                $query.= "('" . $entity->getId() . "','" . $tags[$i]->getId() . "'),";
             }
             else{
-                $query.= "(" . $entity->getId() . "," . $tags[$i]->getId() . ");";
+                $query.= "('" . $entity->getId() . "','" . $tags[$i]->getId() . "');";
             }
 
         }
@@ -195,18 +197,17 @@ class DatabaseProjectService implements AllService
         $sentence = $this->database->prepare($query);
         $sentence->execute();
 
-        $query = "INSERT INTO url_images(projet_id, nameImage) VALUES";
+        $query = "INSERT INTO url_images(projet_id, nameImage) VALUES ";
         $images = $entity->getURLImage();
         for($i=0; $i<count($images); $i++){
             if($i+1< count($images)){
-                $query.= "(" . $entity->getId() . "," . $images[$i] . "),";
+                $query.= '("' . $entity->getId() . '","' . $images[$i] . '"),';
             }
             else{
-                $query.= "(" . $entity->getId() . "," . $images[$i] . ");";
+                $query.= '("' . $entity->getId() . '","' . $images[$i] . '");';
             }
 
         }
-
         $sentence = $this->database->prepare($query);
         $sentence->execute();
 
@@ -224,7 +225,6 @@ class DatabaseProjectService implements AllService
                             "isPremium" => $entity->isPremium()? 1:0,
                             "URL_Image" => $entity->getURLImage(),
                             "id" => $entity ->getId()]);
-        $this->lastId = $this->lastId + 1;
     }
 
     /** @var projet $entity */
@@ -232,7 +232,6 @@ class DatabaseProjectService implements AllService
     {
         $sentence = $this->database->prepare("DELETE FROM projet WHERE id = :id ");
         $sentence -> execute(["id" => $entity->getId()]);
-        $this->lastId = $this->lastId - 1;
     }
 
 

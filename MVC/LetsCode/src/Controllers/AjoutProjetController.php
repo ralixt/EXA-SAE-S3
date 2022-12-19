@@ -3,46 +3,47 @@ class AjoutProjetController extends AbstractController
 {
     public function render(): void
     {
-//        if(!isset($_SESSION["nom"])){
-//            header("location: http://localhost/");
-//        }
-        if(isset($_POST["titre"]) && isset($_POST["contenu"])){
+        if(!isset($_SESSION["ids"])){
+            header("location: http://localhost/");
+        }
+        else if(isset($_POST["titre"]) && isset($_POST["contenu"])){
             $projet = new Projet();
 
-            $titre = $_POST["titre"];
-            $projet->setTitre($titre);
+            $projet -> setId($this->Service->getLastId()+1);
+            $projet->setTitre($_POST["titre"]);
 
-            $content = $_POST["contenu"];
-            $projet->setContent($content);
+            $projet->setContent($_POST["contenu"]);
 
             $tags=[];
-            if(isset($_POST["tags"])){
-                foreach($_POST["tags"] as $tag){
+            if(isset($_POST["tag"])){
+                foreach($_POST["tag"] as $tag){
                     $tags[] = (new tag())
                     ->setId($tag);
                 }
                 $projet->setTags($tags);
             }
 
-            $difficulte = $_POST["difficulte"] ?? "debutant";
+            $difficulte = empty($_POST["difficulte"])? $_POST["difficulte"] : 'Debutant';
             $projet->setDifficulte($difficulte);
 
 
 
-            //$isPremium = isset($_POST["isPremium"]) && $_SESSION["roles"]=='Premium_User'? $_POST["isPremium"] : 0;
-            $isPremium = 0;
+            $isPremium = isset($_POST["isPremium"]) && $_SESSION["roles"]=='Premium_User'? $_POST["isPremium"] : 0;
             $projet -> setPremium($isPremium);
 
-            $author = 11;
+            $author = $_SESSION['ids'];
             $projet -> setAuthorID($author);
 
 
             $imagesNames = [];
             if(isset($_FILES["images"]) && !empty($_FILES["images"])){
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject") ? mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1)) ? mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1)): null;
-                $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1) . "/images";
-                mkdir($path);
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject") ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId())) ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId())): null;
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()). "/images") ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/images"): null;
+                $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/images";
                 $countfiles = count($_FILES['images']['name']);
                 for($i=0;$i<$countfiles;$i++){
                     $filename = $_FILES['images']['name'][$i];
@@ -55,19 +56,19 @@ class AjoutProjetController extends AbstractController
 
 
             $zipName = null;
-            if(isset($_FILES["zip"]) && !empty($_FILES["images"])){
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject") ? mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1)) ? mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1)): null;
-                $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($this->Service->getLastId()+1) . "/zip";
-                is_dir($path)? "" : mkdir($path);
+            if(isset($_FILES["zip"]) && !empty($_FILES["zip"])){
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject") ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId())) ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId())): null;
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/zip") ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/zip"): null;
+                $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/zip";
                 $zipName = $_FILES['zip']['name'];
                 move_uploaded_file($_FILES['zip']['tmp_name'],$path . "/" . $_FILES['zip']['name']);
                 $projet->setURLZIP($zipName);
             }
-
-
-            $status = "Reviewing";
-            $projet -> setStatus($status);
+            $projet -> setStatus("Reviewing");
 
             $this->Service->create($projet);
             header("location:http://localhost/");

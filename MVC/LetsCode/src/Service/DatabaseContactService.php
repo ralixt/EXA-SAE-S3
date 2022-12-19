@@ -11,7 +11,7 @@ class DatabaseContactService implements AllService
     private PDO $database;
 
     protected function __construct() {
-        $this->database = Database::getInstance();
+        $this->database = Database::get();
         $this->init();
     }
 
@@ -23,7 +23,7 @@ class DatabaseContactService implements AllService
      * @return void
      */
     private function init() : void {
-        $sentenceContact = $this->database->get()-> prepare("SELECT contact.id,contact.nom,contact.mail,contact.prenom,contact.message FROM contact ;");
+        $sentenceContact = $this->database-> prepare("SELECT contact.id,contact.nom,contact.mail,contact.prenom,contact.message FROM contact ;");
         $sentenceContact -> execute();
         $contacts = $sentenceContact->fetchAll();
         $this->data = [];
@@ -51,7 +51,7 @@ class DatabaseContactService implements AllService
     public function delete($entity)
     {
         // TODO: Implement delete() method.
-        $statementDeletecontact=$this->database->get()-> prepare(
+        $statementDeletecontact=$this->database-> prepare(
             "Delete From contact where id=:id;"
 
         );
@@ -73,7 +73,7 @@ class DatabaseContactService implements AllService
     public function create($entity)
     {
         // TODO: Implement create() method.
-        $statementAddcontact=$this->database->get()-> prepare(
+        $statementAddcontact=$this->database-> prepare(
             "INSERT INTO contact (nom, prenom, mail, message) VALUES (:nom, :prenom, :mail, :message);"
 
         );
