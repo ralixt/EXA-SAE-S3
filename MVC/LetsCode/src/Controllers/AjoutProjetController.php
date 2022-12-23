@@ -64,14 +64,14 @@ class AjoutProjetController extends AbstractController
                 !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/zip") ?
                     mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/zip"): null;
                 $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/zip";
-                $zipName = $_FILES['zip']['name'];
-                move_uploaded_file($_FILES['zip']['tmp_name'],$path . "/" . $_FILES['zip']['name']);
-                $projet->setURLZIP($zipName);
+                $zipName = str_replace(' ', '', $_FILES['zip']['name']);
+                move_uploaded_file($_FILES['zip']['tmp_name'],$path . "/" .  str_replace(' ', '', $_FILES['zip']['name']));
+                $projet->setURLZIP(str_replace(' ', '', $zipName));
             }
             $projet -> setStatus("Reviewing");
 
             $this->Service->create($projet);
-            header("location:http://localhost/");
+           header("location:http://localhost/");
         }
         else{
             echo get_template(__PROJECT_ROOT__ . "/View/CreationProjet.php", [

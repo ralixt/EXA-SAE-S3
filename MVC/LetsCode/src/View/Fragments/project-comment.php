@@ -3,25 +3,61 @@
  * @var Commentaire $comment
  * @var Projet $projet
 
- */
 
-$like=$c=CommentaireService::getInstance()->getCommentLike($comment->getId(),$_SESSION["ids"]);
+ */
+  
+
+    $like = $c = CommentaireService::getInstance()->getCommentLike($comment->getId(), $_SESSION["ids"]??1);
+    $nb = $c = CommentaireService::getInstance()->NbrLike($comment->getId());
+
 ?>
 
-<div>
+<div class="AffichageCommentaires">
+        <div class="AffichageCommentaireContenaire">
+            <div class="PseudoCommentaire">
+                <p>De <?= ($comment->getPseudo())?></p>
+            </div>
+            <div class="NoteCommentaire">
+                <li> <?= ($comment->getRating())?>/5</li>
+            </div>
+            <div class="LikeCommentaire">
 
+                <?php if(!$like):?>
+                <a href="http://localhost/commentaire?idcomment=<?php echo($comment->getId()) ?>&idprojects=<?php echo($projet->getId())?>"><p  class="material-symbols-outlined ">favorite</p></a>
 
-    <h2><?= ($comment->getPseudo())?></h2>
-    <!-- likes projet -->
-    <?php if(!$like):?>
-        <a href="http://localhost/projet/<?php echo($projet->getId())?>?idcomment= <?php echo($comment->getId()) ?>"><span  class="material-symbols-outlined ">favorite</span></a>
-    <?php endif; ?>
-    <?php if($like): ?>
-        <a href="http://localhost/projet/<?php echo($projet->getId())?>?idcomment= <?php echo($comment->getId()) ?>"><span  class="material-symbols-outlined filled ">favorite</span></a>
-    <?php endif;?>
-    <h3>Note: <?= ($comment->getRating())?></h3>
-    <p><?= ($comment->getContent())?></p>
+                    <?php endif; ?>
+                    <?php if($like): ?>
+                        <a href="http://localhost/commentaire?idcomment=<?php echo($comment->getId()) ?>&idprojects=<?php echo($projet->getId())?>"><p  class="material-symbols-outlined filled ">favorite</p></a>
+
+                    <?php endif;?>
+            </div>
+            <div class="nbrLike">
+            <p> (<?= $nb?>)</p>
+            </div>
+        </div>
+            <div class="date">
+                <?php
+                $date=$comment->getCreatedAt();
+                $dates=new dateTime($date);
+                $date=$dates->format('d/m/y');
+                ?>
+                <p>Le <?= $date;?></p>
+            </div><br><br>
+
+            <div class="Contenu">
+                <p>
+                <?= $comment->getContent();?>
+                </p>
+            </div><br>
+            
+
 </div>
+   
+
+
+    
+
+
 
 
 

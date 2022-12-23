@@ -24,3 +24,5 @@ for(let i=0;i<likes.length;i++){
 
     likes[i].addEventListener("click",changement);
 }
+
+

@@ -22,6 +22,7 @@ require_once __PROJECT_ROOT__ . "/Controllers/AbstractController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/AjoutProjetController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/CompteController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/ContactController.php";
+require_once __PROJECT_ROOT__ . "/Controllers/CommentaireController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/ProjetController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/AccueilController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/LoginController.php";
@@ -65,6 +66,9 @@ switch ($uri[1]) :
         (new ContactController(DatabaseContactService::getInstance()))->render();
         break;
 
+    case "commentaire":
+        (new CommentaireController(CommentaireService::getInstance()))->render();
+        break;
 
     // Default 404
     default:

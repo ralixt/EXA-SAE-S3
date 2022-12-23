@@ -54,7 +54,7 @@ class CommentaireService implements AllService
      */
     public function getById($projet):?array
     {
-        $sentence = $this->database->prepare("SELECT comment.id,comment.content,comment.rating,comment.author,comment.projet,user.Pseudo FROM comment Join user on comment.author=user.id WHERE comment.projet=:projet;");
+        $sentence = $this->database->prepare("SELECT comment.id,comment.createdAt,comment.content,comment.rating,comment.author,comment.projet,user.Pseudo FROM comment Join user on comment.author=user.id WHERE comment.projet=:projet order by comment.createdAt desc;");
 
         $sentence->execute(["projet" => $projet]);
         $comments = $sentence->fetchAll();
@@ -65,6 +65,7 @@ class CommentaireService implements AllService
 
             $c[] = (new Commentaire())
                 ->setId($comment["id"])
+                ->setCreatedAt($comment["createdAt"])
                 ->setContent($comment["content"])
                 ->setRating($comment["rating"])
                 ->setAuthor($comment["author"])
@@ -182,6 +183,52 @@ class CommentaireService implements AllService
             'idcomment'=>$comment,
         ]);
        return $affichagelike->rowCount();
+    }
+    public function NbrLike($commentId): int
+    {
+        $likeStatement =$this->database->prepare('SELECT Count(id_comment) FROM likecomment where id_comment = :id');
+        $likeStatement-> execute(['id'=>$commentId]);
+        $like=$likeStatement->fetchAll();
+
+        return $like[0][0];
+
+    }
+
+    public function getProjectLike($project,$user):bool
+    {
+        $affichagelike=$this->database->prepare('SELECT * from likeproject where user=:iduser and project=:idproject' );
+        $affichagelike->execute([
+            'iduser'=>$user,
+            'idproject'=>$project,
+        ]);
+        if($affichagelike->rowCount()==1){
+            return true;
+        }else{
+
+            return false;
+        }
+    }
+
+    public function createProjectLike($project,$user )
+    {
+        $likecomment=$this->database->prepare('INSERT INTO likeproject (user,project) VALUES( :iduser,:idproject )');
+        $likecomment->execute([
+
+            'iduser'=>$user,
+            'idproject'=>$project,
+
+
+        ]);
+
+
+    }
+    public function deleteProjectLike($project,$user)
+    {
+        $suppressionlike=$this->database->prepare('Delete from likeproject where user=:iduser and project=:idproject');
+        $suppressionlike->execute([
+            'idproject'=>$project,
+            'iduser'=>$user,
+        ]);
     }
 
 }

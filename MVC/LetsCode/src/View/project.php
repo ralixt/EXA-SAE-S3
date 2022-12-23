@@ -4,6 +4,9 @@
  * @var Projet $project
 
 */
+require_once  "Ressource/libs/Parsedown.php";
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,91 +20,166 @@
     <!--<title>Nom du Projet</title>-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel='stylesheet' href='/./Ressource/css/styles.css'  type='text/css' media='screen'>
-    <script type="text/javascript" src="./.././Ressource/JS/likecomment.js" defer></script>
+
+    <link rel='stylesheet' href='../Ressource/css/project.css'  type='text/css' media='screen'>
 </head>
-    <body>
-        <header>
-            <h2><?= $project-> getTitre() ?></h2>
-            <p><?= $project-> getCreatedAt() ?></p>
-            <!-- Tags ici -->
-            <!-- likes du projet ici-->
-        </header>
-        <section>
-            <h2>Projet</h2>
-            <p><?= $project-> getContent() ?></p>
+
+<header>
+    <div class= menu_header>
+        <a href="http://localhost">Accueil</a>
+    </div>
+
+</header><br>
+<body>
+<div class="container">
+    
+  <div class="slides">
+    <img src=".././Ressource/test/image1.png" >
+  </div>
+
+  <div class="slides">
+    <img src=".././Ressource/test/image2.png" >
+  </div>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <div  class="point" style="text-align:center" >
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+    <div class="titre">
+        <section >
+            <button ><span><?= $project-> getTitre() ?></span></button>
         </section>
-        <section>
-            <h2>Ressources</h2>
-            <!-- ressources ici -->
-        </section>
-        <section>
-            <h2>Commentaires</h2>
-            <article>
-                <form action="http://localhost/projet/<?php echo($project->getId())?>" method="post">
-                    <div>
-                        <!-- input id user-->
-                    </div>
-                    <div>
+    </div>
+</div>
+<div class="authorContenair">
+    <div class="author">
+       <span>De <?= $project-> getAuthor()?></span> 
+    </div>
+    <div class="like">
+            <span  class="material-symbols-outlined  ">favorite</span>
+    </div>
+</div><br><br>
+
+<div class="menu">
+    <h3>Table des matières</h3><br><br><br>
+    <a href="#contenu"><span>Projet</span><br><br></a>
+    <a href="#ressource"><span>Ressource</span><br><br></a>
+    <a href="#commentaire"><span>Commentaire</span><br></a>
 
 
-                        <!-- input idprojet-->
-                    </>
-                    <div>
-                        <input type="radio" id="note0"
-                               name="note" value="0" checked>
-                        <label for="note0">0</label>
+</div>
+<br><br>
+<div id="contenu" class="Contenu">
+    <h3>Projet</h3><br><br><br>
+    <?php
+        $parsedown=new Parsedown();
+        $text=$project->getContent();
+     ?>
+    
+    <span><?= $parsedown->text($text)?></span><br>
+</div>
+<br>
+<br>
+<div id="ressource" class="Ressource">
+    <h3>Ressource</h3><br><br><br>
+    <div class="RessourceContenair">
+        <div class='folderImg'>
+    <img src="./.././Ressource/images/folder_zip.png" alt="errors">
+        </div>
+        <div class='folderZip'>
+        <span> <?= $project->getURLZIP()?></span>
+        </div>
+        <div class="download">
+         <!-- <a href="./.././RessourcesProject/7/zip/dossierZip.zip"><img src="./.././Ressource/images/download.png" alt="error"></a> -->
+         <!-- <a href='./.././RessourcesProject/'.//php// "'". $project->getId()."'".'/'.'zip'.'/'."'".$project->getURLZIP()."'"?>.><img src="./.././Ressource/images/download.png" alt="error"></a> -->
+         <?php echo('<a href= ./.././RessourcesProject/'.$project->getId().'/'.'zip'.'/'.str_replace(' ', '', $project->getURLZIP()).'>'.'<img src="./.././Ressource/images/download.png" alt="error">'.'</a>');?>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div id="commentaire"class="Commentaire">
 
-                        <input type="radio" id="note1"
-                               name="note" value="1">
-                        <label for="note1">1</label>
+    <h3>Commentaire</h3><br><br><br>
 
-                        <input type="radio" id="note2"
-                               name="note" value="2">
-                        <label for="note2">2</label>
+        <div class="CommentaireContenair">
 
-                        <input type="radio" id="note3"
-                               name="note" value="3" >
-                        <label for="note3">3</label>
+                    <div class="AjoutCommentaire">
+                    <form action="http://localhost/commentaire?idproject=<?php echo($project->getId())?>" method="post">
+                    <span>Votre Commentaire</span><br><br>
+                    <span>Note:</span><br><br>
+                    
+                                        <input type="radio" id="note0"
+                                            name="note" value="0" checked>
+                                        <label for="note0">0</label>
 
-                        <input type="radio" id="note4"
-                               name="note" value="4">
-                        <label for="note4">4</label>
+                                        <input type="radio" id="note1"
+                                            name="note" value="1">
+                                        <label for="note1">1</label>
 
-                        <input type="radio" id="note5"
-                               name="note" value="5">
-                        <label for="note5">5</label>
-                    </div>
-                    <br>
-                    <div>
-                        <label for="commentaire"></label>
-                        <input type="text" name="commentaire" id="commentaire" placeholder="Ajouter un commentaire">
-                    </div>
-                    <button type="submit" id="ajouter">Ajouter Un Commentaire</button>
-                </form>
-            </article>
-            <article>
+                                        <input type="radio" id="note2"
+                                            name="note" value="2">
+                                        <label for="note2">2</label>
 
+                                        <input type="radio" id="note3"
+                                            name="note" value="3" >
+                                        <label for="note3">3</label>
 
-            <?php foreach ($comments as $comment):?>
-                    <?php echo get_template(__PROJECT_ROOT__ . "/View/Fragments/project-comment.php", [
-                        "comment" => $comment,
-                       "projet"=>$project,
+                                        <input type="radio" id="note4"
+                                            name="note" value="4">
+                                        <label for="note4">4</label>
 
-                    ]); ?>
+                                        <input type="radio" id="note5"
+                                            name="note" value="5">
+                                        <label for="note5">5</label>
+                    
 
-            <?php endforeach;?>
-
-
-
-
-
-
-
-            </article>
-        </section>
+                    <br><br>
+                    
+                        <span>Message: </span><br><br>
+                        <textarea name="commentaire" id="commentaire" cols="40" rows="10" placeholder="Ecrivez votre message ici" required></textarea><br>
+                        <button type="submit" id="ajouter">Ajouter Un Commentaire</button>
+                    </form>
+                    
+            
+            
+            
+            
 
 
-    </body>
+            </div>
+            <div class="AffichageCommentaire">
+            
+
+
+                    <?php foreach ($comments as $comment):?>
+                            <?php echo get_template(__PROJECT_ROOT__ . "/View/Fragments/project-comment.php", [
+                                "comment" => $comment,
+                            "projet"=>$project,
+
+
+
+                            ]);?>
+
+                    <?php endforeach;?>
+
+            </div>
+            
+        </div>
+</div>
+
+
+
+
+
+
+</body>
+<br><br>
+
+
+<script type="text/javascript" src="./.././Ressource/JS/ImageProjet.js"></script>
+<script type="text/javascript" src="./.././Ressource/JS/likecomment.js"></script>
+
 <?php include 'footer.php'?>
 </html>

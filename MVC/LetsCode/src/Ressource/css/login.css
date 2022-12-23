@@ -1,12 +1,14 @@
 *{
     text-align: center;
+
 }
 
-header body{
-    position: relative;
+body{
+   /* position: relative;
     width: 80rem;
-    height:  57.8125rem;
-    background: #FFFFFF;
+    height:  57.8125rem;*/
+   background: #FFFFFF;
+
 }
 
 .imagess{
