@@ -38,22 +38,13 @@ class CommentaireController extends AbstractController
                 $this->id2=$_GET["idprojects"];
                 $this->commentProject=$this->CommentaireService->getCommentLike($_GET["idcomment"], $_SESSION["ids"]);
                 if ( $this->commentProject== false) {
-
                     $this->CommentaireService->createCommentLike($_GET["idcomment"], $_SESSION['ids']);
-                    // $this->commentProject=true;
-
                     header("location: http://localhost/projet/$this->id2" );
-
                 } else {
-
                     $this->CommentaireService->deleteCommentLike($_GET["idcomment"], $_SESSION['ids']);
-                    //$this->commentProject=false;
                     header("location: http://localhost/projet/$this->id2" );
 
                 }
-
-
-
             }
         }else if(!isset($_SESSION["ids"])){
             header("location: http://localhost/login" );

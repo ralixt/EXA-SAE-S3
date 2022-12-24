@@ -4,7 +4,7 @@ var likes=document.querySelectorAll('.material-symbols-outlined');
 
 function changement(e){
 
-    // variable=like.className;
+    // variable=likeController.className;
 
     console.log(like.className);
 

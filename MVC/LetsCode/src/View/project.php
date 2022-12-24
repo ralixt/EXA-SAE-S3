@@ -17,7 +17,6 @@ require_once  "Ressource/libs/Parsedown.php";
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel='stylesheet' href='./.././Ressource/css/styles.css' media='screen'>
-    <!--<title>Nom du Projet</title>-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
@@ -57,7 +56,14 @@ require_once  "Ressource/libs/Parsedown.php";
        <span>De <?= $project-> getAuthor()?></span> 
     </div>
     <div class="like">
-            <span  class="material-symbols-outlined  ">favorite</span>
+        <?php $like = $c = CommentaireService::getInstance()->getProjectLike($project->getId(), $_SESSION["ids"]??1);?>
+        <?php if(!$like):?>
+            <a href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><p  class="material-symbols-outlined ">favorite</p></a>
+        <?php endif; ?>
+        <?php if($like): ?>
+            <a href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><p  class="material-symbols-outlined filled ">favorite</p></a>
+        <?php endif;?>
+
     </div>
 </div><br><br>
 
@@ -91,8 +97,6 @@ require_once  "Ressource/libs/Parsedown.php";
         <span> <?= $project->getURLZIP()?></span>
         </div>
         <div class="download">
-         <!-- <a href="./.././RessourcesProject/7/zip/dossierZip.zip"><img src="./.././Ressource/images/download.png" alt="error"></a> -->
-         <!-- <a href='./.././RessourcesProject/'.//php// "'". $project->getId()."'".'/'.'zip'.'/'."'".$project->getURLZIP()."'"?>.><img src="./.././Ressource/images/download.png" alt="error"></a> -->
          <?php echo('<a href= ./.././RessourcesProject/'.$project->getId().'/'.'zip'.'/'.str_replace(' ', '', $project->getURLZIP()).'>'.'<img src="./.././Ressource/images/download.png" alt="error">'.'</a>');?>
         </div>
     </div>
@@ -141,13 +145,7 @@ require_once  "Ressource/libs/Parsedown.php";
                         <textarea name="commentaire" id="commentaire" cols="40" rows="10" placeholder="Ecrivez votre message ici" required></textarea><br>
                         <button type="submit" id="ajouter">Ajouter Un Commentaire</button>
                     </form>
-                    
-            
-            
-            
-            
-
-
+                        
             </div>
             <div class="AffichageCommentaire">
             
@@ -168,11 +166,6 @@ require_once  "Ressource/libs/Parsedown.php";
             
         </div>
 </div>
-
-
-
-
-
 
 </body>
 <br><br>

@@ -27,6 +27,7 @@ require_once __PROJECT_ROOT__ . "/Controllers/ProjetController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/AccueilController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/LoginController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/InscriptionController.php";
+require_once __PROJECT_ROOT__ . "/Controllers/LikeController.php";
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
@@ -68,6 +69,10 @@ switch ($uri[1]) :
 
     case "commentaire":
         (new CommentaireController(CommentaireService::getInstance()))->render();
+        break;
+
+    case "like":
+        (new LikeController(CommentaireService::getInstance()))->render();
         break;
 
     // Default 404

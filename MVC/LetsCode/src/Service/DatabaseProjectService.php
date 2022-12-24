@@ -91,7 +91,7 @@ class DatabaseProjectService implements AllService
             if(isset($args["orderBy"])){
                 $query .= "ORDER BY titre ";
             }
-            elseif ($args["orderBy"] == "like"){
+            elseif ($args["orderBy"] == "likeController"){
                 $query .= "Order BY nb_like DESC";
             }
             elseif ($args["orderBy"] == "commentaire") {
@@ -108,7 +108,7 @@ class DatabaseProjectService implements AllService
                     if($args["orderBy"] == "nom"){
                         $query .= "ORDER BY titre ";
                     }
-                    elseif ($args["orderBy"] == "like"){
+                    elseif ($args["orderBy"] == "likeController"){
                         $query .= "Order BY nb_like DESC";
                     }
                     elseif ($args["orderBy"] == "commentaire") {
