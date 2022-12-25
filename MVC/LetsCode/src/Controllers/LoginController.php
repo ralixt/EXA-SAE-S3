@@ -4,6 +4,7 @@ class LoginController extends AbstractController
 {
     private CompteService $loginService;
     public bool $compte;
+    public string $erreur="";
     public function __construct(AllService $Service) {
         parent::__construct(($Service));
          $this->loginService=CompteService::getInstance();
@@ -21,12 +22,14 @@ class LoginController extends AbstractController
 
     }
         if($this->compte==true) {
+            $erreur="";
             header("location: http://localhost/ ");
+
         }
         else {
-
+            $erreur="Adresse Mail ou  mot de passe incorrects";
             echo get_template(__PROJECT_ROOT__ . "/View/login.php", [
-                "p" => null
+                "erreur" => $erreur
             ]);
         }
 

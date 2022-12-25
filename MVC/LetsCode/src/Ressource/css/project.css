@@ -110,8 +110,9 @@ body{
 }
 .titre{
     margin: 1%;
-    
+   
 }
+
 .titre button {
     max-width: 80%;
     width: 80%;
@@ -177,6 +178,14 @@ color: #888888;
     margin-left: 5%;
     font-family: 'Poppins';
     font-style: normal;
+    padding: 4%;
+}
+.Ressource{
+    
+}
+.Contenu{
+    display: flex;
+   
 }
 .RessourceContenair{
     background-color: #5C5C5C;
@@ -333,7 +342,7 @@ color: #000000;
 }
 .AffichageCommentaire .Contenu p{
     margin-left: 1%;
-    margin-bottom: 7%;
+    /*margin-bottom: 7%;*/
     float: left;
     font-family: 'Poppins';
 font-style: normal;

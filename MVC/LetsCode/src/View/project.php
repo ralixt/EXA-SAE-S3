@@ -47,7 +47,7 @@ require_once  "Ressource/libs/Parsedown.php";
     </div>
     <div class="titre">
         <section >
-            <button ><span><?= $project-> getTitre() ?></span></button>
+            <button ><p id="text"><?= $project-> getTitre() ?></p></button>
         </section>
     </div>
 </div>
@@ -58,10 +58,10 @@ require_once  "Ressource/libs/Parsedown.php";
     <div class="like">
         <?php $like = $c = CommentaireService::getInstance()->getProjectLike($project->getId(), $_SESSION["ids"]??1);?>
         <?php if(!$like):?>
-            <a href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><p  class="material-symbols-outlined ">favorite</p></a>
+            <a href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><span  class="material-symbols-outlined ">favorite</span></a>
         <?php endif; ?>
         <?php if($like): ?>
-            <a href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><p  class="material-symbols-outlined filled ">favorite</p></a>
+            <a href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><span  class="material-symbols-outlined filled ">favorite</span></a>
         <?php endif;?>
 
     </div>
@@ -83,13 +83,15 @@ require_once  "Ressource/libs/Parsedown.php";
         $text=$project->getContent();
      ?>
     
-    <span><?= $parsedown->text($text)?></span><br>
+    <span ><?= $parsedown->text($text)?></span><br>
 </div>
 <br>
 <br>
+
 <div id="ressource" class="Ressource">
     <h3>Ressource</h3><br><br><br>
     <div class="RessourceContenair">
+
         <div class='folderImg'>
     <img src="./.././Ressource/images/folder_zip.png" alt="errors">
         </div>
@@ -145,7 +147,7 @@ require_once  "Ressource/libs/Parsedown.php";
                         <textarea name="commentaire" id="commentaire" cols="40" rows="10" placeholder="Ecrivez votre message ici" required></textarea><br>
                         <button type="submit" id="ajouter">Ajouter Un Commentaire</button>
                     </form>
-                        
+
             </div>
             <div class="AffichageCommentaire">
             
@@ -170,7 +172,7 @@ require_once  "Ressource/libs/Parsedown.php";
 </body>
 <br><br>
 
-
+<script type="text/javascript" src="./.././Ressource/JS/ProjectText.js"></script>
 <script type="text/javascript" src="./.././Ressource/JS/ImageProjet.js"></script>
 <script type="text/javascript" src="./.././Ressource/JS/likecomment.js"></script>
 

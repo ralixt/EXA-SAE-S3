@@ -36,22 +36,25 @@
             </div>
         </div>
             <div class="date">
+               
                 <?php
                 $date=$comment->getCreatedAt();
                 $dates=new dateTime($date);
-                $date=$dates->format('d/m/y');
+                $datess=datesss($dates)
                 ?>
-                <p>Le <?= $date;?></p>
+                <p class="affichageDate"><?= $datess;?></p>
             </div><br><br>
 
             <div class="Contenu">
-                <p>
+                <p class="textCommentaire">
                 <?= $comment->getContent();?>
                 </p>
             </div><br>
             
 
 </div>
+
+
    
 
 

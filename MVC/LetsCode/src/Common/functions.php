@@ -63,3 +63,32 @@ function get_404 () : string {
   require __PROJECT_ROOT__ . "/views/404.php";
   return ob_get_clean();
 }
+
+/***
+ * @param DateTime $date
+ * @return string
+ */
+function datesss($date):string
+{
+    $dates=(new DateTime());
+    $diff = $date->diff($dates);
+    if ($diff->y==0 and $diff->m==0 and $diff->d==0 and $diff->h==0 and $diff->i==0 and $diff->s<60)
+        return " Publié à l'instant";
+
+    if ( $diff->y==0 and $diff->m==0 and $diff->d==0 and $diff->h==0 and $diff->i<60)
+        return "Publié il y'a ".floor(abs($diff->i)).' minutes';
+
+    if ($diff->y==0 and $diff->m==0 and $diff->d==0 and $diff->h<24)
+        return "Publié il y'a ".floor(abs($diff->h)).' heures';
+
+    if ($diff->y==0 and $diff->m==0 and $diff->d<7)
+
+         return "Publié il y'a ".floor(abs($diff->d)).' jours';
+
+    if($diff->y!=0 or $diff->m!=0 or $diff->d>7)
+
+        return  "Publié le ".$date->format('d/m/Y');
+
+    return  "";
+
+}

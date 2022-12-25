@@ -5,6 +5,7 @@ class InscriptionController extends AbstractController
 
     private CompteService $InscriptionService;
     private bool $c;
+    private string $erreur="";
     public function __construct(AllService $Service) {
         parent::__construct(($Service));
         $this->InscriptionService=CompteService::getInstance();
@@ -31,17 +32,22 @@ class InscriptionController extends AbstractController
 
 
                 $this->c = $this->InscriptionService->create($user);
-                var_dump(hash('sha256', $_POST["creation_mp"]));
+
+
 
 
 
 
 
             }
+            else{
+                $erreur="les deux mots de passes sont pas identiques";
+            }
         }
+
         if($this->c==false) {
             echo get_template(__PROJECT_ROOT__ . "/View/inscription.php", [
-                []
+                "erreur"=>$erreur
             ]);
         }else{
             echo get_template(__PROJECT_ROOT__ . "/View/login.php", [

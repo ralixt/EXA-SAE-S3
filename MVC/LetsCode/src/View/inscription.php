@@ -1,3 +1,10 @@
+<?php
+/**
+
+ * @var string $erreur
+
+ */
+?>
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -58,6 +65,15 @@
     </div>
     <br>
     <br>
+
+        <?php
+        if(isset($_POST["inscriptionButton"])):?>
+        <div class="ErrorInscription">
+            <span ><?= $erreur ?></span>
+        </div>
+        <?php endif;?>
+   <br>
+
     <form action="http://localhost/inscription" method="post">
         <!--
                 <div>
@@ -83,7 +99,7 @@
         </div><br>
         <div class='firebase'>
             <div class="inscription">
-                <button type="submit" >Inscription</button>
+                <button type="submit"  name="inscriptionButton">Inscription</button>
             </div>
 
         </div>
