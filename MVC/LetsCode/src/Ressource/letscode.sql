@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db_letscode:3306
--- Généré le : mer. 14 déc. 2022 à 08:25
--- Version du serveur : 10.9.3-MariaDB-1:10.9.3+maria~ubu2204
--- Version de PHP : 8.0.24
+-- Généré le : mer. 14 déc. 2022 à 09:46
+-- Version du serveur : 10.10.2-MariaDB-1:10.10.2+maria~ubu2204
+-- Version de PHP : 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -25,7 +25,7 @@ DELIMITER $$
 --
 -- Fonctions
 --
-CREATE DEFINER=`root`@`%` FUNCTION `listeImage` (`projetID` INT) RETURNS TEXT CHARSET utf8mb4  BEGIN
+CREATE DEFINER=`root`@`%` FUNCTION `listeImage` (`projetID` INT) RETURNS TEXT CHARSET utf8mb4 COLLATE utf8mb4_general_ci  BEGIN
 DECLARE fini INTEGER DEFAULT 0;
 DECLARE liste LONGTEXT;
 DECLARE nomImage VARCHAR(2000);
@@ -50,7 +50,7 @@ CLOSE monCurseur;
 RETURN liste;
 END$$
 
-CREATE DEFINER=`root`@`%` FUNCTION `listeTag` (`idProjet` INT) RETURNS TEXT CHARSET utf8mb4  BEGIN
+CREATE DEFINER=`root`@`%` FUNCTION `listeTag` (`idProjet` INT) RETURNS TEXT CHARSET utf8mb4 COLLATE utf8mb4_general_ci  BEGIN
 DECLARE fini INTEGER DEFAULT 0;
 DECLARE liste LONGTEXT;
 DECLARE titleTag VARCHAR(2000);
@@ -90,7 +90,7 @@ CREATE TABLE `comment` (
   `rating` int(11) NOT NULL,
   `author` int(11) NOT NULL,
   `projet` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `comment`
@@ -117,7 +117,7 @@ CREATE TABLE `contact` (
   `mail` text NOT NULL,
   `message` text NOT NULL,
   `statut` enum('non-traite','traite') NOT NULL DEFAULT 'non-traite'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -128,7 +128,7 @@ CREATE TABLE `contact` (
 CREATE TABLE `likecomment` (
   `id_comment` int(11) NOT NULL,
   `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `likecomment`
@@ -147,7 +147,7 @@ INSERT INTO `likecomment` (`id_comment`, `id_user`) VALUES
 CREATE TABLE `likeproject` (
   `user` int(11) NOT NULL,
   `project` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `likeproject`
@@ -171,22 +171,20 @@ CREATE TABLE `projet` (
   `author` int(11) NOT NULL,
   `status` enum('Published','Reviewing','Refused') NOT NULL,
   `difficulte` enum('Debutant','Intermediaire','Avance') NOT NULL,
-  `coverUrl` text NOT NULL,
   `isPremium` tinyint(1) NOT NULL,
-  `URL_Image` varchar(256) NOT NULL,
   `URL_Zip` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `projet`
 --
 
-INSERT INTO `projet` (`id`, `createdAt`, `titre`, `content`, `author`, `status`, `difficulte`, `coverUrl`, `isPremium`, `URL_Image`, `URL_Zip`) VALUES
-(1, '2022-10-28 09:15:30', 'sql table', 'il suffit de faire create table', 14, 'Reviewing', 'Debutant', 'text.com/sql', 1, 'truc.png', ''),
-(2, '2022-11-07 13:45:11', 'création site web', 'debrouille toi google est ton ami', 2, 'Published', 'Intermediaire', 'gege.com', 1, 'truc.zip', ''),
-(3, '2022-11-08 09:07:00', 'sandwitch', 'prendre du pain, Ã©taler le beurre, mettre du jambon et puis du fromage refermez le pain et vosu avez votre sandwitch ', 18, 'Published', 'Debutant', 'url', 0, '', ''),
-(4, '2022-11-08 10:21:17', 'asandie', 'je crois qu\'il s\'agit d\'un projet incomprÃ©hensible', 18, 'Published', 'Avance', 'url', 0, '', ''),
-(5, '2022-11-09 13:16:28', 'faire une boucle niveau hard', 'for(int i = 0; i <nbDeTour; i++){\r\n   truc a repeter\r\n}', 18, 'Published', 'Avance', 'url', 0, '', '');
+INSERT INTO `projet` (`id`, `createdAt`, `titre`, `content`, `author`, `status`, `difficulte`, `isPremium`, `URL_Zip`) VALUES
+(1, '2022-10-28 09:15:30', 'sql table', 'il suffit de faire create table', 14, 'Reviewing', 'Debutant', 1, ''),
+(2, '2022-11-07 13:45:11', 'création site web', 'debrouille toi google est ton ami', 2, 'Published', 'Intermediaire', 1, ''),
+(3, '2022-11-08 09:07:00', 'sandwitch', 'prendre du pain, Ã©taler le beurre, mettre du jambon et puis du fromage refermez le pain et vosu avez votre sandwitch ', 18, 'Published', 'Debutant', 0, ''),
+(4, '2022-11-08 10:21:17', 'asandie', 'je crois qu\'il s\'agit d\'un projet incomprÃ©hensible', 18, 'Published', 'Avance', 0, ''),
+(5, '2022-11-09 13:16:28', 'faire une boucle niveau hard', 'for(int i = 0; i <nbDeTour; i++){\r\n   truc a repeter\r\n}', 18, 'Published', 'Avance', 0, '');
 
 -- --------------------------------------------------------
 
@@ -197,7 +195,7 @@ INSERT INTO `projet` (`id`, `createdAt`, `titre`, `content`, `author`, `status`,
 CREATE TABLE `projet_tag` (
   `id_projet` int(11) NOT NULL,
   `id_tag` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `projet_tag`
@@ -231,7 +229,7 @@ INSERT INTO `projet_tag` (`id_projet`, `id_tag`) VALUES
 CREATE TABLE `tag` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `tag`
@@ -269,7 +267,7 @@ CREATE TABLE `url_images` (
   `id` int(11) NOT NULL,
   `projet_id` int(11) NOT NULL,
   `nameImage` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `url_images`
@@ -294,7 +292,7 @@ CREATE TABLE `user` (
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   `subscriptionId` text NOT NULL,
   `hasActiveSubscription` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `user`

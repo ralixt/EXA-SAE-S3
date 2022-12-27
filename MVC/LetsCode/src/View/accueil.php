@@ -17,14 +17,9 @@
 <body>
     <header>
 
-        <?php if(isset($_SESSION["Pseudo"])):?>
-            <p> Bienvenue dans votre compte <?php echo($_SESSION["Pseudo"])?></p>
-        <?php endif; ?>
+        <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
 
-
-        <img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code">
-
-        <a>Accueil</a>
+        <a href="http://localhost" >Accueil</a>
         <!--pour les user connecté-->
         <a href="http://localhost/create">Nouveau Projet</a>
         <a href="http://localhost/compte">Mon compte</a>
@@ -35,6 +30,9 @@
     </header>
 
     <main>
+        <?php if(isset($_SESSION["Pseudo"])):?>
+            <p> Bienvenue dans votre compte <?php echo($_SESSION["Pseudo"])?></p>
+        <?php endif; ?>
         <div class="searchDiv">
             <form method="GET">
 

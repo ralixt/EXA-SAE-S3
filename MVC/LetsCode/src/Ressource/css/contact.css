@@ -1,0 +1,99 @@
+*{
+    font-family: Poppins;
+    text-decoration: none;
+}
+
+header a{
+    color: black;
+}
+
+header a:hover {
+    color: #007EA7;
+}
+
+header a{
+    margin: 1rem 0 0 10rem;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+
+}
+
+.footerNavigation p{
+    display: inline-block;
+    vertical-align: top;
+    margin: 1rem;
+}
+
+
+.logoLetsCode{
+    position: absolute;
+    width: 30px;
+    height: 38px;
+    left: 82px;
+    top: 18px;
+}
+
+
+.loginButton{
+    color: white;
+
+
+    background-color: #5C5C5C;
+    border-radius: 0.5rem;
+    padding: 1rem;
+
+}
+
+.loginButton:hover{
+    color: white;
+    background-color: black;
+
+}
+
+
+
+main{
+    text-align: center;
+}
+footer{
+    text-align: center;
+    color: black;
+}
+
+.footerNavigation p{
+    display: inline-block;
+    vertical-align: top;
+    margin: 1rem;
+}
+
+
+
+form {
+    display: inline-block;
+}
+
+
+input {
+    border-radius: 1rem;
+
+}
+
+textarea {
+    border-radius: 1rem;
+    border: 2px solid black;
+
+}
+
+#envoyer {
+    color: white;
+    background-color: #5C5C5C;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+#envoyer:hover {
+    background: black;
+}
+
+
