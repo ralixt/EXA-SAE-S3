@@ -55,7 +55,13 @@ require_once  "Ressource/libs/Parsedown.php";
     <div class="author">
        <span>De <?= $project-> getAuthor()?></span> 
     </div>
+    
+    
     <div class="like">
+        <?php if($project->isPremium()==1 and $_SESSION["roles"]=='User'):?>
+            <img src=".././Ressource/images/premium.png" >
+        <?php endif; ?>
+
         <?php $like = $c = CommentaireService::getInstance()->getProjectLike($project->getId(), $_SESSION["ids"]??1);?>
         <?php if(!$like):?>
             <a href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><span  class="material-symbols-outlined ">favorite</span></a>
@@ -66,6 +72,24 @@ require_once  "Ressource/libs/Parsedown.php";
 
     </div>
 </div><br><br>
+
+<?php if($project->isPremium()==1 and $_SESSION["roles"]=='User'):?>
+<div class="projetPremium">
+    <span>Ce Projet est Premium</span>
+    <img src=".././Ressource/images/premium.png" >
+</div>
+<br>
+<div>
+    <span>Si vous voulez accéder a ce projet abonnez-vous: </span>
+</div><br>
+<div>
+<p class="lienInscription">
+        <a href="http://localhost/login">S'abonnez</a>
+</p>
+</div>
+
+
+<?php else:?>
 
 <div class="menu">
     <h3>Table des matières</h3><br><br><br>
@@ -168,7 +192,7 @@ require_once  "Ressource/libs/Parsedown.php";
             
         </div>
 </div>
-
+<?php endif;?>
 </body>
 <br><br>
 

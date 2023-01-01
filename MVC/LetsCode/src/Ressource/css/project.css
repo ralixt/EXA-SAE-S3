@@ -146,6 +146,13 @@ body{
     flex: 2;
     padding-left: 21%;
 }
+.authorContenair .like img{
+   padding-right: 2%;
+   width: 6%;
+}
+.authorContenair .premium{
+
+}
 
 .Ressource h3, .Commentaire h3 ,.Contenu h3,.menu h3{
     font-family: 'Poppins';
@@ -353,4 +360,49 @@ line-height: 18px;
 
 
 color: #000000;
+}
+.projetPremium{
+    
+    background-color: #5C5C5C;;
+
+    text-align: center;
+    font-family: 'Poppins';
+    font-style: normal;
+
+    font-size: 16px;
+
+
+    border-radius: 8px;
+    color: #FFFFFF;
+    width: 50%;
+    height: auto;
+    padding: 1%;
+
+    justify-content: center;
+    align-items: center;
+    margin-left: 23%;
+    display: flex;
+    position: relative;
+}
+.projetPremium span{
+    
+}
+.projetPremium img{
+    width: 4%;
+    position: absolute;
+    right: 2%;
+}
+.lienInscription a{
+    text-decoration: none;
+    color: #888888;
+}
+
+.lienInscription{
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #888888;
 }
