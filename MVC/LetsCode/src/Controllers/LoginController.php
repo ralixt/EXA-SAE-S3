@@ -14,7 +14,6 @@ class LoginController extends AbstractController
 
     public function render(): void
     {
-
        // $serviceCompte = CompteService::getInstance();
         $c=[];
     if(isset($_POST["adr_email"])&&isset($_POST["mp"])) {
@@ -32,9 +31,6 @@ class LoginController extends AbstractController
                 "erreur" => $erreur
             ]);
         }
-
-
-
     }
 }
 

@@ -22,7 +22,6 @@
         <a href="http://localhost" >Accueil</a>
         <!--pour les user connecté-->
         <a href="http://localhost/create">Nouveau Projet</a>
-        <a href="http://localhost/compte">Mon compte</a>
 
         <!--pour les user non connecté-->
 
@@ -31,6 +30,7 @@
 
     <main>
         <?php if(isset($_SESSION["Pseudo"])):?>
+            <a href="http://localhost/compte">Mon compte</a>
             <p> Bienvenue dans votre compte <?php echo($_SESSION["Pseudo"])?></p>
         <?php endif; ?>
         <div class="searchDiv">

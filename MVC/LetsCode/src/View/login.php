@@ -44,7 +44,7 @@
         <div class="google">
             <button>
                 <span>Continuer avec google</span>
-                <img class="image" src="../Ressource/images/google.png" alt="">
+                <img class="image" src="../Ressource/images/google.png" alt="connexion avec google">
             </button>
         </div>
         <div class="facebook">
@@ -52,7 +52,7 @@
 
 
                 <span>Continuer avec facebook </span>
-                <img class="image" src="../Ressource/images/facebook.png" alt="">
+                <img class="image" src="../Ressource/images/facebook.png" alt="connexion avec facebook">
 
 
             </button>
@@ -61,7 +61,7 @@
         <div class="github">
             <button>
                 <span>Continuer avec github</span>
-                <img class="image" src="../Ressource/images/github.png" alt="">
+                <img class="image" src="../Ressource/images/github.png" alt="connexion avec github">
             </button>
         </div>
     </div>

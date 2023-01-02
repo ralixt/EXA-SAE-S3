@@ -4,7 +4,7 @@ class AjoutProjetController extends AbstractController
     public function render(): void
     {
         if(!isset($_SESSION["ids"])){
-            header("location: http://localhost/");
+            header("location: http://localhost/login");
         }
         else if(isset($_POST["titre"]) && isset($_POST["contenu"])){
             $projet = new Projet();

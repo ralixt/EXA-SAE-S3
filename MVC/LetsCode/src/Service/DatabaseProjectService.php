@@ -73,7 +73,7 @@ class DatabaseProjectService implements AllService
     LEFT JOIN projet ON projet.id = comment.projet
     GROUP BY
         proID
-) as comments on comments.proID = projet.id 
+    ) as comments on comments.proID = projet.id 
     JOIN user on projet.author = user.id
     LEFT JOIN likeproject ON projet.id = likeproject.project";
         if(count($args) <= 0){
