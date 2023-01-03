@@ -44,13 +44,12 @@ require_once  "Ressource/libs/Parsedown.php";
 
     <?php for($i=0;$i<count($project->getURLImage());$i++):?>
                   <div class="slides">
-        <!--            <img src=".././RessourcesProject/--><!--/images/--><?php //echo($project->getURLImage()[0][0])?><!--" alt="erreur" >-->
-                      <?php echo('<img src= ./.././RessourcesProject/'.$project->getId().'/'.'images'.'/'.str_replace(' ', '', $project->getURLImage()[$i]).'>' );?>
+
+                      <a href="./.././RessourcesProject/<?=$project->getId()?>/images/<?=str_replace(' ', '', $project->getURLImage()[$i])?>"> <?php echo('<img src= ./.././RessourcesProject/'.$project->getId().'/'.'images'.'/'.str_replace(' ', '', $project->getURLImage()[$i]).'>' );?> </a>
+
                   </div>
     <?php endfor;?>
-        <!--  <div class="slides">-->
-        <!--    <img src=".././Ressource/test/image2.png" >-->
-        <!--  </div>-->
+
 
             <div  class="point" style="text-align:center" >
                 <?php for($i=0;$i<count($project->getURLImage());$i++):?>
@@ -58,7 +57,6 @@ require_once  "Ressource/libs/Parsedown.php";
                  <span class="dot" onclick="currentSlide(<?= $i+1 ?>)"></span>
                 <?php endif;?>
                 <?php endfor;?>
-        <!--        <span class="dot" onclick="currentSlide(2)"></span>-->
             </div>
 
     <?php if(count($project->getURLImage())>1):?>
