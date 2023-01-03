@@ -77,7 +77,8 @@ switch ($uri[1]) :
 
     // Default 404
     default:
-
-        echo get_404();
+        http_response_code(404);
+        include('View/404.php');
+        die();
         exit();
 endswitch;
