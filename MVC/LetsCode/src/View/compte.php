@@ -14,21 +14,48 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel='stylesheet' href='../Ressource/css/compte.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
-    <title>Mon Compte</title>
+    <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
+    <title>Mon Compte</title>
+
 </head>
 
+<body>
 <header>
+    <nav id="navbar">
+        <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
+
+        <div id="nav-links">
+            <ul style="list-style-type:none">
+                <li id="selected"><a href="http://localhost">Accueil</a></li>
+                <!--pour les user connecté-->
+
+                <?php if(isset($_SESSION["Pseudo"])) : ?>
+                    <li><a href="http://localhost/create">Nouveau Projet</a></li>
+                    <div class="buttonLog">
+                        <li><a href="http://localhost/compte" class="loginButton">Mon compte</a></li>
+                    </div>
+
+                <?php else : ?>
+                    <!--pour les user non connecté-->
+                    <div class="buttonLog">
+                        <li><a href="http://localhost/login" class="loginButton">Connexion/Inscription</a></li>
+
+                    </div>
+
+                <?php endif; ?>
+
+            </ul>
+        </div>
+
+    </nav>
+</header>
+<main>
     <?php
     if(isset($_SESSION['ids']) && $_SESSION['ids']!=null){
         echo('<a href="http://localhost/login">Changer de compte</a>');
     }
     ?>
-    <a href="http://localhost">Accueil</a>
-</header>
-
-<body>
-<main>
     <div class="papaEnTete">
         <h1 class="flou enTete">Mon Compte</h1>
         <div class="flou enTete">

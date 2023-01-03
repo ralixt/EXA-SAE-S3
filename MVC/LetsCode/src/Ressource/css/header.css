@@ -1,5 +1,10 @@
-header a{
-    color: black;
+header {
+    width : 100%;
+    padding-bottom: 4rem;
+}
+
+header li a{
+    color: #888888;
 }
 
 header a:hover {
@@ -14,15 +19,11 @@ header a:hover {
 
 /*}*/
 
-
-
-.logoLetsCode{
-    position: absolute;
-    width: 30px;
-    height: 38px;
-    left: 82px;
-    top: 18px;
+#selected {
+    font-weight: bold;
+    color: black;
 }
+
 
 
 .loginButton{
@@ -43,8 +44,31 @@ header a:hover {
 
 
 
+#navbar {
+    position: absolute;
+    padding: 1rem 2rem;
+    display: flex;
+    width: 100%;
 
-#button{
+    box-sizing: border-box;
+    align-items: center;
 
 }
 
+
+#navbar #nav-links ul {
+    display: flex;
+}
+
+#navbar #nav-links ul {
+    display: flex;
+}
+
+#navbar #nav-links ul li {
+    margin: 0 25px;
+}
+
+.buttonLog {
+    position: absolute;
+    right: 0;
+}

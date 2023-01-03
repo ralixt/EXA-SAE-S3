@@ -5,22 +5,40 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
         <link rel='stylesheet' href='../Ressource/css/contact.css'  type='text/css' media='screen'>
         <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
+
         <title>Contact</title>
     </head>
     <body>
         <header>
-            <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
+            <nav id="navbar">
+                <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
 
-            <a href="http://localhost" >Accueil</a>
-            <!--pour les user connecté-->
-            <a href="http://localhost/create">Nouveau Projet</a>
-            <a href="http://localhost/compte">Mon compte</a>
+                <div id="nav-links">
+                    <ul style="list-style-type:none">
+                        <li id="selected"><a href="http://localhost">Accueil</a></li>
+                        <!--pour les user connecté-->
 
-            <!--pour les user non connecté-->
+                        <?php if(isset($_SESSION["Pseudo"])) : ?>
+                            <li><a href="http://localhost/create">Nouveau Projet</a></li>
+                            <div class="buttonLog">
+                                <li><a href="http://localhost/compte" class="loginButton">Mon compte</a></li>
+                            </div>
 
-            <a href="http://localhost/login" class="loginButton">Connexion/Inscription</a>
+                        <?php else : ?>
+                            <!--pour les user non connecté-->
+                            <div class="buttonLog">
+                                <li><a href="http://localhost/login" class="loginButton">Connexion/Inscription</a></li>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                    </ul>
+                </div>
+            </nav>
         </header>
         <main>
 

@@ -20,23 +20,24 @@
 <body>
     <header>
 
+
         <nav id="navbar">
             <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
 
             <div id="nav-links">
-                <ul>
-                    <li><a href="http://localhost" >Accueil</a></li>
+                <ul style="list-style-type:none">
+                    <li id="selected"><a href="http://localhost">Accueil</a></li>
                     <!--pour les user connecté-->
 
                     <?php if(isset($_SESSION["Pseudo"])) : ?>
                         <li><a href="http://localhost/create">Nouveau Projet</a></li>
-                        <div class="button">
+                        <div class="buttonLog">
                             <li><a href="http://localhost/compte" class="loginButton">Mon compte</a></li>
                         </div>
 
                     <?php else : ?>
                         <!--pour les user non connecté-->
-                        <div class="button">
+                        <div class="buttonLog">
                             <li><a href="http://localhost/login" class="loginButton">Connexion/Inscription</a></li>
 
                         </div>
@@ -45,12 +46,19 @@
 
                 </ul>
             </div>
-
         </nav>
-
     </header>
 
+
+
     <main>
+        <?php if(isset($_SESSION["Pseudo"])):?>
+            <div id="welcome">
+                <p> Bienvenue <?php echo($_SESSION["Pseudo"])?></p>
+            </div>
+        <?php endif; ?>
+
+
         <div class="searchDiv">
             <form method="GET">
 
@@ -182,13 +190,14 @@
                 echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
                     "projet" => $projet
                 ])
-
             ?>
         </div>
 
     </main>
+
+    <?php include 'footer.php'?>
 </body>
 
-<?php include 'footer.php'?>
+
 
 </html>
