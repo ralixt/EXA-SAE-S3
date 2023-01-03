@@ -20,19 +20,17 @@
         <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
 
         <a href="http://localhost" >Accueil</a>
-        <!--pour les user connecté-->
+        <?php if(isset($_SESSION["Pseudo"])) :?>
         <a href="http://localhost/create">Nouveau Projet</a>
-
-        <!--pour les user non connecté-->
-
+        <a href="http://localhost/compte" class="loginButton">Mon compte</a>
+        <?php else: ?>
+        <a href="http://localhost/login">Nouveau Projet</a>
         <a href="http://localhost/login" class="loginButton">Connexion/Inscription</a>
+        <?php endif; ?>
+
     </header>
 
     <main>
-        <?php if(isset($_SESSION["Pseudo"])):?>
-            <a href="http://localhost/compte">Mon compte</a>
-            <p> Bienvenue dans votre compte <?php echo($_SESSION["Pseudo"])?></p>
-        <?php endif; ?>
         <div class="searchDiv">
             <form method="GET">
 
