@@ -23,27 +23,27 @@
 
 
 <body>
-    <header>
 
+    <header>
 
         <nav id="navbar">
             <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
 
             <div id="nav-links">
                 <ul style="list-style-type:none">
-                    <li id="selected"><a href="http://localhost">Accueil</a></li>
+                    <li><a href="http://localhost">Accueil</a></li>
                     <!--pour les user connecté-->
 
                     <?php if(isset($_SESSION["Pseudo"])) : ?>
-                        <li><a href="http://localhost/create">Nouveau Projet</a></li>
+                        <li id="selected"><a href="/create">Nouveau Projet</a></li>
                         <div class="buttonLog">
-                            <li><a href="http://localhost/compte" class="loginButton">Mon compte</a></li>
+                            <li><a href="/compte" class="loginButton">Mon compte</a></li>
                         </div>
 
                     <?php else : ?>
                         <!--pour les user non connecté-->
                         <div class="buttonLog">
-                            <li><a href="http://localhost/login" class="loginButton">Connexion/Inscription</a></li>
+                            <li><a href="/login" class="loginButton">Connexion/Inscription</a></li>
 
                         </div>
 
@@ -55,18 +55,8 @@
     </header>
 
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br><br><br><br>
-
-
-
-
     <main>
-        <img src="../Ressource/images/header_ajoutProjet.jpg"/>
+        <img src="../Ressource/images/header_ajoutProjet.jpg" id="header_image"/>
         <p id="title">Nouveau projet</p>
 
         <form method="post" id="formulaireadd" enctype="multipart/form-data">

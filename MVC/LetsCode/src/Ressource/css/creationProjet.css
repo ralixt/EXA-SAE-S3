@@ -28,10 +28,11 @@ input[type="file"]{
 }
 
 .flex-horizontal{
+    width: 95%;
     display: grid;
-    grid-template-columns: 253px 80%;
-    padding: 0 2%;
-    grid-gap: 3%;
+    grid-template-columns: 253px auto;
+    gap: 1%;
+    margin: auto;
 }
 
 label.input {
@@ -53,7 +54,7 @@ body{
     flex-direction: column;
 }
 
-img {
+img#header_image {
     width: 95%;
     height: 422px;
     align-self: center;
