@@ -61,12 +61,12 @@
             <legend>Langage de programmation</legend>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=1>
+                <input type="checkbox" id="tag[]" name="tag[]" value=36>
                 <label for="tag[]">HTML</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=2>
+                <input type="checkbox" id="tag[]" name="tag[]" value=6>
                 <label for="tag[]">Java</label>
             </div>
 
@@ -76,37 +76,37 @@
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=4>
+                <input type="checkbox" id="tag[]" name="tag[]" value=1>
                 <label for="tag[]">C++</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=5>
+                <input type="checkbox" id="tag[]" name="tag[]" value=4>
                 <label for="tag[]">C</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=6>
+                <input type="checkbox" id="tag[]" name="tag[]" value=5>
                 <label for="tag[]">C#</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=7>
+                <input type="checkbox" id="tag[]" name="tag[]" value=2>
                 <label for="tag[]">PHP</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=8>
+                <input type="checkbox" id="tag[]" name="tag[]" value=37>
                 <label for="tag[]">CSS</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=9>
+                <input type="checkbox" id="tag[]" name="tag[]" value=38>
                 <label for="tag[]">SQL</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=10>
+                <input type="checkbox" id="tag[]" name="tag[]" value=7>
                 <label for="tag[]">Javascript</label>
             </div>
 
@@ -117,17 +117,17 @@
             <legend>Support</legend>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=11>
+                <input type="checkbox" id="tag[]" name="tag[]" value=33>
                 <label for="tag[]">Windows</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=12>
+                <input type="checkbox" id="tag[]" name="tag[]" value=34>
                 <label for="tag[]">Linux</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=13>
+                <input type="checkbox" id="tag[]" name="tag[]" value=35>
                 <label for="tag[]">Mac</label>
             </div>
         </fieldset>
@@ -138,22 +138,22 @@
         <fieldset>
             <legend>Langue</legend>
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=14>
+                <input type="checkbox" id="tag[]" name="tag[]" value=29>
                 <label for="tag[]">Français</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=15>
+                <input type="checkbox" id="tag[]" name="tag[]" value=30>
                 <label for="tag[]">English</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=16>
+                <input type="checkbox" id="tag[]" name="tag[]" value=31>
                 <label for="tag[]">Español</label>
             </div>
 
             <div>
-                <input type="checkbox" id="tag[]" name="tag[]" value=17>
+                <input type="checkbox" id="tag[]" name="tag[]" value=32>
                 <label for="tag[]">Deutsch</label>
             </div>
         </fieldset>
