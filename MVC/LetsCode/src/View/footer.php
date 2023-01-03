@@ -4,7 +4,7 @@
     <div class="footerNavigation">
         <p>Confidentialité</p>
         <p>Conditions</p>
-        <p><a href="http://localhost/contact">Contact</a></p>
+        <p><a href="/contact">Contact</a></p>
     </div>
 
 </footer>
