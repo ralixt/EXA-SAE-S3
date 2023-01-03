@@ -19,12 +19,6 @@ header a{
 
 }
 
-.footerNavigation p{
-    display: inline-block;
-    vertical-align: top;
-    margin: 1rem;
-}
-
 
 .logoLetsCode{
     position: absolute;
@@ -56,17 +50,6 @@ header a{
 main{
     text-align: center;
 }
-footer{
-    text-align: center;
-    color: black;
-}
-
-.footerNavigation p{
-    display: inline-block;
-    vertical-align: top;
-    margin: 1rem;
-}
-
 
 
 form {
@@ -75,13 +58,18 @@ form {
 
 
 input {
+    width : 25rem;
     border-radius: 1rem;
+    padding: 0.5rem 1rem;
 
 }
 
 textarea {
+    width: 25rem;
     border-radius: 1rem;
     border: 2px solid black;
+    padding: 1rem 1rem 5rem 1rem;
+    resize: vertical;
 
 }
 
@@ -90,10 +78,25 @@ textarea {
     background-color: #5C5C5C;
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
+    width: 50%;
 }
 
 #envoyer:hover {
     background: black;
+
 }
 
 
+#formulaire {
+    width: 50vw;
+    background-color: whitesmoke;
+    margin: 6rem auto;
+    padding: 2rem 0;
+
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+
+
+    border-radius: 10px;
+
+}

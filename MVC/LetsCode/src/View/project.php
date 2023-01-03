@@ -21,30 +21,50 @@ require_once  "Ressource/libs/Parsedown.php";
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
     <link rel='stylesheet' href='../Ressource/css/project.css'  type='text/css' media='screen'>
+    <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
 </head>
 
-<header>
-    <div class= menu_header>
-        <a href="http://localhost">Accueil</a>
-    </div>
 
-</header><br>
+    <header>
+
+        <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
+
+        <a href="http://localhost" >Accueil</a>
+        <!--pour les user connecté-->
+        <a href="http://localhost/create">Nouveau Projet</a>
+
+        <!--pour les user non connecté-->
+
+        <a href="http://localhost/login" class="loginButton">Connexion/Inscription</a>
+    </header>
+
+<br>
 <body>
 <div class="container">
-    
-  <div class="slides">
-    <img src=".././Ressource/test/image1.png" >
-  </div>
 
-  <div class="slides">
-    <img src=".././Ressource/test/image2.png" >
-  </div>
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    <div  class="point" style="text-align:center" >
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-    </div>
+    <?php for($i=0;$i<count($project->getURLImage());$i++):?>
+                  <div class="slides">
+        <!--            <img src=".././RessourcesProject/--><!--/images/--><?php //echo($project->getURLImage()[0][0])?><!--" alt="erreur" >-->
+                      <?php echo('<img src= ./.././RessourcesProject/'.$project->getId().'/'.'images'.'/'.str_replace(' ', '', $project->getURLImage()[$i]).'>' );?>
+                  </div>
+    <?php endfor;?>
+        <!--  <div class="slides">-->
+        <!--    <img src=".././Ressource/test/image2.png" >-->
+        <!--  </div>-->
+
+            <div  class="point" style="text-align:center" >
+                <?php for($i=0;$i<count($project->getURLImage());$i++):?>
+                <?php if(count($project->getURLImage())>1):?>
+                 <span class="dot" onclick="currentSlide(<?= $i+1 ?>)"></span>
+                <?php endif;?>
+                <?php endfor;?>
+        <!--        <span class="dot" onclick="currentSlide(2)"></span>-->
+            </div>
+
+    <?php if(count($project->getURLImage())>1):?>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <?php endif;?>
     <div class="titre">
         <section >
             <button ><p id="text"><?= $project-> getTitre() ?></p></button>
@@ -193,6 +213,7 @@ require_once  "Ressource/libs/Parsedown.php";
         </div>
 </div>
 <?php endif;?>
+<?php include 'footer.php'?>
 </body>
 <br><br>
 
@@ -201,5 +222,5 @@ require_once  "Ressource/libs/Parsedown.php";
 <script type="text/javascript" src="./.././Ressource/JS/likecomment.js"></script>
 
 
-<?php include 'footer.php'?>
+
 </html>

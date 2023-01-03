@@ -16,6 +16,7 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/creationProjet.css'  type='text/css'>
+    <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
 </head>
 
 <header>
@@ -34,7 +35,7 @@
 <body>
     <img src="../Ressource/images/header_ajoutProjet.jpg"/>
     <p id="title">Nouveau projet</p>
-
+    
     <form method="post" id="formulaireadd" enctype="multipart/form-data">
 
         <div class="flex-horizontal">
@@ -67,7 +68,6 @@
         <!--            <label for="non">Non</label>-->
         <!--        </div>-->
         <!--        --><?php //endif; ?>
-
         <!--        <div class="tags">-->
         <!--            <fieldset>-->
         <!--                <legend>Langage de programmation</legend>-->

@@ -1,0 +1,11 @@
+footer{
+    text-align: center;
+    color: black;
+
+}
+
+.footerNavigation p{
+    display: inline-block;
+    vertical-align: top;
+    margin: 1rem;
+}

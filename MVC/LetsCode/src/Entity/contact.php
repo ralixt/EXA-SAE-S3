@@ -19,9 +19,10 @@ class contact
     /**
      * @param string $nom
      */
-    public function setNom(string $nom): void
+    public function setNom(string $nom): contact
     {
         $this->nom = $nom;
+        return $this;
     }
 
     /**
@@ -35,9 +36,10 @@ class contact
     /**
      * @param string $mail
      */
-    public function setMail(string $mail): void
+    public function setMail(string $mail): contact
     {
         $this->mail = $mail;
+        return $this;
     }
 
     /**
@@ -51,9 +53,10 @@ class contact
     /**
      * @param string $prenom
      */
-    public function setPrenom(string $prenom): void
+    public function setPrenom(string $prenom): contact
     {
         $this->prenom = $prenom;
+        return $this;
     }
 
     /**
@@ -67,9 +70,10 @@ class contact
     /**
      * @param string $message
      */
-    public function setMessage(string $message): void
+    public function setMessage(string $message): contact
     {
         $this->message = $message;
+        return $this;
     }
 
     /**
@@ -83,9 +87,10 @@ class contact
     /**
      * @param int $identifiant
      */
-    public function setIdentifiant(int $identifiant): void
+    public function setIdentifiant(int $identifiant): contact
     {
         $this->identifiant = $identifiant;
+        return $this;
     }
 
 

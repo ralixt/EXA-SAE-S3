@@ -1,0 +1,50 @@
+header a{
+    color: black;
+}
+
+header a:hover {
+    color: #007EA7;
+}
+
+/*header a{*/
+/*    margin: 1rem 0 0 10rem;*/
+/*    display: inline-block;*/
+/*    align-items: center;*/
+/*    text-align: center;*/
+
+/*}*/
+
+
+
+.logoLetsCode{
+    position: absolute;
+    width: 30px;
+    height: 38px;
+    left: 82px;
+    top: 18px;
+}
+
+
+.loginButton{
+    color: white;
+
+
+    background-color: #5C5C5C;
+    border-radius: 0.5rem;
+    padding: 1rem;
+
+}
+
+
+.loginButton:hover{
+    color: white;
+    background-color: black;
+}
+
+
+
+
+#button{
+
+}
+

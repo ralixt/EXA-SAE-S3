@@ -12,21 +12,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
+    <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
+    <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
+
     <title>Accueil</title>
 </head>
 <body>
     <header>
 
-        <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
+        <nav id="navbar">
+            <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
 
-        <a href="http://localhost" >Accueil</a>
-        <?php if(isset($_SESSION["Pseudo"])) :?>
-        <a href="http://localhost/create">Nouveau Projet</a>
-        <a href="http://localhost/compte" class="loginButton">Mon compte</a>
-        <?php else: ?>
-        <a href="http://localhost/login">Nouveau Projet</a>
-        <a href="http://localhost/login" class="loginButton">Connexion/Inscription</a>
-        <?php endif; ?>
+            <div id="nav-links">
+                <ul>
+                    <li><a href="http://localhost" >Accueil</a></li>
+                    <!--pour les user connecté-->
+
+                    <?php if(isset($_SESSION["Pseudo"])) : ?>
+                        <li><a href="http://localhost/create">Nouveau Projet</a></li>
+                        <div class="button">
+                            <li><a href="http://localhost/compte" class="loginButton">Mon compte</a></li>
+                        </div>
+
+                    <?php else : ?>
+                        <!--pour les user non connecté-->
+                        <div class="button">
+                            <li><a href="http://localhost/login" class="loginButton">Connexion/Inscription</a></li>
+
+                        </div>
+
+                    <?php endif; ?>
+
+                </ul>
+            </div>
+
+        </nav>
 
     </header>
 

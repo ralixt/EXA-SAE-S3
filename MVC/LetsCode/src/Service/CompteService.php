@@ -157,5 +157,12 @@ class CompteService implements AllService
 
         }
     }
+    public function getEmailMp():array
+    {
+        $statementConnexionUser = $this->database->prepare("SELECT user.Pseudo,user.email  FROM user ");
+        $statementConnexionUser->execute([]);
+        $result = $statementConnexionUser->fetchall();
+         return $result;
+    }
 
 }

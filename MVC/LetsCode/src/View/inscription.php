@@ -13,16 +13,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/login.css'  type='text/css' media='screen'>
 
 
     <title>Document</title>
 </head>
 <header>
-    <div class= menu_header>
-        <a href="http://localhost">Accueil</a>
-    </div>
 
+    <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
+
+    <a href="http://localhost" >Accueil</a>
+    <!--pour les user connecté-->
+    <a href="http://localhost/create">Nouveau Projet</a>
+
+    <!--pour les user non connecté-->
+
+    <a href="http://localhost/login" class="loginButton">Connexion/Inscription</a>
 </header>
 <br>
 
@@ -105,17 +113,24 @@
         </div>
 
     </form>
+    <br>
+    <br>
     <p class="phraseAvantInscription">
         <span>Vous avez déja un compte  connectez-vous :</span>
     </p>
+
     <p class="lienInscription">
         <a href="http://localhost/login">Connexion</a>
     </p>
+
 
 </div>
 
 </body>
 
+<br>
+<br>
+<br>
 
 <footer>
     <?php include 'footer.php'?>
