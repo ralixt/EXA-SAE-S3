@@ -27,18 +27,6 @@ button{
     text-align: center;
 }
 
-footer{
-    align-items: center;
-    display: flex;
-    color: white;
-    background-color: #000000;
-    opacity: 70%;
-    border-radius: 30px;
-    justify-content: space-between;
-    height: 30px;
-    padding: 8px;
-}
-
 footer:hover{
     opacity: 100%;
     color: white;
