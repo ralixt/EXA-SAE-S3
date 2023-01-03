@@ -28,8 +28,8 @@ body{
 
 .connexion{
     position: absolute;
-    left: 40%;
-    top: 28%;
+    left: 41%;
+    top: 40%;
 
 }
 
@@ -55,6 +55,9 @@ body{
 .firebase{
     display: flex;
     justify-content: center;
+    transform: translateY(-70%);
+    bottom: 0;
+
 }
 /* facebook */
 
@@ -125,13 +128,20 @@ body{
     background: rgba(255, 255, 255, 0.6);
     width: 23rem;
     border-radius: 7px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 
 .google {
     padding-right: 1%;
-}
+    background: rgba(255, 255, 255, 0.6);
 
+}
+.facebook{
+    background: rgba(24, 119, 242, 0.6);
+}
+.github{
+    background: rgba(18, 18, 18, 0.6);
+}
 .google span{
     font-family: 'Poppins';
     font-style: normal;
@@ -238,5 +248,21 @@ input{
     justify-content: center;
     align-items: center;
     margin-left: 23%;
-
+    margin-top: -2%;
+}
+.imageconnexion{
+    height: auto;
+    /* background-image: url(../images/compte.png); */
+    /* height: 80vh; */
+    width: 100%;
+    background-size: 110%;
+    border-radius: 30px;
+    /* box-shadow: 0 16px 16px rgb(0 0 0 / 20%); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    /* margin-bottom: 160px; */
+    justify-content: center;
 }

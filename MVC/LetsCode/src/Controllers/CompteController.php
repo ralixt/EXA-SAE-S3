@@ -5,9 +5,10 @@ class CompteController extends AbstractController
 
     public function render(): void
     {
-        $userActuel = $this->Service->get($_SESSION['ids']);
         $serviceCompte = CompteService::getInstance();
-
+        $userActuel = $serviceCompte->get($_SESSION['ids']);
+        $projetLike = $serviceCompte->projectLike($userActuel);
+        $vosProj = $serviceCompte->getlist();
 
         if(isset($_POST["adr_email"]) && isset($_POST["mdp"]) && $serviceCompte->hashPassword($_POST['mdp']) == $userActuel->getPassword()) {
             $user = new User();
@@ -46,7 +47,9 @@ class CompteController extends AbstractController
         echo get_template(
             __PROJECT_ROOT__."/View/compte.php", [
                 "user" => $this->Service->get($userActuel->getId()),
-                "nbProjet" => $this->Service->NbrUserProjet()
+                "nbProjet" => $this->Service->NbrUserProjet(),
+                "like" => $projetLike,
+                "vosProjets" => $vosProj
             ]
         );
     }

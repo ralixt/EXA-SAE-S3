@@ -2,6 +2,8 @@
 /**
  * @var User $user
  * @var int $nbProjet
+ * @var array $like
+ * @var array $vosProjets
  */
 ?>
 
@@ -55,6 +57,9 @@
     if(isset($_SESSION['ids']) && $_SESSION['ids']!=null){
         echo('<a href="http://localhost/login">Changer de compte</a>');
     }
+    else{
+        header('location : /');
+    }
     ?>
     <div class="papaEnTete">
         <h1 class="flou enTete">Mon Compte</h1>
@@ -74,7 +79,7 @@
         <h3>Projets Favoris</h3>
         <div class="flexRow">
             <?php
-            foreach ($project as $projet)//project ici reference les projets liker par l'utilisateur
+            foreach ($like as $projet)
                 echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
                     "projet" => $projet
                 ])
@@ -84,7 +89,12 @@
     <div class="rectangle flexColumn">
         <h3>Vos Projets</h3>
         <div class="flexRow">
-
+            <?php
+            foreach ($vosProjets as $projet)
+                echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [ //le template est à modifier car ce n'est pas le même que celui au-dessus
+                    "projet" => $projet
+                ])
+            ?>
         </div>
     </div>
     <div id="basdepage" class="flexRow">
@@ -119,7 +129,7 @@
                     <button id="valider" type="submit" class="button">Modifier son mot de passe</button>
                 </div><br>
             </form>
-            <button class="button red">Deconnexion</button><br>
+            <a class="button red" href="http://localhost/logout.php" >Deconnexion</a><br>
             <button class="button red">Supprimer le compte</button><br>
         </div>
             <div class="rectangle flexColumn">

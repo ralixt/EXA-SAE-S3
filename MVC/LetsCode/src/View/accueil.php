@@ -19,8 +19,6 @@
 </head>
 <body>
     <header>
-
-
         <nav id="navbar">
             <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
 
@@ -43,13 +41,10 @@
                         </div>
 
                     <?php endif; ?>
-
                 </ul>
             </div>
         </nav>
     </header>
-
-
 
     <main>
         <?php if(isset($_SESSION["Pseudo"])):?>

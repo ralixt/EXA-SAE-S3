@@ -123,16 +123,18 @@
 
                 <div>
 
-                    <input class="input" name="creation_mp" type="password" placeholder=" ***   Mot de passe" required>
-                </div><br>
-                <div>
 
-                    <input class="input" name="confirmation_mp" type="password" placeholder=" ***   Confirmez votre mot de passe" required>
-                </div><br>
-                <div class='firebase'>
-                    <div class="inscription">
-                        <button type="submit"  name="inscriptionButton">Inscription</button>
-                    </div>
+            <input class="input" name="creation_mp" type="password" placeholder=" ***   Mot de passe" minlength="8" required>
+        </div><br>
+        <div>
+
+            <input class="input" name="confirmation_mp" type="password" placeholder=" ***   Confirmez votre mot de passe" minlength="8" required>
+        </div><br><br>
+        <div class='firebase'>
+            <div class="inscription">
+                <button type="submit"  name="inscriptionButton">Inscription</button>
+            </div>
+
 
                 </div>
 
@@ -143,9 +145,13 @@
                 <span>Vous avez déja un compte  connectez-vous :</span>
             </p>
 
+
             <p class="lienInscription">
                 <a href="http://localhost/login">Connexion</a>
             </p>
+
+
+
 
 
         </div>
