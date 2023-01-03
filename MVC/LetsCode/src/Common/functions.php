@@ -75,15 +75,30 @@ function datesss($date):string
     if ($diff->y==0 and $diff->m==0 and $diff->d==0 and $diff->h==0 and $diff->i==0 and $diff->s<60)
         return " Publié à l'instant";
 
-    if ( $diff->y==0 and $diff->m==0 and $diff->d==0 and $diff->h==0 and $diff->i<60)
-        return "Publié il y'a ".floor(abs($diff->i)).' minutes';
+    if ( $diff->y==0 and $diff->m==0 and $diff->d==0 and $diff->h==0 and $diff->i<60) {
+        if($diff->i==1) {
+            return "Publié il y'a " . floor(abs($diff->i)) . ' minute';
+        }else{
+            return "Publié il y'a " . floor(abs($diff->i)) . ' minutes';
+        }
+    }
 
-    if ($diff->y==0 and $diff->m==0 and $diff->d==0 and $diff->h<24)
-        return "Publié il y'a ".floor(abs($diff->h)).' heures';
+    if ($diff->y==0 and $diff->m==0 and $diff->d==0 and $diff->h<24) {
+        if($diff->h==1){
+            return "Publié il y'a " . floor(abs($diff->h)) . ' heure';
+        }else {
+            return "Publié il y'a " . floor(abs($diff->h)) . ' heures';
+        }
+    }
 
-    if ($diff->y==0 and $diff->m==0 and $diff->d<7)
-
-         return "Publié il y'a ".floor(abs($diff->d)).' jours';
+    if ($diff->y==0 and $diff->m==0 and $diff->d<7) {
+        if($diff->d==1) {
+            return "Publié il y'a " . floor(abs($diff->d)) . ' jour';
+        }
+        else {
+            return "Publié il y'a " . floor(abs($diff->d)) . ' jours';
+        }
+    }
 
     if($diff->y!=0 or $diff->m!=0 or $diff->d>7)
 

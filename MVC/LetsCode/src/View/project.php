@@ -53,14 +53,17 @@ require_once  "Ressource/libs/Parsedown.php";
 
             <div  class="point" style="text-align:center" >
                 <?php for($i=0;$i<count($project->getURLImage());$i++):?>
-                <span class="dot" onclick="currentSlide(<?= $i+1 ?>)"></span>
+                <?php if(count($project->getURLImage())>1):?>
+                 <span class="dot" onclick="currentSlide(<?= $i+1 ?>)"></span>
+                <?php endif;?>
                 <?php endfor;?>
         <!--        <span class="dot" onclick="currentSlide(2)"></span>-->
             </div>
 
-
+    <?php if(count($project->getURLImage())>1):?>
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <?php endif;?>
     <div class="titre">
         <section >
             <button ><p id="text"><?= $project-> getTitre() ?></p></button>
