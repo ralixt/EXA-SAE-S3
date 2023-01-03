@@ -56,8 +56,11 @@
 
 
     <main>
-        <img src="../Ressource/images/header_ajoutProjet.jpg" id="header_image"/>
-        <p id="title">Nouveau projet</p>
+        <div class="flex-horizontal_header">
+            <img src="../Ressource/images/header_ajoutProjet.jpg" id="header_image"/>
+            <p id="title">Nouveau projet</p>
+        </div>
+
 
         <form method="post" id="formulaireadd" enctype="multipart/form-data">
 
@@ -89,20 +92,26 @@
                 <option value="moyen">Moyen</option>
                 <option value="difficile">Difficile</option>
             </select>
-
+            <div class="input">
+                <p>Est-ce que votre projet est premium ?</p>
+                <input type="radio" id="oui" name="isPremium" value="oui"
+                <label for="oui">Oui</label>
+                <input type="radio" id="non" name="isPremium" value="non" checked>
+                <label for="non">Non</label>
+            </div>
         </div>
         <br>
+<!--            --><?php //if(isset($_SESSION['roles']) && $_SESSION['roles'] ==  'Premium_User') : ?>
+
+<!--            --><?php //endif; ?>
+
+
+
+
+
         <button id="ajouter" type="submit" >Ajouter</button>
         <a id="annuler" href="http://localhost" >Annuler</a>
-                <?php if(isset($_SESSION['roles']) && $_SESSION['roles'] ==  'Premium_User') : ?>
-                <div>
-                    <p>Est-ce que votre projet est premium ?</p>
-                    <input type="radio" id="oui" name="isPremium" value="oui"
-                    <label for="oui">Oui</label>
-                    <input type="radio" id="non" name="isPremium" value="non" checked>
-                    <label for="non">Non</label>
-                </div>
-                <?php endif; ?>
+
                 <div class="tags">
                     <fieldset>
                         <legend>Langage de programmation</legend>
