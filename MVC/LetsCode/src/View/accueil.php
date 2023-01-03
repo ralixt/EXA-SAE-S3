@@ -55,9 +55,11 @@
 
 
         <div class="searchDiv">
+
+
             <form method="GET">
 
-                <input type="search" name="recherche" id="recherche" placeholder="Quel projet recherchez vous ?">
+                <input id="" type="search" name="recherche" id="recherche" placeholder="Quel projet recherchez vous ?">
 
 
                 <fieldset>
