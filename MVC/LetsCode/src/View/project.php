@@ -23,12 +23,21 @@ require_once  "Ressource/libs/Parsedown.php";
     <link rel='stylesheet' href='../Ressource/css/project.css'  type='text/css' media='screen'>
 </head>
 
-<header>
-    <div class= menu_header>
-        <a href="http://localhost">Accueil</a>
-    </div>
 
-</header><br>
+    <header>
+
+        <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
+
+        <a href="http://localhost" >Accueil</a>
+        <!--pour les user connecté-->
+        <a href="http://localhost/create">Nouveau Projet</a>
+
+        <!--pour les user non connecté-->
+
+        <a href="http://localhost/login" class="loginButton">Connexion/Inscription</a>
+    </header>
+
+<br>
 <body>
 <div class="container">
 
