@@ -65,16 +65,16 @@ class InscriptionController extends AbstractController
 
 
                         } else {
-                            $this->erreur = "les deux mots de passes sont pas identiques";
+                            $this->erreur = "les deux mots de passes ne sont pas identiques";
                         }
                     }
                     elseif($this->p==false and $this->e==false ){
-                        $this->erreur = "l'adresse mail et le pseudo existe déja";
+                        $this->erreur = "l'adresse mail et le pseudo existe déjà";
                     }
                     elseif($this->p==false){
-                        $this->erreur = "le Pseudo existe déja";
+                        $this->erreur = "le Pseudo existe déjà";
                     }elseif($this->e==false){
-                        $this->erreur = "l'adresse mail existe déja";
+                        $this->erreur = "l'adresse mail existe déjà";
                     }
 
 
