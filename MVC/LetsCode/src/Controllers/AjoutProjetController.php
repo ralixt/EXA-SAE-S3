@@ -46,12 +46,12 @@ class AjoutProjetController extends AbstractController
                 $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/images";
                 $countfiles = count($_FILES['images']['name']);
                 for($i=0;$i<$countfiles;$i++){
-                    $filename = $_FILES['images']['name'][$i];
+                    $filename = str_replace(' ','',$_FILES['images']['name'][$i]);
                     $imagesNames[] = $filename;
                     // Upload file
-                    move_uploaded_file($_FILES['images']['tmp_name'][$i],$path . "/" . $filename);
+                    move_uploaded_file($_FILES['images']['tmp_name'][$i],$path . "/" . str_replace(' ','',$filename));
                 }
-                $projet -> setURLImage($imagesNames);
+                $projet -> setURLImage(str_replace(' ','',$imagesNames));
             }
 
 

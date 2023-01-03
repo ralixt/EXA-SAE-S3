@@ -41,7 +41,8 @@ body{
 }
 
 .container .slides img{
-    width: 90%;
+    max-width: 50%;
+    width: 40%;
     display: block;
     margin-left: auto;
     margin-right: auto;
