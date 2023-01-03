@@ -21,6 +21,7 @@ require_once  "Ressource/libs/Parsedown.php";
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
     <link rel='stylesheet' href='../Ressource/css/project.css'  type='text/css' media='screen'>
+    <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
 </head>
 
 
@@ -212,6 +213,7 @@ require_once  "Ressource/libs/Parsedown.php";
         </div>
 </div>
 <?php endif;?>
+<?php include 'footer.php'?>
 </body>
 <br><br>
 
@@ -220,5 +222,5 @@ require_once  "Ressource/libs/Parsedown.php";
 <script type="text/javascript" src="./.././Ressource/JS/likecomment.js"></script>
 
 
-<?php include 'footer.php'?>
+
 </html>

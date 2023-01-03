@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
+    <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
 
 
 </head>
@@ -28,7 +29,6 @@
     <div>
         <label for="titre">Le titre du projet: </label><br>
         <input type="text" name="titre" id="titre"><br>
-
     </div>
     <br>
 
@@ -187,9 +187,10 @@
     <br>
     <button id="ajouter" type="submit" >Ajouter</button>
 </form>
+<?php include 'footer.php'?>
 <script>var simplemde = new SimpleMDE({ element: document.querySelector("#contenu") });</script>
 
 </body>
-<?php include 'footer.php'?>
+
 
 </html>

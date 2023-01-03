@@ -4,6 +4,7 @@
  * @var int $nbProjet
  */
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,6 +15,7 @@
     <link rel='stylesheet' href='../Ressource/css/compte.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
     <title>Mon Compte</title>
+    <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
 </head>
 
 <header>
