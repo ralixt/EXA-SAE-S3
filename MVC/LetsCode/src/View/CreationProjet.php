@@ -33,9 +33,9 @@
 </header>
 
 <body>
-    <img src="../Ressource/images/header_ajoutProjet.jpg"/>
+    <img src="../Ressource/images/header_ajoutProjet.jpg" id="header_image"/>
     <p id="title">Nouveau projet</p>
-    
+
     <form method="post" id="formulaireadd" enctype="multipart/form-data">
 
         <div class="flex-horizontal">
