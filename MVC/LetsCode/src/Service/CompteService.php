@@ -115,10 +115,22 @@ class CompteService implements AllService
     }
 
 
+    /**
+     * @return array|null
+     */
     public function getlist(): ?array
     {
-        // TODO: Implement getlist() method.
-        return null;
+        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo from projet join user on user.id = projet.author where projet.author = :id;');
+        $projetLikeStatement->execute(['id'=>$_SESSION['ids']]);
+        $dataProjet = [];
+        $result = $projetLikeStatement->fetchAll();
+        foreach ($result as $p) {
+            $dataProjet[$p[0]] = (new Projet())
+                ->setId($p[0])
+                ->setTitre($p[1])
+                ->setAuthor($p[2]);
+        }
+        return $dataProjet;
     }
 
 
@@ -129,6 +141,25 @@ class CompteService implements AllService
         $projetUserStatement-> execute(['id'=>$_SESSION['ids']]);
         $projetPub=$projetUserStatement->fetchAll();
         return $projetPub[0][0];
+    }
+
+    /**
+     * @param User $user
+     * @return array
+     */
+    public function projectLike(User $user): array
+    {
+        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo from projet join likeproject on likeproject.project = projet.id join user on user.id = projet.author where likeproject.user = :id;');
+        $projetLikeStatement->execute(['id'=>$user->getId()]);
+        $dataProjet = [];
+        $result = $projetLikeStatement->fetchAll();
+        foreach ($result as $p) {
+            $dataProjet[$p[0]] = (new Projet())
+                ->setId($p[0])
+                ->setTitre($p[1])
+                ->setAuthor($p[2]);
+        }
+        return $dataProjet;
     }
 
     public function connexion($idUser, $mdp):bool
