@@ -70,33 +70,33 @@
         </div>
     </div>
     <div id="basdepage" class="flexRow">
-        <div class="rectangle flexColumn">
+        <div class="rectangle flexColumn" id="infosPersos">
             <h2>Vos informations personnelles</h2>
-            <div><br>
-                 <p>Pseudo :</p>
-                 <p> <?php echo $user->getPseudo() ?> </p>
-                 <a href="http://localhost/compteModif?raison=pseudo" class="button">changer de pseudo</a>
-            </div>
-            <br>
-            <br>
-            <br>
-            <div>
-                <p>Adresse e-mail :</p>
-                <p><?php echo $user->getEmail() ?> </p>
+
+                <div class="flexCorrect">
+                    <div>
+                        <p>Pseudo :</p>
+                        <p> <?php echo $user->getPseudo() ?> </p>
+                    </div>
+                    <a href="http://localhost/compteModif?raison=pseudo" class="button">changer de pseudo</a>
+                </div>
+
+            <div class="flexCorrect">
+                <div>
+                    <p>Adresse e-mail :</p>
+                    <p><?php echo $user->getEmail() ?> </p>
+                </div>
                 <a href="http://localhost/compteModif?raison=mail" class="button">changer d'email</a>
             </div>
-            <br>
-            <br>
-            <br>
-            <div>
-                <p>mot de passe :</p>
-                <p>********</p>
-                <a href="http://localhost/compteModif?raison=mdp" class="button">changer de mot de passe</a>
-            </div><br><br>
-            <br>
-            <a class="button red centre" href="http://localhost/logout.php" >Deconnexion</a><br>
-            <br><br>
-            <button class="button red centre">Supprimer le compte</button><br>
+            <div class="flexCorrect">
+                <div>
+                    <p>mot de passe :</p>
+                    <p>********</p>
+                </div>
+                <a id="motPasse" href="http://localhost/compteModif?raison=mdp" class="button">changer de mot de passe</a>
+            </div>
+            <a class="button red centre" href="http://localhost/logout.php">Deconnexion</a>
+            <a class="button red centre" href="compteModif?raison=delete">Supprimer mon compte</a>
         </div>
             <div class="rectangle flexColumn">
                 <h2>Abonnement Premium</h2>
