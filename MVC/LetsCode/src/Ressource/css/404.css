@@ -7,3 +7,7 @@
 #error{
     margin: 5rem 50rem;
 }
+
+img {
+    width: 200%;
+}
