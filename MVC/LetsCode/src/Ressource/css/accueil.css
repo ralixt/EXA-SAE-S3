@@ -1,10 +1,11 @@
 *{
     font-family: Poppins;
     text-decoration: none;
+    color: black;
+    margin: 0;
+    padding: 0;
 
 }
-
-
 
 
 #welcome{
@@ -17,31 +18,46 @@
 
 }
 
-
-
-#searchDiv{
-    /*
-    position: absolute;
-    width: 1168px;
-    height: 422px;
-    left: 56px;
-    top: 78px;
-
-     */
-
-    /*color: white;*/
-    margin: 2rem;
+#popup{
+    /*display: none;*/
+    /*display: flex;*/
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     padding: 2rem;
 
-    background: url(../images/mountains.jpg);
-    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 20px;
-
-
+    flex-direction: column;
+    justify-content: center;
 
 }
 
+/*.popup.on{*/
+/*    display: flex;*/
+/*}*/
 
+
+
+
+
+
+#searchDiv{
+
+    background-size: cover;
+    background-image: url(../images/mountains.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    height: 50vh;
+
+
+}
 
 
 #searchBar{
@@ -52,7 +68,7 @@
     width: 30vw;
     border-radius: 1rem;
     padding: 0.3rem 1.5rem;
-
+    font-size: 2rem;
 }
 
 #searchBar input {
@@ -62,12 +78,6 @@
     outline: none;
     padding: 0 1rem 0 1rem;
 }
-
-ion-icon {
-    color: black;
-    margin: auto;
-}
-
 
 
 
@@ -93,19 +103,21 @@ ion-icon {
 
 }
 
-/* Accordion */
 
+
+/* Accordion */
 .accordion{
     color: black;
 }
 
 .accordion .contentBox {
     position: relative;
-
 }
 
 .accordion .contentBox .label {
+    display: flex;
     position: relative;
+
     padding: 1rem;
     background-color: #F0F0F0;
     border-radius: 1rem;
@@ -119,7 +131,6 @@ ion-icon {
     right: 1.5rem;
     transform: translateY(-50%);
     font-size: 1.5em;
-
 }
 
 .accordion .contentBox.act .label::before {
@@ -135,11 +146,50 @@ ion-icon {
     overflow: hidden;
     transition: 0.5s;
     overflow-y: auto;
-
     margin: 1rem;
+    display: flex;
 }
 
 .accordion .contentBox.act .content {
-    height: 500px;
+    height: 100px;
     padding: 10px;
+}
+
+.filtre {
+    /*position: absolute;*/
+    /*left: 0%;*/
+    /*right: 0%;*/
+    /*top: 0%;*/
+    /*bottom: 0%;*/
+
+    cursor: pointer ;
+    display: flex;
+    flex-direction: row;
+
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    /* Note: backdrop-filter has minimal browser support */
+    text-align: center;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+
+
+
+
+}
+
+
+.filtreIconSpace{
+    padding: 0 0.5rem 0 0;
+}
+
+#searchDivBottom {
+    display: flex;
+    justify-content: space-between;
+    margin: 5rem 2rem 2rem 2rem  ;
+
+
 }
