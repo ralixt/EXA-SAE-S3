@@ -25,14 +25,6 @@
 <body>
 <?php include 'header.php'?>
 <main>
-    <?php
-    if(isset($_SESSION['ids']) && $_SESSION['ids']!=null){
-        echo('<a href="http://localhost/login">Changer de compte</a>');
-    }
-    else{
-        header('location : /');
-    }
-    ?>
     <div class="papaEnTete">
         <h1 class="flou enTete">Mon Compte</h1>
         <div class="flou enTete">
@@ -70,54 +62,57 @@
         </div>
     </div>
     <div id="basdepage" class="flexRow">
-        <div class="rectangle flexColumn">
+        <div class="rectangle flexColumn" id="infosPersos">
             <h2>Vos informations personnelles</h2>
-            <div><br>
-                 <p>Pseudo :</p>
-                 <p> <?php echo $user->getPseudo() ?> </p>
-                 <a href="http://localhost/compteModif?raison=pseudo" class="button">changer de pseudo</a>
-            </div>
-            <br>
-            <br>
-            <br>
-            <div>
-                <p>Adresse e-mail :</p>
-                <p><?php echo $user->getEmail() ?> </p>
+
+                <div class="flexCorrect">
+                    <div>
+                        <p>Pseudo :</p>
+                        <p> <?php echo $user->getPseudo() ?> </p>
+                    </div>
+                    <a href="http://localhost/compteModif?raison=pseudo" class="button">changer de pseudo</a>
+                </div>
+
+            <div class="flexCorrect">
+                <div>
+                    <p>Adresse e-mail :</p>
+                    <p><?php echo $user->getEmail() ?> </p>
+                </div>
                 <a href="http://localhost/compteModif?raison=mail" class="button">changer d'email</a>
             </div>
-            <br>
-            <br>
-            <br>
-            <div>
-                <p>mot de passe :</p>
-                <p>********</p>
-                <a href="http://localhost/compteModif?raison=mdp" class="button">changer de mot de passe</a>
-            </div><br><br>
-            <br>
-            <a class="button red centre" href="http://localhost/logout.php" >Deconnexion</a><br>
-            <br><br>
-            <button class="button red centre">Supprimer le compte</button><br>
+            <div class="flexCorrect">
+                <div>
+                    <p>mot de passe :</p>
+                    <p>********</p>
+                </div>
+                <a id="motPasse" href="http://localhost/compteModif?raison=mdp" class="button">changer de mot de passe</a>
+            </div>
+            <a class="button red centre" href="http://localhost/logout.php">Deconnexion</a>
+            <a class="button red centre" href="compteModif?raison=delete">Supprimer mon compte</a>
         </div>
             <div class="rectangle flexColumn">
                 <h2>Abonnement Premium</h2>
                 <div class="rectangle blanc">
                     <h2>Gratuit</h2>
-                    <ul>
+                    <ul class="gauche">
                         <li>Accès à des millions de projets</li>
                         <li>Publication de projets</li>
                         <li>Accès aux ressources de projets</li>
                     </ul>
-                    <Button class="buttonSelectedProject">Selectionné</Button>
+                    <a>Choisi</a>
                 </div>
-                <div class="rectangle blanc">
-                    <h2>Premium</h2>
-                    <ul>
+                <div class="rectangle blanc" id="premium">
+                    <div id="flexBetween">
+                        <h2>Premium</h2>
+                        <img src="../Ressource/images/premium.png">
+                    </div>
+                    <ul class="gauche">
                         <li>Accès à des millions de projets</li>
                         <li>Publication de projets</li>
                         <li>Accès aux ressources de projets</li>
                         <li>Accès à des projets premium</li>
                     </ul>
-                    <Button id="premium" class="buttonSelectedProject">Selectionner</Button>
+                    <Button class="button">Choisir</Button>
                 </div>
             </div>
         </div>

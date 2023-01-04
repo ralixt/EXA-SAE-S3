@@ -1,5 +1,5 @@
 *{
-    text-align: center;
+   /* text-align: center;*/
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -122,7 +122,7 @@ body{
     text-align: center;
     position: absolute;
     bottom: 6%;
-    left: 45%;
+    left: 50%;
 
 }
 .titre{
@@ -131,6 +131,7 @@ body{
     bottom: 0;
     transform: translateY(50%);
     min-width: 75%;
+    text-align: center;
    
 }
 
@@ -158,6 +159,7 @@ body{
 .authorContenair{
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 .authorContenair .author{
     flex: 2.2;
@@ -170,7 +172,7 @@ body{
 }
 .authorContenair .like img{
    padding-right: 2%;
-   width: 6%;
+   width: 3%;
 }
 .authorContenair .premium{
 
@@ -211,6 +213,7 @@ color: #888888;
     padding-left: 0;
     text-align: justify;
     justify-content: left;
+    white-space: pre-line;
 }
 .Ressource{
     
@@ -243,7 +246,7 @@ padding-right:2% ;
 }
 .CommentaireContenair{
     display: flex;
-    max-width: 80%;
+    max-width: 85%;
 }
 .AjoutCommentaire{
     background: #F0F0F0;
@@ -254,7 +257,7 @@ padding-right:2% ;
 
     padding-right: 0;
     
-
+    text-align: center;
     
 
 }
@@ -331,10 +334,9 @@ color: #121212;
 }
 .LikeCommentaire{
     float: right;
-position: absolute;
-right: 10%;
-
-color: #000000;
+    position: absolute;
+    right: 2%;
+    color: #000000;
 
 
 }
@@ -343,7 +345,8 @@ color: #000000;
 }
 .nbrLike p{
     position: absolute;
-    right: 14%; 
+    right: 5%;
+
 }
 .NoteCommentaire{
 /* padding-right: 60%; */
@@ -382,6 +385,10 @@ font-style: normal;
 font-weight: 300;
 font-size: 15px;
 line-height: 18px;
+    text-align: justify;
+    padding: 1%;
+    padding-top: 0;
+    white-space: pre-line;
 /* identical to box height */
 
 
@@ -431,4 +438,40 @@ color: #000000;
     font-size: 20px;
     line-height: 30px;
     color: #888888;
+    text-align: center;
+}
+#commentairess{
+    height: 30vh;
+    width: 85%;
+}
+.premiumtext{
+    text-align: center;
+}
+.AdminButton{
+    text-align: center;
+}
+.AdminButton .publication button{
+    width: 77px;
+    height: 34px;
+
+    background: #5C5C5C;
+    border-radius: 8px;
+    color: #dddddd;
+
+    margin-right: 1%;
+    cursor: pointer;
+
+}
+
+.AdminButton .suppression button{
+
+
+    width: 80px;
+    height: 34px;
+    background: #FF7878;
+    border-radius: 8px;
+    color: #dddddd;
+    margin-left: 1%;
+    cursor: pointer;
+
 }

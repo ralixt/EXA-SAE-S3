@@ -266,3 +266,7 @@ input{
     /* margin-bottom: 160px; */
     justify-content: center;
 }
+.modo a{
+    text-decoration: none;
+    color: #FFFFFF;
+}

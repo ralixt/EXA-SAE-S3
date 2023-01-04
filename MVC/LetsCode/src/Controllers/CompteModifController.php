@@ -44,6 +44,11 @@ class CompteModifController extends AbstractController
             $serviceCompte->update($user);
             header('location:  http://localhost/compte');
         }
+        elseif (isset($_POST["mdp"]) && $serviceCompte->hashPassword($_POST['mdp']) == $userActuel->getPassword()){
+            $serviceCompte->delete($userActuel->getId());
+            session_destroy();
+            header('Location: /');
+        }
 
 
         $raison = $_GET["raison"] ?? "Pseudo";
@@ -70,6 +75,14 @@ class CompteModifController extends AbstractController
                         "titre" => "Changer de mot de passe",
                         "form" => 2
                 ]
+                );
+                break;
+            case "delete" :
+                echo get_template(
+                    __PROJECT_ROOT__ . "/View/compteModif.php", [
+                        "titre" => "Suppression de votre compte!!",
+                        "form" => 3
+                    ]
                 );
                 break;
 
