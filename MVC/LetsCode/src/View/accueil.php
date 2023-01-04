@@ -14,6 +14,7 @@
     <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
+    <link rel="stylesheet" href="../Ressource/css/card_projet.css" type="text/css" media="screen">
 
     <title>Accueil</title>
 </head>

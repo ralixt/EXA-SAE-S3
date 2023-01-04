@@ -4,11 +4,8 @@
  */
 ?>
 <a href="http://localhost/projet/<?php echo($projet->getId())?>">
-    <div class="projectCard">
-        <div>
-            <p><?php echo($projet->getTitre()) ?></p>
-            <p>de <?php echo($projet->getAuthor())?> </p>
-        </div>
-
-    </div>
+    <?php foreach ($projet->getURLImage() as $name):?>
+    <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId()?>/images/<?php echo $name?>">
+    <?php endforeach;?>
+    <p><?php echo $projet-> getTitre()?></p>
 </a>
