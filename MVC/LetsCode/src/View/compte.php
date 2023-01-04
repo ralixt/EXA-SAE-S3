@@ -37,7 +37,7 @@
         <h1 class="flou enTete">Mon Compte</h1>
         <div class="flou enTete">
             <div>
-                <h1 id="pseudoname">Bienvenue <?php echo $user->getPseudo() ?></h1>
+                <h1>Bienvenue <?php echo $user->getPseudo() ?></h1>
             </div>
             <div>
                 <p id="AdresseMail"><?php echo $user->getEmail() ?></p>
@@ -72,37 +72,31 @@
     <div id="basdepage" class="flexRow">
         <div class="rectangle flexColumn">
             <h2>Vos informations personnelles</h2>
-            <form class="ModifierSesInfos" method="post">
-                <div>
-                    <p>Pseudo :</p>
-                    <input type="text" id="prenom" name="Pseudo" placeholder=<?php echo $user->getPseudo() ?> maxlength="16" minlength="6" required>
-                    <p>Mot de passe :</p>
-                    <input id="mdp" name="mdp" type="password" placeholder="Rentrer votre mot de passe" minlength="8" required>
-                    <button id="valider" type="submit" class="button">Modifier son pseudo</button>
-                </div>
-            </form>
-            <form class="ModifierSesInfos" method="post">
-                <div>
-                    <p>Adresse e-mail :</p>
-                    <input name="adr_email" type="email" placeholder=<?php echo $user->getEmail() ?> required>
-                    <p>Mot de passe :</p>
-                    <input name="mdp" type="password" placeholder="Rentrer votre mot de passe" minlength="8" required>
-                    <button id="valider" type="submit" class="button">Modifier son mail</button>
-                </div>
-            </form>
-            <form class="ModifierSesInfos" method="post">
-                <div>
-                    <p>Nouveau mot de passe :</p>
-                    <input name="nouveau_mdp" type="password" placeholder="Rentrer un nouveau mot de passe" minlength="8" required>
-                    <p>Confirmation du mot de passe :</p>
-                    <input name="confirmation_mdp" type="password" placeholder="Confirmer le mot de passe" required>
-                    <p>Ancien mot de passe :</p>
-                    <input name="ancien_mdp" type="password" placeholder="Rentrer votre ancien mot de passe" minlength="8" required>
-                    <button id="valider" type="submit" class="button">Modifier son mot de passe</button>
-                </div><br>
-            </form>
-            <a class="button red" href="http://localhost/logout.php" >Deconnexion</a><br>
-            <button class="button red">Supprimer le compte</button><br>
+            <div><br>
+                 <p>Pseudo :</p>
+                 <p> <?php echo $user->getPseudo() ?> </p>
+                 <a href="http://localhost/compteModif?raison=pseudo" class="button">changer de pseudo</a>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div>
+                <p>Adresse e-mail :</p>
+                <p><?php echo $user->getEmail() ?> </p>
+                <a href="http://localhost/compteModif?raison=mail" class="button">changer d'email</a>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div>
+                <p>mot de passe :</p>
+                <p>********</p>
+                <a href="http://localhost/compteModif?raison=mdp" class="button">changer de mot de passe</a>
+            </div><br><br>
+            <br>
+            <a class="button red centre" href="http://localhost/logout.php" >Deconnexion</a><br>
+            <br><br>
+            <button class="button red centre">Supprimer le compte</button><br>
         </div>
             <div class="rectangle flexColumn">
                 <h2>Abonnement Premium</h2>

@@ -57,6 +57,7 @@
 .enTete{
     position: relative;
     z-index: 1;
+    text-align: center;
 }
 
 
@@ -89,6 +90,7 @@ p{
     border-radius: 15px;
     padding: 0.5em 0.5em 0.5em 0.5em;
     text-align: center;
+    max-width: 10em;
   }
 .red{
     background-color: red;
@@ -111,15 +113,18 @@ p{
     padding-bottom: 2%;
   }
 
-  #pseudoname{
+  .centre{
+      text-align: center;
   }
 
   #AdresseMail{
       font-size: larger;
+      text-align: center;
   }
 
   #ProjetPub{
       font-size: medium;
+      text-align: center;
   }
 
   #basdepage{
@@ -128,5 +133,18 @@ p{
   }
 
   main > div > div.flexColumn {
-      align-items: center;
+        align-items: center;
+  }
+
+  main > div > div > div > p {
+      text-align: left;
+  }
+  main > div > div > div > a {
+      text-align: right;
+  }
+
+  input {
+      width : 25rem;
+      border-radius: 1rem;
+      padding: 0.5rem 1rem;
   }
