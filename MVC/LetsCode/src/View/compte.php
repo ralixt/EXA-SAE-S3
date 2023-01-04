@@ -102,22 +102,25 @@
                 <h2>Abonnement Premium</h2>
                 <div class="rectangle blanc">
                     <h2>Gratuit</h2>
-                    <ul>
+                    <ul class="gauche">
                         <li>Accès à des millions de projets</li>
                         <li>Publication de projets</li>
                         <li>Accès aux ressources de projets</li>
                     </ul>
-                    <Button class="buttonSelectedProject">Selectionné</Button>
+                    <a>Choisi</a>
                 </div>
-                <div class="rectangle blanc">
-                    <h2>Premium</h2>
-                    <ul>
+                <div class="rectangle blanc" id="premium">
+                    <div id="flexBetween">
+                        <h2>Premium</h2>
+                        <img src="../Ressource/images/premium.png">
+                    </div>
+                    <ul class="gauche">
                         <li>Accès à des millions de projets</li>
                         <li>Publication de projets</li>
                         <li>Accès aux ressources de projets</li>
                         <li>Accès à des projets premium</li>
                     </ul>
-                    <Button id="premium" class="buttonSelectedProject">Selectionner</Button>
+                    <Button class="button">Choisir</Button>
                 </div>
             </div>
         </div>

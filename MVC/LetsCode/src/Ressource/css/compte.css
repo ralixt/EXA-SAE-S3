@@ -1,10 +1,8 @@
 .rectangle{
-    border-radius: 30px;
+    border-radius: 20px;
     background-color: #F0F0F0;
-    height: 25%;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    height: 100%;
+    margin: 10px;
 }
 
 .blanc{
@@ -77,6 +75,11 @@ button{
     text-align: center;
 }
 
+img{
+    height: 50px;
+    width: 50px;
+}
+
 form{
     text-align: center;
     align-items: center;
@@ -122,6 +125,9 @@ p{
     transform: translateY(0);
   }
 
+  .gauche{
+      text-align: left;
+  }
 
   .ModifierSesInfos{
     padding-top: 2%;
@@ -142,7 +148,7 @@ p{
   }
 
   #infosPersos{
-      font-size: 24px;
+      font-size: 20px;
   }
 
   #motPasse{
@@ -160,12 +166,24 @@ p{
   }
 
   #basdepage{
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(0, 1fr);
   }
 
+  #premium{
+      border: 6px solid #049C5C;
+  }
+
+  #flexBetween{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+  }
   main > div > div.flexColumn {
-        align-items: center;
+      align-items: center;
+      justify-content: space-around;
   }
 
   main > div > div > div {
