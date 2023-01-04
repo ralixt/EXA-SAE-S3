@@ -25,14 +25,6 @@
 <body>
 <?php include 'header.php'?>
 <main>
-    <?php
-    if(isset($_SESSION['ids']) && $_SESSION['ids']!=null){
-        echo('<a href="http://localhost/login">Changer de compte</a>');
-    }
-    else{
-        header('location : /');
-    }
-    ?>
     <div class="papaEnTete">
         <h1 class="flou enTete">Mon Compte</h1>
         <div class="flou enTete">
