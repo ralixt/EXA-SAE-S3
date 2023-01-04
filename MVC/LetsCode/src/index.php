@@ -21,6 +21,7 @@ require_once __PROJECT_ROOT__ . "/Service/LoginService.php";
 require_once __PROJECT_ROOT__ . "/Controllers/AbstractController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/AjoutProjetController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/CompteController.php";
+require_once __PROJECT_ROOT__ . "/Controllers/CompteModifController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/ContactController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/CommentaireController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/ProjetController.php";
@@ -75,8 +76,8 @@ switch ($uri[1]) :
         (new LikeController(CommentaireService::getInstance()))->render();
         break;
 
-    case "CompteModif":
-        (new CompteModifController(ComteService::getInstance()))->render();
+    case "compteModif":
+        (new CompteModifController(CompteService::getInstance()))->render();
         break;
 
     // Default 404

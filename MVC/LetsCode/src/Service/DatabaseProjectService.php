@@ -81,7 +81,7 @@ class DatabaseProjectService implements AllService
         }
 
         if(isset($args["recherche"])){
-            $query .= 'where (titre LIKE :recherche OR content LIKE :recherche) ';
+            $query .= ' where (titre LIKE :recherche OR content LIKE :recherche) ';
             $recherche = $args["recherche"];
             if (isset($args["tag"])) {
                 $query .= "AND projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN (:tags)) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
