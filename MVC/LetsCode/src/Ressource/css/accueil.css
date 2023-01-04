@@ -72,8 +72,11 @@ ion-icon {
 
 
 #projectCards{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    column-gap: 2.5%;
+    grid-template-columns: repeat(3,30%);
 }
 
 

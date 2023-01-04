@@ -4,8 +4,13 @@
  */
 ?>
 <a href="http://localhost/projet/<?php echo($projet->getId())?>">
-    <?php foreach ($projet->getURLImage() as $name):?>
-    <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId()?>/images/<?php echo $name?>">
-    <?php endforeach;?>
-    <p><?php echo $projet-> getTitre()?></p>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <?php foreach ($projet->getURLImage() as $image):?>
+            <div class="swiper-slide">
+                <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId() ?>/images/<?php echo $image ?>">
+            </div>
+            <?php endforeach;?>
+        </div>
+    </div>
 </a>
