@@ -1,0 +1,142 @@
+*{
+    font-family: Poppins;
+    text-decoration: none;
+
+}
+
+
+
+
+#welcome{
+
+    background-color: darkseagreen;
+
+    margin: 2rem;
+    padding: 0.2rem 1rem;
+    border-radius: 1rem;
+
+}
+
+
+
+#searchDiv{
+    /*
+    position: absolute;
+    width: 1168px;
+    height: 422px;
+    left: 56px;
+    top: 78px;
+
+     */
+
+    /*color: white;*/
+    margin: 2rem;
+    padding: 2rem;
+
+    background: url(../images/mountains.jpg);
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 20px;
+
+
+
+}
+
+
+
+
+#searchBar{
+    display: flex;
+    margin: 10rem auto 5rem auto;
+
+    background: rgba(255, 255, 255, 0.5);
+    width: 30vw;
+    border-radius: 1rem;
+    padding: 0.3rem 1.5rem;
+
+}
+
+#searchBar input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+    padding: 0 1rem 0 1rem;
+}
+
+ion-icon {
+    color: black;
+    margin: auto;
+}
+
+
+
+
+#projectCards{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.projectCard {
+
+    background-color: #007EA7;
+    border-radius: 1rem;
+    padding: 1em;
+    margin: 1em 0;
+    box-sizing: border-box;
+    color: white;
+    border: solid black;
+    width: 100%;
+
+}
+
+/* Accordion */
+
+.accordion{
+    color: black;
+}
+
+.accordion .contentBox {
+    position: relative;
+
+}
+
+.accordion .contentBox .label {
+    position: relative;
+    padding: 1rem;
+    background-color: #F0F0F0;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.accordion .contentBox .label::before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+
+}
+
+.accordion .contentBox.act .label::before {
+    content: '-';
+}
+
+
+.accordion .contentBox .content {
+    position: relative;
+    background-color: #f5f4f4;
+    border-radius: 2rem;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    overflow-y: auto;
+
+    margin: 1rem;
+}
+
+.accordion .contentBox.act .content {
+    height: 500px;
+    padding: 10px;
+}

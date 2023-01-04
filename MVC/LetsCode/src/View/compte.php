@@ -15,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel='stylesheet' href='../Ressource/css/compte.css'  type='text/css' media='screen'>
-    <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
+    <link rel='stylesheet' href='../Ressource/css/accueil.css' type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
     <title>Mon Compte</title>

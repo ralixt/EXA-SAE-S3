@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
+    <link rel='stylesheet' href='../Ressource/css/accueil.css' type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/creationProjet.css'  type='text/css'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>

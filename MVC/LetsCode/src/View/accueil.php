@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel='stylesheet' href='../Ressource/css/styles.css'  type='text/css' media='screen'>
+    <link rel='stylesheet' href='../Ressource/css/accueil.css' type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel="stylesheet" href="../Ressource/css/card_projet.css" type="text/css" media="screen">
@@ -55,68 +55,77 @@
         <?php endif; ?>
 
 
-        <div class="searchDiv">
+        <div id="searchDiv">
 
 
             <form method="GET">
 
-                <input id="" type="search" name="recherche" id="recherche" placeholder="Quel projet recherchez vous ?">
+
+                <div id="searchBar">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <input type="search" name="recherche" id="recherche" placeholder="Quel projet recherchez vous ?">
+                </div>
 
 
-                <fieldset>
-                    <legend>Langage de programmation</legend>
+                <div class="accordion">
+                    <div class="contentBox">
+                        <div class="label">Langage de programmation</div>
+                        <div class="content">
+                            <div>
+                                <input type="checkbox" id="tag[]"" name="tag[]" value="HTML">
+                                <label for="tag[]">HTML</label>
+                            </div>
 
-                    <div>
-                        <input type="checkbox" id="tag[]"" name="tag[]" value="HTML">
-                        <label for="tag[]">HTML</label>
+                            <div>
+                                <input type="checkbox" id="tag[]" name="tag[]" value="Java">
+                                <label for="tag[]">Java</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="tag[]" name="tag[]" value="Python">
+                                <label for="tag[]">Python</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="tag[]" name="tag[]" value="C++">
+                                <label for="tag[]">C++</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="tag[]" name="tag[]" value="C">
+                                <label for="tag[]">C</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="tag[]" name="tag[]" value="C#">
+                                <label for="tag[]">C#</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="tag[]" name="tag[]" value="PHP">
+                                <label for="tag[]">PHP</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="tag[]" name="tag[]" value="CSS">
+                                <label for="tag[]">CSS</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="tag[]" name="tag[]" value="SQL">
+                                <label for="tag[]">SQL</label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="tag[]" name="tag[]" value="Javascript">
+                                <label for="tag[]">Javascript</label>
+                            </div>
+
+                        </div>
                     </div>
+                </div>
 
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="Java">
-                        <label for="tag[]">Java</label>
-                    </div>
 
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="Python">
-                        <label for="tag[]">Python</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="C++">
-                        <label for="tag[]">C++</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="C">
-                        <label for="tag[]">C</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="C#">
-                        <label for="tag[]">C#</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="PHP">
-                        <label for="tag[]">PHP</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="CSS">
-                        <label for="tag[]">CSS</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="SQL">
-                        <label for="tag[]">SQL</label>
-                    </div>
-
-                    <div>
-                        <input type="checkbox" id="tag[]" name="tag[]" value="Javascript">
-                        <label for="tag[]">Javascript</label>
-                    </div>
-
-                </fieldset>
 
                 <fieldset>
                     <legend>Support</legend>
@@ -182,6 +191,16 @@
             </form>
         </div>
 
+
+
+
+
+
+
+
+
+
+
         <div id="projectCards">
             <?php
             foreach ($project as $projet)
@@ -194,6 +213,11 @@
     </main>
 
     <?php include 'footer.php'?>
+
+
+    <script src="../Ressource/JS/accueil.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 
