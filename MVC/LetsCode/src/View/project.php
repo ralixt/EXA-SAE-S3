@@ -166,7 +166,7 @@ require_once  "Ressource/libs/Parsedown.php";
                         <span> <?= $project->getURLZIP()?></span>
                     </div>
                     <div class="download">
-                        <?php echo('<a href= ./.././RessourcesProject/'.$project->getId().'/'.'zip'.'/'.str_replace(' ', '', $project->getURLZIP()).'>'.'<img src="./.././Ressource/images/download.png" alt="error">'.'</a>');?>
+                        <?php echo('<a href= "./../RessourcesProject/'.$project->getId().'/'.'zip'.'/'.$project->getURLZIP().'" download>'.'<img src="./.././Ressource/images/download.png" alt="error">'.'</a>');?>
                     </div>
                 </div>
             </div>
