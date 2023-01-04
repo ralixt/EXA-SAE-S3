@@ -346,6 +346,8 @@ class DatabaseProjectService implements AllService
         $sentence_tag -> execute(["id" => $entity]);
         $sentence_image = $this->database->prepare("DELETE FROM url_images WHERE projet_id = :id ");
         $sentence_image -> execute(["id" => $entity]);
+        $sentence_like = $this->database->prepare("DELETE FROM likeproject WHERE project = :id ");
+        $sentence_like -> execute(["id" => $entity]);
         $sentence_projet = $this->database->prepare("DELETE FROM projet WHERE id = :id ");
         $sentence_projet -> execute(["id" => $entity]);
     }
