@@ -92,12 +92,19 @@
                 <option value="moyen">Moyen</option>
                 <option value="difficile">Difficile</option>
             </select>
+            <br>
             <div class="input">
                 <p>Est-ce que votre projet est premium ?</p>
-                <input type="radio" id="oui" name="isPremium" value="oui"
-                <label for="oui">Oui</label>
-                <input type="radio" id="non" name="isPremium" value="non" checked>
-                <label for="non">Non</label>
+                <div class="center">
+                    <label for="oui" class="button">
+                        <input type="radio" id="oui" name="isPremium" value="oui">
+                        Oui
+                    </label>
+                    <label for="non" class="button">
+                            <input type="radio" id="non" name="isPremium" value="non" checked>
+                            Non
+                    </label>
+                </div>
             </div>
         </div>
         <br>

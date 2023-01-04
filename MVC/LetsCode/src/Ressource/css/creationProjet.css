@@ -93,7 +93,6 @@ select#difficulte {
     width: 95%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-columns: auto;
     margin: auto;
 }
 
@@ -103,6 +102,17 @@ select#difficulte {
     grid-template-columns: 1fr;
     margin: auto;
     justify-items: center;
+}
+
+.button {
+    background-color: #5C5C5C;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.button:hover {
+    background-color: black;
 }
 
 
