@@ -29,6 +29,9 @@ require_once __PROJECT_ROOT__ . "/Controllers/AccueilController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/LoginController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/InscriptionController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/LikeController.php";
+require_once __PROJECT_ROOT__ . "/Controllers/ModoController.php";
+require_once __PROJECT_ROOT__ . "/Controllers/PublicationProjetController.php";
+require_once __PROJECT_ROOT__ . "/Controllers/SupressionProjetController.php";
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
@@ -78,6 +81,18 @@ switch ($uri[1]) :
 
     case "compteModif":
         (new CompteModifController(CompteService::getInstance()))->render();
+        break;
+
+    case "modo":
+        (new ModoController(DatabaseProjectService::getInstance()))->render();
+        break;
+
+    case "publication":
+        (new PublicationProjetController(DatabaseProjectService::getInstance()))->render();
+        break;
+
+    case "suppression":
+        (new SupressionProjetController(DatabaseProjectService::getInstance()))->render();
         break;
 
     // Default 404
