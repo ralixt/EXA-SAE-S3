@@ -204,10 +204,13 @@ color: #888888;
 }
 .Contenu span{
     float: left;
-    margin-left: 5%;
+    /*margin-left: 5%;*/
     font-family: 'Poppins';
     font-style: normal;
     padding: 4%;
+    padding-left: 0;
+    text-align: justify;
+    justify-content: left;
 }
 .Ressource{
     

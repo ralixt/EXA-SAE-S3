@@ -20,6 +20,7 @@ require_once  "Ressource/libs/Parsedown.php";
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
+    <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/project.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
 </head>
@@ -60,14 +61,19 @@ require_once  "Ressource/libs/Parsedown.php";
 
     <main>
         <div class="container">
+            <?php if(count($project->getURLImage())==0):?>
+            <div class="slides">
+                <img src="./.././Ressource/test/imageParDefault.jpg">
+            </div>
+            <?php else: ?>
+                <?php for($i=0;$i<count($project->getURLImage());$i++):?>
+                    <div class="slides">
 
-            <?php for($i=0;$i<count($project->getURLImage());$i++):?>
-                <div class="slides">
+                        <a href="./.././RessourcesProject/<?=$project->getId()?>/images/<?=str_replace(' ', '', $project->getURLImage()[$i])?>"> <?php echo('<img src= ./.././RessourcesProject/'.$project->getId().'/'.'images'.'/'.str_replace(' ', '', $project->getURLImage()[$i]).'>' );?> </a>
 
-                    <a href="./.././RessourcesProject/<?=$project->getId()?>/images/<?=str_replace(' ', '', $project->getURLImage()[$i])?>"> <?php echo('<img src= ./.././RessourcesProject/'.$project->getId().'/'.'images'.'/'.str_replace(' ', '', $project->getURLImage()[$i]).'>' );?> </a>
-
-                </div>
-            <?php endfor;?>
+                    </div>
+                <?php endfor;?>
+            <?php endif;?>
 
 
             <div  class="point" style="text-align:center" >
@@ -110,23 +116,23 @@ require_once  "Ressource/libs/Parsedown.php";
             </div>
         </div><br><br>
 
-        <?php if($project->isPremium()==1 and $_SESSION["roles"]=='User'):?>
-            <div class="projetPremium">
-                <span>Ce Projet est Premium</span>
-                <img src=".././Ressource/images/premium.png" >
-            </div>
-            <br>
-            <div>
-                <span>Si vous voulez accéder a ce projet abonnez-vous: </span>
-            </div><br>
-            <div>
-                <p class="lienInscription">
-                    <a href="http://localhost/login">S'abonnez</a>
-                </p>
-            </div>
+            <?php if($project->isPremium()==1 and isset($_SESSION["roles"]) and $_SESSION["roles"]=='User'):?>
+                <div class="projetPremium">
+                    <span>Ce Projet est Premium</span>
+                    <img src=".././Ressource/images/premium.png" >
+                </div>
+                <br>
+                <div>
+                    <span>Si vous voulez accéder a ce projet abonnez-vous: </span>
+                </div><br>
+                <div>
+                    <p class="lienInscription">
+                        <a href="http://localhost/login">S'abonnez</a>
+                    </p>
+                </div>
 
 
-        <?php else:?>
+            <?php else:?>
 
             <div class="menu">
                 <h3>Table des matières</h3><br><br><br>
