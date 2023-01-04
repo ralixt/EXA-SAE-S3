@@ -75,6 +75,10 @@ switch ($uri[1]) :
         (new LikeController(CommentaireService::getInstance()))->render();
         break;
 
+    case "CompteModif":
+        (new CompteModifController(ComteService::getInstance()))->render();
+        break;
+
     // Default 404
     default:
         http_response_code(404);
