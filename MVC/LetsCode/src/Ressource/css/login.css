@@ -1,6 +1,5 @@
 *{
     font-family: Poppins;
-    text-align: center;
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -151,11 +150,25 @@ body{
 }
 
 input{
-    border: 2px solid #5C5C5C;
-    border-radius: 15px;
-    width: 34.75rem;
-    height: 1.75rem;
-    text-align: justify;
+    /*border: 2px solid #5C5C5C;*/
+    /*border-radius: 15px;*/
+    /*width: 34.75rem;*/
+    /*height: 1.75rem;*/
+    /*text-align: justify;*/
+    /* border: 2px solid #5C5C5C; */
+    /* border-radius: 15px; */
+    /* width: 34.75rem; */
+    /* height: 1.75rem; */
+    /* text-align: justify; */
+    width: 100%;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+    padding: 0 1rem 0 1rem;
+    /* border-radius: 13em; */
+    /* background: white; */
+    /* align-items: center; */
+    /* justify-content: center;*/
 }
 .connecter{
     padding-right: 1%;
@@ -200,6 +213,7 @@ input{
     font-size: 16px;
     line-height: 24px;
     color: #5C5C5C;
+    text-align: center;
 }
 
 
@@ -216,6 +230,7 @@ input{
     font-size: 20px;
     line-height: 30px;
     color: #888888;
+    text-align: center;
 }
 .inscription button{
     font-family: 'Poppins';
@@ -270,4 +285,51 @@ input{
 .modo a{
     text-decoration: none;
     color: #FFFFFF;
+}
+.mp{
+
+    /* text-align: justify; */
+    /* background: rgba(255, 255, 255, 0.5); */
+    /* width: 30vw; */
+    /* border-radius: 1rem; */
+    /* padding: 0.3rem 1.5rem; */
+    /* font-size: 2rem; */
+    /* display: flex; */
+
+    /* margin: 10rem auto 5rem auto; */
+
+    /* font-size: 2rem; */
+
+    /* margin-right: 0; */
+    /* margin-left: 14em; */
+    /* align-items: center; */
+    /* justify-content: center; */
+
+    /* margin-right: -10em; */
+    /* width: auto; */
+
+    /* margin: 0 0 0 38rem; */
+
+    text-align: center;
+    display: flex;
+    background: rgba(255, 255, 255, 0.5);
+    width: 30%;
+    border-radius: 9rem;
+    padding: 0.3rem 1.5rem;
+    border: solid;
+    margin: 0 auto;
+    /*margin: 0;*/
+    /*margin-left: 0;*/
+    /*display: inline-flex;*/
+
+}
+.mail{
+    text-align: center;
+    display: flex;
+    background: rgba(255, 255, 255, 0.5);
+    width: 30%;
+    border-radius: 9rem;
+    padding: 0.3rem 1.5rem;
+    border: solid;
+    margin: 0 auto;
 }

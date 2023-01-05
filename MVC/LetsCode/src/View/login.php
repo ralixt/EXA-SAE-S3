@@ -15,6 +15,7 @@
     <link rel='stylesheet' href='../Ressource/css/login.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Document</title>
 </head>
 <body>
@@ -61,11 +62,13 @@
             </div><br>
         <?php endif;?>
         <form action="http://localhost/login" method="post">
-            <div>
-                <input class="input" name="adr_email" type="email" placeholder=" @    Email" required>
+            <div class="mail">
+                <span class="material-symbols-outlined">alternate_email</span>
+                <input class="input" name="adr_email" type="email" placeholder=" Email" required>
             </div><br>
-            <div>
-                <input class="input" name="mp" type="password" placeholder=" ***   Mot de Passe" minlength="8" required>
+            <div class="mp">
+                <span class="material-symbols-outlined">password</span>
+                <input  class="input" name="mp" type="password" placeholder=" Mot de Passe" minlength="8" required>
             </div><br>
             <br>
             <div class='firebase'>
