@@ -66,7 +66,7 @@ class DatabaseProjectService implements AllService
 
     public function getlist(array $args = []): array
     {
-        $query = "SELECT projet.id, projet.createdAt, projet.titre, projet.content, projet.author, user.Pseudo, projet.status, projet.difficulte, projet.isPremium, COUNT(likeproject.project), listeTag(projet.id), listeImage(projet.id) from projet INNER JOIN( SELECT COUNT(likeproject.project) nb_like, projet.id proID FROM projet LEFT JOIN likeproject ON projet.id = likeproject.project GROUP BY proID ) as likes on proID = projet.id left JOIN(
+        $query = "SELECT projet.id, projet.createdAt, projet.titre, projet.content, projet.author, user.Pseudo, projet.status, projet.difficulte, projet.isPremium, COUNT(likeproject.project), listeTag(projet.id), listeImage(projet.id), AVG(comment.rating), nb_comment FROM projet LEFT JOIN comment on comment.projet = projet.id INNER JOIN( SELECT COUNT(likeproject.project) nb_like, projet.id proID FROM projet LEFT JOIN likeproject ON projet.id = likeproject.project GROUP BY proID ) as likes on proID = projet.id left JOIN(
     SELECT
         COUNT(comment.id) nb_comment,
         projet.id proID
@@ -90,14 +90,17 @@ class DatabaseProjectService implements AllService
                 $tags = "'" . implode("', '", $args["tag"]) . "'";//précision il est nécessaire de donner un tableau avec les apostrophes comme guillemet entourant les tags
                 $nbTag = count($args["tag"]);
             }
-            if(isset($args["orderBy"])){
-                $query .= "ORDER BY titre ";
-            }
-            elseif ($args["orderBy"] == "likeController"){
-                $query .= "Order BY nb_like DESC";
-            }
-            elseif ($args["orderBy"] == "commentaire") {
-                $query .= "Order BY nb_comment DESC";
+            $query .= " group by projet.id";
+            if(isset($args["orderBy"])) {
+                if($args["orderBy"] == "nom"){
+                    $query .= "ORDER BY titre ";
+                }
+                elseif ($args["orderBy"] == "likeController"){
+                    $query .= "Order BY nb_like DESC";
+                }
+                elseif ($args["orderBy"] == "commentaire"){
+                    $query .= "Order BY nb_comment DESC";
+                }
             }
         }
         else {
@@ -105,8 +108,8 @@ class DatabaseProjectService implements AllService
                 $query .= "where projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN (:tags)) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
                 $tags = "'" . implode("', '", $args["tag"]) ."'";//précision il est nécessaire de donner un tableau avec les apostrophes comme guillemet entourant les tags
                 $nbTag = count($args["tag"]);
+                $query .= " group by projet.id";
                 if(isset($args["orderBy"])){
-                    //a finir
                     if($args["orderBy"] == "nom"){
                         $query .= "ORDER BY titre ";
                     }
@@ -117,6 +120,9 @@ class DatabaseProjectService implements AllService
                         $query .= "Order BY nb_comment DESC";
                     }
                 }
+            }
+            else{
+                $query .= " group by projet.id";
             }
         }
         $query .= "LIMIT 30;";
@@ -168,7 +174,10 @@ class DatabaseProjectService implements AllService
                 ->setPremium($p[8])
                 ->setLikes(intval($p[9]))
                 ->setTags($tags)
-                ->setURLImage($image);
+                ->setURLImage($image)
+                ->setNote($p[12])
+                ->setNbCom(intval($p[13]));
+
         }
         return $this->data;
     }

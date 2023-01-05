@@ -177,7 +177,7 @@ require_once  "Ressource/libs/Parsedown.php";
                     </div>
                     <br>
                     <br>
-                <?php if($_SESSION["roles"]=='Admin' and $project->getStatus()=="Reviewing"):?>
+                <?php if(isset($_SESSION["roles"])and $_SESSION["roles"]=='Admin' and $project->getStatus()=="Reviewing"):?>
                     <div class="AdminButton">
                         <a href="http://localhost/publication?idproject=<?php echo($project->getId())?>"><button>Publier</button></a>
                         <a href="http://localhost/suppression?idproject=<?php echo($project->getId())?>"><button>Refuser</button></a>
@@ -373,7 +373,7 @@ require_once  "Ressource/libs/Parsedown.php";
             </div>
             <br>
             <br>
-            <?php if($_SESSION["roles"]=='Admin' and $projectModo->getStatus()=="Reviewing"):?>
+            <?php if(isset($_SESSION["roles"]) and $_SESSION["roles"]=='Admin' and $projectModo->getStatus()=="Reviewing"):?>
                 <div class="AdminButton">
                     <a class="publication" href="http://localhost/publication?idproject=<?php echo($projectModo->getId())?>"><button>Publier</button></a>
                     <a class="suppression" href="http://localhost/suppression?idproject=<?php echo($projectModo->getId())?>"><button>Refuser</button></a>
