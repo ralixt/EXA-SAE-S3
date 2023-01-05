@@ -166,7 +166,7 @@ class CompteService implements AllService
                 ->setTitre($p[1])
                 ->setAuthor($p[2])
                 ->setNbCom($p[4])
-                ->setNote($p[3])
+                ->setNote(is_null($p[3]) ? 0 : $p[3])
                 ->setURLImage($image);
         }
         return $dataProjet;
