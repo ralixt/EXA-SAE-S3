@@ -6,6 +6,12 @@
 <a href="http://localhost/projet/<?php echo($projet->getId())?>">
     <div class="info">
         <p><?php echo $projet->getTitre()?></p>
+        <div>
+            <span class="material-symbols-outlined message">chat</span>
+            <p><?php echo $projet->getNbCom()?></p>
+            <span class="material-symbols-outlined circle">circle</span>
+            <p><?php echo $projet->getNote()?>/5</p>
+        </div>
     </div>
     <div class="swiper">
         <div class="swiper-wrapper">

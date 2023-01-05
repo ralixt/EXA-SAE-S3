@@ -21,7 +21,7 @@ class DatabaseProjectService implements AllService
     }
 
     private function init() : void {
-        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, AVG(comment.rating), nb_comment FROM projet LEFT JOIN comment on comment.projet = projet.id JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project /*WHERE projet.status='Published'*/ GROUP BY projet.id;");//Activer le where si vous voulez testez le modo
+        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, projet.content, projet.author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, AVG(comment.rating), COUNT(comment.id) FROM projet LEFT JOIN comment on comment.projet = projet.id JOIN user ON projet.author = user.id LEFT JOIN likeproject ON projet.id = project /*WHERE projet.status='Published'*/ GROUP BY projet.id;");//Activer le where si vous voulez testez le modo
         $sentence -> execute();
         $projects = $sentence->fetchAll();
 
