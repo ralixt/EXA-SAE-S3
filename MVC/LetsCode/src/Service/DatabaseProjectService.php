@@ -297,7 +297,7 @@ class DatabaseProjectService implements AllService
         return $this->data;
     }
     public function initModerateur() : void{
-        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip FROM projet  JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project WHERE projet.status='Reviewing' GROUP BY projet.id  ;");
+        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, count(projet.content) FROM projet  JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project WHERE projet.status='Reviewing' GROUP BY projet.id  ;");
         $sentence -> execute();
         $projects = $sentence->fetchAll();
 
@@ -331,7 +331,8 @@ class DatabaseProjectService implements AllService
                 ->setLikes($p[9])
                 ->setTags($tags)
                 ->setURLImage($images)
-                ->setURLZIP($p[12]);
+                ->setURLZIP($p[12])
+                ->setNbProjet($p[13]);
         }
 
     }
@@ -361,5 +362,12 @@ class DatabaseProjectService implements AllService
         $sentence_like -> execute(["id" => $entity]);
         $sentence_projet = $this->database->prepare("DELETE FROM projet WHERE id = :id ");
         $sentence_projet -> execute(["id" => $entity]);
+    }
+    public function countProjet():int{
+        $sentence = $this->database->prepare("Select count(*) From projet where status='Reviewing'");
+        $sentence->execute([
+        ]);
+        $count=$sentence->fetchAll();
+        return $count[0][0];
     }
 }

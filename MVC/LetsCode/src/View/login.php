@@ -83,7 +83,7 @@
             </div>
         </form>
         <br>
-        <br>
+
         <p class="phraseAvantInscription">
             <span>Vous n’avez pas de compte inscrivez-vous :</span>
         </p>

@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
-    color: black;
+
 }
 
 body{
@@ -314,7 +314,7 @@ input{
     display: flex;
     background: rgba(255, 255, 255, 0.5);
     width: 30%;
-    border-radius: 9rem;
+    border-radius: 15px;
     padding: 0.3rem 1.5rem;
     border: solid;
     margin: 0 auto;
@@ -328,7 +328,7 @@ input{
     display: flex;
     background: rgba(255, 255, 255, 0.5);
     width: 30%;
-    border-radius: 9rem;
+    border-radius: 15px;
     padding: 0.3rem 1.5rem;
     border: solid;
     margin: 0 auto;

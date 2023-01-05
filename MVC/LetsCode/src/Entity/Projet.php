@@ -19,6 +19,24 @@ class Projet
     private int $likes;
     private int $nbCom;
     private float $note;
+    private int $nbProjet;
+
+    /**
+     * @return int
+     */
+    public function getNbProjet(): int
+    {
+        return $this->nbProjet;
+    }
+
+    /**
+     * @param int $nbProjet
+     */
+    public function setNbProjet(int $nbProjet): Projet
+    {
+        $this->nbProjet = $nbProjet;
+        return $this;
+    }
 
     /**
      * @return int

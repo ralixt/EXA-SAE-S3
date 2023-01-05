@@ -13,6 +13,7 @@ class ModoController extends AbstractController
     }
     public function render(): void
     {
+
         // TODO: Implement render() method.
         if(!isset($_SESSION["ids"])){
             header("location: http://localhost/login");
@@ -22,7 +23,8 @@ class ModoController extends AbstractController
 
         echo get_template(__PROJECT_ROOT__ . "/View/modo.php", [
             "user" => $serviceCompte->get($userActuel->getId()),
-            "project"=>$this->projetService->getModerateur()
+            "project"=>$this->projetService->getModerateur(),
+            "count"=>$this->projetService->countProjet()
         ]);
     }
 }

@@ -17,6 +17,7 @@
 
     <link rel='stylesheet' href='../Ressource/css/login.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
 
 
@@ -84,22 +85,23 @@
                     <input type="hidden" name="id" values='<?php //echo($GET['id'])?>'>
                 </div>
                 -->
-                <div>
+                <div class="mp">
+                    <span class="material-symbols-outlined">person</span>
                     <input class="input" name="Pseudo" type="text" placeholder=" Pseudo " required>
                 </div><br>
-                <div>
-
-                    <input class="input" name="adr_email" type="email" placeholder=" @    Email" required>
+                <div class="mail">
+                    <span class="material-symbols-outlined">alternate_email</span>
+                    <input class="input" name="adr_email" type="email" placeholder=" Email" required>
                 </div><br>
 
-                <div>
+                <div class="mp">
 
-
-            <input class="input" name="creation_mp" type="password" placeholder=" ***   Mot de passe" minlength="8" required>
+                    <span class="material-symbols-outlined">password</span>
+            <input class="input" name="creation_mp" type="password" placeholder=" Mot de passe" minlength="8" required>
         </div><br>
-        <div>
-
-            <input class="input" name="confirmation_mp" type="password" placeholder=" ***   Confirmez votre mot de passe" minlength="8" required>
+        <div class="mp">
+            <span class="material-symbols-outlined">password</span>
+            <input class="input" name="confirmation_mp" type="password" placeholder=" Confirmez votre mot de passe" minlength="8" required>
         </div><br><br>
         <div class='firebase'>
             <div class="inscription">
@@ -111,7 +113,7 @@
 
             </form>
             <br>
-            <br>
+
             <p class="phraseAvantInscription">
                 <span>Vous avez déja un compte  connectez-vous :</span>
             </p>
@@ -133,9 +135,7 @@
 
 </body>
 
-<br>
-<br>
-<br>
+
 
 
 

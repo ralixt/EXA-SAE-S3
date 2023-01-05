@@ -2,6 +2,7 @@
 /**
  * @var User $user
  * @var Projet[] $project
+ * @var int $count
  */
 ?>
 <!DOCTYPE html>
@@ -35,6 +36,10 @@
 
         </div>
     </div>
+    <div>
+        <span>Projet à vérifié <?php echo $count?></span>
+    </div>
+
     <div id="projectCards">
         <?php
         foreach ($project as $projet)

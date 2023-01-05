@@ -22,7 +22,12 @@ class LoginController extends AbstractController
     }
         if($this->compte==true) {
             $erreur="";
-            header("location: http://localhost/ ");
+            if(isset($_SESSION["roles"]) and $_SESSION["roles"]=="Admin"){
+                header("location: http://localhost/modo ");
+            }
+            elseif (isset($_SESSION["roles"]) and $_SESSION["roles"]!="Admin") {
+                header("location: http://localhost/ ");
+            }
 
         }
         else {
