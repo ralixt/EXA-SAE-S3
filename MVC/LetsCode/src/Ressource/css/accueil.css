@@ -82,11 +82,13 @@
 
 
 #projectCards{
+    width: 95%;
     display: grid;
+    grid-template-columns: repeat(auto-fill,280px);
     justify-content: center;
-    justify-items: center;
-    column-gap: 2.5%;
-    grid-template-columns: repeat(3,30%);
+    margin: 2rem auto;
+    gap: 7rem;
+    grid-auto-rows: 380px;
 }
 
 
@@ -192,4 +194,10 @@
     margin: 5rem 2rem 2rem 2rem  ;
 
 
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }

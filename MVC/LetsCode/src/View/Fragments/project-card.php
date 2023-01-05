@@ -4,6 +4,9 @@
  */
 ?>
 <a href="http://localhost/projet/<?php echo($projet->getId())?>">
+    <div class="info">
+        <p><?php echo $projet->getTitre()?></p>
+    </div>
     <div class="swiper">
         <div class="swiper-wrapper">
             <?php foreach ($projet->getURLImage() as $image):?>
