@@ -37,14 +37,12 @@ class Projet
     }
 
     /**
-     * @param int $nbCom
+     * @param $nbCom
      */
-    public function setNbCom(int $nbCom): void
+    public function setNbCom($nbCom): Projet
     {
-        if($nbCom == null){
-            $this->nbCom = 0;
-        }
         $this->nbCom = $nbCom;
+        return $this;
     }
 
     /**
@@ -56,11 +54,12 @@ class Projet
     }
 
     /**
-     * @param float $note
+     * @param $note
      */
-    public function setNote(float $note): void
+    public function setNote($note): Projet
     {
         $this->note = $note;
+        return $this;
     }
 
     /**
