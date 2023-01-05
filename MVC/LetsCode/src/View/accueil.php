@@ -81,8 +81,8 @@
                             </div>
                             <div class="content">
                                 <div>
-                                    <input type="checkbox" id="tag[]"" name="tag[]" value="HTML">
-                                    <label for="tag[]">HTML</label>
+                                    <input type="checkbox" id="choiceHTML" name="tag[]" value="HTML">
+                                    <label for="choiceHTML">HTML</label>
                                 </div>
 
                                 <div>

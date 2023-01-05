@@ -11,9 +11,8 @@
 #welcome{
 
     background-color: darkseagreen;
-
     margin: 2rem;
-    padding: 0.2rem 1rem;
+    padding: 1.5rem 1rem;
     border-radius: 1rem;
 
 }
@@ -37,9 +36,13 @@
 
 }
 
+
 /*.popup.on{*/
 /*    display: flex;*/
 /*}*/
+
+
+
 
 
 
@@ -105,6 +108,8 @@
 
 
 
+
+
 /* Accordion */
 .accordion{
     color: black;
@@ -148,12 +153,39 @@
     overflow-y: auto;
     margin: 1rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
+
+
+
 
 .accordion .contentBox.act .content {
     height: 100px;
     padding: 10px;
 }
+
+
+.accordion .contentBox .content div {
+    margin: 0 1rem;
+
+}
+
+
+.accordion .contentBox .content div label {
+    /*cursor: pointer;*/
+}
+
+
+
+
+
+
+
+
+
+
 
 .filtre {
     /*position: absolute;*/
