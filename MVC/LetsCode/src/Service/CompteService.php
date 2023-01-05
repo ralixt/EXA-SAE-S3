@@ -120,15 +120,20 @@ class CompteService implements AllService
      */
     public function getlist(): ?array
     {
-        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo from projet join user on user.id = projet.author where projet.author = :id;');
+        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo, AVG(comment.rating), Count(comment.id), listeImage(projet.id) FROM projet LEFT JOIN comment on comment.projet = projet.id join user on user.id = projet.author where projet.author = :id group by projet.id;');
         $projetLikeStatement->execute(['id'=>$_SESSION['ids']]);
         $dataProjet = [];
         $result = $projetLikeStatement->fetchAll();
         foreach ($result as $p) {
+            $image = explode(" ", $p[5]);
+            array_pop($image);
             $dataProjet[$p[0]] = (new Projet())
                 ->setId($p[0])
                 ->setTitre($p[1])
-                ->setAuthor($p[2]);
+                ->setAuthor($p[2])
+                ->setNbCom($p[3])
+                ->setNote($p[4])
+                ->setURLImage($image);
         }
         return $dataProjet;
     }
@@ -149,15 +154,20 @@ class CompteService implements AllService
      */
     public function projectLike(User $user): array
     {
-        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo from projet join likeproject on likeproject.project = projet.id join user on user.id = projet.author where likeproject.user = :id;');
+        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo, AVG(comment.rating), Count(comment.id), listeImage(projet.id) FROM projet LEFT JOIN comment on comment.projet = projet.id join likeproject on likeproject.project = projet.id join user on user.id = projet.author where likeproject.user = :id group by projet.id;');
         $projetLikeStatement->execute(['id'=>$user->getId()]);
         $dataProjet = [];
         $result = $projetLikeStatement->fetchAll();
         foreach ($result as $p) {
+            $image = explode(" ", $p[5]);
+            array_pop($image);
             $dataProjet[$p[0]] = (new Projet())
                 ->setId($p[0])
                 ->setTitre($p[1])
-                ->setAuthor($p[2]);
+                ->setAuthor($p[2])
+                ->setNbCom($p[3])
+                ->setNote($p[4])
+                ->setURLImage($image);
         }
         return $dataProjet;
     }

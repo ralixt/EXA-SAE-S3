@@ -17,6 +17,8 @@ class Projet
     /** @var String[] */
     private array $tags;
     private int $likes;
+    private int $nbCom;
+    private float $note;
 
     /**
      * @return int
@@ -27,7 +29,43 @@ class Projet
     }
 
     /**
+     * @return int
+     */
+    public function getNbCom(): int
+    {
+        return $this->nbCom;
+    }
+
+    /**
+     * @param int $nbCom
+     */
+    public function setNbCom(int $nbCom): void
+    {
+        if($nbCom == null){
+            $this->nbCom = 0;
+        }
+        $this->nbCom = $nbCom;
+    }
+
+    /**
+     * @return float
+     */
+    public function getNote(): float
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param float $note
+     */
+    public function setNote(float $note): void
+    {
+        $this->note = $note;
+    }
+
+    /**
      * @param int $likes
+     * @return Projet
      */
     public function setLikes(int $likes): Projet
     {
