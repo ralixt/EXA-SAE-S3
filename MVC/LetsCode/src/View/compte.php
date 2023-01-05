@@ -16,8 +16,11 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel='stylesheet' href='../Ressource/css/compte.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/accueil.css' type='text/css' media='screen'>
+    <link rel='stylesheet' href='../Ressource/css/card_projet.css' type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Mon Compte</title>
 
 </head>
@@ -52,7 +55,7 @@
     </div>
     <div class="rectangle flexColumn">
         <h3>Vos Projets</h3>
-        <div class="flexRow">
+        <div class="flexRow projet">
             <?php
             foreach ($vosProjets as $projet)
                 echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [ //le template est à modifier car ce n'est pas le même que celui au-dessus
@@ -117,6 +120,9 @@
             </div>
         </div>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="./../Ressource/JS/projet-card.js"></script>
 
 </body>
 <?php include 'footer.php'?>

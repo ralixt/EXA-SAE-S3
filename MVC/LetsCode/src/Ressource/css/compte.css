@@ -147,6 +147,10 @@ p{
       box-sizing: border-box;
   }
 
+  .projet{
+      margin:1rem;
+  }
+
   #infosPersos{
       font-size: 20px;
   }
@@ -191,6 +195,9 @@ p{
   }
   main > div > div > div > a {
       text-align: right;
+  }
+  main > div > div > div > ul {
+      margin : 2rem;
   }
 
   input {
