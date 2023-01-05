@@ -24,3 +24,15 @@ function filtre() {
 }
 
 
+const tag = document.querySelector(".tags");
+const tags = document.querySelectorAll(".tags");
+
+const content = document.querySelector(".content")
+
+
+for(let i=0;i<content.length;i++) {
+    content[i].addEventListener('click',function (){
+        console.log("ok")
+        this.classList.toggle("d")
+    })
+}

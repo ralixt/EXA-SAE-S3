@@ -37,6 +37,12 @@
 }
 
 
+#popupBackground {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 1rem;
+}
+
 /*.popup.on{*/
 /*    display: flex;*/
 /*}*/
@@ -176,17 +182,35 @@
 
 
 .accordion .contentBox .content div label {
-    /*cursor: pointer;*/
+    cursor: pointer;
+}
+
+
+.accordion .contentBox .content div input[type="checkbox"] {
+    display: none;
+}
+
+.accordion .contentBox .content div input[type="radio"] {
+    display: none;
 }
 
 
 
+.tags {
+    background-color: #DBDBDB;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.5rem;
+}
 
 
+.tags:hover {
+    background-color: #FFFFFF;
+}
 
 
-
-
+.tags.d{
+    background-color: #5C5C5C;
+}
 
 
 .filtre {
