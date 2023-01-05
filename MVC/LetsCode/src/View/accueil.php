@@ -34,7 +34,7 @@
             <div id="nav-links">
                 <ul style="list-style-type:none">
                     <li id="selected"><a href="http://localhost">Accueil</a></li>
-                    <!--pour les user connecté-->
+                    <!--pour les user connectés-->
 
                     <?php if(isset($_SESSION["Pseudo"])) : ?>
                         <li><a href="/create">Nouveau Projet</a></li>
@@ -43,7 +43,7 @@
                         </div>
 
                     <?php else : ?>
-                        <!--pour les user non connecté-->
+                        <!--pour les user non connectés-->
                         <div class="buttonLog">
                             <li><a href="/login" class="loginButton">Connexion/Inscription</a></li>
 
@@ -76,6 +76,9 @@
                 <div id="popup" style="display: none">
 
                     <div id="popupBackground">
+
+
+
                         <div class="accordion">
                             <div class="contentBox">
 
@@ -83,57 +86,57 @@
                                     <span class="material-symbols-outlined filtreIconSpace">terminal</span>
                                     Langage de programmation
                                 </div>
+
                                 <div class="content">
-                                    <div class="tags">
+                                    <label class="tags" for="choiceHTML">
                                         <input type="checkbox" id="choiceHTML" name="tag[]" value="HTML">
-                                        <label for="choiceHTML">HTML</label>
-                                    </div>
+                                        <span>HTML</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceJava">
                                         <input type="checkbox" id="choiceJava" name="tag[]" value="Java">
-                                        <label for="choiceJava">Java</label>
-                                    </div>
+                                        <span>Java</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choicePython">
                                         <input type="checkbox" id="choicePython" name="tag[]" value="Python">
-                                        <label for="choicePython">Python</label>
-                                    </div>
+                                        <span>Python</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceCPP">
                                         <input type="checkbox" id="choiceCPP" name="tag[]" value="C++">
-                                        <label for="choiceCPP">C++</label>
-                                    </div>
+                                        <span>C++</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceC">
                                         <input type="checkbox" id="choiceC" name="tag[]" value="C">
-                                        <label for="choiceC">C</label>
-                                    </div>
+                                        <span>C</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceCSharp">
                                         <input type="checkbox" id="choiceCSharp" name="tag[]" value="C#">
-                                        <label for="choiceCSharp">C#</label>
-                                    </div>
+                                        <span>C#</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choicePHP">
                                         <input type="checkbox" id="choicePHP" name="tag[]" value="PHP">
-                                        <label for="choicePHP">PHP</label>
-                                    </div>
+                                        <span>PHP</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceCSS">
                                         <input type="checkbox" id="choiceCSS" name="tag[]" value="CSS">
-                                        <label for="choiceCSS">CSS</label>
-                                    </div>
+                                        <span>CSS</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceSQL">
                                         <input type="checkbox" id="choiceSQL" name="tag[]" value="SQL">
-                                        <label for="choiceSQL">SQL</label>
-                                    </div>
+                                        <span>SQL</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceJS">
                                         <input type="checkbox" id="choiceJS" name="tag[]" value="Javascript">
-                                        <label for="choiceJS">Javascript</label>
-                                    </div>
-
+                                        <span>Javascript</span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -147,20 +150,20 @@
                                     Support
                                 </div>
                                 <div class="content">
-                                    <div class="tags">
+                                    <label class="tags" for="choiceWindows">
                                         <input type="checkbox" id="choiceWindows" name="tag[]" value="Windows">
-                                        <label for="choiceWindows">Windows</label>
-                                    </div>
+                                        <span>Windows</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceLinux">
                                         <input type="checkbox" id="choiceLinux" name="tag[]" value="Linux">
-                                        <label for="choiceLinux">Linux</label>
-                                    </div>
+                                        <span>Linux</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceMac">
                                         <input type="checkbox" id="choiceMac" name="tag[]" value="Mac">
-                                        <label for="choiceMac">Mac</label>
-                                    </div>
+                                        <span>Mac</span>
+                                    </label>
 
                                 </div>
                             </div>
@@ -173,27 +176,27 @@
                                     <span class="material-symbols-outlined filtreIconSpace">language</span>
                                     Langue
                                 </div>
+
                                 <div class="content">
-
-                                    <div class="tags">
+                                    <label class="tags" for="choiceFR">
                                         <input type="checkbox" id="choiceFR" name="tag[]" value="Francais">
-                                        <label for="choiceFR">Français</label>
-                                    </div>
+                                        <span>Français</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceEN">
                                         <input type="checkbox" id="choiceEN" name="tag[]" value="English">
-                                        <label for="choiceEN">English</label>
-                                    </div>
+                                        <span>English</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceES">
                                         <input type="checkbox" id="choiceES" name="tag[]" value="Espanol">
-                                        <label for="choiceES">Español</label>
-                                    </div>
+                                        <span>Español</span>
+                                    </label>
 
-                                    <div class="tags">
+                                    <label class="tags" for="choiceDE">
                                         <input type="checkbox" id="choiceDE" name="tag[]" value="Deutsch">
-                                        <label for="choiceDE">Deutsch</label>
-                                    </div>
+                                        <span>Deutsch</span>
+                                    </label>
 
                                 </div>
                             </div>
@@ -208,28 +211,22 @@
                                 </div>
 
                                 <div class="content">
-                                    <div class="tags">
+                                    <label class="tags" for="facile">
                                         <input type="radio" id="facile" name="contact" value="facile">
-                                        <label for="facile">Facile</label>
-                                    </div>
-                                    <div class="tags">
+                                        <span>Facile</span>
+                                    </label>
+                                    <label class="tags" for="moyen">
                                         <input type="radio" id="moyen" name="contact" value="moyen">
-                                        <label for="moyen">Moyen</label>
-                                    </div>
-                                    <div class="tags">
+                                        <span>Moyen</span>
+                                    </label>
+                                    <label class="tags" for="difficile">
                                         <input type="radio" id="difficile" name="contact" value="difficile">
-                                        <label for="difficile">Difficile</label>
-                                    </div>
+                                        <span>Difficile</span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-
-
-
-
                 </div>
 
 

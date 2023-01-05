@@ -32,7 +32,7 @@
             <div id="nav-links">
                 <ul style="list-style-type:none">
                     <li><a href="http://localhost">Accueil</a></li>
-                    <!--pour les user connecté-->
+                    <!--pour les user connectés-->
 
                     <?php if(isset($_SESSION["Pseudo"])) : ?>
                         <li id="selected"><a href="/create">Nouveau Projet</a></li>
@@ -41,7 +41,7 @@
                         </div>
 
                     <?php else : ?>
-                        <!--pour les user non connecté-->
+                        <!--pour les user non connectés-->
                         <div class="buttonLog">
                             <li><a href="/login" class="loginButton">Connexion/Inscription</a></li>
 

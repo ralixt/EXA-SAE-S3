@@ -10,10 +10,6 @@ for (i = 0; i< accordion.length; i++ ){
 
 const popup = document.getElementsByClassName("popup");
 
-
-
-
-
 function filtre() {
     const x = document.getElementById("popup");
     if (x.style.display === "none") {
@@ -24,15 +20,25 @@ function filtre() {
 }
 
 
-const tag = document.querySelector(".tags");
+
+
+
+// const tag = document.querySelector(".tags");
 const tags = document.querySelectorAll(".tags");
+// const content = document.querySelector(".content")
 
-const content = document.querySelector(".content")
 
-
-for(let i=0;i<content.length;i++) {
-    content[i].addEventListener('click',function (){
-        console.log("ok")
-        this.classList.toggle("d")
+for (i = 0; i< tags.length; i++ ){
+    tags[i].addEventListener('click', function () {
+        this.classList.toggle('d')
     })
 }
+
+
+
+// for(let i=0;i<content.length;i++) {
+//     content[i].addEventListener('click',function (){
+//         console.log("ok")
+//         this.classList.toggle("d")
+//     })
+// }
