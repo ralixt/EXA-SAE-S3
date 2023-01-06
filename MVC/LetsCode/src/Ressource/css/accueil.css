@@ -95,7 +95,8 @@
     grid-template-columns: repeat(auto-fill,280px);
     justify-content: center;
     margin: 2rem auto;
-    gap: 7rem;
+    column-gap: 7rem;
+    row-gap: 3rem;
     grid-auto-rows: 380px;
 }
 
