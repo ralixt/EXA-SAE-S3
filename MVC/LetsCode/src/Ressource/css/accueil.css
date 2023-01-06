@@ -1,7 +1,6 @@
 *{
     font-family: Poppins;
     text-decoration: none;
-    color: black;
     margin: 0;
     padding: 0;
 
@@ -119,12 +118,30 @@
 
 
 /* Accordion */
-.accordion{
-    color: black;
+
+#popupFiltreTitleClose{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+}
+
+#filtreTitle{
+    font-size: 2rem;
+}
+
+#closeButton{
+    border: none;
+    outline: none;
+    background-color: #FFFFFF;
+    cursor: pointer;
+
 }
 
 .accordion .contentBox {
     position: relative;
+
 }
 
 .accordion .contentBox .label {
@@ -157,15 +174,31 @@
     border-radius: 2rem;
     height: 0;
     overflow: hidden;
-    transition: 0.5s;
+    transition: 0.2s;
     overflow-y: auto;
-    margin: 1rem;
+    margin: 1rem 0 2rem 0;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    /*align-items: center;*/
+    align-items: center;
+}
+
+
+.filterSection{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    column-gap: 2rem;
 
 }
 
+
+.accordion {
+    width: 40vw;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
@@ -175,47 +208,71 @@
 }
 
 
-/*.accordion .contentBox .content div {*/
-/*    margin: 0 1rem;*/
-
-/*}*/
-
-
-/*.accordion .contentBox .content div label {*/
-/*    cursor: pointer;*/
-/*}*/
-
-
-/*.accordion .contentBox .content div input[type="checkbox"] {*/
-/*    !*display: none;*!*/
-/*}*/
-
-/*.accordion .contentBox .content div input[type="radio"] {*/
-/*    !*display: none;*!*/
-/*}*/
 
 
 
-/*.tags {*/
-/*    background-color: #DBDBDB;*/
-/*    border-radius: 0.5rem;*/
-/*    padding: 0.5rem 0.5rem;*/
-/*}*/
+.accordion .contentBox .content div {
+    margin: 0 1rem;
 
-
-/*.tags:hover {*/
-/*    background-color: #FFFFFF;*/
-/*}*/
-
-
-/*.tags.d{*/
-/*    content: "+";*/
-/*    background-color: #5C5C5C;*/
-/*}*/
+}
 
 
 
 
+.accordion .contentBox .content div label {
+    cursor: pointer;
+}
+
+
+.accordion .contentBox .content div label input[type="checkbox"], input[type="radio"] {
+    display: none;
+}
+
+
+.accordion .contentBox .content div label span {
+    position: relative;
+    display: inline-block;
+    background-color: #DBDBDB;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.5rem;
+
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    /*user-select: none;*/
+    /*overflow: hidden;*/
+}
+
+
+.accordion .contentBox .content div label span:hover{
+    background-color: #FFFFFF;
+}
+
+.accordion .contentBox .content div label input[type="checkbox"]:checked  ~ span{
+    background-color: #5C5C5C;
+    color: #FFFFFF;
+}
+
+.accordion .contentBox .content div label input[type="radio"]:checked  ~ span{
+    background-color: #5C5C5C;
+    color: #FFFFFF;
+}
+
+.accordion .contentBox .content div label input[type="checkbox"]:checked  ~ span:hover{
+    background-color: #121212;
+}
+
+.accordion .contentBox .content div label input[type="radio"]:checked  ~ span:hover{
+    background-color: #121212;
+}
+
+
+
+
+
+#closeTag {
+    background-color: #007EA7;
+    content: '+';
+}
 
 
 
@@ -239,11 +296,29 @@
     padding: 0.5rem 1rem;
     border: none;
     outline: none;
+    align-items: center;
 
 
 
 
 }
+
+#tri{
+
+    cursor: pointer ;
+    display: flex;
+    flex-direction: row;
+
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    /* Note: backdrop-filter has minimal browser support */
+    text-align: center;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    align-items: center;
+}
+
 
 
 .filtreIconSpace{

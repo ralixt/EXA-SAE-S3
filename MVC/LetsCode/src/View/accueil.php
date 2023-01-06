@@ -76,155 +76,214 @@
                 <div id="popup" style="display: none">
 
                     <div id="popupBackground">
-
-
-
-                        <div class="accordion">
-                            <div class="contentBox">
-
-                                <div class="label">
-                                    <span class="material-symbols-outlined filtreIconSpace">terminal</span>
-                                    Langage de programmation
-                                </div>
-
-                                <div class="content">
-                                    <label class="tags" for="choiceHTML">
-                                        <input type="checkbox" id="choiceHTML" name="tag[]" value="HTML">
-                                        <span>HTML</span>
-                                    </label>
-
-                                    <label class="tags" for="choiceJava">
-                                        <input type="checkbox" id="choiceJava" name="tag[]" value="Java">
-                                        <span>Java</span>
-                                    </label>
-
-                                    <label class="tags" for="choicePython">
-                                        <input type="checkbox" id="choicePython" name="tag[]" value="Python">
-                                        <span>Python</span>
-                                    </label>
-
-                                    <label class="tags" for="choiceCPP">
-                                        <input type="checkbox" id="choiceCPP" name="tag[]" value="C++">
-                                        <span>C++</span>
-                                    </label>
-
-                                    <label class="tags" for="choiceC">
-                                        <input type="checkbox" id="choiceC" name="tag[]" value="C">
-                                        <span>C</span>
-                                    </label>
-
-                                    <label class="tags" for="choiceCSharp">
-                                        <input type="checkbox" id="choiceCSharp" name="tag[]" value="C#">
-                                        <span>C#</span>
-                                    </label>
-
-                                    <label class="tags" for="choicePHP">
-                                        <input type="checkbox" id="choicePHP" name="tag[]" value="PHP">
-                                        <span>PHP</span>
-                                    </label>
-
-                                    <label class="tags" for="choiceCSS">
-                                        <input type="checkbox" id="choiceCSS" name="tag[]" value="CSS">
-                                        <span>CSS</span>
-                                    </label>
-
-                                    <label class="tags" for="choiceSQL">
-                                        <input type="checkbox" id="choiceSQL" name="tag[]" value="SQL">
-                                        <span>SQL</span>
-                                    </label>
-
-                                    <label class="tags" for="choiceJS">
-                                        <input type="checkbox" id="choiceJS" name="tag[]" value="Javascript">
-                                        <span>Javascript</span>
-                                    </label>
-                                </div>
-                            </div>
+                        <div id="popupFiltreTitleClose">
+                            <p id="filtreTitle">Filtres</p>
+                            <button id="closeButton" type="button" onclick="filtre()">
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
                         </div>
 
 
+                        <div class="filterSection">
+                            <div class="accordion">
+                                <div class="contentBox">
 
-                        <div class="accordion">
-                            <div class="contentBox">
-                                <div class="label">
-                                    <span class="material-symbols-outlined filtreIconSpace">devices</span>
-                                    Support
-                                </div>
-                                <div class="content">
-                                    <label class="tags" for="choiceWindows">
-                                        <input type="checkbox" id="choiceWindows" name="tag[]" value="Windows">
-                                        <span>Windows</span>
-                                    </label>
+                                    <div class="label">
+                                        <span class="material-symbols-outlined filtreIconSpace">terminal</span>
+                                        Langage de programmation
+                                    </div>
 
-                                    <label class="tags" for="choiceLinux">
-                                        <input type="checkbox" id="choiceLinux" name="tag[]" value="Linux">
-                                        <span>Linux</span>
-                                    </label>
+                                    <div class="content">
 
-                                    <label class="tags" for="choiceMac">
-                                        <input type="checkbox" id="choiceMac" name="tag[]" value="Mac">
-                                        <span>Mac</span>
-                                    </label>
+                                        <div>
+                                            <label for="choiceHTML">
+                                                <input type="checkbox" id="choiceHTML" name="tag[]" value="HTML">
+                                                <span>HTML</span>
+                                            </label>
+                                            <div class="closeTag">ffff</div>
+                                        </div>
 
+
+                                        <div>
+                                            <label for="choiceJava">
+                                                <input type="checkbox" id="choiceJava" name="tag[]" value="Java">
+                                                <span>Java</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label for="choicePython">
+                                                <input type="checkbox" id="choicePython" name="tag[]" value="Python">
+                                                <span>Python</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label for="choiceCPP">
+                                                <input type="checkbox" id="choiceCPP" name="tag[]" value="C++">
+                                                <span>C++</span>
+                                            </label>
+
+                                        </div>
+
+                                        <div>
+                                            <label for="choiceC">
+                                                <input type="checkbox" id="choiceC" name="tag[]" value="C">
+                                                <span>C</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label for="choiceCSharp">
+                                                <input type="checkbox" id="choiceCSharp" name="tag[]" value="C#">
+                                                <span>C#</span>
+                                            </label>
+                                        </div>
+
+
+                                        <div>
+                                            <label for="choicePHP">
+                                                <input type="checkbox" id="choicePHP" name="tag[]" value="PHP">
+                                                <span>PHP</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label for="choiceCSS">
+                                                <input type="checkbox" id="choiceCSS" name="tag[]" value="CSS">
+                                                <span>CSS</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label for="choiceSQL">
+                                                <input type="checkbox" id="choiceSQL" name="tag[]" value="SQL">
+                                                <span>SQL</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label for="choiceJS">
+                                                <input type="checkbox" id="choiceJS" name="tag[]" value="Javascript">
+                                                <span>JavaScript</span>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
 
-                        <div class="accordion">
-                            <div class="contentBox">
-                                <div class="label">
-                                    <span class="material-symbols-outlined filtreIconSpace">language</span>
-                                    Langue
-                                </div>
 
-                                <div class="content">
-                                    <label class="tags" for="choiceFR">
-                                        <input type="checkbox" id="choiceFR" name="tag[]" value="Francais">
-                                        <span>Français</span>
-                                    </label>
+                            <div class="accordion">
+                                <div class="contentBox">
+                                    <div class="label">
+                                        <span class="material-symbols-outlined filtreIconSpace">devices</span>
+                                        Support
+                                    </div>
+                                    <div class="content">
 
-                                    <label class="tags" for="choiceEN">
-                                        <input type="checkbox" id="choiceEN" name="tag[]" value="English">
-                                        <span>English</span>
-                                    </label>
+                                        <div>
+                                            <label for="choiceWindows">
+                                                <input type="checkbox" id="choiceWindows" name="tag[]" value="Windows">
+                                                <span>Windows</span>
+                                            </label>
+                                        </div>
 
-                                    <label class="tags" for="choiceES">
-                                        <input type="checkbox" id="choiceES" name="tag[]" value="Espanol">
-                                        <span>Español</span>
-                                    </label>
+                                        <div>
+                                            <label for="choiceLinux">
+                                                <input type="checkbox" id="choiceLinux" name="tag[]" value="Linux">
+                                                <span>Linux</span>
+                                            </label>
+                                        </div>
 
-                                    <label class="tags" for="choiceDE">
-                                        <input type="checkbox" id="choiceDE" name="tag[]" value="Deutsch">
-                                        <span>Deutsch</span>
-                                    </label>
+                                        <div>
+                                            <label for="choiceMac">
+                                                <input type="checkbox" id="choiceMac" name="tag[]" value="Mac">
+                                                <span>Mac</span>
+                                            </label>
+                                        </div>
 
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="accordion">
-                            <div class="contentBox">
-                                <div class="label">
-                                    <span class="material-symbols-outlined filtreIconSpace">book</span>
-                                    Difficulté
-                                </div>
-
-                                <div class="content">
-                                    <label class="tags" for="facile">
-                                        <input type="radio" id="facile" name="contact" value="facile">
-                                        <span>Facile</span>
-                                    </label>
-                                    <label class="tags" for="moyen">
-                                        <input type="radio" id="moyen" name="contact" value="moyen">
-                                        <span>Moyen</span>
-                                    </label>
-                                    <label class="tags" for="difficile">
-                                        <input type="radio" id="difficile" name="contact" value="difficile">
-                                        <span>Difficile</span>
-                                    </label>
+                                    </div>
                                 </div>
                             </div>
+
+
+                            <div class="accordion">
+                                <div class="contentBox">
+                                    <div class="label">
+                                        <span class="material-symbols-outlined filtreIconSpace">language</span>
+                                        Langue
+                                    </div>
+
+                                    <div class="content">
+                                        <div>
+                                            <label for="choiceFR">
+                                                <input type="checkbox" id="choiceFR" name="tag[]" value="Francais">
+                                                <span>Français</span>
+                                            </label>
+                                        </div>
+
+
+                                        <div>
+                                            <label for="choiceEN">
+                                                <input type="checkbox" id="choiceEN" name="tag[]" value="English">
+                                                <span>English</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label for="choiceES">
+                                                <input type="checkbox" id="choiceES" name="tag[]" value="Espanol">
+                                                <span>Español</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label for="choiceDE">
+                                                <input type="checkbox" id="choiceDE" name="tag[]" value="Deutsch">
+                                                <span>Deutsch</span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="accordion">
+                                <div class="contentBox">
+                                    <div class="label">
+                                        <span class="material-symbols-outlined filtreIconSpace">book</span>
+                                        Difficulté
+                                    </div>
+
+                                    <div class="content">
+
+                                        <div>
+                                            <label for="facile">
+                                                <input type="radio" id="facile" name="contact" value="facile">
+                                                <span>Facile</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label for="moyen">
+                                                <input type="radio" id="moyen" name="contact" value="moyen">
+                                                <span>Moyen</span>
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <label for="difficile">
+                                                <input type="radio" id="difficile" name="contact" value="difficile">
+                                                <span>Difficile</span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -234,7 +293,7 @@
                     <div id="tri">
 
                         <span class="material-symbols-outlined">sort_by_alpha</span>
-                        <label for="orderby">Trier par :</label>
+                        <label for="orderby">Trier par  </label>
                         <select name="orderby" id="orderby">
                             <option value="nom"> nom </option>
                             <option value="difficulte"> difficulte </option>

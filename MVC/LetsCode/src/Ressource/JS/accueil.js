@@ -23,10 +23,7 @@ function filtre() {
 
 
 
-// const tag = document.querySelector(".tags");
 const tags = document.querySelectorAll(".tags");
-// const content = document.querySelector(".content")
-
 
 for (i = 0; i< tags.length; i++ ){
     tags[i].addEventListener('click', function () {
@@ -36,9 +33,3 @@ for (i = 0; i< tags.length; i++ ){
 
 
 
-// for(let i=0;i<content.length;i++) {
-//     content[i].addEventListener('click',function (){
-//         console.log("ok")
-//         this.classList.toggle("d")
-//     })
-// }
