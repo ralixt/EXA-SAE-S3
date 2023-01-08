@@ -17,7 +17,7 @@ require_once  "Ressource/libs/Parsedown.php";
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel='stylesheet' href='./.././Ressource/css/accueil.css' media='screen'>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
@@ -168,7 +168,7 @@ require_once  "Ressource/libs/Parsedown.php";
                                 <img src="./.././Ressource/images/folder_zip.png" alt="errors">
                             </div>
                             <div class='folderZip'>
-                                <span> <?= $project->getURLZIP()?></span>
+                                <?php echo('<a href= "./../RessourcesProject/'.$project->getId().'/'.'zip'.'/'.$project->getURLZIP().'" download>'.'<span> '.' '.$project->getURLZIP().' </span>'.'</a>')?>
                             </div>
                             <div class="download">
                                 <?php echo('<a href= "./../RessourcesProject/'.$project->getId().'/'.'zip'.'/'.$project->getURLZIP().'" download>'.'<img src="./.././Ressource/images/download.png" alt="error">'.'</a>');?>
@@ -361,7 +361,7 @@ require_once  "Ressource/libs/Parsedown.php";
                         <img src="./.././Ressource/images/folder_zip.png" alt="errors">
                     </div>
                     <div class='folderZip'>
-                        <span> <?= $projectModo->getURLZIP()?></span>
+                        <?php echo('<a href= "./../RessourcesProject/'.$projectModo->getId().'/'.'zip'.'/'.$projectModo->getURLZIP().'" download>'.'<span> '.' '.$projectModo->getURLZIP().' </span>'.'</a>')?>
                     </div>
                     <div class="download">
 

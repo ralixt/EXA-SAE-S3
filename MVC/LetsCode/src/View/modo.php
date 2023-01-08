@@ -14,9 +14,20 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel='stylesheet' href='../Ressource/css/login.css'  type='text/css' media='screen'>
+    <link rel='stylesheet' href='./.././Ressource/css/accueil.css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/compte.css'  type='text/css' media='screen'>
+    <link rel='stylesheet' href='../Ressource/css/card_projet.css' type='text/css' media='screen'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Document</title>
 </head>
 <body>
@@ -46,10 +57,14 @@
             echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
                 "projet" => $projet
             ])
-
         ?>
     </div>
+
 </main>
 
+<?php include 'footer.php'?>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script src="./../Ressource/JS/projet-card.js"></script>
+<script src="../Ressource/JS/accueil.js"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@ class DatabaseProjectService implements AllService
     }
 
     private function init() : void {
-        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, projet.content, projet.author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, AVG(comment.rating), COUNT(comment.id) FROM projet LEFT JOIN comment on comment.projet = projet.id JOIN user ON projet.author = user.id LEFT JOIN likeproject ON projet.id = project /*WHERE projet.status='Published'*/ GROUP BY projet.id;");//Activer le where si vous voulez testez le modo
+        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, projet.content, projet.author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, AVG(comment.rating), COUNT(comment.id) FROM projet LEFT JOIN comment on comment.projet = projet.id JOIN user ON projet.author = user.id LEFT JOIN likeproject ON projet.id = project /*WHERE projet.status='Published' */ GROUP BY projet.id;");//Activer le where si vous voulez testez le modo
         $sentence -> execute();
         $projects = $sentence->fetchAll();
 
@@ -258,82 +258,90 @@ class DatabaseProjectService implements AllService
     }
 
     public function getModerateur() : array {
-        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip FROM projet  JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project WHERE projet.status='Reviewing' GROUP BY projet.id  ;");
-        $sentence -> execute();
-        $projects = $sentence->fetchAll();
 
-        $sentence = $this->database-> prepare("SELECT MAX(id) FROM projet");
-        $sentence -> execute();
-        $this ->lastId = $sentence->fetchAll()[0][0];
-        $this->data = [];
+            $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, projet.content, projet.author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, AVG(comment.rating), COUNT(comment.id) FROM projet LEFT JOIN comment on comment.projet = projet.id JOIN user ON projet.author = user.id LEFT JOIN likeproject ON projet.id = project WHERE projet.status='Reviewing' GROUP BY projet.id;");//Activer le where si vous voulez testez le modo
+            $sentence -> execute();
+            $projects = $sentence->fetchAll();
+
+            $sentence = $this->database-> prepare("SELECT MAX(id) FROM projet");
+            $sentence -> execute();
+            $this ->lastId = $sentence->fetchAll()[0][0];
+            $this->dataModo = [];
 
 
-        foreach ($projects as $p){
-            $tags = explode(",", $p[10]);
-            array_pop($tags);
-            for($i = 0; $i<count($tags); $i++){
-                $tags[$i] = explode(":", $tags[$i]);
-                $tags[$i] = (new tag)
-                    ->setId($tags[$i][0])
-                    ->setName($tags[$i][1]);
+            foreach ($projects as $p){
+                $tags = explode(",", $p[10]);
+                array_pop($tags);
+                for($i = 0; $i<count($tags); $i++){
+                    $tags[$i] = explode(":", $tags[$i]);
+                    $tags[$i] = (new tag)
+                        ->setId($tags[$i][0])
+                        ->setName($tags[$i][1]);
+                }
+                $images = explode(" ", $p[11]);
+                array_pop($images);
+                $this->dataModo[$p[0]] = (new Projet())
+                    ->setId($p[0])
+                    ->setCreatedAt($p[1])
+                    ->setTitre($p[2])
+                    ->setContent($p[3])
+                    ->setAuthorID($p[4])
+                    ->setAuthor($p[5])
+                    ->setStatus($p[6])
+                    ->setDifficulte($p[7])
+                    ->setPremium($p[8])
+                    ->setLikes($p[9])
+                    ->setTags($tags)
+                    ->setURLImage($images)
+                    ->setURLZIP($p[12])
+                    ->setNote($p[13] ?? 0)
+                    ->setNbCom(intval($p[14]));
             }
-            $images = explode(" ", $p[11]);
-            array_pop($images);
-            $this->data[$p[0]] = (new Projet())
-                ->setId($p[0])
-                ->setCreatedAt($p[1])
-                ->setTitre($p[2])
-                ->setContent($p[3])
-                ->setAuthorID($p[4])
-                ->setAuthor($p[5])
-                ->setStatus($p[6])
-                ->setDifficulte($p[7])
-                ->setPremium($p[8])
-                ->setLikes($p[9])
-                ->setTags($tags)
-                ->setURLImage($images)
-                ->setURLZIP($p[12]);
-        }
-        return $this->data;
+
+
+        return $this->dataModo;
     }
     public function initModerateur() : void{
-        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, content, author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, count(projet.content) FROM projet  JOIN user ON author = user.id LEFT JOIN likeproject ON projet.id = project WHERE projet.status='Reviewing' GROUP BY projet.id  ;");
-        $sentence -> execute();
-        $projects = $sentence->fetchAll();
 
-        $sentence = $this->database-> prepare("SELECT MAX(id) FROM projet");
-        $sentence -> execute();
-        $this ->lastId = $sentence->fetchAll()[0][0];
-        $this->dataModo = [];
+            $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, projet.content, projet.author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, AVG(comment.rating), COUNT(comment.id) FROM projet LEFT JOIN comment on comment.projet = projet.id JOIN user ON projet.author = user.id LEFT JOIN likeproject ON projet.id = project WHERE projet.status='Reviewing' GROUP BY projet.id;");//Activer le where si vous voulez testez le modo
+            $sentence -> execute();
+            $projects = $sentence->fetchAll();
+
+            $sentence = $this->database-> prepare("SELECT MAX(id) FROM projet");
+            $sentence -> execute();
+            $this ->lastId = $sentence->fetchAll()[0][0];
+            $this->dataModo = [];
 
 
-        foreach ($projects as $p){
-            $tags = explode(",", $p[10]);
-            array_pop($tags);
-            for($i = 0; $i<count($tags); $i++){
-                $tags[$i] = explode(":", $tags[$i]);
-                $tags[$i] = (new tag)
-                    ->setId($tags[$i][0])
-                    ->setName($tags[$i][1]);
+            foreach ($projects as $p){
+                $tags = explode(",", $p[10]);
+                array_pop($tags);
+                for($i = 0; $i<count($tags); $i++){
+                    $tags[$i] = explode(":", $tags[$i]);
+                    $tags[$i] = (new tag)
+                        ->setId($tags[$i][0])
+                        ->setName($tags[$i][1]);
+                }
+                $images = explode(" ", $p[11]);
+                array_pop($images);
+                $this->dataModo[$p[0]] = (new Projet())
+                    ->setId($p[0])
+                    ->setCreatedAt($p[1])
+                    ->setTitre($p[2])
+                    ->setContent($p[3])
+                    ->setAuthorID($p[4])
+                    ->setAuthor($p[5])
+                    ->setStatus($p[6])
+                    ->setDifficulte($p[7])
+                    ->setPremium($p[8])
+                    ->setLikes($p[9])
+                    ->setTags($tags)
+                    ->setURLImage($images)
+                    ->setURLZIP($p[12])
+                    ->setNote($p[13] ?? 0)
+                    ->setNbCom(intval($p[14]));
             }
-            $images = explode(" ", $p[11]);
-            array_pop($images);
-            $this->dataModo[$p[0]] = (new Projet())
-                ->setId($p[0])
-                ->setCreatedAt($p[1])
-                ->setTitre($p[2])
-                ->setContent($p[3])
-                ->setAuthorID($p[4])
-                ->setAuthor($p[5])
-                ->setStatus($p[6])
-                ->setDifficulte($p[7])
-                ->setPremium($p[8])
-                ->setLikes($p[9])
-                ->setTags($tags)
-                ->setURLImage($images)
-                ->setURLZIP($p[12])
-                ->setNbProjet($p[13]);
-        }
+
 
     }
     public function getModo($entity): ?Projet

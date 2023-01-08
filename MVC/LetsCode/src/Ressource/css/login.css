@@ -5,7 +5,12 @@
     text-decoration: none;
 
 }
-
+a{
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
+}
 body{
    /* position: relative;
     width: 80rem;
