@@ -47,19 +47,47 @@
 
         </div>
     </div>
-    <div>
-        <span>Projet à vérifié <?php echo $count?></span>
+    <div class="rectangle flexColumn">
+        <h3 class="projetverif">Projet à vérifié <?php echo $count?></h3>
+        <div class="flexRow projet">
+            <?php
+            foreach ($project as $projet)
+                echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
+                    "projet" => $projet
+                ])
+            ?>
+        </div>
     </div>
 
-    <div id="projectCards">
-        <?php
-        foreach ($project as $projet)
-            echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
-                "projet" => $projet
-            ])
-        ?>
-    </div>
+    <div id="basdepage" class="flexRow">
+        <div class="rectangle flexColumn" id="infosPersos">
+            <h2>Vos informations personnelles</h2>
 
+            <div class="flexCorrect">
+                <div>
+                    <p>Pseudo :</p>
+                    <p> <?php echo $user->getPseudo() ?> </p>
+                </div>
+                <a href="http://localhost/compteModif?raison=pseudo" class="button">changer de pseudo</a>
+            </div>
+
+            <div class="flexCorrect">
+                <div>
+                    <p>Adresse e-mail :</p>
+                    <p><?php echo $user->getEmail() ?> </p>
+                </div>
+                <a href="http://localhost/compteModif?raison=mail" class="button">changer d'email</a>
+            </div>
+            <div class="flexCorrect">
+                <div>
+                    <p>mot de passe :</p>
+                    <p>********</p>
+                </div>
+                <a id="motPasse" href="http://localhost/compteModif?raison=mdp" class="button">changer de mot de passe</a>
+            </div>
+            <a class="button red centre" href="http://localhost/logout.php">Deconnexion</a>
+            <a class="button red centre" href="compteModif?raison=delete">Supprimer mon compte</a>
+        </div>
 </main>
 
 <?php include 'footer.php'?>

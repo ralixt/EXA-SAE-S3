@@ -244,10 +244,16 @@ color: #888888;
 padding-right:2% ;
 }
 .RessourceContenair .folderZip{
-    padding-right:85% ;
+
 }
 .RessourceContenair .folderZip span{
     color: #FFFFFF;
+
+}
+
+.RessourceContenair .folderZip span:hover{
+
+    text-decoration:underline;
 }
 .RessourceContenair .download{
     position: absolute;
@@ -283,7 +289,10 @@ padding-right:2% ;
     
     background-color:white;
 } */
-
+.menu a span:hover{
+    color: #000000;
+    font-weight: bold;
+}
 .AjoutCommentaire input{
     width: 35px;
     height: 35px;
@@ -483,4 +492,7 @@ color: #000000;
     margin-left: 1%;
     cursor: pointer;
 
+}
+.RessourceContenair:hover{
+    background: #121212;
 }

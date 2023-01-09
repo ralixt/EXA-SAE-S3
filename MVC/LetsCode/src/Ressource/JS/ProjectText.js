@@ -1,5 +1,7 @@
-const paras = document.getElementById("text");
+const nbprojets = document.getElementsByName("projetverif");
+
 const comment = document.getElementsByClassName("textCommentaire");
+
 
 
 
@@ -15,3 +17,10 @@ const comment = document.getElementsByClassName("textCommentaire");
 //         com.style.overflow = "scroll"
 //     }
 // }
+
+
+    if(nbprojets>6){
+
+        com.style.overflow = "scroll"
+
+}

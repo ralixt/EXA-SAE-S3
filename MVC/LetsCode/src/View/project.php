@@ -223,7 +223,7 @@ require_once  "Ressource/libs/Parsedown.php";
                                     <br><br>
 
                                     <span>Message: </span><br><br>
-                                    <textarea name="commentaire" id="commentairess"  placeholder="Ecrivez votre message ici" required></textarea><br>
+                                    <textarea name="commentaire" id="commentairess"  placeholder="Ecrivez votre message ici" maxlength="20000" required></textarea><br>
                                     <button type="submit" id="ajouter">Ajouter Un Commentaire</button>
                                 </form>
 

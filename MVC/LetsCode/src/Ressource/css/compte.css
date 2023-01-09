@@ -212,9 +212,7 @@ p{
       justify-content: space-around;
   }
 
-  main > div > div > div {
-      text-align: left;
-  }
+
   main > div > div > div > a {
       text-align: right;
   }

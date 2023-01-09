@@ -75,11 +75,6 @@
                 <div class="connecter">
                     <button type="submit" name="connexionButton" >Connexion</button>
                 </div>
-                <?php if(isset($_SESSION["roles"]) and $_SESSION["roles"]=="Admin" ):?>
-                    <div class="modo">
-                        <button><a href="http://localhost/modo">Modo</a></button>
-                    </div>
-                <?php endif; ?>
             </div>
         </form>
         <br>

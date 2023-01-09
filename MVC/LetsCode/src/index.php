@@ -65,8 +65,14 @@ switch ($uri[1]) :
         break;
 
     case "compte":
-        (new CompteController(CompteService::getInstance()))->render();
-        break;
+        if($_SESSION["roles"] == "Admin"){
+            (new ModoController(DatabaseProjectService::getInstance()))->render();
+            break;
+        }
+        else{
+            (new CompteController(CompteService::getInstance()))->render();
+            break;
+        }
     case "contact":
         (new ContactController(DatabaseContactService::getInstance()))->render();
         break;
@@ -83,9 +89,6 @@ switch ($uri[1]) :
         (new CompteModifController(CompteService::getInstance()))->render();
         break;
 
-    case "modo":
-        (new ModoController(DatabaseProjectService::getInstance()))->render();
-        break;
 
     case "publication":
         (new PublicationProjetController(DatabaseProjectService::getInstance()))->render();
