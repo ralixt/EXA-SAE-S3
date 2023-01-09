@@ -70,7 +70,7 @@ require_once  "Ressource/libs/Parsedown.php";
                         <div class="slides">
                             <img src="./.././Ressource/test/imageParDefault.jpg">
                         </div>
-                    <?php else: ?>
+                    <?php else:?>
                         <?php for($i=0;$i<count($project->getURLImage());$i++):?>
                             <div class="slides">
 

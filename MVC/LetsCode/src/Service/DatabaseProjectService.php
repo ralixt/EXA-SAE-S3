@@ -33,11 +33,12 @@ class DatabaseProjectService implements AllService
 
         foreach ($projects as $p){
             $tags = explode(",", $p[10]);
-            array_pop($tags);
+            array_shift($tags);
+
             for($i = 0; $i<count($tags); $i++){
                 $tags[$i] = explode(":", $tags[$i]);
                 $tags[$i] = (new tag)
-                    ->setId($tags[$i][0])
+                    ->setId((int)$tags[$i][0])
                     ->setName($tags[$i][1]);
             }
             $images = explode(" ", $p[11]);
@@ -155,11 +156,11 @@ class DatabaseProjectService implements AllService
         $this->data = [];
         foreach ($response as $p){
             $tags = explode(",", $p[10]);
-            array_pop($tags);
+            array_shift($tags);
             for($i = 0; $i<count($tags); $i++){
                 $tags[$i] = explode(":", $tags[$i]);
                 $tags[$i] = (new tag)
-                    ->setId($tags[$i][0])
+                    ->setId((int)$tags[$i][0])
                     ->setName($tags[$i][1]);
             }
             $image = explode(" ", $p[11]);
@@ -315,11 +316,11 @@ class DatabaseProjectService implements AllService
 
             foreach ($projects as $p){
                 $tags = explode(",", $p[10]);
-                array_pop($tags);
+                array_shift($tags);
                 for($i = 0; $i<count($tags); $i++){
                     $tags[$i] = explode(":", $tags[$i]);
                     $tags[$i] = (new tag)
-                        ->setId($tags[$i][0])
+                        ->setId((int)$tags[$i][0])
                         ->setName($tags[$i][1]);
                 }
                 $images = explode(" ", $p[11]);

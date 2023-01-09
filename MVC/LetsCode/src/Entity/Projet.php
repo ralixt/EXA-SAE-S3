@@ -212,7 +212,7 @@ class Projet
     /**
      * @return string[]
      */
-    public function getURLImage(): array
+    public function getURLImage(): ?array
     {
         return $this->URLImage;
     }
@@ -229,7 +229,7 @@ class Projet
     /**
      * @return String
      */
-    public function getURLZIP(): string
+    public function getURLZIP(): ?string
     {
         return $this->URLZIP;
     }

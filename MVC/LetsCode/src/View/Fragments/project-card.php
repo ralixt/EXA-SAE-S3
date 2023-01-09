@@ -6,6 +6,11 @@
 <a href="http://localhost/projet/<?php echo($projet->getId())?>">
     <div class="info">
         <p><?php echo $projet->getTitre()?></p>
+        <div class="tags">
+            <?php foreach ($projet->getTags() as $tag):?>
+            <p><?php echo $tag->getName() ?></p>
+            <?php endforeach;?>
+        </div>
         <div class="comments">
             <span class="material-symbols-outlined message">chat</span>
             <p><?php echo $projet->getNbCom()?></p>
@@ -15,11 +20,20 @@
     </div>
     <div class="swiper">
         <div class="swiper-wrapper">
+
+            <?php if(count($projet->getURLImage()) == 0 || $projet->getURLImage()[0] == ""):?>
+            <img class="card_img" src="./.././Ressource/test/imageParDefault.jpg">
+            <?php elseif (count($projet->getURLImage()) == 1 && $projet->getURLImage()[0] != ""):?>
+            <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId() ?>/images/<?php echo $projet->getURLImage()[0] ?>">
+            <?php else:?>
             <?php foreach ($projet->getURLImage() as $image):?>
             <div class="swiper-slide">
                 <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId() ?>/images/<?php echo $image ?>">
             </div>
-            <?php endforeach;?>
+            <?php endforeach; ?>
+            <?php endif;?>
+
+
         </div>
     </div>
 </a>

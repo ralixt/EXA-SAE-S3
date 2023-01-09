@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db_letscode:3306
--- Généré le : ven. 06 jan. 2023 à 16:46
+-- Généré le : lun. 09 jan. 2023 à 12:52
 -- Version du serveur : 10.10.2-MariaDB-1:10.10.2+maria~ubu2204
 -- Version de PHP : 8.0.26
 
@@ -54,23 +54,32 @@ CREATE DEFINER=`root`@`%` FUNCTION `listeTag` (`idProjet` INT) RETURNS TEXT CHAR
 DECLARE fini INTEGER DEFAULT 0;
 DECLARE liste LONGTEXT;
 DECLARE titleTag VARCHAR(2000);
+DECLARE idTag VARCHAR(2000);
 DECLARE monCurseur CURSOR FOR
 
+ 
 
-SELECT tag.title FROM tag JOIN projet_tag ON projet_tag.id_tag = tag.id where projet_tag.id_projet = idProjet ORDER BY projet_tag.id_projet;
+
+SELECT tag.id, tag.title FROM tag JOIN projet_tag ON projet_tag.id_tag = tag.id where projet_tag.id_projet = idProjet ORDER BY projet_tag.id_projet;
 DECLARE CONTINUE HANDLER FOR NOT FOUND SET fini = 1;
+
+ 
 
 SET liste = "";
 
+ 
+
 OPEN monCurseur;
 maBoucle: LOOP
-FETCH monCurseur INTO titleTag;
+FETCH monCurseur INTO idTag, titleTag;
 IF fini = 1 THEN
 LEAVE maBoucle;
 END IF;
-SET liste = CONCAT(liste, titleTag, " ");
+SET liste = CONCAT(liste, ",", idTag, ":", titleTag);
 END LOOP maBoucle;
 CLOSE monCurseur;
+
+ 
 
 RETURN liste;
 END$$

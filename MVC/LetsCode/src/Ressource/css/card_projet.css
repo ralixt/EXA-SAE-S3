@@ -16,6 +16,7 @@
     width: 280px;
     height: 380px;
     border-radius: 10px;
+    background-color: #121212;
 }
 
 #projectCards a{
@@ -70,4 +71,20 @@
             'wght' 300,
             'GRAD' 0,
             'opsz' 48
+}
+
+.tags p {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 0px 5px;
+    font-size: 13px;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
