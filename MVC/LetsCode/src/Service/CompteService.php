@@ -120,11 +120,19 @@ class CompteService implements AllService
      */
     public function getlist(): ?array
     {
-        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo, AVG(comment.rating), Count(comment.id), listeImage(projet.id) FROM projet LEFT JOIN comment on comment.projet = projet.id join user on user.id = projet.author where projet.author = :id group by projet.id;');
+        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo, AVG(comment.rating), Count(comment.id), listeImage(projet.id), listeTag(projet.id) FROM projet LEFT JOIN comment on comment.projet = projet.id join user on user.id = projet.author where projet.author = :id group by projet.id;');
         $projetLikeStatement->execute(['id'=>$_SESSION['ids']]);
         $dataProjet = [];
         $result = $projetLikeStatement->fetchAll();
         foreach ($result as $p) {
+            $tags = explode(",", $p[6]);
+            array_shift($tags);
+            for($i = 0; $i<count($tags); $i++){
+                $tags[$i] = explode(":", $tags[$i]);
+                $tags[$i] = (new tag)
+                    ->setId((int)$tags[$i][0])
+                    ->setName($tags[$i][1]);
+            }
             $image = explode(" ", $p[5]);
             array_pop($image);
             $dataProjet[$p[0]] = (new Projet())
@@ -133,7 +141,8 @@ class CompteService implements AllService
                 ->setAuthor($p[2])
                 ->setNbCom($p[4])
                 ->setNote(is_null($p[3]) ? 0 : $p[3])
-                ->setURLImage($image);
+                ->setURLImage($image)
+                ->setTags($tags);
         }
         return $dataProjet;
     }
@@ -154,11 +163,19 @@ class CompteService implements AllService
      */
     public function projectLike(User $user): array
     {
-        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo, AVG(comment.rating), Count(comment.id), listeImage(projet.id) FROM projet LEFT JOIN comment on comment.projet = projet.id join likeproject on likeproject.project = projet.id join user on user.id = projet.author where likeproject.user = :id group by projet.id;');
+        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo, AVG(comment.rating), Count(comment.id), listeImage(projet.id), listeTag(projet.id) FROM projet LEFT JOIN comment on comment.projet = projet.id join likeproject on likeproject.project = projet.id join user on user.id = projet.author where likeproject.user = :id group by projet.id;');
         $projetLikeStatement->execute(['id'=>$user->getId()]);
         $dataProjet = [];
         $result = $projetLikeStatement->fetchAll();
         foreach ($result as $p) {
+            $tags = explode(",", $p[6]);
+            array_shift($tags);
+            for($i = 0; $i<count($tags); $i++){
+                $tags[$i] = explode(":", $tags[$i]);
+                $tags[$i] = (new tag)
+                    ->setId((int)$tags[$i][0])
+                    ->setName($tags[$i][1]);
+            }
             $image = explode(" ", $p[5]);
             array_pop($image);
             $dataProjet[$p[0]] = (new Projet())
@@ -167,7 +184,8 @@ class CompteService implements AllService
                 ->setAuthor($p[2])
                 ->setNbCom($p[4])
                 ->setNote(is_null($p[3]) ? 0 : $p[3])
-                ->setURLImage($image);
+                ->setURLImage($image)
+                ->setTags($tags);
         }
         return $dataProjet;
     }

@@ -22,27 +22,25 @@ class InscriptionController extends AbstractController
     }
     public function render(): void
     {
-
-
-
+        $tabMPPseudo = $this->InscriptionService->getEmailMp();
         if(isset($_POST["confirmation_mp"])&&isset($_POST["creation_mp"])&&isset($_POST["adr_email"])&&isset($_POST["Pseudo"])) {
-                  for($i=0;$i<count($this->InscriptionService->getEmailMp());$i++) {
-                      if ($this->InscriptionService->getEmailMp()[$i]["Pseudo"] == $_POST["Pseudo"] ) {
+                  for($i=0;$i<count($tabMPPseudo);$i++) {
+                      if ($tabMPPseudo[$i]["Pseudo"] == $_POST["Pseudo"] ) {
                         $this->p=false;
                       }
-                      elseif($this->InscriptionService->getEmailMp()[$i]["Pseudo"] != $_POST["Pseudo"]){
+                      elseif($tabMPPseudo[$i]["Pseudo"] != $_POST["Pseudo"]){
                           $this->p=true;
                       }
-                      if($this->InscriptionService->getEmailMp()[$i]["email"] == $_POST["adr_email"]){
+                      if($tabMPPseudo[$i]["email"] == $_POST["adr_email"]){
                           $this->e=false;
                       }
-                      elseif($this->InscriptionService->getEmailMp()[$i]["email"] != $_POST["adr_email"]){
+                      elseif($tabMPPseudo[$i]["email"] != $_POST["adr_email"]){
                           $this->e=true;
                       }
-                      if ($this->InscriptionService->getEmailMp()[$i]["Pseudo"] == $_POST["Pseudo"] and $this->InscriptionService->getEmailMp()[$i]["email"] == $_POST["adr_email"] ) {
+                      if ($tabMPPseudo[$i]["Pseudo"] == $_POST["Pseudo"] and $tabMPPseudo[$i]["email"] == $_POST["adr_email"] ) {
                           $this->p=false;
                           $this->e=false;
-                      }elseif($this->InscriptionService->getEmailMp()[$i]["Pseudo"] != $_POST["Pseudo"] and $this->InscriptionService->getEmailMp()[$i]["email"] != $_POST["adr_email"]){
+                      }elseif($tabMPPseudo[$i]["Pseudo"] != $_POST["Pseudo"] and $tabMPPseudo[$i]["email"] != $_POST["adr_email"]){
                           $this->p=true;
                           $this->e=true;
                       }

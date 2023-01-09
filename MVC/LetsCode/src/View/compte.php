@@ -44,7 +44,7 @@
     </div>
     <div class="rectangle flexColumn">
         <h3>Projets Favoris</h3>
-        <div class="flexRow">
+        <div class="flexRow projet">
             <?php
             foreach ($like as $projet)
                 echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [

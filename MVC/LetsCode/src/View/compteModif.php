@@ -2,6 +2,7 @@
 /**
  * @var User $titre
  * @var int $form
+ * @var string $erreur
  */
 ?>
 
@@ -32,13 +33,17 @@
         <div class="papaEnTete">
             <h1 class="flou enTete"><?php echo $titre ?></h1>
         </div>
-
+        <?php if(isset($_POST['coco'])):?>
+            <div class="ErrorInscription">
+                <span ><?= $erreur ?></span>
+            </div>
+        <?php endif;?>
         <form method="post">
             <?php
             if($form === 0){
                 echo '<input type="text" name="Pseudo" placeholder="Nouveau Pseudo" maxlength="16" minlength="6" required><br><br>';
                 echo '<input name="mdp" type="password" placeholder="Rentrer votre mot de passe" minlength="8" required><br><br>';
-                echo '<button class="button" type="submit">'.$titre.'</button>';
+                echo '<button class="button" name="coco" type="submit">'.$titre.'</button>';
 
             }
             elseif ($form === 1){
