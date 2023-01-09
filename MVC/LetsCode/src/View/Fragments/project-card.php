@@ -7,9 +7,15 @@
     <div class="info">
         <p><?php echo $projet->getTitre()?></p>
         <div class="tags">
+            <?php if(count($projet->getTags()) > 3): ?>
+            <?php for($i = 0; $i<3 ; $i++):?>
+            <p><?php echo $projet->getTags()[$i]->getName()?></p>
+            <?php endfor;?>
+            <p>...</p>
+            <?php else:?>
             <?php foreach ($projet->getTags() as $tag):?>
             <p><?php echo $tag->getName() ?></p>
-            <?php endforeach;?>
+            <?php endforeach; endif;?>
         </div>
         <div class="comments">
             <span class="material-symbols-outlined message">chat</span>
