@@ -48,11 +48,9 @@ class CompteModifController extends AbstractController
             }
             elseif(!$email){
                 $erreurModif = "le mail est déjà utilisé";
-                header('location:  http://localhost/compteModif?raison=mail');
             }
             elseif ($serviceCompte->hashPassword($_POST['mdp']) != $userActuel->getPassword()){
                 $erreurModif = "votre mot de passe n'est pas correct";
-                header('location:  http://localhost/compteModif?raison=mail');
             }
         }
         elseif (isset($_POST["Pseudo"]) && isset($_POST["mdp"])){
@@ -70,11 +68,9 @@ class CompteModifController extends AbstractController
             }
             elseif(!$pseudo){
                 $erreurModif = "le pseudo est déjà utilisé";
-                header('location:  http://localhost/compteModif?raison=pseudo');
             }
             elseif ($serviceCompte->hashPassword($_POST['mdp']) != $userActuel->getPassword()){
                 $erreurModif = "votre mot de passe n'est pas correct";
-                header('location:  http://localhost/compteModif?raison=pseudo');
             }
         }
         elseif (isset($_POST["nouveau_mdp"]) && isset($_POST["confirmation_mdp"]) && isset($_POST["ancien_mdp"])){
@@ -92,11 +88,9 @@ class CompteModifController extends AbstractController
             }
             elseif($_POST['nouveau_mdp'] != $_POST['confirmation_mdp']){
                 $erreurModif = "vous n'avez pas mis les deux mêmes mots de passes";
-                header('location:  http://localhost/compteModif?raison=mdp');
             }
             elseif ($serviceCompte->hashPassword($_POST['ancien_mdp']) != $userActuel->getPassword()){
                 $erreurModif = "votre ancien mot de passe n'est pas correct";
-                header('location:  http://localhost/compteModif?raison=mdp');
             }
         }
         elseif (isset($_POST["mdp"])){
@@ -107,7 +101,6 @@ class CompteModifController extends AbstractController
             }
             else{
                 $erreurModif = "votre mot de passe est incorrect";
-                header('location:  http://localhost/compte?raison=delete');
             }
         }
 
