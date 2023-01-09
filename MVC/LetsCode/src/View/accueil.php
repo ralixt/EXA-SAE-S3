@@ -98,9 +98,8 @@
                                         <div>
                                             <label for="choiceHTML">
                                                 <input type="checkbox" id="choiceHTML" name="tag[]" value="HTML">
-                                                <span>HTML</span>
+                                                <span class="tagTitle">HTML</span>
                                             </label>
-                                            <div class="closeTag">ffff</div>
                                         </div>
 
 

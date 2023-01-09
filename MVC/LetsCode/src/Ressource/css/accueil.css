@@ -65,15 +65,16 @@
     height: 50vh;
 
 
+
 }
 
 
 #searchBar{
     display: flex;
-    margin: 10rem auto 5rem auto;
+    margin: 1rem auto 1rem auto;
 
     background: rgba(255, 255, 255, 0.5);
-    width: 30vw;
+    width: 50vw;
     border-radius: 1rem;
     padding: 0.3rem 1.5rem;
     font-size: 2rem;
@@ -267,13 +268,6 @@
 }
 
 
-
-
-
-#closeTag {
-    background-color: #007EA7;
-    content: '+';
-}
 
 
 
