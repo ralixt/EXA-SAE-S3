@@ -292,20 +292,22 @@
                     <div id="tri">
 
                         <span class="material-symbols-outlined">sort_by_alpha</span>
-                        <label for="orderby">Trier par  </label>
+                        <!-- <label for="orderby">Trier par  </label>-->
                         <select name="orderby" id="orderby">
-                            <option value="nom"> nom </option>
-                            <option value="difficulte"> difficulte </option>
-                            <option value="like"> like </option>
-                            <option value="commentaire"> commentaire </option>
+                            <option value="" disabled selected> Trier Par</option>
+                            <option value="nom"> Nom </option>
+                            <option value="like"> Like </option>
+                            <option value="commentaire"> Commentaire </option>
                         </select>
                     </div>
 
 
 
+
+
                     <button class="filtre"  type="button" onclick="filtre()">
                             <span class="material-symbols-outlined">filter_alt</span>
-                            Filtre
+                            Filtre (0)
                     </button>
 
                 </div>
