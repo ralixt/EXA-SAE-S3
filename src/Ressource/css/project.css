@@ -496,3 +496,88 @@ color: #000000;
 .RessourceContenair:hover{
     background: #121212;
 }
+
+@media screen and (max-width: 1059px) {
+.authorContenair{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 9%;
+}
+}
+
+@media screen and (max-width: 785px) {
+   .titre{
+       position: absolute;
+       left: 7%;
+       bottom: 0;
+       transform: translateY(50%);
+       min-width: 75%;
+       text-align: center;
+   }
+}
+
+@media screen and (max-width: 685px) {
+    .titre{
+        position: absolute;
+        left: 3%;
+        bottom: 0;
+        transform: translateY(50%);
+        min-width: 75%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .authorContenair{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 13%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .authorContenair{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 22%;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .authorContenair{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 32%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .Contenu span{
+        float: left;
+        /* margin-left: 5%; */
+        font-family: 'Poppins';
+        font-style: normal;
+        padding: 4%;
+        padding-left: 0;
+        text-align: justify;
+        justify-content: left;
+        white-space: pre-line;
+        margin-top: 12%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    h1{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 667px) {
+    .RessourceContenair .download {
+        position: absolute;
+        left: 90%;
+    }
+}

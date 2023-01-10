@@ -7,6 +7,10 @@
 
 }
 
+#like{
+    width: 20%;
+
+}
 .projectCards > a:hover .card_img{
     height: 102%;
 }

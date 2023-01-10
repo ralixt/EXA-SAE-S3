@@ -5,6 +5,7 @@
  */
 ?>
 <?php if($projet->getStatus() == "Reviewing" || $projet->getStatus() == "Refused"):?>
+
 <a>
 <?php else:?>
 <a href="http://localhost/projet/<?php echo($projet->getId())?>">
@@ -24,19 +25,22 @@
         </div>
 
         <div class="comments">
+
             <?php if($projet->getStatus() == "Published"):?>
+           
             <span class="material-symbols-outlined message">chat</span>
             <p><?php echo $projet->getNbCom()?></p>
             <span class=" circle material-symbols-outlined">circle</span>
             <p><?php echo $projet->getNote()?>/5</p>
             <?php endif;?>
+
             <?php if($status && $projet->getStatus() == "Published"): ?>
                 <p class="status published">Publié</p>
             <?php elseif ($status && $projet->getStatus() == "Reviewing"): ?>
                 <p class="status Reviewing">En attente</p>
             <?php elseif ($status && $projet->getStatus() == "Refused"): ?>
                 <p class="status Refused">Refusé</p>
-            <?endif;?>
+            <?php endif;?>
         </div>
 
 
@@ -50,6 +54,7 @@
             <?php elseif (count($projet->getURLImage()) == 1 && $projet->getURLImage()[0] != ""):?>
             <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId() ?>/images/<?php echo $projet->getURLImage()[0] ?>">
             <?php else:?>
+
             <?php foreach ($projet->getURLImage() as $image):?>
             <div class="swiper-slide">
                 <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId() ?>/images/<?php echo $image ?>">
