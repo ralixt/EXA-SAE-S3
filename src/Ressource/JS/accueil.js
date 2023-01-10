@@ -22,30 +22,6 @@ function filtre() {
 
 
 
-// compteur option coche
-// const checkedBox = document.querySelectorAll('input[type=checkbox], input[type=radio]');
-//
-// let checkedCount = 0;
-//
-//
-// for (let i = 0; i < checkedBox.length; i++) {
-//     console.log('dfsdsfdfs')
-//     if (checkedBox[i].checked) {
-//         checkedCount = checkedCount +1;
-//
-//         console.log("OK");
-//     }
-// }
-//
-//
-// const compteur = document.querySelector('#checkedCount');
-//
-// compteur.innerHTML = ' (' + checkedCount +')';
-//
-//
-// console.log('Cases cochés : ' + checkedCount);
-
-
 
 const compteur = document.querySelector('#checkedCount');
 let tmp = 0;

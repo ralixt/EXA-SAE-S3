@@ -68,7 +68,7 @@
 
                 <div id="searchBar">
                     <span class="material-symbols-outlined filtreIconSpace">search</span>
-                    <input type="text" name="recherche" id="recherche" placeholder="Quel projet recherchez vous ?">
+                    <input type="search" name="recherche" id="recherche" placeholder="Quel projet recherchez vous ?">
                 </div>
 
                 <button id="rechercheButton">Rechercher</button>

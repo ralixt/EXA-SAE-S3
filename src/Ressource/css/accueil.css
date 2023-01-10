@@ -42,16 +42,6 @@
     border-radius: 1rem;
 }
 
-/*.popup.on{*/
-/*    display: flex;*/
-/*}*/
-
-
-
-
-
-
-
 
 
 #searchDiv{
@@ -300,10 +290,17 @@
 
 }
 
-.accordion .contentBox {
-    position: relative;
+
+.filterSection{
+    display: flex;
+
 
 }
+/*.accordion .contentBox {*/
+/*    position: relative;*/
+
+/*}*/
+
 
 .accordion .contentBox .label {
     display: flex;
@@ -357,7 +354,7 @@
 
 
 .accordion {
-    width: 40vw;
+    /*width: 40vw;*/
     justify-content: center;
     align-items: center;
     user-select: none;
@@ -368,7 +365,7 @@
 
 
 .accordion .contentBox.act .content {
-    height: 100px;
+    height: 200px;
     padding: 10px;
 }
 
@@ -414,10 +411,21 @@
     color: #FFFFFF;
 }
 
+.accordion .contentBox .content div label input[type="checkbox"]:checked  ~ span:after{
+    content: 'X';
+    margin-left: 1rem;
+}
+
 .accordion .contentBox .content div label input[type="radio"]:checked  ~ span{
     background-color: #5C5C5C;
     color: #FFFFFF;
 }
+
+.accordion .contentBox .content div label input[type="radio"]:checked  ~ span:after{
+    content: 'X';
+    margin-left: 1rem;
+}
+
 
 .accordion .contentBox .content div label input[type="checkbox"]:checked  ~ span:hover{
     background-color: #121212;
