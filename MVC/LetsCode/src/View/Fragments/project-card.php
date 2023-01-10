@@ -1,9 +1,14 @@
 <?php
 /**
  * @var Projet $projet
+ * @var bool $status
  */
 ?>
+<?php if($projet->getStatus() == "Reviewing" || $projet->getStatus() == "Refused"):?>
+<a>
+<?php else:?>
 <a href="http://localhost/projet/<?php echo($projet->getId())?>">
+<?php endif;?>
     <div class="info">
         <p><?php echo $projet->getTitre()?></p>
         <div class="tags">
@@ -17,12 +22,25 @@
             <p><?php echo $tag->getName() ?></p>
             <?php endforeach; endif;?>
         </div>
+
         <div class="comments">
+            <?php if($projet->getStatus() == "Published"):?>
             <span class="material-symbols-outlined message">chat</span>
             <p><?php echo $projet->getNbCom()?></p>
             <span class=" circle material-symbols-outlined">circle</span>
             <p><?php echo $projet->getNote()?>/5</p>
+            <?php endif;?>
+            <?php if($status && $projet->getStatus() == "Published"): ?>
+                <p class="status published">Publié</p>
+            <?php elseif ($status && $projet->getStatus() == "Reviewing"): ?>
+                <p class="status Reviewing">En attente</p>
+            <?php elseif ($status && $projet->getStatus() == "Refused"): ?>
+                <p class="status Refused">Refusé</p>
+            <?endif;?>
         </div>
+
+
+
     </div>
     <div class="swiper">
         <div class="swiper-wrapper">

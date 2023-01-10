@@ -44,7 +44,7 @@
     </div>
     <div class="rectangle flexColumn">
         <h3>Projets Favoris</h3>
-        <div class="flexRow projet">
+        <div class="flexRow projet projectCards">
             <?php
             foreach ($like as $projet)
                 echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
@@ -55,11 +55,12 @@
     </div>
     <div class="rectangle flexColumn">
         <h3>Vos Projets</h3>
-        <div class="flexRow projet">
+        <div class="flexRow projet projectCards" >
             <?php
             foreach ($vosProjets as $projet)
-                echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [ //le template est à modifier car ce n'est pas le même que celui au-dessus
-                    "projet" => $projet
+                echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
+                    "projet" => $projet,
+                    "status" => true
                 ])
             ?>
         </div>
