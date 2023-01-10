@@ -90,38 +90,37 @@ class DatabaseProjectService implements AllService
             $query .= ' where (projet.titre LIKE :recherche OR projet.content LIKE :recherche) ';
             $recherche = $args["recherche"];
             if (isset($args["tag"])) {
-                $query .= " AND projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN (:tags)) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
-                $tags = "'" . implode("', '", $args["tag"]) . "'";
+
+                $query .= " AND projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ('" . implode("','",$args["tag"])."')) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
                 $nbTag = count($args["tag"]);
             }
             $query .= " group by projet.id";
             if(isset($args["orderBy"])) {
                 if($args["orderBy"] == "nom"){
-                    $query .= "ORDER BY titre ";
+                    $query .= " ORDER BY titre ";
                 }
                 elseif ($args["orderBy"] == "likeController"){
-                    $query .= "Order BY nb_like DESC";
+                    $query .= " Order BY nb_like DESC";
                 }
                 elseif ($args["orderBy"] == "commentaire"){
-                    $query .= "Order BY nb_comment DESC";
+                    $query .= " Order BY nb_comment DESC";
                 }
             }
         }
         else {
             if (isset($args["tag"])) {
-                $query .= "where projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN (:tags)) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
-                $tags = "'" . implode("', '", $args["tag"]) ."'";//précision il est nécessaire de donner un tableau avec les apostrophes comme guillemet entourant les tags
+                $query .= " where projet.id IN (SELECT p.id FROM projet p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ('" . implode("','",$args["tag"])."')) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
                 $nbTag = count($args["tag"]);
                 $query .= " group by projet.id";
                 if(isset($args["orderBy"])){
                     if($args["orderBy"] == "nom"){
-                        $query .= "ORDER BY titre ";
+                        $query .= " ORDER BY titre ";
                     }
                     elseif ($args["orderBy"] == "likeController"){
-                        $query .= "Order BY nb_like DESC";
+                        $query .= " Order BY nb_like DESC";
                     }
                     elseif ($args["orderBy"] == "commentaire") {
-                        $query .= "Order BY nb_comment DESC";
+                        $query .= " Order BY nb_comment DESC";
                     }
                 }
             }
@@ -130,24 +129,23 @@ class DatabaseProjectService implements AllService
             }
         }
         $query .= " LIMIT 30;";
+        var_dump($query);
         $statementList = $this->database->prepare($query);
-        if(isset($recherche) && isset($tags)) {
+        if(isset($recherche) && isset($nbTag)) {
             $statementList->execute([
                 "recherche"=>$recherche,
-                "tags"=>$tags,
                 "nbTags"=>$nbTag
             ]);
         }
-        elseif (isset($recherche) && !isset($tags)){
+        elseif (isset($recherche) && !isset($nbTag)){
             $recherche = "%".$recherche."%";
             $statementList->execute([
                 "recherche"=>$recherche,
             ]);
 
         }
-        elseif (!isset($recherche) && isset($tags)){
+        elseif (!isset($recherche) && isset($nbTag)){
             $statementList->execute([
-                "tags"=>$tags,
                 "nbTags"=>$nbTag
             ]);
         }
