@@ -7,13 +7,13 @@ class AccueilController extends AbstractController
     public function render(): void
     {
         $tab =[];
-        if(isset($_GET["recherche"])){
+        if(isset($_GET["recherche"]) and !empty($_GET["recherche"])){
             $recherche = $_GET["recherche"];
-            $tab["recherche"] = $recherche;
+            $tab["recherche"] = trim($recherche);
         }
-        if(isset($_GET["tag"])){
+        if(isset($_GET["tag[]"])){
             $tab["tag"] = [];
-            foreach($_GET["tag"] as $tag){
+            foreach($_GET["tag[]"] as $tag){
                 $tab["tag"][] = $tag;
             }
         }

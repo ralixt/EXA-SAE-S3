@@ -216,21 +216,22 @@
 
     position: absolute;
     right: 2rem;
-    bottom: 0rem;
+    bottom: 0;
     transform: translateY(50%);
+    width: 12.75rem;
 
 
 
 }
-.filtre #titreFiltre {
-    width: 7.3rem;
-    /*text-align: center;*/
 
 
-}
-
-.filtre div {
+.filtre #centerFiltre {
     display: flex;
+    margin: 0 auto;
+}
+
+#checkedCount{
+    margin-left: 0.2rem;
 }
 
 .filtre:hover{

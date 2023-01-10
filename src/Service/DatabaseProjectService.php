@@ -41,6 +41,7 @@ class DatabaseProjectService implements AllService
                     ->setId((int)$tags[$i][0])
                     ->setName($tags[$i][1]);
             }
+
             $images = explode(" ", $p[11]);
             array_pop($images);
             $this->data[$p[0]] = (new Projet())

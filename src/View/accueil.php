@@ -260,21 +260,21 @@
 
                                         <div>
                                             <label for="facile">
-                                                <input type="radio" id="facile" name="contact" value="facile">
+                                                <input type="radio" id="facile" name="tag[]" value="facile">
                                                 <span>Facile</span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label for="moyen">
-                                                <input type="radio" id="moyen" name="contact" value="moyen">
+                                                <input type="radio" id="moyen" name="tag[]" value="moyen">
                                                 <span>Moyen</span>
                                             </label>
                                         </div>
 
                                         <div>
                                             <label for="difficile">
-                                                <input type="radio" id="difficile" name="contact" value="difficile">
+                                                <input type="radio" id="difficile" name="tag[]" value="difficile">
                                                 <span>Difficile</span>
                                             </label>
                                         </div>
@@ -307,12 +307,13 @@
 
                     <button class="filtre"  type="button" onclick="filtre()">
                             <span class="material-symbols-outlined">filter_alt</span>
-                        <div id="titreFiltre">
-                            <div>
-                                Filtre
+                            <div id="centerFiltre">
+                                <div>
+                                    <p>Filtre</p>
+                                </div>
+                                <div><p id="checkedCount">(0)</p></div>
                             </div>
-                            <div id="checkedCount"></div>
-                        </div>
+
                     </button>
 
 
