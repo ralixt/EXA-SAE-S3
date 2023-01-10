@@ -48,7 +48,8 @@
             <?php
             foreach ($like as $projet)
                 echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
-                    "projet" => $projet
+                    "projet" => $projet,
+                    "status" =>false
                 ])
             ?>
         </div>

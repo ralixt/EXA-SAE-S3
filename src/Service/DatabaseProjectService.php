@@ -21,7 +21,7 @@ class DatabaseProjectService implements AllService
     }
 
     private function init() : void {
-        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, projet.content, projet.author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, AVG(comment.rating), COUNT(comment.id) FROM projet LEFT JOIN comment on comment.projet = projet.id JOIN user ON projet.author = user.id LEFT JOIN likeproject ON projet.id = project /*WHERE projet.status='Published'*/ GROUP BY projet.id;");//Activer le where si vous voulez testez le modo
+        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, projet.content, projet.author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, AVG(comment.rating), COUNT(comment.id) FROM projet LEFT JOIN comment on comment.projet = projet.id JOIN user ON projet.author = user.id LEFT JOIN likeproject ON projet.id = project WHERE projet.status='Published' GROUP BY projet.id;");//Activer le where si vous voulez testez le modo
         $sentence -> execute();
         $projects = $sentence->fetchAll();
 
@@ -272,11 +272,11 @@ class DatabaseProjectService implements AllService
 
             foreach ($projects as $p){
                 $tags = explode(",", $p[10]);
-                array_pop($tags);
+                array_shift($tags);
                 for($i = 0; $i<count($tags); $i++){
                     $tags[$i] = explode(":", $tags[$i]);
                     $tags[$i] = (new tag)
-                        ->setId($tags[$i][0])
+                        ->setId((int)$tags[$i][0])
                         ->setName($tags[$i][1]);
                 }
                 $images = explode(" ", $p[11]);
