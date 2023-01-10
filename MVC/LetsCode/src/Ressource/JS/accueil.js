@@ -1,6 +1,5 @@
 // Accordion
 const accordion = document.getElementsByClassName("contentBox");
-let i;
 for (i = 0; i< accordion.length; i++ ){
     accordion[i].addEventListener('click', function () {
         this.classList.toggle('act')
@@ -23,23 +22,51 @@ function filtre() {
 
 
 // compteur option coche
-const checked = document.querySelectorAll('input[type=checkbox], input[type=radio]');
+// const checkedBox = document.querySelectorAll('input[type=checkbox], input[type=radio]');
+//
+// let checkedCount = 0;
+//
+//
+// for (let i = 0; i < checkedBox.length; i++) {
+//     console.log('dfsdsfdfs')
+//     if (checkedBox[i].checked) {
+//         checkedCount = checkedCount +1;
+//
+//         console.log("OK");
+//     }
+// }
+//
+//
+// const compteur = document.querySelector('#checkedCount');
+//
+// compteur.innerHTML = ' (' + checkedCount +')';
+//
+//
+// console.log('Cases cochés : ' + checkedCount);
 
-let checkedCount = 0;
-
-
-for (i = 0; i < checked.length; i++) {
-    if (checked[i].checked) {
-        checkedCount++;
-        console.log("OK");
-    }
-}
 
 
 const compteur = document.querySelector('#checkedCount');
 
-compteur.innerHTML = '(' + checkedCount +')';
+var checkBox = document.querySelectorAll('input[type="checkbox"]');
+var nbChecked = 0
+for(var i = 0; i < checkBox.length; i++) {
+    checkBox[i].addEventListener('change', function() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        nbChecked = checkboxes.length;
+        compteur.innerHTML = ' (' + nbChecked +')';
+        console.log(nbChecked);
+    });
+}
 
 
-console.log('Cases cochés : ' + checkedCount);
+var inputs = document.querySelectorAll('input[type="radio"]');
+for(var i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('change', function() {
+        var radios = document.querySelectorAll('input[type="radio"]:checked');
+        nbChecked = nbChecked + radios.length;
+        compteur.innerHTML = ' (' + nbChecked +')';
+        console.log(nbChecked);
+    });
+}
 

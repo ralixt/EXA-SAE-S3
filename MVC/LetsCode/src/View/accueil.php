@@ -307,12 +307,14 @@
 
                     <button class="filtre"  type="button" onclick="filtre()">
                             <span class="material-symbols-outlined">filter_alt</span>
-                        <div>
-                            Filtre
+                        <div id="titreFiltre">
+                            <div>
+                                Filtre
+                            </div>
                             <div id="checkedCount"></div>
                         </div>
-
                     </button>
+
 
                 </div>
 
