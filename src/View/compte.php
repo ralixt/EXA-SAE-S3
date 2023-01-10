@@ -44,26 +44,37 @@
     </div>
     <div class="rectangle flexColumn">
         <h3>Projets Favoris</h3>
-        <div class="flexRow projet projectCards">
-            <?php
-            foreach ($like as $projet)
-                echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
-                    "projet" => $projet,
-                    "status" =>false
-                ])
-            ?>
+        <div class="flexRow projet">
+            <div class="swiper-scroll">
+                <div class="swiper-wrapper">
+                    <?php foreach ($like as $projet) : ?>
+                    <div class="swiper-slide projectCards">
+                        <?php echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
+                            "projet" => $projet,
+                            "status" =>false
+                        ])
+                        ?>
+                    </div>
+                    <?php endforeach;?>
+                </div>
+            </div>
         </div>
     </div>
     <div class="rectangle flexColumn">
         <h3>Vos Projets</h3>
-        <div class="flexRow projet projectCards" >
-            <?php
-            foreach ($vosProjets as $projet)
-                echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
-                    "projet" => $projet,
-                    "status" => true
-                ])
-            ?>
+        <div class="flexRow projet" >
+            <div class="swiper-scroll">
+                <div class="swiper-wrapper">
+                    <?php foreach ($vosProjets as $projet): ?>
+                    <div class="swiper-slide projectCards">
+                    <?php echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
+                        "projet" => $projet,
+                        "status" => true
+                    ])?>
+                    </div>
+                    <?php endforeach;?>
+                </div>
+            </div>
         </div>
     </div>
     <div id="basdepage" class="flexRow">
@@ -124,6 +135,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="./../Ressource/JS/projet-card.js"></script>
+    <script src="./../Ressource/JS/projet-scroll.js"></script>
+
 
 </body>
 <?php include 'footer.php'?>

@@ -134,3 +134,14 @@ p.status.Refused {
     margin-bottom: 12px;
     color: white;
 }
+
+.swiper-scroll {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.swiper-scroll>.swiper-wrapper>.swiper-slide{
+    width: 280px;
+    height: 380px;
+}

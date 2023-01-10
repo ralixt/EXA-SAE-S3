@@ -42,7 +42,7 @@
 
 
     </div>
-    <div class="swiper">
+    <div class="swiper swiperCards">
         <div class="swiper-wrapper">
 
             <?php if(count($projet->getURLImage()) == 0 || $projet->getURLImage()[0] == ""):?>
