@@ -25,34 +25,30 @@
 <main>
     <div class="login">
         <div class="imageconnexion">
-            <img class="imagess" src="../Ressource/images/login.png" alt="">
-            <div class="test">
-                <div class="connexion">
-                    <button> Connexion</button>
-                </div>
-            </div>
-
-        <div class="firebase">
-            <div class="google">
-                <button>
-                    <span>Continuer avec google</span>
-                    <img class="image" src="../Ressource/images/google.png" alt="connexion avec google">
-                </button>
-            </div>
-            <div class="facebook">
-                <button>
-                    <span>Continuer avec facebook </span>
-                    <img class="image" src="../Ressource/images/facebook.png" alt="connexion avec facebook">
-                </button>
-            </div>
-            <div class="github">
-                <button>
-                    <span>Continuer avec github</span>
-                    <img class="image" src="../Ressource/images/github.png" alt="connexion avec github">
-                </button>
+            <div class="connexion">
+                <p id="titreConnexion"> Connexion</p>
             </div>
         </div>
+        <div class="firebase" id="firebase">
+        <div class="google marginer">
+            <button>
+                <span>Continuer avec google</span>
+                <img class="image" src="../Ressource/images/google.png" alt="connexion avec google">
+            </button>
         </div>
+        <div class="facebook marginer">
+            <button>
+                <span>Continuer avec facebook </span>
+                <img class="image" src="../Ressource/images/facebook.png" alt="connexion avec facebook">
+            </button>
+        </div>
+        <div class="github marginer">
+            <button>
+                <span>Continuer avec github</span>
+                <img class="image" src="../Ressource/images/github.png" alt="connexion avec github">
+            </button>
+        </div>
+    </div>
         <br>
         <br>
         <?php

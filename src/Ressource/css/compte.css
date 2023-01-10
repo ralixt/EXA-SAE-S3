@@ -240,5 +240,12 @@ p{
     }
 
     @media screen and (max-width: 468px) {
-
+        .flexCorrect{
+            flex-direction: column;
+            margin: 2rem;
+            padding: 1rem;
+        }
+        .infosPersosDiv{
+            margin: 1rem;
+        }
     }

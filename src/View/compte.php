@@ -69,9 +69,8 @@
     <div id="basdepage" class="flexRow">
         <div class="rectangle flexColumn" id="infosPersos">
             <h2>Vos informations personnelles</h2>
-
                 <div class="flexCorrect">
-                    <div>
+                    <div class="infosPersosDiv">
                         <p>Pseudo :</p>
                         <p> <?php echo $user->getPseudo() ?> </p>
                     </div>
@@ -79,14 +78,14 @@
                 </div>
 
             <div class="flexCorrect">
-                <div>
+                <div class="infosPersosDiv">
                     <p>Adresse e-mail :</p>
                     <p><?php echo $user->getEmail() ?> </p>
                 </div>
                 <a href="http://localhost/compteModif?raison=mail" class="button">changer d'email</a>
             </div>
             <div class="flexCorrect">
-                <div>
+                <div class="infosPersosDiv">
                     <p>mot de passe :</p>
                     <p>********</p>
                 </div>

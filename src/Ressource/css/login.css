@@ -32,13 +32,10 @@ body{
 }
 
 .connexion{
-    position: absolute;
-    left: 41%;
-    top: 40%;
-
+    position: initial;
 }
 
-.connexion button{
+.connexion p{
     justify-content: center;
     font-family: 'Poppins';
     font-style: normal;
@@ -48,21 +45,22 @@ body{
     border-radius: 10px;
     align-items: center;
     margin-bottom: 0;
-    margin-top: 3%;
     color: #121212;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(25px);
     width: 320px;
     height: 72px;
+    display: flex;
 }
 
 
-
+.marginer{
+    margin-bottom: 1rem;
+}
 
 .firebase{
     display: flex;
     justify-content: center;
-    transform: translateY(-70%);
     bottom: 0;
 
 }
@@ -110,9 +108,6 @@ body{
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.github {
-    padding-left: 1%;
-}
 
 .github span{
     font-family: 'Poppins';
@@ -138,22 +133,22 @@ body{
 
 }
 
-.google {
-    padding-right: 1%;
-    background: rgba(255, 255, 255, 0.6);
 
-}
-.facebook{
-    background: rgba(24, 119, 242, 0.6);
-}
-.github{
-    background: rgba(18, 18, 18, 0.6);
-}
 .google span{
     font-family: 'Poppins';
     font-style: normal;
     font-size: 20px;
     color: #121212;
+}
+
+#firebase{
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+#loginImage{
+    width: 100%;
 }
 
 input{
@@ -176,10 +171,6 @@ input{
     /* background: white; */
     /* align-items: center; */
     /* justify-content: center;*/
-}
-.connecter{
-    padding-right: 1%;
-
 }
 .connecter button {
     background: #5C5C5C;
@@ -262,9 +253,7 @@ input{
     background: #121212;
 }
 .ErrorInscription{
-
     background-color: red;
-
     text-align: center;
     font-family: 'Poppins';
     font-style: normal;
@@ -284,21 +273,26 @@ input{
     margin-top: -2%;
 }
 .imageconnexion{
-    height: auto;
-    /* background-image: url(../images/compte.png); */
-    /* height: 80vh; */
-    width: 100%;
-    background-size: 110%;
+    background-image: url("../images/login.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height : 50vh;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 30px;
-    /* box-shadow: 0 16px 16px rgb(0 0 0 / 20%); */
+    box-shadow: 0 16px 16px rgb(0 0 0 / 20%);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     position: relative;
     align-items: center;
-    /* margin-bottom: 160px; */
-    justify-content: center;
+    margin-bottom: 130px;
 }
+
+
 .modo a{
     text-decoration: none;
     color: #FFFFFF;
