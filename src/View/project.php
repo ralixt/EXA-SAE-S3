@@ -62,7 +62,8 @@ require_once  "Ressource/libs/Parsedown.php";
 <?php if($projectModo==null):?>
             <main>
                 <div class="container">
-                    <?php if( count($project->getURLImage())==0 ):?>
+                    <?php
+                    if( count($project->getURLImage())==0 ):?>
                         <div class="slides">
                             <img src="./.././Ressource/test/imageParDefault.jpg">
                         </div>
