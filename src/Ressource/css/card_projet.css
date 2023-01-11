@@ -149,3 +149,12 @@ p.status.Refused {
     width: 280px;
     height: 380px;
 }
+.template{
+    position: relative;
+}
+.template .like{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+}

@@ -2,6 +2,7 @@
     font-family: Poppins;
     margin: 0;
     padding: 0;
+    top: 0;
     text-decoration: none;
 
 }
@@ -22,10 +23,7 @@ body{
 .imagess{
 
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto;
     filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 40px;
     position: relative;
@@ -163,15 +161,15 @@ width: 23rem;
 
 #firebase{
     /*flex-direction: column; */
-text-align: center;
+    text-align: center;
     /* display: flex; */
-    align-items: center;
-    transform: translateY(60%);
+    align-items: end;
     position: absolute;
     /* justify-content: space-between; */
     display: flex;
     row-gap: 2rem;
     column-gap: 2rem;
+    margin-bottom: -27px;
 }
 
 #loginImage{
@@ -374,19 +372,29 @@ input{
     margin: 0 auto;
 }
 
+
+main {
+    margin-top: 6rem;
+
+}
+
+
+
 @media screen and (max-width: 1100px) {
 
     #firebase{
         flex-direction: column;
         text-align: center;
         /* display: flex; */
-        align-items: center;
-        transform: translateY(-2.5%);
+        align-items: end;
+        /*transform: translateY(-2.5%);*/
         position: absolute;
         /* justify-content: space-between; */
         display: flex;
         row-gap: 2rem;
         column-gap: 2rem;
+        /*margin-bottom: -27px;*/
+        margin-top: 15rem;
     }
 
     .marginer{

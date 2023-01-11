@@ -53,7 +53,7 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     height: 50vh;
-    margin: 2rem 2rem 5rem 2rem;
+    margin: 0 2rem 5rem 2rem;
     /*width: 100%;*/
     display: flex;
     flex-direction: column;
@@ -96,7 +96,7 @@
 }
 
 
-#rechercheButton {
+.rechercheButton {
     display: flex;
     text-align: center;
     justify-content: center;
@@ -110,7 +110,7 @@
 
 }
 
-#rechercheButton:hover {
+.rechercheButton:hover {
     background: black;
 
 }
@@ -447,9 +447,24 @@ body {
     flex-wrap: nowrap;
 }
 
+main {
+    margin-top: 6rem;
+
+}
+
+
+
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
     -webkit-appearance:none;
+}
+
+
+@media screen and (max-width: 900px) {
+    .filterSection{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

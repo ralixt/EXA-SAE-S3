@@ -56,11 +56,11 @@
     </header>
 
     <main>
-        <?php if(isset($_SESSION["Pseudo"])):?>
-            <div id="welcome">
-                <p> Bienvenue <?php echo($_SESSION["Pseudo"])?></p>
-            </div>
-        <?php endif; ?>
+<!--        --><?php //if(isset($_SESSION["Pseudo"])):?>
+<!--            <div id="welcome">-->
+<!--                <p> Bienvenue --><?php //echo($_SESSION["Pseudo"])?><!--</p>-->
+<!--            </div>-->
+<!--        --><?php //endif; ?>
 
 
         <div id="searchDiv">
@@ -71,7 +71,7 @@
                     <input type="search" name="recherche" id="recherche" placeholder="Quel projet recherchez vous ?">
                 </div>
 
-                <button id="rechercheButton">Rechercher</button>
+                <button class="rechercheButton">Rechercher</button>
 
 
 
@@ -285,8 +285,10 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
+                        <button class="rechercheButton">Rechercher</button>
+
                     </div>
                 </div>
 

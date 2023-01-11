@@ -5,6 +5,10 @@ footer{
 
 }
 
+footer a:visited {
+    color: black;
+}
+
 .footerNavigation p{
     display: inline-block;
     vertical-align: top;

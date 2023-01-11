@@ -231,4 +231,17 @@ class CompteService implements AllService
          return $result;
     }
 
+
+    public function isPseudoAvailable( string $pseudo):bool{
+        $statementConnexionUser = $this->database->prepare("SELECT user.id  FROM user where user.Pseudo=:pseudo");
+        $statementConnexionUser->execute(["pseudo"=>$pseudo]);
+        return $statementConnexionUser->rowCount()<1;
+    }
+
+    public function isEmailAvailable( string $email):bool{
+        $statementConnexionUser = $this->database->prepare("SELECT user.id  FROM user where user.email=:email");
+        $statementConnexionUser->execute(["email"=>$email]);
+        return $statementConnexionUser->rowCount()<1;
+    }
+
 }
