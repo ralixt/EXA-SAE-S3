@@ -83,8 +83,10 @@
             <a href="http://localhost/inscription">Inscription</a>
         </p>
     </div>
-    <?php include 'footer.php'?>
+
 </main>
+    <?php include 'footer.php'?>
+    <script src="../Ressource/JS/header.js"></script>
 </body>
 
 

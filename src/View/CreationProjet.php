@@ -183,10 +183,9 @@
         </div>
     </form>
 
-    <?php
-    include 'footer.php'
-    ?>
+    <?php include 'footer.php' ?>
     <script type="text/javascript" src="../Ressource/JS/visualisationUploadFichier.js"></script>
     <script>var simplemde = new SimpleMDE({ element: document.querySelector("#contenu"), toolbar: false, toolbarTips: false, status:false });</script>
+        <script src="../Ressource/JS/header.js"></script>
 </body>
 </html>

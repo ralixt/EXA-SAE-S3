@@ -33,7 +33,7 @@ header a:hover {
 .loginButton{
     position: absolute;
     right: 2rem;
-    top: 0.5rem;
+    top: 1.2rem;
     color: white;
     background-color: #5C5C5C;
     border-radius: 0.5rem;
@@ -87,6 +87,19 @@ header a:hover {
     right: 2rem;
 }
 
+
+
+
+.navbar .menu-hamburger-close {
+    display: none;
+    width: 2.5rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+
+
 .mobile-menu {
     margin-left: 0;
 
@@ -99,7 +112,7 @@ header a:hover {
     }
 
     .navbar {
-        z-index: 1;
+        z-index: 1000;
         padding: 0;
     }
 

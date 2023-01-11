@@ -59,11 +59,3 @@ for(i = 0; i < inputs.length; i++) {
 
 
 
-// menu hamburger
-
-const menuHamburger = document.querySelector(".menu-hamburger")
-const navLinks = document.querySelector(".nav-links")
-
-menuHamburger.addEventListener('click',()=>{
-    navLinks.classList.toggle('mobile-menu')
-})

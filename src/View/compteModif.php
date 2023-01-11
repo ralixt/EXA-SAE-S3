@@ -66,16 +66,9 @@
             ?>
         </form>
 
-
-
-
-
-
-
     </main>
-    <footer>
-        <?php include 'footer.php' ?>
-    </footer>
+    <?php include 'footer.php' ?>
+    <script src="../Ressource/JS/header.js"></script>
 
 </body>
 

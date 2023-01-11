@@ -450,12 +450,11 @@ require_once  "Ressource/libs/Parsedown.php";
     </main>
 <?php endif;?>
     <?php include 'footer.php'?>
+    <script type="text/javascript" src="./.././Ressource/JS/ProjectText.js"></script>
+    <script type="text/javascript" src="./.././Ressource/JS/ImageProjet.js"></script>
+    <script type="text/javascript" src="./.././Ressource/JS/likecomment.js"></script>
+    <script src="../Ressource/JS/header.js"></script>
 </body>
-
-<script type="text/javascript" src="./.././Ressource/JS/ProjectText.js"></script>
-<script type="text/javascript" src="./.././Ressource/JS/ImageProjet.js"></script>
-<script type="text/javascript" src="./.././Ressource/JS/likecomment.js"></script>
-
 
 
 </html>

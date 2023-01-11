@@ -95,5 +95,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script src="./../Ressource/JS/projet-card.js"></script>
 <script src="../Ressource/JS/accueil.js"></script>
+<script src="../Ressource/JS/header.js"></script>
 </body>
 </html>

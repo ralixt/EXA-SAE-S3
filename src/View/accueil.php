@@ -50,6 +50,8 @@
                 </ul>
             </div>
             <img class="menu-hamburger" src="../Ressource/images/menu.png" alt="menu hamburger">
+            <img class="menu-hamburger-close" src="../Ressource/images/close.png" alt="close menu hamburger">
+
         </nav>
     </header>
 
@@ -343,6 +345,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="./../Ressource/JS/projet-card.js"></script>
     <script src="../Ressource/JS/accueil.js"></script>
+    <script src="../Ressource/JS/header.js"></script>
 </body>
 
 
