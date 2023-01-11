@@ -56,11 +56,11 @@
     </header>
 
     <main>
-        <?php if(isset($_SESSION["Pseudo"])):?>
-            <div id="welcome">
-                <p> Bienvenue <?php echo($_SESSION["Pseudo"])?></p>
-            </div>
-        <?php endif; ?>
+<!--        --><?php //if(isset($_SESSION["Pseudo"])):?>
+<!--            <div id="welcome">-->
+<!--                <p> Bienvenue --><?php //echo($_SESSION["Pseudo"])?><!--</p>-->
+<!--            </div>-->
+<!--        --><?php //endif; ?>
 
 
         <div id="searchDiv">

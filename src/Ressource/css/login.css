@@ -2,6 +2,7 @@
     font-family: Poppins;
     margin: 0;
     padding: 0;
+    top: 0;
     text-decoration: none;
 
 }
@@ -22,10 +23,7 @@ body{
 .imagess{
 
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto;
     filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 40px;
     position: relative;
@@ -373,6 +371,14 @@ input{
     border: solid;
     margin: 0 auto;
 }
+
+
+main {
+    margin-top: 6rem;
+
+}
+
+
 
 @media screen and (max-width: 1100px) {
 
