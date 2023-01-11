@@ -3,12 +3,13 @@
     text-decoration: none;
     color: black;
     top: 0;
+    margin: 0;
 }
 
 
 main{
     text-align: center;
-    margin-top: 6rem;
+    margin-top: 8rem;
 }
 
 
@@ -17,18 +18,19 @@ main{
 
 form {
     display: inline-block;
+    margin-top: 2rem;
 }
 
 
-input {
-    width : 25rem;
+form div input {
+    width : 30vw;
     border-radius: 1rem;
     padding: 0.5rem 1rem;
 
 }
 
 textarea {
-    width: 25rem;
+    width: 30vw;
     border-radius: 1rem;
     border: 2px solid black;
     padding: 1rem 1rem 5rem 1rem;
@@ -40,8 +42,8 @@ textarea {
     color: white;
     background-color: #5C5C5C;
     border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    width: 50%;
+    /*padding: 0.5rem 1rem;*/
+    /*width: 15vw;*/
 }
 
 #envoyer:hover {
@@ -53,7 +55,7 @@ textarea {
 #formulaire {
     width: 50vw;
     background-color: whitesmoke;
-    margin: 6rem auto;
+    margin: 0rem auto 3rem auto;
     padding: 2rem 0;
 
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -61,5 +63,40 @@ textarea {
 
 
     border-radius: 10px;
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+    #formulaire {
+        width: 90vw;
+    }
+
+    form div input {
+        width : 50vw;
+    }
+
+    textarea {
+        width: 50vw;
+    }
+
+
+}
+
+@media screen and (max-width: 430px) {
+
+    #formulaire {
+        width: 90vw;
+    }
+
+    form div input {
+        width : 70vw;
+    }
+
+    textarea {
+        width: 70vw;
+    }
+
 
 }

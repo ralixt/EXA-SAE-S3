@@ -2,11 +2,16 @@ footer{
     text-align: center;
     padding: 3rem 3rem 1rem;
     margin-top: auto;
+    color: black;
 
 }
 
 footer a:visited {
     color: black;
+}
+
+footer a:hover {
+    color: #007EA7;
 }
 
 .footerNavigation p{
