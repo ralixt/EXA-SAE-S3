@@ -129,9 +129,9 @@ class DatabaseProjectService implements AllService
             }
         }
         $query .= " LIMIT 30;";
-        var_dump($query);
         $statementList = $this->database->prepare($query);
         if(isset($recherche) && isset($nbTag)) {
+            $recherche = "%".$recherche."%";
             $statementList->execute([
                 "recherche"=>$recherche,
                 "nbTags"=>$nbTag
