@@ -22,7 +22,7 @@ class LikeController extends AbstractController
 
                 if ( $this->LikeProject== false) {
                     $this->CommentaireService->createProjectLike($_GET["idprojectss"], $_SESSION['ids']);
-                    header("location: http://localhost/" );
+                    header("location: http://localhost/projet/$this->id" );
 
                 } else {
                     $this->CommentaireService->deleteProjectLike($_GET["idprojectss"], $_SESSION['ids']);
