@@ -47,11 +47,9 @@ class CompteModifController extends AbstractController
                 header('location:  http://localhost/compte');
             }
             elseif(!$email){
-                var_dump("mail utilisé");
                 $erreurModif = "le mail est déjà utilisé";
             }
             elseif ($serviceCompte->hashPassword($_POST['mdp']) != $userActuel->getPassword()){
-                var_dump("mot de passe incorect");
                 $erreurModif = "votre mot de passe n'est pas correct";
             }
         }
