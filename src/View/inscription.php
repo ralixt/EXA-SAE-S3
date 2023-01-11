@@ -38,27 +38,27 @@
                         <p>Inscription</p>
                     </div>
                 </div>
+                <div class="firebase" id="firebase">
+                    <div class="google marginer">
+                        <button>
+                            <span>Continuer avec google</span>
+                            <img class="image" src="../Ressource/images/google.png" alt="">
+                        </button>
+                    </div>
+                    <div class="facebook marginer">
+                        <button>
+                            <span>Continuer avec facebook </span>
+                            <img class="image" src="../Ressource/images/facebook.png" alt="">
+                        </button>
+                    </div>
+                    <div class="github marginer">
+                        <button>
+                            <span>Continuer avec github</span>
+                            <img class="image" src="../Ressource/images/github.png" alt="">
+                        </button>
+                    </div>
+                </div>
 
-            </div>
-            <div class="firebase" id="firebase">
-                <div class="google marginer">
-                    <button>
-                        <span>Continuer avec google</span>
-                        <img class="image" src="../Ressource/images/google.png" alt="">
-                    </button>
-                </div>
-                <div class="facebook marginer">
-                    <button>
-                        <span>Continuer avec facebook </span>
-                        <img class="image" src="../Ressource/images/facebook.png" alt="">
-                    </button>
-                </div>
-                <div class="github marginer">
-                    <button>
-                        <span>Continuer avec github</span>
-                        <img class="image" src="../Ressource/images/github.png" alt="">
-                    </button>
-                </div>
             </div>
             <br>
             <br>
