@@ -133,11 +133,13 @@
         </div>
     </main>
 
+    <?php include 'footer.php'?>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="./../Ressource/JS/projet-card.js"></script>
     <script src="./../Ressource/JS/projet-scroll.js"></script>
-
+    <script src="../Ressource/JS/header.js"></script>
 
 </body>
-<?php include 'footer.php'?>
+
 </html>

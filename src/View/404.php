@@ -24,6 +24,7 @@
     </main>
 
     <?php include 'footer.php'?>
+    <script src="../Ressource/JS/header.js"></script>
 
 
 </body>

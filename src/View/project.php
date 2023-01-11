@@ -31,34 +31,7 @@ require_once  "Ressource/libs/Parsedown.php";
 
 <body>
 
-    <header>
-        <nav id="navbar">
-            <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
-
-            <div id="nav-links">
-                <ul style="list-style-type:none">
-                    <li><a href="http://localhost">Accueil</a></li>
-                    <!--pour les user connecté-->
-
-                    <?php if(isset($_SESSION["Pseudo"])) : ?>
-                        <li><a href="/create">Nouveau Projet</a></li>
-                        <div class="buttonLog">
-                            <li><a href="/compte" class="loginButton">Mon compte</a></li>
-                        </div>
-
-                    <?php else : ?>
-                        <!--pour les user non connecté-->
-                        <div class="buttonLog">
-                            <li><a href="/login" class="loginButton">Connexion/Inscription</a></li>
-
-                        </div>
-
-                    <?php endif; ?>
-
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <?php include 'header.php'?>
 <?php if($projectModo==null):?>
             <main>
                 <div class="container">
@@ -450,12 +423,11 @@ require_once  "Ressource/libs/Parsedown.php";
     </main>
 <?php endif;?>
     <?php include 'footer.php'?>
+    <script type="text/javascript" src="./.././Ressource/JS/ProjectText.js"></script>
+    <script type="text/javascript" src="./.././Ressource/JS/ImageProjet.js"></script>
+    <script type="text/javascript" src="./.././Ressource/JS/likecomment.js"></script>
+    <script src="../Ressource/JS/header.js"></script>
 </body>
-
-<script type="text/javascript" src="./.././Ressource/JS/ProjectText.js"></script>
-<script type="text/javascript" src="./.././Ressource/JS/ImageProjet.js"></script>
-<script type="text/javascript" src="./.././Ressource/JS/likecomment.js"></script>
-
 
 
 </html>

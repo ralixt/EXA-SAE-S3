@@ -78,8 +78,13 @@ body{
 .facebook button{
     background: rgba(24, 119, 242, 0.6);
     width: 23rem;
-    border-radius: 7px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* border-radius: 7px; */
+    /* box-shadow: 0px 0px 4px rgb(0 0 0 / 25%), 0px 4px 4px rgb(0 0 0 / 25%); */
+    background: rgba(24, 119, 242, 0.6);
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 25%), 0px 4px 4px rgb(0 0 0 / 25%);
+    backdrop-filter: blur(25px);
+    border-radius: 8px;
 }
 
 .facebook span{
@@ -102,10 +107,18 @@ body{
 }
 
 .github button{
-    background: rgba(18, 18, 18, 0.6);
+
     width: 23rem;
-    border-radius: 7px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* border-radius: 7px; */
+    /* box-shadow: 0px 0px 4px rgb(0 0 0 / 25%), 0px 4px 4px rgb(0 0 0 / 25%); */
+    /* background: rgba(24, 119, 242, 0.6); */
+    /* box-shadow: 0px 0px 4px rgb(0 0 0 / 25%), 0px 4px 4px rgb(0 0 0 / 25%); */
+    /* backdrop-filter: blur(25px); */
+    /* border-radius: 8px; */
+    background: rgba(18, 18, 18, 0.6);
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 25%), 0px 4px 4px rgb(0 0 0 / 25%);
+    backdrop-filter: blur(25px);
+    border-radius: 8px;
 }
 
 
@@ -127,9 +140,16 @@ body{
     margin-bottom: auto;
 }
 .google button{
+
+width: 23rem;
+    /* border-radius: 7px; */
     background: rgba(255, 255, 255, 0.6);
-    width: 23rem;
-    border-radius: 7px;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 25%), 0px 4px 4px rgb(0 0 0 / 25%);
+    backdrop-filter: blur(25px);
+    border-radius: 8px;
+    /* padding-right: 12%; */
+    margin-right: 12%;
+    /* margin-left: 12%;*/
 
 }
 
@@ -142,9 +162,16 @@ body{
 }
 
 #firebase{
-    flex-direction: column;
-    text-align: center;
+    /*flex-direction: column; */
+text-align: center;
+    /* display: flex; */
     align-items: center;
+    transform: translateY(60%);
+    position: absolute;
+    /* justify-content: space-between; */
+    display: flex;
+    row-gap: 2rem;
+    column-gap: 2rem;
 }
 
 #loginImage{
@@ -282,7 +309,7 @@ input{
     margin-left: auto;
     margin-right: auto;
     border-radius: 30px;
-    box-shadow: 0 16px 16px rgb(0 0 0 / 20%);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -290,6 +317,8 @@ input{
     position: relative;
     align-items: center;
     margin-bottom: 20px;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 20px;
 }
 
 
@@ -343,4 +372,24 @@ input{
     padding: 0.3rem 1.5rem;
     border: solid;
     margin: 0 auto;
+}
+
+@media screen and (max-width: 1100px) {
+
+    #firebase{
+        flex-direction: column;
+        text-align: center;
+        /* display: flex; */
+        align-items: center;
+        transform: translateY(-2.5%);
+        position: absolute;
+        /* justify-content: space-between; */
+        display: flex;
+        row-gap: 2rem;
+        column-gap: 2rem;
+    }
+
+    .marginer{
+        margin-bottom: 0rem;
+    }
 }

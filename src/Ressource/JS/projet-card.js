@@ -2,6 +2,8 @@ const swiper = new Swiper('.swiperCards', {
     // Optional parameters
     direction: 'horizontal',
     loop: true,
+    allowTouchMove: false,
+    centeredSlides: true,
 
     autoplay: {
         delay:2000,
