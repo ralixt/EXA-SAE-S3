@@ -26,7 +26,7 @@
 
     <title>Accueil</title>
 </head>
-<body class="bodyClass">
+<body>
     <header>
         <nav class="navbar">
             <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>

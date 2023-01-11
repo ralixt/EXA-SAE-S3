@@ -161,15 +161,15 @@ width: 23rem;
 
 #firebase{
     /*flex-direction: column; */
-text-align: center;
+    text-align: center;
     /* display: flex; */
-    align-items: center;
-    transform: translateY(60%);
+    align-items: end;
     position: absolute;
     /* justify-content: space-between; */
     display: flex;
     row-gap: 2rem;
     column-gap: 2rem;
+    margin-bottom: -27px;
 }
 
 #loginImage{
@@ -386,13 +386,15 @@ main {
         flex-direction: column;
         text-align: center;
         /* display: flex; */
-        align-items: center;
-        transform: translateY(-2.5%);
+        align-items: end;
+        /*transform: translateY(-2.5%);*/
         position: absolute;
         /* justify-content: space-between; */
         display: flex;
         row-gap: 2rem;
         column-gap: 2rem;
+        /*margin-bottom: -27px;*/
+        margin-top: 15rem;
     }
 
     .marginer{
