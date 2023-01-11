@@ -3,12 +3,12 @@
  * @var Projet $projet
  * @var bool $status
  */
-?>
-<?php if($projet->getStatus() == "Reviewing" || $projet->getStatus() == "Refused"):?>
 
-<a>
-<?php else:?>
+?>
+<?php if($projet->getStatus() == "Published" || (isset($_SESSION["roles"]) && $_SESSION["roles"]== "Admin")):?>
 <a href="http://localhost/projet/<?php echo($projet->getId())?>">
+<?php else:?>
+    <a>
 <?php endif;?>
     <div class="info">
         <p><?php echo $projet->getTitre()?></p>

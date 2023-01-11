@@ -91,8 +91,11 @@ class DatabaseProjectService implements AllService
             $recherche = $args["recherche"];
             if (isset($args["tag"])) {
 
-                $query .= " AND projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ('" . implode("','",$args["tag"])."')) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
+                $query .= " AND projet.id IN (SELECT p.id FROM PROJET p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ('" . implode("','",$args["tag"])."')) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) AND projet.status='Published'";//faire gaffe peut y a voir une erreur sur les guillemets
                 $nbTag = count($args["tag"]);
+            }
+            else{
+                $query .= "AND projet.status='Published'";
             }
             $query .= " group by projet.id";
             if(isset($args["orderBy"])) {
@@ -109,7 +112,7 @@ class DatabaseProjectService implements AllService
         }
         else {
             if (isset($args["tag"])) {
-                $query .= " where projet.id IN (SELECT p.id FROM projet p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ('" . implode("','",$args["tag"])."')) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) ";//faire gaffe peut y a voir une erreur sur les guillemets
+                $query .= " where projet.id IN (SELECT p.id FROM projet p JOIN projet_tag pt ON pt.id_projet = p.id JOIN tag t ON pt.id_tag = t.id WHERE t.id IN (SELECT id FROM tag WHERE title IN ('" . implode("','",$args["tag"])."')) GROUP BY p.id HAVING count(distinct t.id) = :nbTags) AND projet.status='Published'";//faire gaffe peut y a voir une erreur sur les guillemets
                 $nbTag = count($args["tag"]);
                 $query .= " group by projet.id";
                 if(isset($args["orderBy"])){
@@ -125,10 +128,22 @@ class DatabaseProjectService implements AllService
                 }
             }
             else{
-                $query .= " group by projet.id ";
+                $query .= " WHERE projet.status='Published' group by projet.id ";
+                if(isset($args["orderBy"])){
+                    if($args["orderBy"] == "nom"){
+                        $query .= " ORDER BY titre ";
+                    }
+                    elseif ($args["orderBy"] == "likeController"){
+                        $query .= " Order BY nb_like DESC";
+                    }
+                    elseif ($args["orderBy"] == "commentaire") {
+                        $query .= " Order BY nb_comment DESC";
+                    }
+                }
             }
         }
         $query .= " LIMIT 30;";
+        
         $statementList = $this->database->prepare($query);
         if(isset($recherche) && isset($nbTag)) {
             $recherche = "%".$recherche."%";
@@ -148,6 +163,9 @@ class DatabaseProjectService implements AllService
             $statementList->execute([
                 "nbTags"=>$nbTag
             ]);
+        }
+        else{
+            $statementList->execute();
         }
 
 
