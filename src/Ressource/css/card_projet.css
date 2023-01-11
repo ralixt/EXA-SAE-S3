@@ -156,5 +156,9 @@ p.status.Refused {
     position: absolute;
     top: 15px;
     right: 15px;
-    z-index: 1000;
+    z-index: 2000;
+}
+a{
+    text-decoration: none;
+    color: #dddddd;
 }
