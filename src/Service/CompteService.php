@@ -56,9 +56,14 @@ class CompteService implements AllService
      */
     public function delete($entity)
     {
+        $statementDeleteUser = $this->database->prepare("DELETE FROM likecomment JOIN comment on comment.id = likecomment.id_comment WHERE comment.author=:id");
+        $statementDeleteUser->execute(['id' => $entity]);
+        $statementDeleteUser = $this->database->prepare("DELETE FROM comment WHERE comment.author=:id");
+        $statementDeleteUser->execute(['id' => $entity]);
+        $statementDeleteUser = $this->database->prepare("DELETE FROM likeproject WHERE user=:id");
+        $statementDeleteUser->execute(['id' => $entity]);
         $statementDeleteUser = $this->database->prepare("DELETE FROM user WHERE id=:id");
         $statementDeleteUser->execute(['id' => $entity]);
-        //$ligne = $statementDeleteUser->fetchAll();
     }
 
     public function hashPassword( string $password ) : string {
