@@ -33,34 +33,27 @@
     <main>
         <div class="login">
             <div class="imageconnexion">
-                <img class="imagess" src="../Ressource/images/login.png" alt="">
                 <div class="test">
                     <div class="connexion">
-
-                        <button>Inscription</button>
+                        <p>Inscription</p>
                     </div>
                 </div>
 
             </div>
-            <div class="firebase">
-                <div class="google">
+            <div class="firebase" id="firebase">
+                <div class="google marginer">
                     <button>
                         <span>Continuer avec google</span>
                         <img class="image" src="../Ressource/images/google.png" alt="">
                     </button>
                 </div>
-                <div class="facebook">
+                <div class="facebook marginer">
                     <button>
-
-
                         <span>Continuer avec facebook </span>
                         <img class="image" src="../Ressource/images/facebook.png" alt="">
-
-
                     </button>
-
                 </div>
-                <div class="github">
+                <div class="github marginer">
                     <button>
                         <span>Continuer avec github</span>
                         <img class="image" src="../Ressource/images/github.png" alt="">
