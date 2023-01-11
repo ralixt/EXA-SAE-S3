@@ -42,8 +42,8 @@ textarea {
     color: white;
     background-color: #5C5C5C;
     border-radius: 0.5rem;
-    /*padding: 0.5rem 1rem;*/
-    /*width: 15vw;*/
+    padding: 0.5rem 1rem;
+    width: 25vw;
 }
 
 #envoyer:hover {
