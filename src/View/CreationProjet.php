@@ -24,35 +24,7 @@
 
 <body>
 
-    <header>
-
-        <nav id="navbar">
-            <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
-
-            <div id="nav-links">
-                <ul style="list-style-type:none">
-                    <li><a href="http://localhost">Accueil</a></li>
-                    <!--pour les user connectés-->
-
-                    <?php if(isset($_SESSION["Pseudo"])) : ?>
-                        <li id="selected"><a href="/create">Nouveau Projet</a></li>
-                        <div class="buttonLog">
-                            <li><a href="/compte" class="loginButton">Mon compte</a></li>
-                        </div>
-
-                    <?php else : ?>
-                        <!--pour les user non connectés-->
-                        <div class="buttonLog">
-                            <li><a href="/login" class="loginButton">Connexion/Inscription</a></li>
-
-                        </div>
-
-                    <?php endif; ?>
-
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <?php include 'header.php'?>
 
 
     <main>
@@ -64,7 +36,7 @@
 
         <form method="post" id="formulaireadd" enctype="multipart/form-data">
 
-            <div class="flex-horizontal">
+            <div class="flex-horizontal" id="informations">
                 <div class="flex-vertical">
                     <label for="images" class="input hover">
                         <input type="file" name="images[]" id="images" accept="image/png, image/jpeg" multiple>
