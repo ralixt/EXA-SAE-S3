@@ -22,15 +22,21 @@ class ProjetController extends AbstractController
     public function render(): void
     {
 
-        echo get_template(__PROJECT_ROOT__ . "/View/project.php", [
-            "project" => $this->Service->get($this->id),
-            "projectModo" => $this->Projet->getModo($this->id),
-            "comments"=>$this->CommentaireService->getById($this->id),
+        try {
+            echo get_template(__PROJECT_ROOT__ . "/View/project.php", [
+                "project" => $this->Service->get($this->id),
+                "projectModo" => $this->Projet->getModo($this->id),
+                "comments"=>$this->CommentaireService->getById($this->id),
+
+            ]);
+
+        }
 
 
-
-        ]);
-
+        catch (Exception $e){
+            http_response_code(404);
+            echo get_template(__PROJECT_ROOT__."/View/404.php",[]);
+        }
     }
 
 
