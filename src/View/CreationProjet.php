@@ -49,7 +49,7 @@
                     </label>
                 </div>
                 <div class="flex-vertical">
-                    <input type="text" name="titre" id="titre" class="input hover" placeholder="Quel est le titre de votre projet ?">
+                    <input type="text" name="titre" id="titre" class="input hover" placeholder="Quel est le titre de votre projet ?" required>
                     <br>
                     <textarea name="contenu" id="contenu" placeholder="Quel est le contenu du projet ?" class="input"></textarea>
                 </div>
@@ -58,7 +58,7 @@
         </div>
         <br>
         <div class="flex-horizontal2">
-            <select name="difficulte" id="difficulte" class="input hover">
+            <select name="difficulte" id="difficulte" class="input hover" required>
                 <option value="" disabled selected>Quel est la difficulté du projet ?</option>
                 <option value="facile">Facile</option>
                 <option value="moyen">Moyen</option>
@@ -86,7 +86,7 @@
                 <p class="decalage">Quels sont les langage de programmation de votre projet ?</p>
                 <div class="tags">
                     <label for="HTML" class="button">
-                        <input type="checkbox" id="HTML" name="tag[]" value=36>
+                        <input type="checkbox" id="HTML" name="tag[]" value=36 >
                         HTML
                     </label>
                     <label for="Java" class="button">
@@ -185,7 +185,11 @@
 
     <?php include 'footer.php' ?>
     <script type="text/javascript" src="../Ressource/JS/visualisationUploadFichier.js"></script>
-    <script>var simplemde = new SimpleMDE({ element: document.querySelector("#contenu"), toolbar: false, toolbarTips: false, status:false });</script>
+    <script>var simplemde = new SimpleMDE({ element: document.querySelector("#contenu"), toolbar: false, toolbarTips: false, status:false, 	autosave: {
+                enabled: true,
+                uniqueId: "MyUniqueID",
+                delay: 1000,
+            }, });</script>
         <script src="../Ressource/JS/header.js"></script>
 </body>
 </html>

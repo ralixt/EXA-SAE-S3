@@ -13,20 +13,20 @@ const cards = document.querySelectorAll(".swiper")
 if(swiper.length >1) {
     for (let sw of swiper) {
         sw.autoplay.stop()
-        sw.el.addEventListener("mouseenter", () => {
+        sw.el.parentElement.addEventListener("mouseenter", () => {
             sw.autoplay.start()
         })
-        sw.el.addEventListener("mouseleave", () => {
+        sw.el.parentElement.addEventListener("mouseleave", () => {
             sw.autoplay.stop()
         })
     }
 }
 else{
     swiper.autoplay.stop()
-    swiper.el.addEventListener("mouseenter", () => {
+    swiper.el.parentElement.addEventListener("mouseenter", () => {
         swiper.autoplay.start()
     })
-    swiper.el.addEventListener("mouseleave", () => {
+    swiper.el.parentElement.addEventListener("mouseleave", () => {
         swiper.autoplay.stop()
     })
 }
