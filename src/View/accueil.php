@@ -26,7 +26,7 @@
 
     <title>Accueil</title>
 </head>
-<body>
+<body class="bodyClass">
     <header>
         <nav class="navbar">
             <a href="http://localhost" ><img class="logoLetsCode" src="../Ressource/images/logoLetsCode.png" alt="Logo Let's Code"></a>
@@ -71,7 +71,7 @@
                     <input type="search" name="recherche" id="recherche" placeholder="Quel projet recherchez vous ?">
                 </div>
 
-                <button id="rechercheButton">Rechercher</button>
+                <button class="rechercheButton">Rechercher</button>
 
 
 
@@ -285,8 +285,10 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
+                        <button class="rechercheButton">Rechercher</button>
+
                     </div>
                 </div>
 

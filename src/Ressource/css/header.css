@@ -1,6 +1,6 @@
 header {
     width : 100%;
-    padding-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 
 header li a{
@@ -108,7 +108,7 @@ header a:hover {
 @media screen and (max-width: 768px){
 
     header li a {
-        color: #FFFFFF;
+        color: #5C5C5C;
     }
 
     .navbar {
@@ -127,11 +127,20 @@ header a:hover {
         display: block;
     }
 
+    .navbar .menu-hamburger.fermee {
+        display: none;
+    }
+
+    .navbar .menu-hamburger-close.fermee {
+        display: block;
+    }
+
+
     .nav-links{
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
-        background-color: rgba(255, 255, 255, 0.11);
+        background-color: rgba(255, 255, 255, 0.70);
         backdrop-filter: blur(7px);
 
         width: 100%;
@@ -170,6 +179,9 @@ header a:hover {
 
     }
 
+    .bodyClass.scroll {
+        overflow: hidden;
+    }
 
-    
+
 }
