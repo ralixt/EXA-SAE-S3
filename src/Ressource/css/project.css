@@ -282,13 +282,9 @@ padding-right:2% ;
     font-family: 'Poppins';
     font-style: normal;
     margin-left: 4%;
+    margin-top:2%;
 }
-/* .AjoutCommentaire input[type='radio']:checked:after{
-    width: 35px;
-    height: 35px;
-    
-    background-color:white;
-} */
+
 .menu a span:hover{
     color: #000000;
     font-weight: bold;
@@ -310,7 +306,11 @@ padding-right:2% ;
     border-radius: 8px;
     color: #ddd;
 
-    height: 50%;
+
+
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 2%;
 }
 
 .AffichageCommentaire{
@@ -461,6 +461,7 @@ color: #000000;
 #commentairess{
     height: 30vh;
     width: 85%;
+    padding: 2%;
 }
 .premiumtext{
     text-align: center;

@@ -116,7 +116,9 @@ require_once  "Ressource/libs/Parsedown.php";
                     <div class="menu">
                         <h3>Table des matières</h3><br><br><br>
                         <a href="#contenu"><span>Projet</span><br><br></a>
-                        <a href="#ressource"><span>Ressource</span><br><br></a>
+                        <?php if($project->getURLZIP()!=null or $project->getURLZIP()!=''):?>
+                            <a href="#ressource"><span>Ressource</span><br><br></a>
+                        <?php endif;?>
                         <a href="#commentaire"><span>Commentaire</span><br></a>
 
 
@@ -134,23 +136,26 @@ require_once  "Ressource/libs/Parsedown.php";
                     <br>
                     <br>
 
-                    <div id="ressource" class="Ressource">
-                        <h3>Ressource</h3><br><br><br>
-                        <div class="RessourceContenair">
+                    <?php if($project->getURLZIP()!=null or $project->getURLZIP()!=''):?>
 
-                            <div class='folderImg'>
-                                <img src="./.././Ressource/images/folder_zip.png" alt="errors">
+                            <div id="ressource" class="Ressource">
+                                <h3>Ressource</h3><br><br><br>
+                                <div class="RessourceContenair">
+
+                                    <div class='folderImg'>
+                                        <img src="./.././Ressource/images/folder_zip.png" alt="errors">
+                                    </div>
+                                    <div class='folderZip'>
+                                        <?php echo('<a href= "./../RessourcesProject/'.$project->getId().'/'.'zip'.'/'.$project->getURLZIP().'" download>'.'<span> '.' '.$project->getURLZIP().' </span>'.'</a>')?>
+                                    </div>
+                                    <div class="download">
+                                        <?php echo('<a href= "./../RessourcesProject/'.$project->getId().'/'.'zip'.'/'.$project->getURLZIP().'" download>'.'<img src="./.././Ressource/images/download.png" alt="error">'.'</a>');?>
+                                    </div>
+                                </div>
                             </div>
-                            <div class='folderZip'>
-                                <?php echo('<a href= "./../RessourcesProject/'.$project->getId().'/'.'zip'.'/'.$project->getURLZIP().'" download>'.'<span> '.' '.$project->getURLZIP().' </span>'.'</a>')?>
-                            </div>
-                            <div class="download">
-                                <?php echo('<a href= "./../RessourcesProject/'.$project->getId().'/'.'zip'.'/'.$project->getURLZIP().'" download>'.'<img src="./.././Ressource/images/download.png" alt="error">'.'</a>');?>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
+                            <br>
+                            <br>
+                    <?php endif;?>
                 <?php if(isset($_SESSION["roles"])and $_SESSION["roles"]=='Admin' and $project->getStatus()=="Reviewing"):?>
                     <div class="AdminButton">
                         <a href="http://localhost/publication?idproject=<?php echo($project->getId())?>"><button>Publier</button></a>
@@ -309,7 +314,9 @@ require_once  "Ressource/libs/Parsedown.php";
             <div class="menu">
                 <h3>Table des matières</h3><br><br><br>
                 <a href="#contenu"><span>Projet</span><br><br></a>
-                <a href="#ressource"><span>Ressource</span><br><br></a>
+                <?php if($projectModo->getURLZIP()!=null or $projectModo->getURLZIP()!=''):?>
+                    <a href="#ressource"><span>Ressource</span><br><br></a>
+                <?php endif;?>
                 <a href="#commentaire"><span>Commentaire</span><br></a>
 
 
@@ -327,26 +334,28 @@ require_once  "Ressource/libs/Parsedown.php";
             <br>
             <br>
 
-            <div id="ressource" class="Ressource">
-                <h3>Ressource</h3><br><br><br>
-                <div class="RessourceContenair">
-
-                    <div class='folderImg'>
-                        <img src="./.././Ressource/images/folder_zip.png" alt="errors">
-                    </div>
-                    <div class='folderZip'>
-                        <?php echo('<a href= "./../RessourcesProject/'.$projectModo->getId().'/'.'zip'.'/'.$projectModo->getURLZIP().'" download>'.'<span> '.' '.$projectModo->getURLZIP().' </span>'.'</a>')?>
-                    </div>
-                    <div class="download">
-
-                        <?php echo('<a href= "./../RessourcesProject/'.$projectModo->getId().'/'.'zip'.'/'.$projectModo->getURLZIP().'" download>'.'<img src="./.././Ressource/images/download.png" alt="error">'.'</a>');?>
 
 
+            <?php if($projectModo->getURLZIP()!=null or $projectModo->getURLZIP()!=''):?>
+
+                <div id="ressource" class="Ressource">
+                    <h3>Ressource</h3><br><br><br>
+                    <div class="RessourceContenair">
+
+                        <div class='folderImg'>
+                            <img src="./.././Ressource/images/folder_zip.png" alt="errors">
+                        </div>
+                        <div class='folderZip'>
+                            <?php echo('<a href="./../RessourcesProject/'.$projectModo->getId().'/'.'zip'.'/'.$projectModo->getURLZIP().'" download>'.'<span> '.' '.$projectModo->getURLZIP().' </span>'.'</a>')?>
+                        </div>
+                        <div class="download">
+                            <?php echo('<a href="./../RessourcesProject/'.$projectModo->getId().'/'.'zip'.'/'.$projectModo->getURLZIP().'" download>'.'<img src="./.././Ressource/images/download.png" alt="error">'.'</a>');?>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <br>
-            <br>
+                <br>
+                <br>
+            <?php endif;?>
             <?php if(isset($_SESSION["roles"]) and $_SESSION["roles"]=='Admin' and $projectModo->getStatus()=="Reviewing"):?>
                 <div class="AdminButton">
                     <a class="publication" href="http://localhost/publication?idproject=<?php echo($projectModo->getId())?>"><button>Publier</button></a>

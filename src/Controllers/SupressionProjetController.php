@@ -16,7 +16,7 @@ class SupressionProjetController extends AbstractController
     public function render(): void
     {
         $this->id=$_GET["idproject"];
-        $this->projetService->deleteProjetModo($this->id);
+        $this->projetService->upadateStatuts("Refused",$this->id);
         header("location: http://localhost/projet");
         // TODO: Implement render() method.
 
