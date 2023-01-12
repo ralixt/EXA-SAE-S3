@@ -32,6 +32,8 @@ require_once __PROJECT_ROOT__ . "/Controllers/LikeController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/ModoController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/PublicationProjetController.php";
 require_once __PROJECT_ROOT__ . "/Controllers/SupressionProjetController.php";
+require_once __PROJECT_ROOT__ . "/Controllers/LikeAccueilController.php";
+
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode( '/', $uri );
@@ -96,6 +98,10 @@ switch ($uri[1]) :
 
     case "suppression":
         (new SupressionProjetController(DatabaseProjectService::getInstance()))->render();
+        break;
+
+    case "likeAccueil":
+        (new LikeAccueilController(CommentaireService::getInstance()))->render();
         break;
 
     // Default 404

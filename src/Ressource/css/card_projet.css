@@ -160,5 +160,19 @@ p.status.Refused {
 }
 a{
     text-decoration: none;
-    color: #dddddd;
+    color: #000000;
+}
+.material-symbols-outlined {
+    font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48
+}
+.filled{
+    font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48 !important
 }

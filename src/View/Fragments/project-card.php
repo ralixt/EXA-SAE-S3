@@ -10,7 +10,13 @@
 
 
 <div class="template">
-    <a class="like" href="http://localhost/like?idprojectss=<?php echo($projet->getId())?>"><span  class="material-symbols-outlined ">favorite</span></a>
+    <?php $like = $c = CommentaireService::getInstance()->getProjectLike($projet->getId(), $_SESSION["ids"]??1);?>
+    <?php if(!$like):?>
+        <a class="like" href="http://localhost/likeAccueil?idprojectss=<?php echo($projet->getId())?>"><span  class="material-symbols-outlined ">favorite</span></a>
+    <?php endif; ?>
+    <?php if($like): ?>
+        <a class="like" href="http://localhost/likeAccueil?idprojectss=<?php echo($projet->getId())?>"><span  class="material-symbols-outlined filled ">favorite</span></a>
+    <?php endif;?>
             <a href="http://localhost/projet/<?php echo($projet->getId())?>">
             <?php else:?>
                 <a>

@@ -48,7 +48,7 @@ require_once  "Ressource/libs/Parsedown.php";
                         <?php for($i=0;$i<count($project->getURLImage());$i++):?>
                             <div class="slides">
 
-                                <a href="./.././RessourcesProject/<?=$project->getId()?>/images/<?=str_replace(' ', '', $project->getURLImage()[$i])?>"> <?php echo('<img src= ./.././RessourcesProject/'.$project->getId().'/'.'images'.'/'.str_replace(' ', '', $project->getURLImage()[$i]).'>' );?> </a>
+                                <a href="./.././RessourcesProject/<?=$project->getId()?>/images/<?=str_replace(' ', '', $project->getURLImage()[$i])?>". target=._blank> <?php echo('<img src= ./.././RessourcesProject/'.$project->getId().'/'.'images'.'/'.str_replace(' ', '', $project->getURLImage()[$i]).'>' );?> </a>
 
                             </div>
                         <?php endfor;?>
@@ -246,7 +246,7 @@ require_once  "Ressource/libs/Parsedown.php";
                 <?php for($i=0;$i<count($projectModo->getURLImage());$i++):?>
                     <div class="slides">
 
-                        <a href="./.././RessourcesProject/<?=$projectModo->getId()?>/images/<?=str_replace(' ', '', $projectModo->getURLImage()[$i])?>"> <?php echo('<img src= ./.././RessourcesProject/'.$projectModo->getId().'/'.'images'.'/'.str_replace(' ', '', $projectModo->getURLImage()[$i]).'>' );?> </a>
+                        <a href="./.././RessourcesProject/<?=$projectModo->getId()?>/images/<?=str_replace(' ', '', $projectModo->getURLImage()[$i])?>". target=._blank> <?php echo('<img src= ./.././RessourcesProject/'.$projectModo->getId().'/'.'images'.'/'.str_replace(' ', '', $projectModo->getURLImage()[$i]).'>' );?> </a>
 
                     </div>
                 <?php endfor;?>
