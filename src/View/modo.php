@@ -39,7 +39,7 @@
             <div>
                 <p id="AdresseMail"><?php echo $user->getEmail() ?></p>
             </div>
-           
+
 
         </div>
     </div>
