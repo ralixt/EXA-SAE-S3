@@ -2,10 +2,17 @@
    /* text-align: center;*/
     margin: 0;
     padding: 0;
+    top: 0;
     text-decoration: none;
     font-family: Poppins;
     color: black;
 }
+
+main {
+    margin-top: 6rem;
+}
+
+
 
 button{
     cursor: pointer;
