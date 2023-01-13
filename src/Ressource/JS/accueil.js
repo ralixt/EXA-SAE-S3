@@ -10,7 +10,6 @@ for (i = 0; i< accordion.length; i++ ){
 
 
 // popup
-const popup = document.getElementsByClassName("popup");
 function filtre() {
     const x = document.getElementById("popup");
     if (x.style.display === "none") {
@@ -22,11 +21,12 @@ function filtre() {
 
 
 
-
+//compteur filtres
 const compteur = document.querySelector('#checkedCount');
 let tmp = 0;
 const checkBox = document.querySelectorAll('input[type="checkbox"]');
 let nbChecked = 0;
+
 for(i = 0; i < checkBox.length; i++) {
     checkBox[i].addEventListener('change', function() {
         let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
@@ -34,14 +34,15 @@ for(i = 0; i < checkBox.length; i++) {
             nbChecked = checkboxes.length + 1;
         }
         else {
-            nbChecked = checkboxes.length
+            nbChecked = checkboxes.length;
         }
 
 
         compteur.innerHTML = ' (' + nbChecked +')';
-        console.log(nbChecked);
+        // console.log(nbChecked);
     });
 }
+
 
 const inputs = document.querySelectorAll('input[type="radio"]');
 for(i = 0; i < inputs.length; i++) {
@@ -52,10 +53,18 @@ for(i = 0; i < inputs.length; i++) {
             tmp++;
         }
         compteur.innerHTML = ' (' + nbChecked +')';
-        console.log(nbChecked);
+        // console.log(nbChecked);
     });
 }
 
 
 
 
+// const welcome = document.querySelector('.welcome');
+// let cptwelcome = 0;
+// if (cptwelcome === 0) {
+//     cptwelcome ++;
+// }
+// if (cptwelcome === 1){
+//     welcome.classList.toggle('alreadyConnected');
+// }

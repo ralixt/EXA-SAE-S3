@@ -54,6 +54,7 @@ header a:hover {
     padding: 1rem 2rem;
     display: flex;
     width: 100%;
+    top: 0;
 
     box-sizing: border-box;
     align-items: center;
@@ -112,7 +113,7 @@ header a:hover {
     }
 
     .navbar {
-        z-index: 1000;
+        z-index: 2050;
         padding: 0;
     }
 
@@ -183,7 +184,6 @@ header a:hover {
         overflow: hidden;
     }
 
-
-
-
 }
+
+

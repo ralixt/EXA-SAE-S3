@@ -15,7 +15,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel='stylesheet' href='../Ressource/css/compte.css'  type='text/css' media='screen'>
-    <link rel='stylesheet' href='../Ressource/css/accueil.css' type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/card_projet.css' type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
@@ -26,60 +25,60 @@
 </head>
 
 <body>
-<?php include 'header.php'?>
-<main>
-    <div class="papaEnTete">
-        <h1 class="flou enTete">Mon Compte</h1>
-        <div class="flou enTete">
-            <div>
-                <h1>Bienvenue <?php echo $user->getPseudo() ?></h1>
-            </div>
-            <div>
-                <p id="AdresseMail"><?php echo $user->getEmail() ?></p>
-            </div>
-            <div>
-                <p id="ProjetPub"><?php echo $nbProjet ?> projets publiés</p>
-            </div>
-        </div>
-    </div>
-    <div class="rectangle flexColumn">
-        <h3>Projets Favoris</h3>
-        <div class="flexRow projet">
-            <div class="swiper-scroll">
-                <div class="swiper-wrapper">
-                    <?php foreach ($like as $projet) : ?>
-                    <div class="swiper-slide projectCards">
-                        <?php echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
-                            "projet" => $projet,
-                            "status" =>false
-                        ])
-                        ?>
-                    </div>
-                    <?php endforeach;?>
+    <?php include 'header.php'?>
+    <main>
+        <div class="papaEnTete">
+            <h1 class="flou enTete">Mon Compte</h1>
+            <div class="flou enTete">
+                <div>
+                    <h1>Bienvenue <?php echo $user->getPseudo() ?></h1>
+                </div>
+                <div>
+                    <p id="AdresseMail"><?php echo $user->getEmail() ?></p>
+                </div>
+                <div>
+                    <p id="ProjetPub"><?php echo $nbProjet ?> projets publiés</p>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="rectangle flexColumn">
-        <h3>Vos Projets</h3>
-        <div class="flexRow projet" >
-            <div class="swiper-scroll">
-                <div class="swiper-wrapper">
-                    <?php foreach ($vosProjets as $projet): ?>
-                    <div class="swiper-slide projectCards">
-                    <?php echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
-                        "projet" => $projet,
-                        "status" => true
-                    ])?>
+        <div class="rectangle flexColumn">
+            <h3>Projets Favoris</h3>
+            <div class="flexRow projet">
+                <div class="swiper-scroll">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($like as $projet) : ?>
+                            <div class="swiper-slide projectCards">
+                                <?php echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
+                                    "projet" => $projet,
+                                    "status" =>false
+                                ])
+                                ?>
+                            </div>
+                        <?php endforeach;?>
                     </div>
-                    <?php endforeach;?>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="basdepage" class="flexRow">
-        <div class="rectangle flexColumn" id="infosPersos">
-            <h2>Vos informations personnelles</h2>
+        <div class="rectangle flexColumn">
+            <h3>Vos Projets</h3>
+            <div class="flexRow projet" >
+                <div class="swiper-scroll">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($vosProjets as $projet): ?>
+                            <div class="swiper-slide projectCards">
+                                <?php echo get_template(__PROJECT_ROOT__."/View/Fragments/project-card.php", [
+                                    "projet" => $projet,
+                                    "status" => true
+                                ])?>
+                            </div>
+                        <?php endforeach;?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="basdepage" class="flexRow">
+            <div class="rectangle flexColumn" id="infosPersos">
+                <h2>Vos informations personnelles</h2>
                 <div class="flexCorrect">
                     <div class="infosPersosDiv">
                         <p>Pseudo :</p>
@@ -88,23 +87,23 @@
                     <a href="http://localhost/compteModif?raison=pseudo" class="button">changer de pseudo</a>
                 </div>
 
-            <div class="flexCorrect">
-                <div class="infosPersosDiv">
-                    <p>Adresse e-mail :</p>
-                    <p><?php echo $user->getEmail() ?> </p>
+                <div class="flexCorrect">
+                    <div class="infosPersosDiv">
+                        <p>Adresse e-mail :</p>
+                        <p><?php echo $user->getEmail() ?> </p>
+                    </div>
+                    <a href="http://localhost/compteModif?raison=mail" class="button">changer d'email</a>
                 </div>
-                <a href="http://localhost/compteModif?raison=mail" class="button">changer d'email</a>
-            </div>
-            <div class="flexCorrect">
-                <div class="infosPersosDiv">
-                    <p>mot de passe :</p>
-                    <p>********</p>
+                <div class="flexCorrect">
+                    <div class="infosPersosDiv">
+                        <p>mot de passe :</p>
+                        <p>********</p>
+                    </div>
+                    <a id="motPasse" href="http://localhost/compteModif?raison=mdp" class="button">changer de mot de passe</a>
                 </div>
-                <a id="motPasse" href="http://localhost/compteModif?raison=mdp" class="button">changer de mot de passe</a>
+                <a class="button red centre" href="http://localhost/logout.php">Deconnexion</a>
+                <a class="button red centre" href="compteModif?raison=delete">Supprimer mon compte</a>
             </div>
-            <a class="button red centre" href="http://localhost/logout.php">Deconnexion</a>
-            <a class="button red centre" href="compteModif?raison=delete">Supprimer mon compte</a>
-        </div>
             <div class="rectangle flexColumn">
                 <h2>Abonnement Premium</h2>
                 <div class="rectangle blanc">
@@ -131,6 +130,7 @@
                 </div>
             </div>
         </div>
+
     </main>
 
     <?php include 'footer.php'?>

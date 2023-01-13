@@ -7,13 +7,24 @@
 }
 
 
-#welcome{
+.welcome{
 
+    display: block;
     background-color: darkseagreen;
-    margin: 2rem;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 0;
     border-radius: 1rem;
+    width: 95%;
+    margin: auto auto 2rem;
 
+}
+
+.welcome p {
+    margin-left: 1.5rem;
+}
+
+
+.welcome.alreadyConnected {
+    display: none;
 }
 
 #popup{
@@ -54,8 +65,9 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     height: 50vh;
-    margin: 0 2rem 5rem 2rem;
-    /*width: 100%;*/
+    /*margin: 0 2rem 5rem 2rem;*/
+    width: 95%;
+    margin: 0 auto 3.5rem auto;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -110,8 +122,13 @@
     padding: 0.5rem 1rem;
     position: relative;
     margin: auto;
+}
+
+.firstButton {
+    margin-top: 3rem;
 
 }
+
 
 .rechercheButton:hover {
     background: black;
@@ -128,7 +145,7 @@
     background: rgba(255, 255, 255, 0);
     border: none;
     outline: none;
-    padding: 0 1rem 0 1rem;
+    /*padding: 0 1rem 0 1rem;*/
     text-align: center;
 }
 
@@ -281,6 +298,18 @@
 
 }
 
+#popupFiltreTitleClose div{
+    display: flex;
+    align-items: center;
+}
+
+
+.popupSection {
+    font-size: 2rem;
+}
+
+
+
 #filtreTitle{
     font-size: 2rem;
 }
@@ -310,6 +339,7 @@
     background-color: #F0F0F0;
     border-radius: 1rem;
     cursor: pointer;
+    align-items: center;
     /*font-size: 1.2rem;*/
     /*margin: 0.5rem;*/
 }
@@ -370,7 +400,7 @@
 
 
 .accordion .contentBox.act .content {
-    height: 200px;
+    height: 20vh;
     padding: 10px;
 }
 
@@ -473,5 +503,73 @@ input[type="search"]::-webkit-search-results-decoration {
 
 
 @media screen and (max-width: 768px){
+    #searchDiv {
+        margin-bottom: 2rem;
+    }
+
+    form {
+        position: relative;
+        margin: auto;
+
+    }
+
+    #searchBar {
+        margin-top: 0;
+    }
+
+    #searchDivBottom {
+        display: block;
+
+    }
+
+    #tri {
+        position: static;
+        transform: translateY(0%);
+        width: 11rem;
+        margin: 1.5rem auto 0 auto;
+
+    }
+
+    .filtre {
+        position: static;
+        transform: translateY(0%);
+        width: 13rem;
+        margin: 1rem auto 0 auto;
+
+    }
+
+    .firstButton {
+        margin: 1.5rem auto 3.5rem auto;
+    }
+
+    #searchBar {
+        width: 60vw;
+    }
+
+}
+
+
+@media screen and (max-width: 510px){
+    #searchBar {
+        width: 75vw;
+    }
+    .accordion .contentBox.act .content.tagsFiltre {
+        height: 25vh;
+    }
+
+
+}
+
+
+
+@media screen and (max-width: 460px){
+
+    .accordion .contentBox.act .content.tagsFiltre {
+        height: 50vh;
+    }
+    .accordion .contentBox.act .content {
+        height: 30vh;
+    }
+
 
 }

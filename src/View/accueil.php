@@ -57,16 +57,23 @@
 
     <main>
         <?php if(isset($_SESSION["Pseudo"])):?>
-            <div id="welcome">
-                <p> Bienvenue <?php echo($_SESSION["Pseudo"])?></p>
-            </div>
+            <?php if (!isset($_SESSION['logged'])) :?>
+                <div class="welcome">
+                    <p> Bienvenue <?php echo($_SESSION["Pseudo"])?></p>
+                </div>
+                <?php $_SESSION['logged'] = true;?>
+            <?php endif; ?>
         <?php endif; ?>
 
         <div id="popup" style="display: none">
 
             <div id="popupBackground">
                 <div id="popupFiltreTitleClose">
-                    <p id="filtreTitle">Filtres</p>
+                    <div>
+                        <p id="filtreTitle">Filtres</p>
+                        <p id="checkedCount" class="popupSection">(0)</p>
+                    </div>
+
                     <button id="closeButton" type="button" onclick="filtre()">
                         <span class="material-symbols-outlined">close</span>
                     </button>
@@ -82,7 +89,7 @@
                                 Langage de programmation
                             </div>
 
-                            <div class="content">
+                            <div class="content tagsFiltre">
 
                                 <div>
                                     <label for="choiceHTML">
@@ -286,7 +293,7 @@
                     <input type="search" name="recherche" id="recherche" placeholder="Quel projet recherchez vous ?">
                 </div>
 
-                <button class="rechercheButton">Rechercher</button>
+                <button class="rechercheButton firstButton">Rechercher</button>
 
 
 
@@ -294,6 +301,18 @@
 
 
                 <div id="searchDivBottom">
+
+                    <button class="filtre"  type="button" onclick="filtre()">
+                            <span class="material-symbols-outlined">filter_alt</span>
+                            <div id="centerFiltre">
+                                <div>
+                                    <p>Filtres</p>
+                                </div>
+                                <div><p id="checkedCount">(0)</p></div>
+                            </div>
+
+                    </button>
+
                     <div id="tri">
 
                         <span class="material-symbols-outlined">sort_by_alpha</span>
@@ -305,21 +324,6 @@
                             <option value="commentaire"> Commentaire </option>
                         </select>
                     </div>
-
-
-
-
-
-                    <button class="filtre"  type="button" onclick="filtre()">
-                            <span class="material-symbols-outlined">filter_alt</span>
-                            <div id="centerFiltre">
-                                <div>
-                                    <p>Filtre</p>
-                                </div>
-                                <div><p id="checkedCount">(0)</p></div>
-                            </div>
-
-                    </button>
 
 
                 </div>
