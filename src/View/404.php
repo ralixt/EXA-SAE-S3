@@ -16,9 +16,9 @@
 
     <main>
         <div id="error">
-<!--            <img src="../Ressource/images/rick.gif" alt="Rick">-->
             <img src="../Ressource/images/cpt.gif" alt="CPT" class="errorImage">
             <h1>ERREUR 404</h1>
+            <p id="retourAccueil"><a href="/">Retour à l'acceuil</a></p>
         </div>
 
     </main>

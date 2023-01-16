@@ -15,18 +15,39 @@
 
 .errorImage {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
+    margin: 4rem auto 2rem;
 
     /*width: 50%;*/
 }
 
 main {
-    height: 46rem;
+    margin: 6rem;
+    /*height: 46rem;*/
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
     align-items: center;
+}
+
+
+main div p a {
+    color: white;
+}
+
+#retourAccueil {
+
+    color: white;
+    background-color: #5C5C5C;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    position: relative;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#retourAccueil:hover {
+    background: black;
+
 }
