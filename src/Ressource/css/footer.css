@@ -6,9 +6,11 @@ footer{
 
 }
 
-footer a:visited {
+footer a {
     color: black;
 }
+
+
 
 footer a:hover {
     color: #007EA7;

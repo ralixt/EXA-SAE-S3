@@ -51,6 +51,7 @@
     background-color: white;
     padding: 3rem;
     border-radius: 1rem;
+    overflow: auto;
 }
 
 
