@@ -60,9 +60,13 @@ function get_404 () : string {
   http_response_code(404);
   
   ob_start();
-  require __PROJECT_ROOT__ . "/views/404.php";
+  require __PROJECT_ROOT__ . "/View/404.php";
   return ob_get_clean();
 }
+
+
+
+
 
 /***
  * @param DateTime $date
@@ -107,3 +111,4 @@ function datesss($date):string
     return  "";
 
 }
+
