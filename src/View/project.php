@@ -86,10 +86,10 @@ require_once  "Ressource/libs/Parsedown.php";
 
                         <?php $like = $c = CommentaireService::getInstance()->getProjectLike($project->getId(), $_SESSION["ids"]??1);?>
                         <?php if(!$like):?>
-                            <a href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><span  class="material-symbols-outlined ">favorite</span></a>
+                            <a class="likeColorRed" href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><span  class="material-symbols-outlined ">favorite</span></a>
                         <?php endif; ?>
                         <?php if($like): ?>
-                            <a href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><span  class="material-symbols-outlined filled ">favorite</span></a>
+                            <a class="likeColorRed" href="http://localhost/like?idprojectss=<?php echo($project->getId())?>"><span  class="material-symbols-outlined filled ">favorite</span></a>
                         <?php endif;?>
 
                     </div>
