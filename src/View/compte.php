@@ -41,6 +41,7 @@
                 </div>
             </div>
         </div>
+        <?php if(!empty($like)): ?>
         <div class="rectangle flexColumn">
             <h3>Projets Favoris</h3>
             <div class="flexRow projet">
@@ -59,6 +60,8 @@
                 </div>
             </div>
         </div>
+        <?php endif;?>
+        <?php if(!empty($vosProjets)): ?>
         <div class="rectangle flexColumn">
             <h3>Vos Projets</h3>
             <div class="flexRow projet" >
@@ -76,6 +79,7 @@
                 </div>
             </div>
         </div>
+        <?php endif;?>
         <div id="basdepage" class="flexRow">
             <div class="rectangle flexColumn" id="infosPersos">
                 <h2>Vos informations personnelles</h2>
