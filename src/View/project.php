@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
 * @var Commentaire[] $comments
  * @var Projet $project
