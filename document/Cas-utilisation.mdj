@@ -17,7 +17,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGFv8PBNZgQI+s="
 					},
-					"name": "UseCaseDiagram1",
+					"name": "UseCaseDiagramConnecté",
 					"ownedViews": [
 						{
 							"_type": "UMLActorView",
@@ -7894,7 +7894,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGFv8PBNZgQI+s="
 					},
-					"name": "UseCaseDiagram2",
+					"name": "UseCaseDiagramNon-connecté",
 					"ownedViews": [
 						{
 							"_type": "UMLUseCaseSubjectView",
