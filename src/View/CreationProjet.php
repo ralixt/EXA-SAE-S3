@@ -86,9 +86,9 @@
         <div class="flex-horizontal2">
             <select name="difficulte" id="difficulte" class="input hover" required>
                 <option value="" disabled selected>Quel est la difficulté du projet ?</option>
-                <option value="facile">Facile</option>
-                <option value="moyen">Moyen</option>
-                <option value="difficile">Difficile</option>
+                <option value="Debutant">Facile</option>
+                <option value="Intermediaire">Moyen</option>
+                <option value="Avance">Difficile</option>
             </select>
             <br>
             <?php if(isset($_SESSION['roles']) && $_SESSION['roles'] ==  'Premium_User') : ?>

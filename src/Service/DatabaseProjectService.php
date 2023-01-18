@@ -208,7 +208,7 @@ class DatabaseProjectService implements AllService
         $sentence->execute(["titre"=> $entity->getTitre(),
                             "content" => $entity->getContent(),
                             "author" => $entity->getAuthorID(),
-                            "status" => $entity -> getStatus() ,
+                            "status" => $entity -> getStatus(),
                             "difficulte" => $entity->getDifficulte(),
                             "isPremium" => $entity->isPremium() ? 1:0,
                             "URL_Zip" => $entity->getURLZIP()]);
@@ -220,7 +220,7 @@ class DatabaseProjectService implements AllService
                 $query.= "('" . $entity->getId() . "','" . $tags[$i]->getId() . "'),";
             }
             else{
-                $query.= "('" . $entity->getId() . "','" . $tags[$i]->getId() . "');";
+                $query.= "('" . $entity->getId() . "','" . $tags[$i]->getId() . "')";
             }
 
         }
