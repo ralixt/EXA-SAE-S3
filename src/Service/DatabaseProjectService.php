@@ -212,6 +212,9 @@ class DatabaseProjectService implements AllService
                             "difficulte" => $entity->getDifficulte(),
                             "isPremium" => $entity->isPremium() ? 1:0,
                             "URL_Zip" => $entity->getURLZIP()]);
+        $sentence->fetchAll();
+
+        sleep(1);
 
         $query = "INSERT INTO projet_tag(id_projet, id_tag) VALUES ";
         $tags = $entity->getTags();
@@ -224,7 +227,6 @@ class DatabaseProjectService implements AllService
             }
 
         }
-
         $sentence = $this->database->prepare($query);
         $sentence->execute();
 
