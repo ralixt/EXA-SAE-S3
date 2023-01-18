@@ -30,7 +30,7 @@
 
             <div class="nav-links">
                 <ul style="list-style-type:none">
-                    <li><a href="http://localhost">Accueil</a></li>
+                    <li><a href="/">Accueil</a></li>
                     <!--pour les user connectés-->
 
                     <?php if(isset($_SESSION["Pseudo"])) : ?>
