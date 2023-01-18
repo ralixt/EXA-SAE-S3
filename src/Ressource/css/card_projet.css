@@ -161,6 +161,22 @@ p.status.Refused {
     color: red;
 }
 
+#premium1{
+    position: absolute;
+    z-index: 1000;
+    top: 5px;
+    left : 5px;
+    backdrop-filter: blur(35px);
+    border: 2px #3A7A2F;
+    border-radius: 10px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+#premiumimg{
+    height: 40px;
+}
+
 .material-symbols-outlined {
     font-variation-settings:
             'FILL' 0,

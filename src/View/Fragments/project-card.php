@@ -15,6 +15,10 @@
     <?php elseif($like): ?>
         <a class="like" href="http://localhost/likeAccueil?idprojectss=<?php echo($projet->getId())?>"><span  class="material-symbols-outlined filled ">favorite</span></a>
     <?php endif; endif;?>
+    <?php if($projet->isPremium()){
+        echo "<div id='premium1'>
+                <img id='premiumimg' src='../../Ressource/images/premium.svg' alt='premium' >
+              </div>";}?>
     <?php if($projet->getStatus() == "Published" || (isset($_SESSION["roles"]) && $_SESSION["roles"]== "Admin")):?>
             <a href="http://localhost/projet/<?php echo($projet->getId())?>">
             <?php else:?>
