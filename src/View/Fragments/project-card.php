@@ -6,17 +6,16 @@
 
 ?>
 
-<?php if($projet->getStatus() == "Published" || (isset($_SESSION["roles"]) && $_SESSION["roles"]== "Admin")):?>
-
 
 <div class="template">
+    <?php if($projet->getStatus() == "Published"):?>
     <?php $like = $c = CommentaireService::getInstance()->getProjectLike($projet->getId(), $_SESSION["ids"]??1);?>
     <?php if(!$like):?>
         <a class="like" href="http://localhost/likeAccueil?idprojectss=<?php echo($projet->getId())?>"><span  class="material-symbols-outlined ">favorite</span></a>
-    <?php endif; ?>
-    <?php if($like): ?>
+    <?php elseif($like): ?>
         <a class="like" href="http://localhost/likeAccueil?idprojectss=<?php echo($projet->getId())?>"><span  class="material-symbols-outlined filled ">favorite</span></a>
-    <?php endif;?>
+    <?php endif; endif;?>
+    <?php if($projet->getStatus() == "Published" || (isset($_SESSION["roles"]) && $_SESSION["roles"]== "Admin")):?>
             <a href="http://localhost/projet/<?php echo($projet->getId())?>">
             <?php else:?>
                 <a>
