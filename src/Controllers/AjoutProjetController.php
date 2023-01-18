@@ -23,7 +23,7 @@ class AjoutProjetController extends AbstractController
                 $projet->setTags($tags);
             }
 
-            $difficulte = empty($_POST["difficulte"])? $_POST["difficulte"] : 'Debutant';
+            $difficulte = $_POST["difficulte"];
             $projet->setDifficulte($difficulte);
 
 
