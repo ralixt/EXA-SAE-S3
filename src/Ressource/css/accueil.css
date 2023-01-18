@@ -34,7 +34,7 @@
     top: -11vh;
     bottom: 0;
     right: 0;
-    left: -2rem;
+    left: -3vw;
     z-index: 2100;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(3px);
@@ -70,13 +70,13 @@
     border-radius: 20px;
     height: 50vh;
     /*margin: 0 2rem 5rem 2rem;*/
-    width: 95%;
-    margin: 0 auto 3.5rem auto;
+    /*width: 95%;*/
+    /*margin: 0 auto 3.5rem auto;*/
     display: flex;
     flex-direction: column;
     position: relative;
     /*margin-left: 2rem;*/
-
+    margin: 0.3rem 2.5vw 3.5rem;
 
 
 }
