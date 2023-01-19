@@ -212,21 +212,23 @@ class DatabaseProjectService implements AllService
                             "difficulte" => $entity->getDifficulte(),
                             "isPremium" => $entity->isPremium() ? 1:0,
                             "URL_Zip" => $entity->getURLZIP()]);
-        $sentence->fetchAll();
 
-        sleep(1);
+        
+        $idProjet = $this->getMaxID();
 
         $query = "INSERT INTO projet_tag(id_projet, id_tag) VALUES ";
         $tags = $entity->getTags();
         for($i=0; $i<count($tags); $i++){
             if($i+1< count($tags)){
-                $query.= "('" . $entity->getId() . "','" . $tags[$i]->getId() . "'),";
+                $query.= "('" . $idProjet . "','" . $tags[$i]->getId() . "'),";
             }
             else{
-                $query.= "('" . $entity->getId() . "','" . $tags[$i]->getId() . "')";
+                $query.= "('" . $idProjet . "','" . $tags[$i]->getId() . "')";
             }
 
         }
+
+
         $sentence = $this->database->prepare($query);
         $sentence->execute();
 
@@ -234,10 +236,10 @@ class DatabaseProjectService implements AllService
         $images = $entity->getURLImage();
         for($i=0; $i<count($images); $i++){
             if($i+1< count($images)){
-                $query.= '("' . $entity->getId() . '","' . $images[$i] . '"),';
+                $query.= '("' . $idProjet . '","' . $images[$i] . '"),';
             }
             else{
-                $query.= '("' . $entity->getId() . '","' . $images[$i] . '");';
+                $query.= '("' . $idProjet . '","' . $images[$i] . '");';
             }
 
         }
@@ -245,6 +247,14 @@ class DatabaseProjectService implements AllService
         $sentence->execute();
 
 
+    }
+
+
+    public int getMaxID(){
+        $patience = $this->database->prepare("Select MAX(projet.id) from projet");
+        $patience->execute();
+        $result = $patience->fetchAll();
+        return $result[0][0];
     }
 
     /** @var projet $entity */

@@ -41,7 +41,7 @@ class AjoutProjetController extends AbstractController
                     mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
                 !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId())) ?
                     mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId())): null;
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()). "/images") ?
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($ser). "/images") ?
                     mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/images"): null;
                 $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/images";
                 $countfiles = count($_FILES['images']['name']);
