@@ -31,7 +31,7 @@
     /*display: none;*/
     /*display: flex;*/
     position: fixed;
-    top: -14vh;
+    top: -15vh;
     bottom: 0;
     right: -2.5vw;
     left: -2.5vw;
@@ -318,7 +318,7 @@
     font-size: 2rem;
 }
 
-#closeButton{
+.closeButton{
     border: none;
     outline: none;
     background-color: #FFFFFF;
@@ -474,9 +474,14 @@
     background-color: #121212;
 }
 
+.scrollFiltre{
+    overflow: hidden;
+}
 
 
-
+.nonIndex {
+    z-index: -1;
+}
 
 body {
     display: flex;

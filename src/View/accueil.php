@@ -79,7 +79,7 @@
                                 <p id="checkedCount" class="popupSection">(0)</p>
                             </div>
 
-                            <button id="closeButton" type="button" onclick="filtre()">
+                            <button class="closeButton" type="button" onclick="filtre()">
                                 <span class="material-symbols-outlined">close</span>
                             </button>
                         </div>

@@ -14,8 +14,10 @@ function filtre() {
     const x = document.getElementById("popup");
     if (x.style.display === "none") {
         x.style.display = "flex";
+        //document.body.classList.toggle('scrollFiltre');
     } else {
         x.style.display = "none";
+        //document.body.classList.remove('scrollFiltre');
     }
 }
 
@@ -56,4 +58,25 @@ for(i = 0; i < inputs.length; i++) {
         // console.log(nbChecked);
     });
 }
+
+
+
+const template = document.querySelectorAll('.template');
+const filtreBoutton = document.querySelector('.filtre');
+filtreBoutton.addEventListener('click',()=>{
+    for (let i = 0; i < template.length; i++) {
+        template[i].classList.add("nonIndex");
+    }
+    // template.classList.toggle('nonIndex');
+
+})
+
+const closeButtonFiltre = document.querySelector('.closeButton');
+closeButtonFiltre.addEventListener('click',()=>{
+    for (let i = 0; i < template.length; i++) {
+        template[i].classList.remove("nonIndex");
+    }
+    // template.classList.toggle('nonIndex');
+
+})
 
