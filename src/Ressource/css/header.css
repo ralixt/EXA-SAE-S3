@@ -106,6 +106,10 @@ header a:hover {
 
 }
 
+.nonIndexHeader {
+    z-index: 0;
+}
+
 @media screen and (max-width: 768px){
 
     header li a {
@@ -183,6 +187,8 @@ header a:hover {
     .scroll {
         overflow: hidden;
     }
+
+
 
 }
 
