@@ -22,7 +22,7 @@
     <link rel="icon" type="image/x-icon" href="../Ressource/images/logoLetsCode.png">
 
 
-    <title>Document</title>
+    <title>Inscription</title>
 </head>
 
 <body>
