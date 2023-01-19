@@ -302,9 +302,9 @@
 
                 <div id="searchDivBottom">
 
-                    <button class="filtre"  type="button" onclick="filtre()" id="filtre_button">
+                    <button class="filtre JSfiltres"  type="button" onclick="filtre()" id="filtre_button" >
                             <span class="material-symbols-outlined">filter_alt</span>
-                            <p class="JSfiltres">Filtres (0)</p>
+                            Filtres (0)
 
                     </button>
 

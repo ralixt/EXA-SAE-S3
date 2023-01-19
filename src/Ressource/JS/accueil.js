@@ -36,8 +36,9 @@ for(i = 0; i < checkBox.length; i++) {
         else {
             nbChecked = checkboxes.length;
         }
-        for(const compteur of compteurs)
-            compteur.innerHTML = 'Filtres (' + nbChecked +')';
+        compteurs[1].innerHTML = '<span class="material-symbols-outlined">filter_alt</span> Filtres (' + nbChecked +')';
+        compteurs[0].innerHTML = 'Filtres (' + nbChecked +')';
+
         // console.log(nbChecked);
     });
 }
