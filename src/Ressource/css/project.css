@@ -91,14 +91,14 @@ body{
 }
 .prev{
     position: absolute;
-    left: 10.0%;
+    left: 2.5%;
 }
 
 .next {
     right: 0;
     border-radius: 3px 0 0 3px;
     position: absolute;
-    right:10.0% ;
+    right:2.5% ;
 }
 
 .prev:hover,
@@ -515,7 +515,7 @@ color: #000000;
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-top: 8%;
+    margin-top: 10%;
 }
     .nbrLike p {
         position: absolute;
@@ -535,7 +535,7 @@ color: #000000;
    }
 }
 
-@media screen and (max-width: 685px) {
+@media screen and (max-width: 685px ) {
     .titre{
         position: absolute;
         left: 3%;
@@ -555,7 +555,7 @@ color: #000000;
     }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 430px ) {
     .authorContenair{
         display: flex;
         justify-content: center;
@@ -658,6 +658,7 @@ color: #000000;
         white-space: pre-line;
         margin-top: 12%;
     }
+
 
 
 }
