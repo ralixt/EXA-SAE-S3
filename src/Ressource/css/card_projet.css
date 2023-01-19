@@ -154,28 +154,40 @@ p.status.Refused {
 }
 .template .like{
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 10px;
+    right: 10px;
+    border-radius: 10px;
     z-index: 2000;
     text-decoration: none;
-    color: red;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(35px);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #premium1{
     position: absolute;
     z-index: 1000;
-    top: 5px;
-    left : 5px;
+    display: flex;
+    top: 10px;
+    left: 10px;
     backdrop-filter: blur(35px);
     border: 2px #3A7A2F;
     border-radius: 10px;
-    height: 45px;
+    height: 40px;
+    width: 40px;
     background-color: rgba(255, 255, 255, 0.4);
+    justify-content: center;
+    align-items: center;
 }
 
 #premiumimg{
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
 }
 
 .material-symbols-outlined {
