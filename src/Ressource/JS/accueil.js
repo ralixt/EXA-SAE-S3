@@ -22,7 +22,7 @@ function filtre() {
 
 
 //compteur filtres
-const compteur = document.querySelector('#checkedCount');
+const compteurs = document.querySelectorAll('.JSfiltres');
 let tmp = 0;
 const checkBox = document.querySelectorAll('input[type="checkbox"]');
 let nbChecked = 0;
@@ -36,9 +36,9 @@ for(i = 0; i < checkBox.length; i++) {
         else {
             nbChecked = checkboxes.length;
         }
+        compteurs[1].innerHTML = '<span class="material-symbols-outlined">filter_alt</span> Filtres (' + nbChecked +')';
+        compteurs[0].innerHTML = 'Filtres (' + nbChecked +')';
 
-
-        compteur.innerHTML = ' (' + nbChecked +')';
         // console.log(nbChecked);
     });
 }

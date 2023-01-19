@@ -65,14 +65,14 @@
                     <div class="swiper-wrapper">
 
                         <?php if(count($projet->getURLImage()) == 0 || $projet->getURLImage()[0] == ""):?>
-                        <img class="card_img" src="./.././Ressource/test/imageParDefault.jpg">
+                        <img class="card_img" src="./.././Ressource/test/imageParDefault.jpg" alt="projet-image">
                         <?php elseif (count($projet->getURLImage()) == 1 && $projet->getURLImage()[0] != ""):?>
-                        <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId() ?>/images/<?php echo $projet->getURLImage()[0] ?>">
+                        <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId() ?>/images/<?php echo $projet->getURLImage()[0] ?>" alt="projet-image">
                         <?php else:?>
 
                         <?php foreach ($projet->getURLImage() as $image):?>
                         <div class="swiper-slide">
-                            <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId() ?>/images/<?php echo $image ?>">
+                            <img class="card_img" src="./../../RessourcesProject/<?php echo $projet->getId() ?>/images/<?php echo $image ?>" alt="projet-image">
                         </div>
                         <?php endforeach; ?>
                         <?php endif;?>

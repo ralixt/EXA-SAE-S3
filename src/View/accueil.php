@@ -15,6 +15,7 @@
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel="stylesheet" href="../Ressource/css/card_projet.css" type="text/css" media="screen">
+    <link rel="icon" type="image/x-icon" href="../Ressource/images/logoLetsCode.png">
 
     <link
             rel="stylesheet"
@@ -75,8 +76,7 @@
                     <div id="popupBackground">
                         <div id="popupFiltreTitleClose">
                             <div>
-                                <p id="filtreTitle">Filtres</p>
-                                <p id="checkedCount" class="popupSection">(0)</p>
+                                <p id="filtreTitle" class="popupSection JSfiltres">Filtres (0)</p>
                             </div>
 
                             <button class="closeButton" type="button" onclick="filtre()">
@@ -302,14 +302,9 @@
 
                 <div id="searchDivBottom">
 
-                    <button class="filtre"  type="button" onclick="filtre()">
+                    <button class="filtre JSfiltres"  type="button" onclick="filtre()" id="filtre_button" >
                             <span class="material-symbols-outlined">filter_alt</span>
-                            <div id="centerFiltre">
-                                <div>
-                                    <p>Filtres</p>
-                                </div>
-                                <div><p id="checkedCount">(0)</p></div>
-                            </div>
+                            Filtres (0)
 
                     </button>
 

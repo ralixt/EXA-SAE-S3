@@ -253,6 +253,7 @@
     bottom: 0;
     transform: translateY(50%);
     width: 12.75rem;
+    gap: 1.5rem;
 
 
 
@@ -584,4 +585,8 @@ input[type="search"]::-webkit-search-results-decoration {
     }
 
 
+}
+
+#filtre_button > p {
+    margin: auto;
 }

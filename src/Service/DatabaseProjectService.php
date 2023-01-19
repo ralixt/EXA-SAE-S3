@@ -249,8 +249,10 @@ class DatabaseProjectService implements AllService
 
     }
 
-
-    public int getMaxID(){
+    /**
+     * @return int
+     */
+    public function getMaxID(){
         $patience = $this->database->prepare("Select MAX(projet.id) from projet");
         $patience->execute();
         $result = $patience->fetchAll();

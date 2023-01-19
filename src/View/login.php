@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="../Ressource/images/logoLetsCode.png">
     <link rel='stylesheet' href='../Ressource/css/login.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
