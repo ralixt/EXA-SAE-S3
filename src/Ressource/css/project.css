@@ -190,7 +190,8 @@ body{
 }
 .authorContenair .like img{
    padding-right: 2%;
-   width: 3%;
+    width: 24px;
+    height: 24px;
 }
 .authorContenair .premium{
 
@@ -452,7 +453,8 @@ color: #000000;
     
 }
 .projetPremium img{
-    width: 4%;
+    width: 24px;
+    height: 24px;
     position: absolute;
     right: 2%;
 }
