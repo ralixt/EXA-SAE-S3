@@ -125,7 +125,7 @@ class CompteService implements AllService
      */
     public function getlist(): ?array
     {
-        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo, AVG(comment.rating), Count(comment.id), listeImage(projet.id), listeTag(projet.id), projet.status FROM projet LEFT JOIN comment on comment.projet = projet.id join user on user.id = projet.author where projet.author = :id group by projet.id;');
+        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo, AVG(comment.rating), Count(comment.id), listeImage(projet.id), listeTag(projet.id), projet.status, projet.isPremium FROM projet LEFT JOIN comment on comment.projet = projet.id join user on user.id = projet.author where projet.author = :id group by projet.id;');
         $projetLikeStatement->execute(['id'=>$_SESSION['ids']]);
         $dataProjet = [];
         $result = $projetLikeStatement->fetchAll();
@@ -148,7 +148,8 @@ class CompteService implements AllService
                 ->setNote(is_null($p[3]) ? 0 : $p[3])
                 ->setURLImage($image)
                 ->setTags($tags)
-                ->setStatus($p[7]);
+                ->setStatus($p[7])
+                ->setPremium($p[8]);
         }
         return $dataProjet;
     }
@@ -169,7 +170,7 @@ class CompteService implements AllService
      */
     public function projectLike(User $user): array
     {
-        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo, AVG(comment.rating), Count(comment.id), listeImage(projet.id), listeTag(projet.id), projet.status  FROM projet LEFT JOIN comment on comment.projet = projet.id join likeproject on likeproject.project = projet.id join user on user.id = projet.author where likeproject.user = :id group by projet.id;');
+        $projetLikeStatement = $this->database->prepare('select projet.id, projet.titre, user.Pseudo, AVG(comment.rating), Count(comment.id), listeImage(projet.id), listeTag(projet.id), projet.status, projet.isPremium  FROM projet LEFT JOIN comment on comment.projet = projet.id join likeproject on likeproject.project = projet.id join user on user.id = projet.author where likeproject.user = :id group by projet.id;');
         $projetLikeStatement->execute(['id'=>$user->getId()]);
         $dataProjet = [];
         $result = $projetLikeStatement->fetchAll();
@@ -192,7 +193,8 @@ class CompteService implements AllService
                 ->setNote(is_null($p[3]) ? 0 : $p[3])
                 ->setURLImage($image)
                 ->setTags($tags)
-                ->setStatus($p[7]);
+                ->setStatus($p[7])
+                ->setPremium($p[8]);
         }
         return $dataProjet;
     }
