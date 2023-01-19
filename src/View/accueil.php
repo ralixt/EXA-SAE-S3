@@ -76,8 +76,7 @@
                     <div id="popupBackground">
                         <div id="popupFiltreTitleClose">
                             <div>
-                                <p id="filtreTitle">Filtres</p>
-                                <p id="checkedCount" class="popupSection">(0)</p>
+                                <p id="filtreTitle" class="popupSection JSfiltres">Filtres (0)</p>
                             </div>
 
                             <button class="closeButton" type="button" onclick="filtre()">
@@ -303,14 +302,9 @@
 
                 <div id="searchDivBottom">
 
-                    <button class="filtre"  type="button" onclick="filtre()">
+                    <button class="filtre"  type="button" onclick="filtre()" id="filtre_button">
                             <span class="material-symbols-outlined">filter_alt</span>
-                            <div id="centerFiltre">
-                                <div>
-                                    <p>Filtres</p>
-                                </div>
-                                <div><p id="checkedCount">(0)</p></div>
-                            </div>
+                            <p class="JSfiltres">Filtres (0)</p>
 
                     </button>
 

@@ -585,3 +585,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 
 }
+
+#filtre_button > p {
+    margin: auto;
+}
