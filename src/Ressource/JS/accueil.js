@@ -57,14 +57,3 @@ for(i = 0; i < inputs.length; i++) {
     });
 }
 
-
-
-
-// const welcome = document.querySelector('.welcome');
-// let cptwelcome = 0;
-// if (cptwelcome === 0) {
-//     cptwelcome ++;
-// }
-// if (cptwelcome === 1){
-//     welcome.classList.toggle('alreadyConnected');
-// }
