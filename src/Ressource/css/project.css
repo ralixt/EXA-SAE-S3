@@ -515,7 +515,7 @@ color: #000000;
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-top: 8%;
+    margin-top: 10%;
 }
     .nbrLike p {
         position: absolute;
@@ -535,7 +535,7 @@ color: #000000;
    }
 }
 
-@media screen and (max-width: 685px) {
+@media screen and (max-width: 685px ) {
     .titre{
         position: absolute;
         left: 3%;
@@ -555,7 +555,7 @@ color: #000000;
     }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 430px ) {
     .authorContenair{
         display: flex;
         justify-content: center;
