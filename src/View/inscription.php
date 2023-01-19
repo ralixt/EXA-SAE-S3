@@ -19,7 +19,7 @@
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
-
+    <link rel="icon" type="image/x-icon" href="../Ressource/images/logoLetsCode.png">
 
 
     <title>Document</title>

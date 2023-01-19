@@ -8,6 +8,7 @@
         <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
         <link rel='stylesheet' href='../Ressource/css/contact.css'  type='text/css' media='screen'>
         <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
+        <link rel="icon" type="image/x-icon" href="../Ressource/images/logoLetsCode.png">
 
         <title>Contact</title>
     </head>

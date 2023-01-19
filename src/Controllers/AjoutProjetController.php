@@ -37,19 +37,10 @@ class AjoutProjetController extends AbstractController
 
             $imagesNames = [];
             if(isset($_FILES["images"]) && !empty($_FILES["images"])){
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject") ?
-                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId())) ?
-                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId())): null;
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($ser). "/images") ?
-                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/images"): null;
-                $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/images";
                 $countfiles = count($_FILES['images']['name']);
                 for($i=0;$i<$countfiles;$i++){
                     $filename = str_replace(' ','',$_FILES['images']['name'][$i]);
                     $imagesNames[] = $filename;
-                    // Upload file
-                    move_uploaded_file($_FILES['images']['tmp_name'][$i],$path . "/" . str_replace(' ','',$filename));
                 }
                 $projet -> setURLImage(str_replace(' ','',$imagesNames));
             }
@@ -57,20 +48,38 @@ class AjoutProjetController extends AbstractController
 
             $zipName = null;
             if(isset($_FILES["zip"]) && !empty($_FILES["zip"])){
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject") ?
-                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId())) ?
-                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId())): null;
-                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/zip") ?
-                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/zip"): null;
-                $path = __PROJECT_ROOT__ . "/RessourcesProject/" . ($projet->getId()) . "/zip";
+
                 $zipName = str_replace(' ', '', $_FILES['zip']['name']);
-                move_uploaded_file($_FILES['zip']['tmp_name'],$path . "/" .  str_replace(' ', '', $_FILES['zip']['name']));
+
                 $projet->setURLZIP(str_replace(' ', '', $zipName));
             }
             $projet -> setStatus("Reviewing");
 
             $this->Service->create($projet);
+            $idProjet = $this->Service->getMaxID();
+            if(isset($_FILES["images"]) && !empty($_FILES["images"])) {
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject") ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . $idProjet) ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . $idProjet) : null;
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . $idProjet . "/images") ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . $idProjet . "/images") : null;
+                $path = __PROJECT_ROOT__ . "/RessourcesProject/" . $idProjet . "/images";
+                for($i=0;$i<$countfiles;$i++){
+                    $filename = str_replace(' ','',$_FILES['images']['name'][$i]);
+                    move_uploaded_file($_FILES['images']['tmp_name'][$i],$path . "/" . str_replace(' ','',$filename));
+                }
+            }
+            if(isset($_FILES["zip"]) && !empty($_FILES["zip"])) {
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject") ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject") : null;
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . $idProjet) ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . $idProjet): null;
+                !is_dir(__PROJECT_ROOT__ . "/RessourcesProject/" . $idProjet . "/zip") ?
+                    mkdir(__PROJECT_ROOT__ . "/RessourcesProject/" . $idProjet . "/zip"): null;
+                $path = __PROJECT_ROOT__ . "/RessourcesProject/" . $idProjet . "/zip";
+                move_uploaded_file($_FILES['zip']['tmp_name'],$path . "/" .  str_replace(' ', '', $_FILES['zip']['name']));
+            }
            header("location:http://localhost/");
         }
         else{

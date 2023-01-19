@@ -24,6 +24,7 @@ require_once  "Ressource/libs/Parsedown.php";
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/project.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
+    <link rel="icon" type="image/x-icon" href="../Ressource/images/logoLetsCode.png">
 </head>
 
 

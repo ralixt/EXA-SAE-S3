@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="../Ressource/images/logoLetsCode.png">
     <link rel='stylesheet' href='../Ressource/css/compte.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/card_projet.css' type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/header.css'  type='text/css' media='screen'>
