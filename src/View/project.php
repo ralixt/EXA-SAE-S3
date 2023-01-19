@@ -80,7 +80,7 @@ require_once  "Ressource/libs/Parsedown.php";
 
 
                     <div class="like">
-                        <?php if(($project->isPremium()==1 and isset($_SESSION["roles"]) and  $_SESSION["roles"]=='User') or !isset($_SESSION["ids"])):?>
+                        <?php if(($project->isPremium()) and (isset($_SESSION["roles"]) and  $_SESSION["roles"]=='User') or (!isset($_SESSION["ids"]) and $project->isPremium())):?>
                             <img src=".././Ressource/images/premium.svg" alt="premium">
                         <?php endif; ?>
 
@@ -95,7 +95,7 @@ require_once  "Ressource/libs/Parsedown.php";
                     </div>
                 </div><br><br>
 
-                    <?php if(($project->isPremium()==1 and isset($_SESSION["roles"]) and $_SESSION["roles"]=='User') or !isset($_SESSION["ids"])):?>
+                    <?php if(($project->isPremium()) and (isset($_SESSION["roles"]) and  $_SESSION["roles"]=='User') or (!isset($_SESSION["ids"]) and $project->isPremium())):?>
                         <div class="projetPremium">
                             <span>Ce Projet est Premium</span>
                             <img src=".././Ressource/images/premium.svg" alt="premium">
