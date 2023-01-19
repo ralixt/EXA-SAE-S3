@@ -91,14 +91,14 @@ body{
 }
 .prev{
     position: absolute;
-    left: 10.0%;
+    left: 2.5%;
 }
 
 .next {
     right: 0;
     border-radius: 3px 0 0 3px;
     position: absolute;
-    right:10.0% ;
+    right:2.5% ;
 }
 
 .prev:hover,
@@ -658,6 +658,7 @@ color: #000000;
         white-space: pre-line;
         margin-top: 12%;
     }
+
 
 
 }

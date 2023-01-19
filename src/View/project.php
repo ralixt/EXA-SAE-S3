@@ -278,8 +278,8 @@ require_once  "Ressource/libs/Parsedown.php";
 
 
             <div class="like">
-                <?php if($projectModo->isPremium()==1 and isset($_SESSION["roles"]) and  $_SESSION["roles"]=='User'):?>
-                    <img src=".././Ressource/images/premium.png" >
+                <?php if(($projectModo->isPremium()) and (isset($_SESSION["roles"]) and  $_SESSION["roles"]=='User') or (!isset($_SESSION["ids"]) and $projectModo->isPremium())):?>
+                    <img src=".././Ressource/images/premium.svg" >
                 <?php endif; ?>
 
                 <?php $like = $c = CommentaireService::getInstance()->getProjectLike($projectModo->getId(), $_SESSION["ids"]??1);?>
@@ -293,10 +293,10 @@ require_once  "Ressource/libs/Parsedown.php";
             </div>
         </div><br><br>
 
-        <?php if($projectModo->isPremium()==1 and isset($_SESSION["roles"]) and $_SESSION["roles"]=='User'):?>
+        <?php if(($projectModo->isPremium()) and (isset($_SESSION["roles"]) and  $_SESSION["roles"]=='User') or (!isset($_SESSION["ids"]) and $projectModo->isPremium())):?>
             <div class="projetPremium">
                 <span>Ce Projet est Premium</span>
-                <img src=".././Ressource/images/premium.png" >
+                <img src=".././Ressource/images/premium.svg" >
             </div>
             <br>
             <div class="premiumtext">
