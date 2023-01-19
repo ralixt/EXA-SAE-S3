@@ -65,7 +65,36 @@ class DatabaseProjectService implements AllService
 
     public function get($entity): ?Projet
     {
-        return $this->data[$entity] ?? null;
+        $sentence = $this->database-> prepare("SELECT projet.id, projet.createdAt, titre, projet.content, projet.author, pseudo, status, difficulte, isPremium, COUNT(project), listeTag(projet.id), listeImage(projet.id), URL_Zip, AVG(comment.rating), COUNT(comment.id) FROM projet LEFT JOIN comment on comment.projet = projet.id JOIN user ON projet.author = user.id LEFT JOIN likeproject ON projet.id = project WHERE projet.id = :id GROUP BY projet.id;");//Activer le where si vous voulez testez le modo
+        $sentence -> execute(["id" => $entity]);
+        $project = $sentence->fetch();
+        $tags = explode(",", $project[10]);
+        array_shift($tags);
+        for($i = 0; $i<count($tags); $i++){
+            $tags[$i] = explode(":", $tags[$i]);
+            $tags[$i] = (new tag)
+                ->setId((int)$tags[$i][0])
+                ->setName($tags[$i][1]);
+        }
+        $images = explode(" ", $project[11]);
+        array_pop($images);
+        $projet = (new Projet())
+            ->setId($project[0])
+            ->setCreatedAt($project[1])
+            ->setTitre($project[2])
+            ->setContent($project[3])
+            ->setAuthorID($project[4])
+            ->setAuthor($project[5])
+            ->setStatus($project[6])
+            ->setDifficulte($project[7])
+            ->setPremium($project[8])
+            ->setLikes($project[9])
+            ->setTags($tags)
+            ->setURLImage($images)
+            ->setURLZIP($project[12])
+            ->setNote($p[13] ?? 0)
+            ->setNbCom(intval($project[14]));
+        return $projet;
     }
 
     public function getlist(array $args = []): array

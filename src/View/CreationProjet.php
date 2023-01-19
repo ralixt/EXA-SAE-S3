@@ -56,7 +56,7 @@
 
     <main>
         <div class="flex-horizontal_header">
-            <img src="../Ressource/images/header_ajoutProjet.jpg" id="header_image"/>
+            <img src="../Ressource/images/header_ajoutProjet.jpg" id="header_image" alt="header_image"/>
             <p id="title">Nouveau projet</p>
         </div>
 
@@ -65,14 +65,14 @@
 
             <div class="flex-horizontal" id="informations">
                 <div class="flex-vertical">
-                    <label for="images" class="input hover">
+                    <label for="images" class="input hover" id="labelImages">
                         <input type="file" name="images[]" id="images" accept="image/png, image/jpeg" multiple>
-                        <p id="labelImages"><b>+</b> <br/> Ajouter des images <br/> 0 Fichiers</p>
+                        <b>+</b> <br/> Ajouter des images <br/> 0 Fichiers
                     </label>
                     <br>
-                    <label for="ressources" class="input hover">
+                    <label for="ressources" class="input hover" id="labelZip">
                         <input type="file" name="zip" id="ressources" accept=".zip,.rar,.7zip">
-                        <p id="labelZip"><b>+</b> <br/> Ajouter un zip <br/> Aucun fichiers </p>
+                        <b>+</b> <br/> Ajouter un zip <br/> Aucun fichiers
                     </label>
                 </div>
                 <div class="flex-vertical">
@@ -81,8 +81,6 @@
                     <textarea name="contenu" id="contenu" placeholder="Quel est le contenu du projet ?" class="input"></textarea>
                 </div>
             </div>
-
-        </div>
         <br>
         <div class="flex-horizontal2">
             <select name="difficulte" id="difficulte" class="input hover" required>
@@ -181,7 +179,7 @@
                 </div>
             </div>
             <br>
-            <div class="input" class="button">
+            <div class="input">
                 <p class="decalage">Quels sont les langues de votre projet ?</p>
                 <div class="tags">
                     <label for="Français" class="button">
@@ -209,7 +207,7 @@
             <button id="ajouter" type="submit" class="button">Ajouter un nouveau projet</button>
         </div>
     </form>
-
+        </main>
     <?php include 'footer.php' ?>
     <script type="text/javascript" src="../Ressource/JS/visualisationUploadFichier.js"></script>
     <script>var simplemde = new SimpleMDE({ element: document.querySelector("#contenu"), toolbar: false, toolbarTips: false, status:false, 	autosave: {
@@ -218,5 +216,6 @@
                 delay: 1000,
             }, });</script>
         <script src="../Ressource/JS/header.js"></script>
+
 </body>
 </html>

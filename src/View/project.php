@@ -25,6 +25,7 @@ require_once  "Ressource/libs/Parsedown.php";
     <link rel='stylesheet' href='../Ressource/css/project.css'  type='text/css' media='screen'>
     <link rel='stylesheet' href='../Ressource/css/footer.css'  type='text/css' media='screen'>
     <link rel="icon" type="image/x-icon" href="../Ressource/images/logoLetsCode.png">
+    <title><?php echo $project->getTitre() ?></title>
 </head>
 
 
@@ -39,17 +40,17 @@ require_once  "Ressource/libs/Parsedown.php";
                     <?php
                     if( count($project->getURLImage())==0 ):?>
                         <div class="slides">
-                            <img src="./.././Ressource/test/imageParDefault.jpg">
+                            <img src="./.././Ressource/test/imageParDefault.jpg" alt="project_image">
                         </div>
                     <?php elseif(count($project->getURLImage())>0 and $project->getURLImage()[0]==""): ?>
                         <div class="slides">
-                            <img src="./.././Ressource/test/imageParDefault.jpg">
+                            <img src="./.././Ressource/test/imageParDefault.jpg" alt="project_image">
                         </div>
                     <?php else:?>
                         <?php for($i=0;$i<count($project->getURLImage());$i++):?>
                             <div class="slides">
 
-                                <a href="./.././RessourcesProject/<?=$project->getId()?>/images/<?=str_replace(' ', '', $project->getURLImage()[$i])?>". target=._blank> <?php echo('<img src= ./.././RessourcesProject/'.$project->getId().'/'.'images'.'/'.str_replace(' ', '', $project->getURLImage()[$i]).'>' );?> </a>
+                                <a href="./.././RessourcesProject/<?=$project->getId()?>/images/<?=str_replace(' ', '', $project->getURLImage()[$i])?>" target=._blank> <?php echo('<img alt="project_image" src= ./.././RessourcesProject/'.$project->getId().'/'.'images'.'/'.str_replace(' ', '', $project->getURLImage()[$i]).'>' );?> </a>
 
                             </div>
                         <?php endfor;?>
@@ -70,7 +71,7 @@ require_once  "Ressource/libs/Parsedown.php";
                     <?php endif;?>
                     <div class="titre">
                         <section >
-                            <button ><p id="text"><?= $project-> getTitre() ?></p></button>
+                            <button id="text"><?= $project-> getTitre() ?></button>
                         </section>
                     </div>
                 </div>
@@ -132,7 +133,7 @@ require_once  "Ressource/libs/Parsedown.php";
                         $text=$project->getContent();
                         ?>
 
-                        <span ><?= $parsedown->text($text)?></span><br>
+                        <div id="markdownContenu"><?= $parsedown->text($text)?></div><br>
                     </div>
                     <br>
                     <br>
@@ -164,7 +165,7 @@ require_once  "Ressource/libs/Parsedown.php";
                     </div>
 
                 <?php else:?>
-                    <div id="commentaire"class="Commentaire">
+                    <div id="commentaire" class="Commentaire">
 
                         <h3>Commentaire</h3><br><br><br>
 
@@ -237,17 +238,17 @@ require_once  "Ressource/libs/Parsedown.php";
         <div class="container">
             <?php if( count($projectModo->getURLImage())==0 ):?>
                 <div class="slides">
-                    <img src="./.././Ressource/test/imageParDefault.jpg">
+                    <img src="./.././Ressource/test/imageParDefault.jpg" alt="project_image">
                 </div>
             <?php elseif(count($projectModo->getURLImage())>0 and $projectModo->getURLImage()[0]==""): ?>
                 <div class="slides">
-                    <img src="./.././Ressource/test/imageParDefault.jpg">
+                    <img src="./.././Ressource/test/imageParDefault.jpg" alt="project_image">
                 </div>
             <?php else: ?>
                 <?php for($i=0;$i<count($projectModo->getURLImage());$i++):?>
                     <div class="slides">
 
-                        <a href="./.././RessourcesProject/<?=$projectModo->getId()?>/images/<?=str_replace(' ', '', $projectModo->getURLImage()[$i])?>". target=._blank> <?php echo('<img src= ./.././RessourcesProject/'.$projectModo->getId().'/'.'images'.'/'.str_replace(' ', '', $projectModo->getURLImage()[$i]).'>' );?> </a>
+                        <a href="./.././RessourcesProject/<?=$projectModo->getId()?>/images/<?=str_replace(' ', '', $projectModo->getURLImage()[$i])?>" target=._blank> <?php echo('<img alt="project_image" src= ./.././RessourcesProject/'.$projectModo->getId().'/'.'images'.'/'.str_replace(' ', '', $projectModo->getURLImage()[$i]).'>' );?> </a>
 
                     </div>
                 <?php endfor;?>
@@ -268,7 +269,7 @@ require_once  "Ressource/libs/Parsedown.php";
             <?php endif;?>
             <div class="titre">
                 <section >
-                    <button ><p id="text"><?= $projectModo-> getTitre() ?></p></button>
+                    <button ><?= $projectModo-> getTitre() ?></button>
                 </section>
             </div>
         </div>
@@ -280,7 +281,7 @@ require_once  "Ressource/libs/Parsedown.php";
 
             <div class="like">
                 <?php if(($projectModo->isPremium()) and (isset($_SESSION["roles"]) and  $_SESSION["roles"]=='User') or (!isset($_SESSION["ids"]) and $projectModo->isPremium())):?>
-                    <img src=".././Ressource/images/premium.svg" >
+                    <img src=".././Ressource/images/premium.svg" alt="premium">
                 <?php endif; ?>
 
                 <?php $like = $c = CommentaireService::getInstance()->getProjectLike($projectModo->getId(), $_SESSION["ids"]??1);?>
@@ -297,7 +298,7 @@ require_once  "Ressource/libs/Parsedown.php";
         <?php if(($projectModo->isPremium()) and (isset($_SESSION["roles"]) and  $_SESSION["roles"]=='User') or (!isset($_SESSION["ids"]) and $projectModo->isPremium())):?>
             <div class="projetPremium">
                 <span>Ce Projet est Premium</span>
-                <img src=".././Ressource/images/premium.svg" >
+                <img src=".././Ressource/images/premium.svg" alt="premium">
             </div>
             <br>
             <div class="premiumtext">
@@ -330,7 +331,7 @@ require_once  "Ressource/libs/Parsedown.php";
                 $text=$projectModo->getContent();
                 ?>
 
-                <span ><?= $parsedown->text($text)?></span><br>
+                <div id="markdownContenu" ><?= $parsedown->text($text)?></div><br>
             </div>
             <br>
             <br>
@@ -359,8 +360,8 @@ require_once  "Ressource/libs/Parsedown.php";
             <?php endif;?>
             <?php if(isset($_SESSION["roles"]) and $_SESSION["roles"]=='Admin' and $projectModo->getStatus()=="Reviewing"):?>
                 <div class="AdminButton">
-                    <a class="publication" href="http://localhost/publication?idproject=<?php echo($projectModo->getId())?>"><button>Publier</button></a>
-                    <a class="suppression" href="http://localhost/suppression?idproject=<?php echo($projectModo->getId())?>"><button>Refuser</button></a>
+                    <a class="publication" href="http://localhost/publication?idproject=<?php echo($projectModo->getId())?>">Publier</a>
+                    <a class="suppression" href="http://localhost/suppression?idproject=<?php echo($projectModo->getId())?>">Refuser</a>
                 </div>
 
             <?php else:?>

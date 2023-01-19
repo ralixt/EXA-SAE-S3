@@ -123,7 +123,7 @@
                 <div class="rectangle blanc" id="premium">
                     <div id="flexBetween">
                         <h2>Premium</h2>
-                        <img src="../Ressource/images/premium.svg">
+                        <img src="../Ressource/images/premium.svg" alt="premium">
                     </div>
                     <ul class="gauche">
                         <li>Accès à des millions de projets</li>

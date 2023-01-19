@@ -18,7 +18,10 @@
                 <p>De <?= ($comment->getPseudo())?></p>
             </div>
             <div class="NoteCommentaire">
-                <li> <?= ($comment->getRating())?>/5</li>
+                <ul>
+                    <li> <?= ($comment->getRating())?>/5</li>
+                </ul>
+
             </div>
             <div class="LikeCommentaire">
 
@@ -43,7 +46,7 @@
                 $datess=datesss($dates)
                 ?>
                 <p class="affichageDate"><?= $datess;?></p>
-            </div><br><br>
+            </div><br>
 
             <div class="Contenu">
                 <p class="textCommentaire">

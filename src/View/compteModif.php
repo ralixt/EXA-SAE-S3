@@ -27,9 +27,7 @@
 
 
 <body>
-    <header>
         <?php include 'header.php' ?>
-    </header>
     <main>
         <div class="papaEnTete">
             <h1 class="flou enTete"><?php echo $titre ?></h1>
