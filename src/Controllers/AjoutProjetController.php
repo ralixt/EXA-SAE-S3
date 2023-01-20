@@ -47,10 +47,10 @@ class AjoutProjetController extends AbstractController
 
 
             $zipName = null;
+
             if(isset($_FILES["zip"]) && !empty($_FILES["zip"])){
 
                 $zipName = str_replace(' ', '', $_FILES['zip']['name']);
-
                 $projet->setURLZIP(str_replace(' ', '', $zipName));
             }
             $projet -> setStatus("Reviewing");

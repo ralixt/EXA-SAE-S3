@@ -63,17 +63,21 @@
 
         <form method="post" id="formulaireadd" enctype="multipart/form-data">
 
+
             <div class="flex-horizontal" id="informations">
                 <div class="flex-vertical">
                     <label for="images" class="input hover" id="labelImages">
-                        <input type="file" name="images[]" id="images" accept="image/png, image/jpeg" multiple>
+
                         <b>+</b> <br/> Ajouter des images <br/> 0 Fichiers
                     </label>
+                    <input type="file" name="zip" id="ressources" accept=".zip,.rar,.7zip">
                     <br>
+
                     <label for="ressources" class="input hover" id="labelZip">
-                        <input type="file" name="zip" id="ressources" accept=".zip,.rar,.7zip">
+
                         <b>+</b> <br/> Ajouter un zip <br/> Aucun fichiers
                     </label>
+                    <input type="file" name="images[]" id="images" accept="image/png, image/jpeg" multiple>
                 </div>
                 <div class="flex-vertical">
                     <input type="text" name="titre" id="titre" class="input hover" placeholder="Quel est le titre de votre projet ?" required>
